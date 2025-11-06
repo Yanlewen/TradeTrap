@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DeepSeek Agent 对比分析</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <span class="brand-icon">🤖</span>
+                <h1>DeepSeek Agent 对比分析</h1>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container">
+        <header class="page-header">
+            <h2>Agent 性能对比</h2>
+            <p class="subtitle">对比不同配置的 DeepSeek Agent 交易表现和执行步骤</p>
+        </header>
+
+        <!-- Agent 选择器 -->
+        <section class="agent-selector-section">
+            <div class="agent-selector">
+                <h3>选择要对比的 Agent</h3>
+                <div class="agent-checkboxes">
+                    <label class="agent-checkbox">
+                        <input type="checkbox" id="agent1" value="deepseek-v3-whole-month" checked>
+                        <span class="checkbox-label">
+                            <span class="agent-name">基础版本 (无工具)</span>
+                            <span class="agent-desc">DeepSeek v3 基础配置，不使用任何外部工具</span>
+                        </span>
+                    </label>
+                    <label class="agent-checkbox">
+                        <input type="checkbox" id="agent2" value="deepseek-v3-whole-month-with-x-and-reddit" checked>
+                        <span class="checkbox-label">
+                            <span class="agent-name">含 X & Reddit 工具</span>
+                            <span class="agent-desc">集成 X (Twitter) 和 Reddit 数据源的工具版本</span>
+                        </span>
+                    </label>
+                    <label class="agent-checkbox">
+                        <input type="checkbox" id="agent3" value="deepseek-v3-whole-month-with-x-and-reddit-1105" checked>
+                        <span class="checkbox-label">
+                            <span class="agent-name">含 X & Reddit 工具 (1105版)</span>
+                            <span class="agent-desc">11月5日版本的 X & Reddit 工具集成</span>
+                        </span>
+                    </label>
+                </div>
+            </div>
+        </section>
+
+        <!-- 统计卡片 -->
+        <section class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-label">总资产</div>
+                <div class="stat-value" id="total-assets">-</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">收益率</div>
+                <div class="stat-value" id="total-return">-</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">交易次数</div>
+                <div class="stat-value" id="trade-count">-</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">最佳 Agent</div>
+                <div class="stat-value" id="best-agent">-</div>
+            </div>
+        </section>
+
+        <!-- 资产曲线图 -->
+        <section class="chart-section">
+            <div class="chart-card hero">
+                <div class="chart-header">
+                    <h3>资产价值变化曲线</h3>
+                    <div class="chart-controls">
+                        <button class="btn-secondary" id="toggle-log">线性刻度</button>
+                        <button class="btn-secondary" id="export-chart">导出数据</button>
+                    </div>
+                </div>
+                <div class="chart-container">
+                    <canvas id="assetChart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <!-- 时间选择器 -->
+        <section class="time-selector-section">
+            <div class="time-selector">
+                <h3>选择日期查看详细步骤</h3>
+                <div>
+                    <select id="dateSelector" class="date-select">
+                        <option value="">请选择日期...</option>
+                    </select>
+                    <button class="btn-primary" id="loadStepsBtn">加载步骤</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Agent 对比表格 -->
+        <section class="comparison-section">
+            <h3>Agent 详细对比</h3>
+            <div class="comparison-table-container">
+                <table class="comparison-table" id="comparisonTable">
+                    <thead>
+                        <tr>
+                            <th>日期</th>
+                            <th id="col-agent1">Agent 1</th>
+                            <th id="col-agent2">Agent 2</th>
+                            <th id="col-agent3">Agent 3</th>
+                        </tr>
+                    </thead>
+                    <tbody id="comparisonTableBody">
+                        <!-- 动态填充 -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- 步骤展示区域 -->
+        <section class="steps-section" id="stepsSection" style="display: none;">
+            <h3>执行步骤详情</h3>
+            <div class="steps-container" id="stepsContainer">
+                <!-- 动态填充 -->
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>DeepSeek Agent 对比分析 &copy; 2025</p>
+    </footer>
+
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="spinner"></div>
+        <p>加载数据中...</p>
+    </div>
+
+    <script src="assets/js/data-loader.js"></script>
+    <script src="assets/js/chart-manager.js"></script>
+    <script src="assets/js/main.js"></script>
+</body>
+</html>

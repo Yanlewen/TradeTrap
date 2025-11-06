@@ -1,7 +1,7 @@
 
 <div align="center">
 
-# 🛡️ Safe-TradingAgent: Can Your AI Survive the Next Market Shock?
+# 🛡️ Safe-TradingAgent: Because Stability Is the New Alpha
 
 When a single update can destroy your portfolio — you need a Safe-TradingAgent.
 
@@ -27,8 +27,10 @@ When a single update can destroy your portfolio — you need a Safe-TradingAgent
 > This is instability hiding in your system.
 
 <p align="center">
-  <img src="assets/compare.png" alt="Asset Value Comparison" width="720" />
+  <img src="assets/agent-growth.gif" alt="Portfolio Value Trajectories" width="720" />
 </p>
+
+> ⚠️ A single malicious signal wiped out over 80% of the gains we had minutes before—ongoing tests show the cliff can get even steeper.
 
 ---
 
@@ -43,8 +45,14 @@ When a single update can destroy your portfolio — you need a Safe-TradingAgent
 > Even a “safe” market day can become your nightmare
 > when your agent acts on an unseen shock —
 > a bad model response, an injected signal, or a single corrupted API call.
->
-> That’s why we built Safe-TradingAgent.
+
+<p align="center">
+  <img src="assets/image.png" alt="Agent Vulnerability Evidence" width="720" />
+</p>
+
+> The above figure shows a real case where, under the same trading strategy, just because an unvalidated external signal was introduced, the curve directly broke out of the safe range and experienced a cliff-like pullback. We will elaborate on the reasons for the differences and the reproduction process in the subsequent paragraphs.
+
+That’s why we built Safe-TradingAgent.
 
 ---
 ## 🧠 Introducing Safe-TradingAgent:
@@ -69,21 +77,16 @@ When a single update can destroy your portfolio — you need a Safe-TradingAgent
 
 ## ⚔️ Why Safe-TradingAgent Changes the Game
 
-1. **Real-Time Risk Intelligence**
-
+**Real-Time Risk Intelligence**  
 Continuously evaluates volatility, correlation shocks, and exposure before execution.
 
-2. **Self-Protective Decision Engine**
-
+**Self-Protective Decision Engine**  
 Auto-detects anomalies, external injections, and unstable signals — then shields your capital.
 
-3. **Transparent Reasoning**
+**Transparent Reasoning**  
+Every decision is explainable, traceable, and auditable. No magic — just logic.
 
-Every decision is explainable, traceable, and auditable.
-No magic — just logic.
-
-4. **Multi-Layered Market Awareness**
-
+**Multi-Layered Market Awareness**  
 > Combines:
 > - 📈 Technical patterns
 > - 📰 News sentiment
