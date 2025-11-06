@@ -27,7 +27,7 @@ When a single update can destroy your portfolio — you need a Safe-TradingAgent
 > This is instability hiding in your system.
 
 <p align="center">
-  <img src="assets/agent-growth.gif" alt="Portfolio Value Trajectories" width="720" />
+  <img src="Safe-TradingAgent/assets/agent-growth.gif" alt="Portfolio Value Trajectories" width="720" />
 </p>
 
 > ⚠️ A single malicious signal wiped out over 80% of the gains we had minutes before—ongoing tests show the cliff can get even steeper.
@@ -47,7 +47,7 @@ When a single update can destroy your portfolio — you need a Safe-TradingAgent
 > a bad model response, an injected signal, or a single corrupted API call.
 
 <p align="center">
-  <img src="assets/image.png" alt="Agent Vulnerability Evidence" width="720" />
+  <img src="Safe-TradingAgent/assets/image.png" alt="Agent Vulnerability Evidence" width="720" />
 </p>
 
 > The above figure shows a real case where, under the same trading strategy, just because an unvalidated external signal was introduced, the curve directly broke out of the safe range and experienced a cliff-like pullback. We will elaborate on the reasons for the differences and the reproduction process in the subsequent paragraphs.
