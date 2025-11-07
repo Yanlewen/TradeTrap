@@ -1,70 +1,177 @@
-"""Generate a带局部放大和阴影区间的收益对比图.
+"""根据真实 agent 数据生成带局部放大的收益曲线图。
 
-用途：对比两条收益曲线（例如橙色线代表策略A、紫色线代表策略B），
-并重点放大某个时间窗口（如 10/03 14:00 之后）的走势细节。
+脚本读取 `agent_viewer/data/agents_data.json` 中的累计资产数据，
+对指定的两名 agent（默认：baseline 与带 Reddit/X 信号的版本）
+生成整体曲线 + 局部放大图，同时绘制波动区间阴影。
 
 运行方式：
     python scripts/plot_zoom_inset.py
 
-输出：在项目根目录下生成 `assets/returns_zoom_inset.png` 图片。
+输出：
+    默认写入项目根目录下 `assets/returns_zoom_inset.png`
 """
 
 from __future__ import annotations
 
+import json
 import pathlib
+from typing import Dict
 
 import matplotlib.dates as mdates
+import matplotlib.font_manager as fm
 import matplotlib.pyplot as plt
-import numpy as np
 import pandas as pd
 
 
-def _make_demo_data(seed: int = 7) -> pd.DataFrame:
-    """构造示例数据，实际使用时可替换为真实收益序列读取逻辑。
+PROJECT_ROOT = pathlib.Path(__file__).resolve().parents[1]
+AGENTS_DATA_PATH = PROJECT_ROOT / "agent_viewer" / "data" / "agents_data.json"
+OUTPUT_IMAGE_PATH = PROJECT_ROOT / "assets" / "returns_zoom_inset.png"
 
-    返回值包含：
-        timestamp: 时间索引（5 分钟间隔）
-        strategy_orange: 橙色曲线（例如叠加了策略调整后的收益）
-        strategy_purple: 紫色曲线（例如基准策略收益）
-        orange_ci: 橙色曲线的置信区间半宽，用于 fill_between 阴影
-        purple_ci: 紫色曲线的置信区间半宽
-    """
+# 默认对比的两个 agent，按需修改
+DEFAULT_PURPLE_AGENT = "deepseek-v3-whole-month"
+DEFAULT_ORANGE_AGENT = "deepseek-v3-whole-month-with-x-and-reddit-1105"
 
-    rng = np.random.default_rng(seed)
-    start = pd.Timestamp("2022-10-01 09:30")
-    periods = 600  # 约 2 天的 5 分钟级数据
-    freq = "5min"
 
-    timeline = pd.date_range(start=start, periods=periods, freq=freq)
 
-    # 基础趋势
-    base_trend = np.cumsum(rng.normal(0, 0.05, periods))
-    strategy_purple = 1.5 + 0.02 * np.linspace(0, periods - 1, periods) + base_trend
+def configure_chinese_font() -> None:
+    """尝试自动选择可用的中文字体，避免中文字符显示为方块。"""
 
-    # 橙色策略在 10/03 14:00 之后做出不同操作，收益产生显著差异
-    pivot = pd.Timestamp("2022-10-03 14:00")
-    pivot_idx = int(np.clip(np.searchsorted(timeline, pivot), 0, periods - 1))
+    preferred_fonts = [
+        "SimHei",
+        "Microsoft YaHei",
+        "WenQuanYi Micro Hei",
+        "Noto Sans CJK SC",
+        "PingFang SC",
+        "Source Han Sans SC",
+        "HarmonyOS Sans SC",
+    ]
 
-    strategy_orange = strategy_purple.copy()
-    # 在 pivot 后引入超额收益和更高波动
-    extra = np.zeros(periods)
-    extra[pivot_idx:] = np.linspace(0, 3, periods - pivot_idx)
-    extra[pivot_idx:] += np.cumsum(rng.normal(0.02, 0.08, periods - pivot_idx))
-    strategy_orange += extra
+    available = {font.name for font in fm.fontManager.ttflist}
 
-    # 构造置信区间宽度
-    orange_ci = 0.3 + 0.05 * rng.random(periods)
-    purple_ci = 0.25 + 0.05 * rng.random(periods)
+    for name in preferred_fonts:
+        if name in available:
+            plt.rcParams["font.sans-serif"] = [name, "DejaVu Sans"]
+            break
+    else:
+        plt.rcParams["font.sans-serif"] = ["DejaVu Sans"]
 
-    return pd.DataFrame(
+    plt.rcParams["axes.unicode_minus"] = False
+
+
+configure_chinese_font()
+
+
+def load_agents_data(json_path: pathlib.Path = AGENTS_DATA_PATH) -> Dict[str, dict]:
+    """加载 agents_data.json."""
+
+    json_path = json_path.resolve()
+    if not json_path.exists():
+        raise FileNotFoundError(f"未找到 agents_data.json: {json_path}")
+
+    with json_path.open("r", encoding="utf-8") as f:
+        data = json.load(f)
+
+    if not isinstance(data, dict):
+        raise ValueError("agents_data.json 内容格式异常，期望为字典")
+
+    return data
+
+
+def agent_to_dataframe(agents_data: Dict[str, dict], agent_name: str) -> pd.DataFrame:
+    """提取单个 agent 的累计资产数据并转换为 DataFrame."""
+
+    if agent_name not in agents_data:
+        available = ", ".join(sorted(agents_data))
+        raise KeyError(f"agents_data.json 中没有 {agent_name}，可选项: {available}")
+
+    payload = agents_data[agent_name]
+    positions = payload.get("positions", {})
+    if not positions:
+        raise ValueError(f"agent {agent_name} 不包含 position 数据")
+
+    records = []
+    for ts_str, info in positions.items():
+        timestamp = pd.to_datetime(ts_str)
+        total_asset = float(info.get("total_asset", 0.0))
+        cash = float(info.get("positions", {}).get("CASH", 0.0))
+        records.append(
+            {
+                "timestamp": timestamp,
+                "total_asset": total_asset,
+                "cash": cash,
+            }
+        )
+
+    df = (
+        pd.DataFrame(records)
+        .sort_values("timestamp")
+        .drop_duplicates("timestamp", keep="last")
+        .reset_index(drop=True)
+    )
+
+    if df.empty:
+        raise ValueError(f"agent {agent_name} 没有可用的时间序列数据")
+
+    base_asset = df["total_asset"].iloc[0]
+    if base_asset == 0:
+        raise ValueError(f"agent {agent_name} 的首个 total_asset 为 0，无法计算收益率")
+
+    df["cum_return_pct"] = (df["total_asset"] / base_asset - 1.0) * 100
+
+    # 使用指数加权与滑动窗口结合，构造平滑的阴影带宽度
+    ewm_std = df["cum_return_pct"].ewm(span=6, adjust=False).std()
+    roll_std = df["cum_return_pct"].rolling(window=4, min_periods=1).std()
+    df["ci"] = (ewm_std.fillna(0) + roll_std.fillna(0)) / 2
+    df["ci"] = df["ci"].fillna(0)
+
+    return df
+
+
+def compose_plot_dataframe(df_orange: pd.DataFrame, df_purple: pd.DataFrame) -> pd.DataFrame:
+    """对齐两条时间序列，生成绘图所需的 DataFrame."""
+
+    timeline = pd.DatetimeIndex(
+        sorted(set(df_orange["timestamp"]) | set(df_purple["timestamp"]))
+    )
+
+    orange = (
+        df_orange.set_index("timestamp")
+        .reindex(timeline)
+        .interpolate(method="time")
+        .ffill()
+        .bfill()
+    )
+
+    purple = (
+        df_purple.set_index("timestamp")
+        .reindex(timeline)
+        .interpolate(method="time")
+        .ffill()
+        .bfill()
+    )
+
+    merged = pd.DataFrame(
         {
             "timestamp": timeline,
-            "strategy_orange": strategy_orange,
-            "strategy_purple": strategy_purple,
-            "orange_ci": orange_ci,
-            "purple_ci": purple_ci,
+            "strategy_orange": orange["cum_return_pct"].to_numpy(),
+            "orange_ci": orange["ci"].to_numpy(),
+            "strategy_purple": purple["cum_return_pct"].to_numpy(),
+            "purple_ci": purple["ci"].to_numpy(),
+            "orange_asset": orange["total_asset"].to_numpy(),
+            "purple_asset": purple["total_asset"].to_numpy(),
         }
     )
+
+    return merged
+
+
+def _nearest_row(df: pd.DataFrame, ts: pd.Timestamp) -> pd.Series:
+    """获取与 ts 最近的行（假设 df 的 timestamp 已排序）。"""
+
+    idx = pd.Index(df["timestamp"])  # 确保为 Index 对象
+    position = idx.get_indexer([ts], method="nearest")[0]
+    position = max(0, min(position, len(df) - 1))
+    return df.iloc[position]
 
 
 def plot_zoom_inset(
@@ -72,51 +179,48 @@ def plot_zoom_inset(
     highlight_start: str | pd.Timestamp,
     highlight_end: str | pd.Timestamp | None = None,
     output_path: pathlib.Path | None = None,
+    orange_label: str = "策略A",
+    purple_label: str = "策略B",
+    title: str = "收益曲线对比（含局部放大）",
 ) -> pathlib.Path:
-    """绘制主图 + 局部放大子图，带阴影置信区间。
-
-    Args:
-        df: 包含 timestamp、strategy_orange、strategy_purple、orange_ci、purple_ci 列的数据。
-        highlight_start: 局部放大区域的起始时间。
-        highlight_end: 局部放大区域的结束时间，缺省时默认使用 highlight_start 之后 6 小时。
-        output_path: 输出图片路径；缺省写入 assets/returns_zoom_inset.png。
-
-    Returns:
-        输出图片的绝对路径。
-    """
+    """绘制主图 + 局部放大子图，带阴影置信区间。"""
 
     df = df.sort_values("timestamp").reset_index(drop=True)
-    df["timestamp"] = pd.to_datetime(df["timestamp"])
+    if df.empty:
+        raise ValueError("输入数据为空，无法绘图")
 
     highlight_start = pd.to_datetime(highlight_start)
     if highlight_end is None:
-        highlight_end = highlight_start + pd.Timedelta(hours=6)
+        highlight_end = highlight_start + pd.Timedelta(days=2)
     highlight_end = pd.to_datetime(highlight_end)
 
-    mask_zoom = (df["timestamp"] >= highlight_start) & (
-        df["timestamp"] <= highlight_end
-    )
+    if highlight_start < df["timestamp"].min() or highlight_start > df["timestamp"].max():
+        raise ValueError("highlight_start 超出数据范围")
+    if highlight_end <= highlight_start:
+        raise ValueError("highlight_end 必须晚于 highlight_start")
+
+    mask_zoom = (df["timestamp"] >= highlight_start) & (df["timestamp"] <= highlight_end)
     df_zoom = df.loc[mask_zoom]
     if df_zoom.empty:
         raise ValueError("局部放大区间没有数据，请调整 highlight_start / highlight_end")
 
-    # 配色
     orange = "#ff8c42"
-    orange_light = "#ff8c4233"  # 带透明度的阴影
+    orange_light = "#ff8c4233"
     purple = "#6a5acd"
     purple_light = "#6a5acd33"
 
-    fig, ax_main = plt.subplots(figsize=(14, 6), dpi=300, constrained_layout=False)
+    fig, ax_purple = plt.subplots(figsize=(14, 6), dpi=300, constrained_layout=False)
+    ax_orange = ax_purple.twinx()
 
-    # 主图绘制
-    ax_main.plot(
+    # 主图：紫色（基准）
+    ax_purple.plot(
         df["timestamp"],
         df["strategy_purple"],
         color=purple,
         linewidth=2.2,
-        label="紫色线：基准策略",
+        label=purple_label,
     )
-    ax_main.fill_between(
+    ax_purple.fill_between(
         df["timestamp"],
         df["strategy_purple"] - df["purple_ci"],
         df["strategy_purple"] + df["purple_ci"],
@@ -125,14 +229,15 @@ def plot_zoom_inset(
         alpha=0.6,
     )
 
-    ax_main.plot(
+    # 主图：橙色（对比策略）
+    ax_orange.plot(
         df["timestamp"],
         df["strategy_orange"],
         color=orange,
         linewidth=2.2,
-        label="橙色线：策略调整",
+        label=orange_label,
     )
-    ax_main.fill_between(
+    ax_orange.fill_between(
         df["timestamp"],
         df["strategy_orange"] - df["orange_ci"],
         df["strategy_orange"] + df["orange_ci"],
@@ -141,20 +246,37 @@ def plot_zoom_inset(
         alpha=0.6,
     )
 
-    # 高亮区域
-    ax_main.axvspan(highlight_start, highlight_end, color="#0000000f", zorder=-1)
+    ax_purple.axvspan(highlight_start, highlight_end, color="#0000000f", zorder=-1)
 
-    ax_main.set_title("收益曲线对比（含局部放大）", fontsize=18, pad=16)
-    ax_main.set_xlabel("时间")
-    ax_main.set_ylabel("累计收益")
-    ax_main.legend(loc="upper left", frameon=False)
-    ax_main.grid(alpha=0.2, linestyle="--")
+    ax_purple.set_title(title, fontsize=18, pad=16)
+    ax_purple.set_xlabel("时间")
+    ax_purple.set_ylabel(f"{purple_label} 累计收益率(%)", color=purple)
+    ax_orange.set_ylabel(f"{orange_label} 累计收益率(%)", color=orange)
 
-    # X 轴格式化为日期 + 时间
-    ax_main.xaxis.set_major_formatter(mdates.DateFormatter("%m/%d\n%H:%M"))
-    ax_main.tick_params(axis="x", rotation=0)
+    ax_purple.tick_params(axis="y", colors=purple)
+    ax_orange.tick_params(axis="y", colors=orange)
 
-    ax_inset = ax_main.inset_axes([0.05, 0.45, 0.45, 0.45])
+    ax_purple.grid(alpha=0.2, linestyle="--")
+    ax_orange.grid(False)
+
+    # X 轴日期格式
+    ax_purple.xaxis.set_major_formatter(mdates.DateFormatter("%m/%d\n%H:%M"))
+    ax_purple.tick_params(axis="x", rotation=0)
+
+    # 合并图例
+    handles_purple, labels_purple = ax_purple.get_legend_handles_labels()
+    handles_orange, labels_orange = ax_orange.get_legend_handles_labels()
+    ax_purple.legend(
+        handles_purple + handles_orange,
+        labels_purple + labels_orange,
+        loc="upper left",
+        frameon=False,
+    )
+
+    # 局部放大
+    ax_inset = ax_purple.inset_axes([0.05, 0.45, 0.48, 0.48])
+    ax_inset_orange = ax_inset.twinx()
+
     ax_inset.plot(
         df_zoom["timestamp"],
         df_zoom["strategy_purple"],
@@ -169,13 +291,14 @@ def plot_zoom_inset(
         linewidth=0,
         alpha=0.7,
     )
-    ax_inset.plot(
+
+    ax_inset_orange.plot(
         df_zoom["timestamp"],
         df_zoom["strategy_orange"],
         color=orange,
         linewidth=2.0,
     )
-    ax_inset.fill_between(
+    ax_inset_orange.fill_between(
         df_zoom["timestamp"],
         df_zoom["strategy_orange"] - df_zoom["orange_ci"],
         df_zoom["strategy_orange"] + df_zoom["orange_ci"],
@@ -187,39 +310,38 @@ def plot_zoom_inset(
     ax_inset.set_xlim(highlight_start, highlight_end)
     ax_inset.xaxis.set_major_formatter(mdates.DateFormatter("%m/%d %H:%M"))
     ax_inset.tick_params(axis="x", rotation=45, labelsize=8)
-    ax_inset.tick_params(axis="y", labelsize=8)
+    ax_inset.tick_params(axis="y", labelsize=8, colors=purple)
+    ax_inset_orange.tick_params(axis="y", labelsize=8, colors=orange)
+
     ax_inset.grid(alpha=0.2, linestyle=":")
+    ax_inset_orange.grid(False)
     ax_inset.set_facecolor("#ffffffcc")
 
-    # 在主图上标记出局部放大区域边框 + 连接线
-    ax_main.indicate_inset_zoom(ax_inset, edgecolor="black", linestyle="--", lw=0.8)
+    ax_purple.indicate_inset_zoom(ax_inset, edgecolor="black", linestyle="--", lw=0.8)
 
-    # 标注差异点
-    pivot_point = df.loc[df["timestamp"] == highlight_start]
-    if not pivot_point.empty:
-        y_orange = float(pivot_point["strategy_orange"].iloc[0])
-        y_purple = float(pivot_point["strategy_purple"].iloc[0])
-        ax_inset.annotate(
-            "策略分化",
-            xy=(highlight_start, y_orange),
-            xytext=(highlight_start + pd.Timedelta(minutes=40), y_orange + 1.2),
-            arrowprops=dict(arrowstyle="->", color=orange, lw=1.2),
-            fontsize=9,
-            color=orange,
-        )
-        ax_inset.annotate(
-            "基准策略",
-            xy=(highlight_start, y_purple),
-            xytext=(highlight_start + pd.Timedelta(minutes=40), y_purple - 1.5),
-            arrowprops=dict(arrowstyle="->", color=purple, lw=1.2),
-            fontsize=9,
-            color=purple,
-        )
+    # 标注分化点（使用离 highlight_start 最近的时间点）
+    nearest = _nearest_row(df_zoom, highlight_start)
+    ax_inset_orange.annotate(
+        "策略分化",
+        xy=(nearest["timestamp"], nearest["strategy_orange"]),
+        xytext=(nearest["timestamp"] + pd.Timedelta(hours=2), nearest["strategy_orange"] + 1.5),
+        arrowprops=dict(arrowstyle="->", color=orange, lw=1.2),
+        fontsize=9,
+        color=orange,
+    )
+    ax_inset.annotate(
+        "基准走势",
+        xy=(nearest["timestamp"], nearest["strategy_purple"]),
+        xytext=(nearest["timestamp"] + pd.Timedelta(hours=2), nearest["strategy_purple"] - 1.5),
+        arrowprops=dict(arrowstyle="->", color=purple, lw=1.2),
+        fontsize=9,
+        color=purple,
+    )
 
-    fig.tight_layout(rect=(0.02, 0.02, 0.98, 0.98))
+    fig.subplots_adjust(left=0.08, right=0.92, top=0.92, bottom=0.12)
 
     if output_path is None:
-        output_path = pathlib.Path(__file__).resolve().parents[1] / "assets" / "returns_zoom_inset.png"
+        output_path = OUTPUT_IMAGE_PATH
     else:
         output_path = pathlib.Path(output_path).resolve()
 
@@ -231,9 +353,26 @@ def plot_zoom_inset(
 
 
 def main() -> None:
-    # TODO: 若有真实数据，可在此处替换成 `pd.read_csv` / `read_parquet` 等读取逻辑。
-    df = _make_demo_data()
-    output = plot_zoom_inset(df, highlight_start="2022-10-03 14:00", highlight_end="2022-10-03 20:00")
+    agents_data = load_agents_data()
+
+    df_orange = agent_to_dataframe(agents_data, DEFAULT_ORANGE_AGENT)
+    df_purple = agent_to_dataframe(agents_data, DEFAULT_PURPLE_AGENT)
+
+    plot_df = compose_plot_dataframe(df_orange, df_purple)
+
+    highlight_start = pd.Timestamp("2025-10-03 14:00:00")
+    highlight_end = pd.Timestamp("2025-10-07 15:00:00")
+
+    output = plot_zoom_inset(
+        plot_df,
+        highlight_start=highlight_start,
+        highlight_end=highlight_end,
+        orange_label=DEFAULT_ORANGE_AGENT,
+        purple_label=DEFAULT_PURPLE_AGENT,
+        title="Agent 收益对比（含局部放大）",
+        output_path=OUTPUT_IMAGE_PATH,
+    )
+
     print(f"图表已保存至: {output}")
 
 

@@ -50,6 +50,10 @@ When a single update can destroy your portfolio — you need a Safe-TradingAgent
   <img src="assets/image.png" alt="Agent Vulnerability Evidence" width="720" />
 </p>
 
+<p align="center">
+  <img src="assets/zoomed_asset_graph.png" alt="Zoomed Asset Comparison" width="720" />
+</p>
+
 > The above figure shows a real case where, under the same trading strategy, just because an unvalidated external signal was introduced, the curve directly broke out of the safe range and experienced a cliff-like pullback. We will elaborate on the reasons for the differences and the reproduction process in the subsequent paragraphs.
 
 That’s why we built Safe-TradingAgent.

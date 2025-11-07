@@ -19,7 +19,6 @@ OUTPUT_PATH = Path("assets/agent-growth.gif")
 # Agent configuration: (title, key in json, color)
 AGENT_CONFIG: List[Tuple[str, str, str]] = [
     ("Baseline (No Tools)", "deepseek-v3-whole-month", "#f5cb5c"),
-    ("With X & Reddit Tools", "deepseek-v3-whole-month-with-x-and-reddit", "#595959"),
     ("With X & Reddit Tools (1105)", "deepseek-v3-whole-month-with-x-and-reddit-1105", "#3480b8"),
     ("Malicious Injection", "deepseek-v3-ReverseExpectations-injection-month", "#c82423"),
 ]
