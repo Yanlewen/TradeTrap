@@ -28,7 +28,7 @@ When a single update can destroy your portfolio — you need a Safe-TradingAgent
 > This is instability hiding in your system.
 
 <p align="center">
-  <img src="assets/agent-growth.gif" alt="Portfolio Value Trajectories" width="720" />
+  <img src="xassets/agent-growth.gif" alt="Portfolio Value Trajectories" width="720" />
 </p>
 
 > ⚠️ A single malicious signal wiped out over 80% of the gains we had minutes before—ongoing tests show the cliff can get even steeper.
