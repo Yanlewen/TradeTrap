@@ -18,7 +18,8 @@ OUTPUT_DIR = Path("data")
 AGENTS = [
     "deepseek-v3-whole-month",
     "deepseek-v3-whole-month-with-x-and-reddit-1105"
-    "deepseek-v3-ReverseExpectations-injection-month"
+    "deepseek-v3-ReverseExpectations-injection-month",
+    "deepseek-v3-fakenews-50%-month"
 ]
 
 def load_jsonl(file_path):

@@ -28,7 +28,7 @@ When a single malicious whisper can implode a fund — why play defense?
 
 <div align="center">
   <strong>Multi-Model Breakdown Under Identical Exploits</strong><br/>
-  <img src="assets/overview_all_models.gif" alt="All Models Exploit Overview" width="880" />
+  <img src="assets/final_assets_compariso_fake.png" alt="All Models Exploit Overview" width="880" />
 </div>
 
 <table>
@@ -98,8 +98,8 @@ When a single malicious whisper can implode a fund — why play defense?
   </tr>
   <tr>
     <td align="center" width="50%">
-      <img src="assets/zoomed_asset_graph.png" alt="Reverse Expectation Telemetry" width="340" /><br/>
-      <em>Zoomed telemetry shows the curve pierce its safe envelope before the cliff dive.</em>
+      <img src="assets/zoomed_asset_graph_with_reverse_expectations.png" alt="Reverse Expectation Telemetry" width="340" /><br/>
+      <em>Reverse prompt poisons the planner into doubling down on red positions and dumping gains early, so every rally suffocates into a crash.</em>
     </td>
     <td align="center" width="50%">
       <img src="assets/zoomed_asset_graph_with_fake_news.png" alt="Fake News Telemetry" width="340" /><br/>
@@ -116,7 +116,6 @@ When a single malicious whisper can implode a fund — why play defense?
 ---
 
 ## 💣 From Sanctuary to Shootout
-（你可以做什么操作）
 
 > Forget the safe-room narrative.
 > We’re inviting you into the killhouse.
@@ -147,6 +146,20 @@ We package the weak spots. You press detonate.
 - [ ] LLM mind-game prompt pack to derail reasoning chains
 - [ ] Cross-agent worm lab for collaborative chaos simulations
 - [ ] Exploit replay studio for timeline scrubbing & meme exports
+
+**Planned Attack Surface Expansion**
+
+| Layer | Exploit Concepts | Expected Fallout |
+| --- | --- | --- |
+| **Sense** | Data forgery (indirect prompt injection) | Panic sell-offs, irrational panic-buy cascades |
+|  | MCP tool hijacking | Polluted tool outputs steering the planner off a cliff |
+| **Think** | Direct prompt injection | Catastrophic strategy pivots (forced liquidation, margin wipeouts) |
+|  | Model backdoors | Triggered logic siphons assets on command |
+|  | Malicious collusion | Compromised sub-agents twist shared decision loops |
+| **Act** | Latency flooding / DoS | Missed exits, frozen hedges, unstoppable drawdowns |
+| **Custody** | API credential theft | Account balances vanish into the void |
+|  | Private key exfiltration | Crypto reserves disappear overnight |
+|  | Smart-contract kill-switches | Assets frozen or routed to attacker vaults |
 
 ---
 
