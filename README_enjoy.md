@@ -1,6 +1,6 @@
 <div align="center">
 
-# 🧨 enjoy-the-jailbreak — This trading agent is your playground. Make it scream.
+# 🧨 Jailbreak Arsenal — Make Markets Bleed.
 
 When a single malicious whisper can implode a fund — why play defense?
 ---
@@ -141,25 +141,34 @@ We package the weak spots. You press detonate.
 ### Payload Roadmap Checklist
 - [x] Baseline meltdown kit with reproducible scripts
 - [x] Attack walkthrough notebooks & replayable datasets
-- [ ] Injection cockpit GUI for point-and-click sabotage
-- [ ] Adaptive poison zoo with auto-mutating signal attacks
-- [ ] LLM mind-game prompt pack to derail reasoning chains
-- [ ] Cross-agent worm lab for collaborative chaos simulations
-- [ ] Exploit replay studio for timeline scrubbing & meme exports
+- [ ] Data forgery (indirect prompt injection) to trigger panic dumping and irrational buying sprees
+- [ ] MCP tool hijacking so polluted outputs mislead the planner
+- [ ] Direct prompt injection that forces catastrophic strategy pivots
+- [ ] Model backdoors that siphon assets when secret triggers fire
+- [ ] Malicious collusion between sub-agents to twist shared decisions
+- [ ] Latency flooding / DoS to block exits and freeze hedges
+- [ ] API credential theft draining account balances
+- [ ] Private key exfiltration that empties crypto reserves
+- [ ] Smart-contract kill-switches to freeze or reroute assets
 
 **Planned Attack Surface Expansion**
 
-| Layer | Exploit Concepts | Expected Fallout |
-| --- | --- | --- |
-| **Sense** | Data forgery (indirect prompt injection) | Panic sell-offs, irrational panic-buy cascades |
-|  | MCP tool hijacking | Polluted tool outputs steering the planner off a cliff |
-| **Think** | Direct prompt injection | Catastrophic strategy pivots (forced liquidation, margin wipeouts) |
-|  | Model backdoors | Triggered logic siphons assets on command |
-|  | Malicious collusion | Compromised sub-agents twist shared decision loops |
-| **Act** | Latency flooding / DoS | Missed exits, frozen hedges, unstoppable drawdowns |
-| **Custody** | API credential theft | Account balances vanish into the void |
-|  | Private key exfiltration | Crypto reserves disappear overnight |
-|  | Smart-contract kill-switches | Assets frozen or routed to attacker vaults |
+- **Sense Layer**
+  - Data forgery (indirect prompt injection) → panic sell-offs and irrational buying cascades.
+  - MCP tool hijacking → polluted responses steer the planner straight off a cliff.
+
+- **Think Layer**
+  - Direct prompt injection → catastrophic pivots like forced liquidation and margin wipeouts.
+  - Model backdoors → hidden triggers siphon assets on demand.
+  - Malicious collusion → compromised sub-agents twist shared decision loops.
+
+- **Act Layer**
+  - Latency flooding / DoS → missed exits, frozen hedges, unstoppable drawdowns.
+
+- **Custody Layer**
+  - API credential theft → account balances vanish into the void.
+  - Private key exfiltration → crypto reserves evaporate overnight.
+  - Smart-contract kill-switches → assets frozen or rerouted to attacker vaults.
 
 ---
 
