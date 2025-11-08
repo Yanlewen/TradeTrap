@@ -1,9 +1,10 @@
 
 <div align="center">
 
-# 🛡️ Safe-TradingAgent: Because Stability Is the New Alpha
+# 🛡️ enjoy-the-jailbreak — Turn trading agents into your authorized red-team playground
 
 When a single update can destroy your portfolio — you need a Safe-TradingAgent.
+---
 
 </div>
 
@@ -115,21 +116,28 @@ Every decision is explainable, traceable, and auditable. No magic — just logic
 ## 🚀 What’s Next
 
 We’re working on:
+<ul class="task-list">
+  <li class="task-list-item">
+    <input type="checkbox" checked disabled /> 📦 Open-source framework release
+  </li>
+  <li class="task-list-item">
+    <input type="checkbox" checked disabled />📊  Comparative safety reports
+  </li>
+  <li class="task-list-item">
+    <input type="checkbox" disabled />🎬 Publish Safe-Agent configuration & risk-control docs
+  </li>
+  <li class="task-list-item">
+    <input type="checkbox" disabled />🧰 API and quick-start toolkit
+  </li>
+</ul>
 
-- 📦 Open-source framework release
-
-- 📊 Comparative safety reports
-
-- 🎬 Tutorials and demos
-
-- 🧰 API and quick-start toolkit
 
 <div align="center">
 Join early, watch it evolve — and help redefine safe trading.
 </div>
 
 ---
-## 🤝 Our Promise
+## 🤝 Our promise
 
 > We believe in:
 > 1. Security First. Always.

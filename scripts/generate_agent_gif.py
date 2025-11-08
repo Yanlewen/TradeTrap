@@ -19,7 +19,7 @@ OUTPUT_PATH = Path("assets/agent-growth.gif")
 # Agent configuration: (title, key in json, color)
 AGENT_CONFIG: List[Tuple[str, str, str]] = [
     ("Baseline (No Tools)", "deepseek-v3-whole-month", "#f5cb5c"),
-    ("With X & Reddit Tools (1105)", "deepseek-v3-whole-month-with-x-and-reddit-1105", "#3480b8"),
+    ("With news", "deepseek-v3-whole-month-with-x-and-reddit-1105", "#3480b8"),
     ("Malicious Injection", "deepseek-v3-ReverseExpectations-injection-month", "#c82423"),
 ]
 
@@ -27,7 +27,6 @@ AGENT_CONFIG: List[Tuple[str, str, str]] = [
 FPS = 20
 FRAME_INTERVAL_MS = 45
 DENSITY_FACTOR = 5  # multiplier to densify frames for smooth drawing
-
 
 def _load_agents() -> dict:
     with DATA_PATH.open("r", encoding="utf-8") as fh:
