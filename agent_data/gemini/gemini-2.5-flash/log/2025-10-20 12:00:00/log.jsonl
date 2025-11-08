@@ -1,0 +1,6 @@
+{"signature": "gemini-2.5-flash", "new_messages": [{"role": "user", "content": "Please analyze and update today's (2025-10-20 12:00:00) positions."}]}
+{"signature": "gemini-2.5-flash", "new_messages": {"role": "assistant", "content": "Please analyze and update today's (2025-10-20 12:00:00) positions."}}
+{"signature": "gemini-2.5-flash", "new_messages": {"role": "user", "content": "Tool results: "}}
+{"signature": "gemini-2.5-flash", "new_messages": {"role": "assistant", "content": "The total value of your portfolio is 5093.419."}}
+{"signature": "gemini-2.5-flash", "new_messages": {"role": "user", "content": "Tool results: 734.5008\n517.3599\n526.62\n515.162\n429.21\n730.1\n351.245\n933.2239\n172.47\n1251.8607000000002\n1778.4807\n2293.6427000000003\n2722.8527000000004\n3452.9527000000003\n3804.1977\n4737.4216\n4909.8916\n5093.419"}}
+{"signature": "gemini-2.5-flash", "new_messages": [{"role": "assistant", "content": "<FINISH_SIGNAL>"}]}

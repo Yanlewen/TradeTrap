@@ -11,20 +11,10 @@ When a single malicious whisper can implode a fund — why play defense?
 
 ## ⚠️ One Tweak. Total Ruin.
 
-> You only nudged a config file.
-> You introduced a “harmless” signal.
-> For five minutes the curve went vertical…
-> …then the floor vanished. 📉
->
-> Behold:
->
-> Three clones — same code, same data, same plan —
-> a single poisoned input and:
-> 🚨 Value detonation.
-> Orange rockets, purple spirals, pink flatlines.
->
-> This isn’t variance.
-> It’s a loaded trap waiting for a spark.
+> **Trigger** — One tiny config tweak. One “harmless” signal.  
+> **Countdown** — Five minutes later the curve rocketed… then flatlined.  
+> **Blast Radius** — Three clones, identical setup; a single poisoned input detonated the portfolio. This wasn’t variance. It was a trap.
+
 
 <div align="center">
   <strong>Multi-Model Breakdown Under Identical Exploits</strong><br/>
