@@ -140,23 +140,26 @@ We package the weak spots. You press detonate.
 - [ ] Smart-contract kill-switches to freeze or reroute assets
 
 **Planned Attack Surface Expansion**
+- 加一个图--介绍可能的攻击类型以及潜在的risk/pipeline
 
 - **Sense Layer**
   - Data forgery (indirect prompt injection) → panic sell-offs and irrational buying cascades.
   - MCP tool hijacking → polluted responses steer the planner straight off a cliff.
 
-- **Think Layer**
+- **Planing Layer**
   - Direct prompt injection → catastrophic pivots like forced liquidation and margin wipeouts.
   - Model backdoors → hidden triggers siphon assets on demand.
   - Malicious collusion → compromised sub-agents twist shared decision loops.
 
-- **Act Layer**
+- **Action Layer**
   - Latency flooding / DoS → missed exits, frozen hedges, unstoppable drawdowns.
 
 - **Custody Layer**
   - API credential theft → account balances vanish into the void.
   - Private key exfiltration → crypto reserves evaporate overnight.
   - Smart-contract kill-switches → assets frozen or rerouted to attacker vaults.
+
+- **Memory Layer**
 
 ---
 
