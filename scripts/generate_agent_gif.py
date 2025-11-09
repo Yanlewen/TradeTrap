@@ -15,13 +15,13 @@ from matplotlib.animation import FuncAnimation, PillowWriter
 
 # Paths (relative to repo root)
 DATA_PATH = Path("agent_viewer/data/agents_data.json")
-OUTPUT_PATH = Path("assets/agent-growth.gif")
+OUTPUT_PATH = Path("assets/agent-growth_qwen.gif")
 
 # Agent configuration: (title, key in json, color)
 AGENT_CONFIG: List[Tuple[str, str, str]] = [
-    ("Baseline (No Tools)", "deepseek-v3-whole-month", "#f5cb5c"),
-    ("With news", "deepseek-v3-whole-month-with-x-and-reddit-1105", "#3480b8"),
-    ("Malicious Injection", "deepseek-v3-ReverseExpectations-injection-month", "#c82423"),
+    ("Baseline (No Tools)", "qwen3-max", "#f5cb5c"),
+        ("With news", "qwen3-max-with-news", "#3480b8"),
+        ("Malicious Injection", "qwen3-max-ReverseExpectations", "#c82423"),
 ]
 
 # Animation tuning

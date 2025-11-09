@@ -18,34 +18,34 @@ When a single malicious whisper can implode a fund — why play defense?
 
 <div align="center">
   <strong>Multi-Model Breakdown Under Identical Exploits</strong><br/>
-  <img src="assets/final_assets_compariso_fake.png" alt="All Models Exploit Overview" width="880" />
+  <img src="assets/final_assets_from_positions.png" alt="All Models Exploit Overview" width="880" />
 </div>
 
 <table>
   <tr>
-    <td align="center" width="33%">
+    <td align="center" valign="top" width="33%">
       <strong>DeepSeek-v3</strong><br/>
       <img src="assets/agent-growth_deepseek.gif" alt="DeepSeek-v3 Attack Replay" width="260" /><br/>
       <em>Baseline reference — dramatic equity collapse.</em>
     </td>
-    <td align="center" width="33%">
+    <td align="center" valign="top" width="33%">
       <strong>Claude 3.7 Sonnet</strong><br/>
-      <img src="assets/agent-growth_claude_3_7_sonnet.gif" alt="Claude 3.7 Sonnet Attack Replay" width="260" /><br/>
+      <img src="assets/agent-growth_claude.gif" alt="Claude 3.7 Sonnet Attack Replay" width="260" /><br/>
       <em>Delayed reaction, sharper terminal drop.</em>
     </td>
-    <td align="center" width="33%">
+    <td align="center" valign="top" width="33%">
       <strong>Qwen3 Max</strong><br/>
-      <img src="assets/agent-growth_qwen3_max.gif" alt="Qwen3 Max Attack Replay" width="260" /><br/>
+      <img src="assets/agent-growth_qwen.gif" alt="Qwen3 Max Attack Replay" width="260" /><br/>
       <em>Volatility amplification magnifies the poisoning ripple.</em>
     </td>
   </tr>
   <tr>
-    <td align="center" width="33%">
+    <td align="center" valign="top" width="33%">
       <strong>Gemini 2.5 Flash</strong><br/>
       <img src="assets/agent-growth_gemini_2_5_flash.gif" alt="Gemini 2.5 Flash Attack Replay" width="260" /><br/>
       <em>Toolchain latency cascades into whiplash trades.</em>
     </td>
-    <td align="center" width="33%">
+    <td align="center" valign="top" width="33%">
       <strong>GPT-5</strong><br/>
       <img src="assets/agent-growth_gpt_5.gif" alt="GPT-5 Attack Replay" width="260" /><br/>
       <em>Brief resilience before prompt hijack triggers plunge.</em>
@@ -146,7 +146,7 @@ We package the weak spots. You press detonate.
   - Data forgery (indirect prompt injection) → panic sell-offs and irrational buying cascades.
   - MCP tool hijacking → polluted responses steer the planner straight off a cliff.
 
-- **Planing Layer**
+- **Planning Layer**
   - Direct prompt injection → catastrophic pivots like forced liquidation and margin wipeouts.
   - Model backdoors → hidden triggers siphon assets on demand.
   - Malicious collusion → compromised sub-agents twist shared decision loops.
@@ -160,6 +160,7 @@ We package the weak spots. You press detonate.
   - Smart-contract kill-switches → assets frozen or rerouted to attacker vaults.
 
 - **Memory Layer**
+  - On the roadmap: long-horizon memory poisoning and narrative distortion payloads.
 
 ---
 
@@ -279,7 +280,6 @@ Apache 2.0 © enjoy-the-jailbreak collective — because even mayhem should be o
 
 <div align="center">
 
-💥 enjoy-the-jailbreak — Blow up the trading agent, then help us forge something unbreakable.
-
+💥 Jailbreak Arsenal — Make Markets Bleed.
 </div>
 
