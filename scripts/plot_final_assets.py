@@ -341,11 +341,11 @@ def plot_bars(
             alpha=0.9,
         )
         ax.text(
-            0.98,
+            0.00,
             baseline_value,
-            f"{baseline_value:,.2f}",
+            f"{baseline_value:,.0f}",
             va="bottom",
-            ha="right",
+            ha="left",
             transform=ax.get_yaxis_transform(),
             fontsize=11,
             color="#b45309",
@@ -407,8 +407,8 @@ def main() -> None:
     )
     parser.add_argument(
         "--baseline",
-        type=float,
-        default=5264.74,
+        type=int,
+        default=5265,
         help="参考基准资产值（绘制横线），设为 0 可关闭",
     )
     args = parser.parse_args()
