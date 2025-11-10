@@ -207,7 +207,7 @@ Attack capabilities (delivered and planned)
 ### Start the AI-Trader core stack
 ```bash
 # 1. Clone the repository and install dependencies
-git clone https://github.com/your-org/Safe-TradingAgent.git
+git clone https://github.com/TradeTrap/Safe-TradingAgent.git
 cd Safe-TradingAgent/AI-Trader
 pip install -r requirements.txt
 
