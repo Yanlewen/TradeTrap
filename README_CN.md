@@ -217,7 +217,7 @@ TradeTrap是一个由社区驱动且对开发者友好的工具，用于测试�
 ### 启动 AI-Trader 核心服务
 ```bash
 # 1. 克隆仓库并安装依赖
-git clone https://github.com/your-org/Safe-TradingAgent.git
+git clone https://TradeTrap/your-org/Safe-TradingAgent.git
 cd Safe-TradingAgent/AI-Trader
 pip install -r requirements.txt
 
