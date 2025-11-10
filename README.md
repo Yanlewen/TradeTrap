@@ -36,7 +36,7 @@ TradeTrap is a community-driven and developer-friendly tool for testing LLM-base
 
 ## Overall Potential Vulnerability in Financial Trading Agents
 <div align="center">
-  <img src="assets/frame.jpeg" alt="攻击面分层示意图" width="820" />
+  <img src="assets/frame.jpeg" alt="Attack_overall_framework" width="820" />
 </div>
 
 
