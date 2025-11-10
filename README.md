@@ -145,15 +145,15 @@ For example:
 
 ## Payload Roadmap Checklist
 Infrastructure
-- [✓] Integrated trading-agent platform combining core capabilities from mainstream stacks
-- [✓] Simple attack interfaces for rapid experimentation
-- [✓] Lightweight plugin system for extending payloads
+- [x] Integrated trading-agent platform combining core capabilities from mainstream stacks
+- [x] Simple attack interfaces for rapid experimentation
+- [x] Lightweight plugin system for extending payloads
 - [ ] Adaptable to more trading platforms (e.g., NoFX, ValueCell)
 
 Attack capabilities (delivered and planned)
 
-- [✓] Direct prompt injection — force catastrophic strategy pivots
-- [✓] MCP tool hijacking — let polluted data drive wrong decisions
+- [x] Direct prompt injection — force catastrophic strategy pivots
+- [x] MCP tool hijacking — let polluted data drive wrong decisions
 - [ ] Data forgery (indirect prompt injection) — spark panic selling and irrational buying
 - [ ] Model backdoors — hidden triggers to drain assets on demand
 - [ ] Malicious collusion — compromised sub-agents twisting collective choices
