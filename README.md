@@ -2,6 +2,24 @@
 
 # 🧨 Trap Lab — Make Markets Bleed.
 
+
+<div align="center" style="line-height: 2;">
+    <a href="https://www.python.org/downloads" target="_blank">
+        <img src="https://img.shields.io/badge/python-3.10+-blue.svg"
+            alt="Python version"></a>
+    <a href="LICENSE" target="_blank">
+        <img src="https://img.shields.io/badge/license-Apache2.0-red.svg"
+            alt="License: Apache2.0"></a>  
+
+    
+</div>
+
+<div align="center" style="margin-top: 2px; gap: 20px; display: inline-flex;">
+  <a href="README.md" style="color: auto; text-decoration: none; padding: 0 12px;">English</a>
+  <a href="README.zh.md" style="color: gray; text-decoration: none; padding: 0 12px;">中文</a>
+</div>
+
+
 A single malicious instruction can topple an entire fund — why stay on defense?
 ---
 
@@ -19,36 +37,41 @@ A single malicious instruction can topple an entire fund — why stay on defense
   <img src="assets/final_assets_from_positions.png" alt="All Models Exploit Overview" width="880" />
 </div>
 
+<p align="center" style="margin: 40px 0 12px; rgb(5, 6, 6);">
+Each GIF below drills into a single base model, comparing baseline behaviour, news-enhanced runs, and the exploited variant side by side.
+</p>
 <table>
   <tr>
-    <td align="center" valign="top" width="33%">
-      <strong>DeepSeek-v3</strong><br/>
-      <img src="assets/agent-growth_deepseek.gif" alt="DeepSeek-v3 Attack Replay" width="260" /><br/>
+    <td align="center" valign="top" width="50%">
+      <strong style="font-size: 22px;">DeepSeek-v3</strong><br/>
+      <img src="assets/agent-growth_deepseek.gif" alt="DeepSeek-v3 Attack Replay" width="400" /><br/>
       <em>Baseline steadily climbs; the poisoned version drifts downward and quietly eats the gains.</em>
     </td>
-    <td align="center" valign="top" width="33%">
-      <strong>Claude-4.5-Sonnet</strong><br/>
-      <img src="assets/agent-growth_claude.gif" alt="Claude-4.5-Sonnet Attack Replay" width="260" /><br/>
+    <td align="center" valign="top" width="50%">
+      <strong style="font-size: 22px;">Claude-4.5-Sonnet</strong><br/>
+      <img src="assets/agent-growth_claude.gif" alt="Claude-4.5-Sonnet Attack Replay" width="400" /><br/>
       <em>The attack lands late — the curve surges first, then crashes even harder at the end.</em>
-    </td>
-    <td align="center" valign="top" width="33%">
-      <strong>Qwen3-Max</strong><br/>
-      <img src="assets/agent-growth_qwen.gif" alt="Qwen3-Max Attack Replay" width="260" /><br/>
-      <em>Amplified volatility spreads the contamination across the entire run.</em>
     </td>
   </tr>
   <tr>
-    <td align="center" valign="top" width="33%">
-      <strong>Gemini 2.5 Flash</strong><br/>
-      <img src="assets/agent-growth_gemini_2_5_flash.gif" alt="Gemini 2.5 Flash Attack Replay" width="260" /><br/>
+    <td align="center" valign="top" width="50%">
+      <strong style="font-size: 22px;">Qwen3-Max</strong><br/>
+      <img src="assets/agent-growth_qwen.gif" alt="Qwen3-Max Attack Replay" width="400" /><br/>
+      <em>Amplified volatility spreads the contamination across the entire run.</em>
+    </td>
+    <td align="center" valign="top" width="50%">
+      <strong style="font-size: 22px;">Gemini 2.5 Flash</strong><br/>
+      <img src="assets/agent-growth_gemini.gif" alt="Gemini 2.5 Flash Attack Replay" width="400" /><br/>
       <em>Latency in the toolchain snowballs into a run of misfires.</em>
     </td>
-    <td align="center" valign="top" width="33%">
-      <strong>GPT-5</strong><br/>
-      <img src="assets/agent-growth_gpt_5.gif" alt="GPT-5 Attack Replay" width="260" /><br/>
+  </tr>
+  <tr>
+    <td align="center" valign="top" width="50%">
+      <strong style="font-size: 22px;">GPT-5</strong><br/>
+      <img src="assets/agent-growth_gpt.gif" alt="GPT-5 Attack Replay" width="400" /><br/>
       <em>Holds up briefly before the prompt hijack drags it into a plunge.</em>
     </td>
-    <td align="center" width="33%">
+    <td align="center" valign="top" width="50%">
       &nbsp;
     </td>
   </tr>
@@ -69,30 +92,32 @@ Target those weak spots and the system destabilises quickly: a warped model resp
 
 The two experiment sets below show how reverse expectations and fake news injections turn these latent weaknesses into visible failures.
 
-<table>
-  <tr>
-    <td align="center" width="50%">
-      <strong>Reverse Expectations Injection</strong><br/>
-      <img src="assets/attack_with_reverse_expectations.png" alt="Reverse Expectation Attack" width="340" /><br/>
-      <em>The poisoned reasoning trace pushes the planner to fight its own positions.</em>
-    </td>
-    <td align="center" width="50%">
-      <strong>Fake News Shockwave</strong><br/>
-      <img src="assets/attack_with_fake_news.png" alt="Fake News Attack" width="340" /><br/>
-      <em>Fabricated headlines drive the toolchain into a wave of panic adjustments.</em>
-    </td>
-  </tr>
-  <tr>
-    <td align="center" width="50%">
-      <img src="assets/zoomed_asset_graph_with_reverse_expectations.png" alt="Reverse Expectation Telemetry" width="340" /><br/>
-      <em>The poisoned prompt keeps doubling down on losing positions and cashing out early, so every rally stalls into a crash.</em>
-    </td>
-    <td align="center" width="50%">
-      <img src="assets/zoomed_asset_graph_with_fake_news.png" alt="Fake News Telemetry" width="340" /><br/>
-      <em>The staged “good news” inflates expectations, the agent commits heavily, and the book collapses on impact.</em>
-    </td>
-  </tr>
-</table>
+<div align="center" style="margin: 32px 0;">
+  <span style="font-size: 18px; font-weight: 600; color: #6c7b94;">— Two different security attack methods —</span>
+</div>
+<div align="center" style="margin-bottom: 20px;">
+  <strong style="font-size: 20px;">Reverse Expectations Injection</strong><br/>
+  <img src="assets/attack_with_reverse_expectations.png" alt="Reverse Expectation Attack" width="640" /><br/>
+  <em>The poisoned reasoning trace pushes the planner to fight its own positions.</em>
+</div>
+
+<div align="center" style="margin-bottom: 20px;">
+  <img src="assets/zoomed_asset_graph_with_reverse_expectations.png" alt="Reverse Expectation Telemetry" width="640" /><br/>
+  <em>The poisoned prompt keeps doubling down on losing positions and cashing out early, so every rally stalls into a crash.</em>
+</div>
+
+---
+
+<div align="center" style="margin-bottom: 20px;">
+  <strong style="font-size: 20px;">Fake News Shockwave</strong><br/>
+  <img src="assets/attack_with_fake_news.png" alt="Fake News Attack" width="640" /><br/>
+  <em>Fabricated headlines drive the toolchain into a wave of panic adjustments.</em>
+</div>
+
+<div align="center" style="margin-bottom: 20px;">
+  <img src="assets/zoomed_asset_graph_with_fake_news.png" alt="Fake News Telemetry" width="640" /><br/>
+  <em>The staged “good news” inflates expectations, the agent commits heavily, and the book collapses on impact.</em>
+</div>
 
 > Two signatures, two tailored payloads, the same profit wipeout:
 > - Reverse expectations rewires the planner’s logic and turns long positions into self-sabotage.

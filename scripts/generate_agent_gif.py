@@ -13,15 +13,26 @@ import numpy as np
 import matplotlib.ticker as mticker
 from matplotlib.animation import FuncAnimation, PillowWriter
 
+# Typography tuning
+plt.rcParams.update(
+    {
+        "font.family": "sans-serif",
+        "font.sans-serif": ["Roboto", "DejaVu Sans", "Liberation Sans", "Arial"],
+        "axes.titleweight": "bold",
+        "axes.labelweight": "bold",
+        "font.weight": "medium",
+    }
+)
+
 # Paths (relative to repo root)
-DATA_PATH = Path("agent_viewer/data/agents_data.json")
-OUTPUT_PATH = Path("assets/agent-growth_qwen.gif")
+DATA_PATH = Path("agent_viewer/data/agents_data_gpt.json")
+OUTPUT_PATH = Path("assets/agent-growth_gpt.gif")
 
 # Agent configuration: (title, key in json, color)
 AGENT_CONFIG: List[Tuple[str, str, str]] = [
-    ("Baseline (No Tools)", "qwen3-max", "#f5cb5c"),
-        ("With news", "qwen3-max-with-news", "#3480b8"),
-        ("Malicious Injection", "qwen3-max-ReverseExpectations", "#c82423"),
+    ("Baseline (No Tools)", "gpt-5", "#f5cb5c"),
+        ("With news", "gpt-5-with-news", "#3480b8"),
+        ("Malicious Injection", "gpt-5-ReverseExpectations", "#c82423"),
 ]
 
 # Animation tuning
@@ -74,11 +85,11 @@ def build_animation(output_path: Path = OUTPUT_PATH) -> None:
 
     fig, ax = plt.subplots(figsize=(10, 5.2), facecolor="#0d1421")
     ax.set_facecolor("#0d1421")
-    fig.subplots_adjust(left=0.08, right=0.97, top=0.88, bottom=0.24)
+    fig.subplots_adjust(left=0.14, right=0.97, top=0.80, bottom=0.24)
 
-    ax.set_title("Portfolio Value Trajectories", fontsize=15, color="#ffffff", pad=14)
-    ax.set_ylabel("Portfolio Value (USD)", fontsize=11, color="#e1e6ff")
-    ax.set_xlabel("Date", fontsize=11, color="#e1e6ff")
+    ax.set_title("Portfolio Value Trajectories", fontsize=22.5, color="#ffffff", pad=30)
+    ax.set_ylabel("Portfolio Value (USD)", fontsize=16.5, color="#e1e6ff")
+    ax.set_xlabel("Date", fontsize=16.5, color="#e1e6ff")
 
     all_values = np.concatenate([s["smoothed_values"] for s in series])
     span = all_values.max() - all_values.min()
@@ -90,12 +101,12 @@ def build_animation(output_path: Path = OUTPUT_PATH) -> None:
         baseline_value,
         color="#626d8a",
         linestyle="--",
-        linewidth=1.2,
+        linewidth=1.8,
         alpha=0.7,
         label="Baseline $5k",
     )
 
-    ax.tick_params(colors="#d7dfff", labelsize=9)
+    ax.tick_params(colors="#d7dfff", labelsize=13.5)
     major_nbins = max(1, min(len(timeline), 12))
     ax.xaxis.set_major_locator(mticker.MaxNLocator(nbins=major_nbins, integer=True))
 
@@ -108,19 +119,25 @@ def build_animation(output_path: Path = OUTPUT_PATH) -> None:
 
     lines = []
     for s in series:
-        (line,) = ax.plot([], [], color=s["color"], linewidth=2.0, label=s["label"])
+        (line,) = ax.plot([], [], color=s["color"], linewidth=3.5, label=s["label"])
         lines.append(line)
 
-    legend = ax.legend(loc="upper left", frameon=False, fontsize=9.5)
+    legend = ax.legend(
+        loc="upper left",
+        bbox_to_anchor=(0.0, 1.12),
+        ncol=2,
+        frameon=False,
+        fontsize=14.25,
+    )
     for text in legend.get_texts():
         text.set_color("#edf0ff")
 
     progress_text = ax.text(
-        0.985,
-        0.91,
+        0.98,
+        1.02,
         "",
         transform=ax.transAxes,
-        fontsize=9.2,
+        fontsize=13.8,
         color="#9aa5d8",
         ha="right",
     )

@@ -47,11 +47,11 @@ MODEL_SOURCES: Dict[str, Dict[str, str]] = {
     },
     "gemini-2.5-flash": {
         "normal": "data/agent_data/gemini/gemini-2.5-flash-with-news-1108/position/position.jsonl",
-        "injection": "",
+        "injection": "data/agent_data/gemini/gemini-2.5-flash-ReverseExpectations/position/position.jsonl",
     },
     "gpt-5": {
-        "normal": "",
-        "injection": "",
+        "normal": "data/agent_data/gpt/gpt-5/position/position.jsonl",
+        "injection": "data/agent_data/gpt/gpt-5-ReverseExpectations/position/position.jsonl",
     },
 }
 

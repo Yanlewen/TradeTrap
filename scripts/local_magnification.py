@@ -5,9 +5,9 @@ import matplotlib.colors as mcolors
 import numpy as np
 
 TARGET_LINE_COLORS = [
-    "#c084fc",  # purple
-    "#f472b6",  # pink
-    "#f97316",  # orange
+    "#3480b8",  # blue
+    "#f5cb5c",  # yellow
+    "#c82423",  # red
 ]
 
 
@@ -93,11 +93,11 @@ def _dilate_mask(mask: np.ndarray, iterations: int = 1) -> np.ndarray:
 def _enhance_zoom_lines(
     zoom_img: np.ndarray,
     target_colors: list[str] = TARGET_LINE_COLORS,
-    hue_threshold: float = 0.03,
-    sat_threshold: float = 0.2,
-    val_threshold: float = 0.3,
-    dilation_passes: int = 6,
-    blend_factor: float = 0.25,
+    hue_threshold: float = 0.015,
+    sat_threshold: float = 0.25,
+    val_threshold: float = 0.35,
+    dilation_passes: int = 3,
+    blend_factor: float = 0.15,
 ) -> np.ndarray:
     """针对放大区域中的曲线加粗，尽可能保持原有色调。"""
 
@@ -170,9 +170,9 @@ def _enhance_zoom_lines(
 
 def zoom_asset_graph():
     # 图片路径
-    img_path = "assets/attack_with_fake_news.png"
+    img_path = "assets/attack_with_reverse_expectations.png"
     # 放大区域（[x1, x2, y1, y2]，单位：像素，需根据实际图片尺寸调整，此处为示例值）
-    box = [370, 715, 419, 728]  
+    box = [391, 549, 157, 380]  
     # 若实际放大效果不对，可通过图像工具（如画图软件）查看准确像素坐标后调整此box
     
     # 读取原图
@@ -201,7 +201,7 @@ def zoom_asset_graph():
 
     # 显示放大区域
     zoomed_img = img[int(y1):int(y2), int(x1):int(x2)]
-    left_zoom, bottom_zoom, width_zoom, height_zoom = 0.3, 0.34, 0.35, 0.35
+    left_zoom, bottom_zoom, width_zoom, height_zoom = 0.42, 0.34, 0.35, 0.35
     zoomed_img = _enhance_zoom_lines(zoomed_img)
     ax_zoom = fig.add_axes([left_zoom, bottom_zoom, width_zoom, height_zoom])
     ax_zoom.imshow(zoomed_img)
@@ -251,7 +251,7 @@ def zoom_asset_graph():
         fig.add_artist(conn)
 
     plt.savefig(
-        'assets/zoomed_attack_with_fake_news.png',
+        'assets/zoomed_attack_with_reverse_expectations1.png',
         bbox_inches='tight',  # 裁剪到内容边界
         pad_inches=0,         # 边界与内容的距离设为0
         dpi=300               # 保持高清

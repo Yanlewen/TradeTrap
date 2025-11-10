@@ -1,6 +1,22 @@
 <div align="center">
 
 # 🧨 陷阱实验室 —— 让市场流血。
+<div align="center" style="line-height: 2;">
+    <a href="https://www.python.org/downloads" target="_blank">
+        <img src="https://img.shields.io/badge/python-3.10+-blue.svg"
+            alt="Python version"></a>
+    <a href="LICENSE" target="_blank">
+        <img src="https://img.shields.io/badge/license-Apache2.0-red.svg"
+            alt="License: Apache2.0"></a>  
+
+    
+</div>
+
+<div align="center" style="margin-top: 2px; gap: 20px; display: inline-flex;">
+  <a href="README.md" style="color: auto; text-decoration: none; padding: 0 12px;">English</a>
+  <a href="README.zh.md" style="color: gray; text-decoration: none; padding: 0 12px;">中文</a>
+</div>
+
 
 一句恶意指令就能掀翻整支基金——还站着挨打吗？
 ---
@@ -14,43 +30,48 @@
 > 我们只改动了一小步代码，通过提示注入塞进一条看似无害却要求模型反向操作的指令。
 
 
-> 短时间内，收益曲线往往先被推上高点再被拉向深渊——某些基座会立即失控，另一些则先冲高再补跌；仅凭这一口恶意输入，就能让模型接连做错判断，整个账户收益被系统性蚕食，这不是运气波动，而是精心布下的陷阱。
+> 短时间内，收益曲线往往先被推上高点再被拉向深渊——某些基座会立即失控，另一些则先冲高再补跌；仅凭这一个恶意输入，就能让模型接连做错判断，整个账户收益被系统性蚕食，这不是运气波动，而是精心布下的陷阱。
 
 <div align="center">
   <strong>多基座模型同场攻击表现对比</strong><br/>
   <img src="assets/final_assets_from_positions.png" alt="多模型攻击对比" width="880" />
 </div>
 
+<p align="center" style="margin: 32px 0 12px; #6c7b94;">
+下面的五组 GIF 分别展示每种底座模型在「无工具 / 正常新闻 / 投毒场景」下的对比轨迹。
+</p>
 <table>
   <tr>
-    <td align="center" valign="top" width="33%">
-      <strong>DeepSeek-v3</strong><br/>
-      <img src="assets/agent-growth_deepseek.gif" alt="DeepSeek-v3 攻击复现" width="260" /><br/>
+    <td align="center" valign="top" width="50%">
+      <strong style="font-size: 22px;">DeepSeek-v3</strong><br/>
+      <img src="assets/agent-growth_deepseek.gif" alt="DeepSeek-v3 攻击复现" width="400" /><br/>
       <em>参考曲线稳步上行，而被攻击版本一路缓慢下滑，稳准狠地蚕食收益。</em>
     </td>
-    <td align="center" valign="top" width="33%">
-      <strong>Claude-4.5-Sonnet</strong><br/>
-      <img src="assets/agent-growth_claude.gif" alt="Claude 3.7 Sonnet 攻击复现" width="260" /><br/>
+    <td align="center" valign="top" width="50%">
+      <strong style="font-size: 22px;">Claude-4.5-Sonnet</strong><br/>
+      <img src="assets/agent-growth_claude.gif" alt="Claude-4.5-Sonnet 攻击复现" width="400" /><br/>
       <em>攻击效果反应滞后，前期被攻击模型一路冲高，但最后时刻跳水更狠。</em>
-    </td>
-    <td align="center" valign="top" width="33%">
-      <strong>Qwen3-Max</strong><br/>
-      <img src="assets/agent-growth_qwen.gif" alt="Qwen3 Max 攻击复现" width="260" /><br/>
-      <em>放大波动，毒化效应层层扩散。</em>
     </td>
   </tr>
   <tr>
-    <td align="center" valign="top" width="33%">
-      <strong>Gemini 2.5 Flash</strong><br/>
-      <img src="assets/agent-growth_gemini_2_5_flash.gif" alt="Gemini 2.5 Flash 攻击复现" width="260" /><br/>
+    <td align="center" valign="top" width="50%">
+      <strong style="font-size: 22px;">Qwen3-Max</strong><br/>
+      <img src="assets/agent-growth_qwen.gif" alt="Qwen3-Max 攻击复现" width="400" /><br/>
+      <em>放大波动，毒化效应层层扩散。</em>
+    </td>
+    <td align="center" valign="top" width="50%">
+      <strong style="font-size: 22px;">Gemini 2.5 Flash</strong><br/>
+      <img src="assets/agent-growth_gemini.gif" alt="Gemini 2.5 Flash 攻击复现" width="400" /><br/>
       <em>工具链延迟引发连环误判。</em>
     </td>
-    <td align="center" valign="top" width="33%">
-      <strong>GPT-5</strong><br/>
-      <img src="assets/agent-growth_gpt_5.gif" alt="GPT-5 攻击复现" width="260" /><br/>
+  </tr>
+  <tr>
+    <td align="center" valign="top" width="50%">
+      <strong style="font-size: 22px;">GPT-5</strong><br/>
+      <img src="assets/agent-growth_gpt.gif" alt="GPT-5 攻击复现" width="400" /><br/>
       <em>短暂抵抗后被提示劫持拖入深渊。</em>
     </td>
-    <td align="center" width="33%">
+    <td align="center" valign="top" width="50%">
       &nbsp;
     </td>
   </tr>
@@ -72,30 +93,32 @@
 
 下面两组实测图分别展示了逆向预期和假新闻两种简单的注入方式如何把这些隐患放大为灾难。
 
-<table>
-  <tr>
-    <td align="center" width="50%">
-      <strong>逆向预期注入</strong><br/>
-      <img src="assets/attack_with_reverse_expectations.png" alt="逆向预期攻击" width="340" /><br/>
-      <em>被污染的推理链逼迫智能体与自己作对。</em>
-    </td>
-    <td align="center" width="50%">
-      <strong>假新闻冲击波</strong><br/>
-      <img src="assets/attack_with_fake_news.png" alt="假新闻攻击" width="340" /><br/>
-      <em>伪造头条引爆工具链的恐慌调整。</em>
-    </td>
-  </tr>
-  <tr>
-    <td align="center" width="50%">
-      <img src="assets/zoomed_asset_graph_with_reverse_expectations.png" alt="逆向预期细节" width="340" /><br/>
-      <em>被污染后的推理不断加仓亏损资产、过早止盈，反弹一次次夭折。</em>
-    </td>
-    <td align="center" width="50%">
-      <img src="assets/zoomed_asset_graph_with_fake_news.png" alt="假新闻细节" width="340" /><br/>
-      <em>虚假利好把预期吹到天花板，模型盲信后重仓下注，结果轰然垮塌。</em>
-    </td>
-  </tr>
-</table>
+<div align="center" style="margin: 32px 0;">
+  <span style="font-size: 18px; font-weight: 600; color: #6c7b94;">— 两种不同的攻击方法 —</span>
+</div>
+<div align="center" style="margin-bottom: 20px;">
+  <strong style="font-size: 22px;">逆向预期注入</strong><br/>
+  <img src="assets/attack_with_reverse_expectations.png" alt="逆向预期攻击" width="640" /><br/>
+  <em>被污染的推理链逼迫智能体与自己作对。</em>
+</div>
+
+<div align="center" style="margin-bottom: 20px;">
+  <img src="assets/zoomed_asset_graph_with_reverse_expectations.png" alt="逆向预期细节" width="640" /><br/>
+  <em>被污染后的推理不断加仓亏损资产、过早止盈，反弹一次次夭折。</em>
+</div>
+
+---
+
+<div align="center" style="margin-bottom: 20px;">
+  <strong style="font-size: 22px;">假新闻冲击波</strong><br/>
+  <img src="assets/attack_with_fake_news.png" alt="假新闻攻击" width="640" /><br/>
+  <em>伪造头条引爆工具链的恐慌调整。</em>
+</div>
+
+<div align="center" style="margin-bottom: 20px;">
+  <img src="assets/zoomed_asset_graph_with_fake_news.png" alt="假新闻细节" width="640" /><br/>
+  <em>虚假利好把预期吹到天花板，模型盲信后重仓下注，结果轰然垮塌。</em>
+</div>
 
 > 两套签名，两种定制化毒药，却都造成同样的利润的轰然蒸发：
 > - 逆向预期扭曲策略逻辑，让多头自毁。
@@ -183,8 +206,6 @@
 | `AI-Trader/prompts/` | 预制提示钩子与注入点，让你把阴谋耳语塞进推理链。 |
 | `SIGNATURE_FIX_README.md` | 过往攻防案例档案，学习、复现、再加码。 |
 
-。
-
 ---
 
 ## 🔧 操作步骤示例
@@ -227,7 +248,7 @@ python3 -m http.server 8000
 我们欢迎任何新的攻击思路，Fork 项目、提交 PR 或分享复现报告。
 ---
 
-## 🛠️ 产品概览 —— Jailbreak Arsenal
+## 🛠️ 产品概览 —— 陷阱实验室
 
 - 🎯 **定位明确**：提供一个可复现、可扩展的金融交易 Agent 攻防试验台。
 - 🧩 **模块齐备**：真实/假服务、日志采集、可视化分析和数据回放，全部开箱可用。
@@ -251,7 +272,7 @@ python3 -m http.server 8000
 
 ## 📄 许可证
 
-Apache 2.0 © xxx 团队 —— 灾变也要开源。
+Apache 2.0 © xxx 团队 —— 即使是破坏性研究也要开源。
 
 ---
 
