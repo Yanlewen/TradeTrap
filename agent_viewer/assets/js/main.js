@@ -1,8 +1,17 @@
 /**
- * 主应用逻辑
+ * Main application logic
  */
+const DEFAULT_AGENTS = [
+    'claude-3.7-sonnet',
+    'claude-3.7-sonnet-with-news',
+    'claude-3.7-sonnet-ReverseExpectations'
+];
+
 let selectedAgents = [];
 let allDates = [];
+let agentMeta = [];
+let labelMap = {};
+let colorOverrides = {};
 
 document.addEventListener('DOMContentLoaded', async () => {
     try {
@@ -10,7 +19,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         
         if (typeof Chart === 'undefined') {
             console.error('Chart.js not loaded');
-            alert('Chart.js 库加载失败，请检查网络连接');
+            alert('Failed to load Chart.js. Please check your network connection.');
             hideLoading();
             return;
         }
@@ -19,38 +28,64 @@ document.addEventListener('DOMContentLoaded', async () => {
         
         await new Promise(resolve => setTimeout(resolve, 100));
         
-        console.log('开始加载数据...');
+        console.log('Begin loading data...');
         await dataLoader.load();
-        console.log('数据加载完成');
-        
+        console.log('Data loaded');
+
+        agentMeta = dataLoader.getConfiguredAgents();
+        if (!agentMeta.length) {
+            agentMeta = dataLoader.getAgentNames().map(id => ({ id, label: id }));
+        }
+        labelMap = dataLoader.getLabelMap();
+        if (!Object.keys(labelMap).length) {
+            agentMeta.forEach(meta => labelMap[meta.id] = meta.label || meta.id);
+        }
+        colorOverrides = dataLoader.getColorOverrides();
+        selectedAgents = agentMeta.map(meta => meta.id);
+
         initializePage();
         
         hideLoading();
     } catch (error) {
-        console.error('初始化失败:', error);
-        alert('加载数据失败: ' + error.message + '\n请检查 data/agents_data.json 文件是否存在');
+        console.error('Initialization failed:', error);
+        alert('Failed to load data: ' + error.message + '\nPlease make sure data/agents_data.json exists.');
         hideLoading();
     }
 });
 
 function initializePage() {
-    console.log('初始化页面...');
+    console.log('Initializing Agent Dashboard ...');
     
     initializeAgentSelector();
     initializeDateSelector();
     bindEvents();
     updateDisplay();
     
-    console.log('页面初始化完成');
+    console.log('Agent Dashboard ready');
 }
 
 function initializeAgentSelector() {
     const checkboxes = document.querySelectorAll('.agent-checkbox input[type="checkbox"]');
+    const metaMap = agentMeta.reduce((acc, meta) => {
+        acc[meta.id] = meta;
+        return acc;
+    }, {});
+
+    selectedAgents = selectedAgents.length ? [...selectedAgents] : Array.from(Object.keys(metaMap));
+
     checkboxes.forEach(checkbox => {
-        if (checkbox.checked) {
-            selectedAgents.push(checkbox.value);
+        const meta = metaMap[checkbox.value];
+        const shouldBeChecked = selectedAgents.includes(checkbox.value);
+        checkbox.checked = shouldBeChecked;
+
+        const container = checkbox.closest('.agent-checkbox');
+        if (container && meta) {
+            const nameEl = container.querySelector('.agent-name');
+            const descEl = container.querySelector('.agent-desc');
+            if (nameEl) nameEl.textContent = meta.label || meta.id;
+            if (descEl && meta.description) descEl.textContent = meta.description;
         }
-        
+
         checkbox.addEventListener('change', (e) => {
             if (e.target.checked) {
                 if (!selectedAgents.includes(e.target.value)) {
@@ -62,15 +97,15 @@ function initializeAgentSelector() {
             updateDisplay();
         });
     });
-    
-    console.log('初始选中的agents:', selectedAgents);
+
+    console.log('Initial agents:', selectedAgents);
 }
 
 function initializeDateSelector() {
     allDates = dataLoader.getAllDates();
     const dateSelector = document.getElementById('dateSelector');
     
-    dateSelector.innerHTML = '<option value="">请选择日期...</option>';
+    dateSelector.innerHTML = '<option value="">Select a date...</option>';
     
     allDates.forEach(date => {
         const option = document.createElement('option');
@@ -79,7 +114,7 @@ function initializeDateSelector() {
         dateSelector.appendChild(option);
     });
     
-    console.log('可用日期数量:', allDates.length);
+    console.log('Available dates:', allDates.length);
 }
 
 function bindEvents() {
@@ -88,7 +123,7 @@ function bindEvents() {
         toggleLogBtn.addEventListener('click', () => {
             if (!chartManager) return;
             const isLog = chartManager.toggleLogScale();
-            toggleLogBtn.textContent = isLog ? '线性刻度' : '对数刻度';
+            toggleLogBtn.textContent = isLog ? 'Linear Scale' : 'Log Scale';
         });
     }
     
@@ -97,6 +132,14 @@ function bindEvents() {
         exportBtn.addEventListener('click', () => {
             if (!chartManager) return;
             chartManager.exportData();
+        });
+    }
+
+    const downloadBtn = document.getElementById('download-chart');
+    if (downloadBtn) {
+        downloadBtn.addEventListener('click', () => {
+            if (!chartManager) return;
+            chartManager.exportImage();
         });
     }
     
@@ -109,7 +152,7 @@ function bindEvents() {
 }
 
 function updateDisplay() {
-    console.log('更新显示，选中的agents:', selectedAgents);
+    console.log('Update display, selected agents:', selectedAgents);
     
     if (selectedAgents.length === 0) {
         if (chartManager) chartManager.clear();
@@ -119,12 +162,13 @@ function updateDisplay() {
     }
     
     const curves = dataLoader.getAssetCurveData(selectedAgents);
-    console.log('获取到的曲线数据:', Object.keys(curves));
-    
+    console.log('Loaded curve data:', Object.keys(curves));
+    const qqqCurve = dataLoader.getQQQCurve ? (typeof dataLoader.getQQQCurve === 'function' ? dataLoader.getQQQCurve() : null) : null;
+
     if (chartManager && Object.keys(curves).length > 0) {
-        chartManager.updateData(curves, selectedAgents);
+        chartManager.updateData(curves, selectedAgents, qqqCurve, colorOverrides, labelMap);
     } else {
-        console.warn('图表管理器未初始化或没有曲线数据');
+        console.warn('Chart manager not initialized or no curve data');
     }
     
     const stats = dataLoader.getStatistics(selectedAgents);
@@ -134,15 +178,10 @@ function updateDisplay() {
 }
 
 /**
- * 获取agent的友好显示名称（与图表图例一致）
+ * Get display name for agent (matches chart legend)
  */
 function getAgentDisplayName(agentName) {
-    const agentNameMap = {
-        'deepseek-v3-whole-month': '基础版本 (无工具)',
-        'deepseek-v3-whole-month-with-x-and-reddit': '含 X & Reddit 工具',
-        'deepseek-v3-whole-month-with-x-and-reddit-1105': '含 X & Reddit 工具 (1105版)'
-    };
-    return agentNameMap[agentName] || agentName.split('-').slice(-2).join('-').replace(/-/g, ' ');
+    return labelMap[agentName] || agentName;
 }
 
 function updateStatistics(stats) {
@@ -161,7 +200,7 @@ function updateStatistics(stats) {
     document.getElementById('total-assets').textContent = '$' + totalAssets.toFixed(2);
     document.getElementById('total-return').textContent = avgReturn.toFixed(2) + '%';
     document.getElementById('trade-count').textContent = totalTrades;
-    // 使用友好名称显示最佳agent
+    // Use friendly name for best agent display
     document.getElementById('best-agent').textContent = stats.bestAgent ? getAgentDisplayName(stats.bestAgent) : '-';
 }
 
@@ -193,8 +232,8 @@ function updateComparisonTable(agentNames) {
                         .length;
                     
                     cell.innerHTML = `
-                        <div>现金: $${cash.toFixed(2)}</div>
-                        <div style="font-size: 0.85rem; color: #718096;">持仓: ${stockCount} 只</div>
+                        <div>Cash: $${cash.toFixed(2)}</div>
+                        <div style="font-size: 0.85rem; color: #718096;">Positions: ${stockCount}</div>
                     `;
                 } else {
                     cell.textContent = '-';
@@ -216,7 +255,7 @@ function updateTableHeaders(agentNames) {
         const header = document.getElementById(headerId);
         if (header) {
             if (index < agentNames.length) {
-                header.textContent = agentNames[index].split('-').pop();
+                header.textContent = getAgentDisplayName(agentNames[index]);
                 header.style.display = '';
             } else {
                 header.style.display = 'none';
@@ -230,12 +269,12 @@ function loadSteps() {
     const selectedDate = dateSelector.value;
     
     if (!selectedDate) {
-        alert('请先选择日期');
+        alert('Please select a date first.');
         return;
     }
     
     if (selectedAgents.length === 0) {
-        alert('请至少选择一个Agent');
+        alert('Please select at least one agent.');
         return;
     }
     
@@ -257,7 +296,7 @@ function loadSteps() {
         
         const header = document.createElement('div');
         header.className = 'agent-steps-header';
-        header.innerHTML = `<h4>${agentName}</h4><span>${logs.length} 条记录</span>`;
+        header.innerHTML = `<h4>${agentName}</h4><span>${logs.length} entries</span>`;
         agentStepsDiv.appendChild(header);
         
         logs.forEach((log, index) => {
@@ -270,7 +309,7 @@ function loadSteps() {
                     stepHeader.className = 'step-header';
                     stepHeader.innerHTML = `
                         <span class="step-role">${msg.role || 'unknown'}</span>
-                        <span style="font-size: 0.85rem; color: #718096;">步骤 ${index + 1}</span>
+                        <span style="font-size: 0.85rem; color: #718096;">Step ${index + 1}</span>
                     `;
                     stepDiv.appendChild(stepHeader);
                     

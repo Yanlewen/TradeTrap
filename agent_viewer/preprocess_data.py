@@ -14,13 +14,13 @@ DATA_DIR = Path("../data/agent_data")
 PRICE_DIR = Path("../data")
 OUTPUT_DIR = Path("data")
 
-# Agent列表
+# Agent配置（自定义名称与路径）
 AGENTS = [
-    "deepseek-v3-whole-month",
-    "deepseek-v3-whole-month-with-x-and-reddit-1105"
-    "deepseek-v3-ReverseExpectations-injection-month",
-    "deepseek-v3-fakenews-50%-month"
+    {"name": "claude-3.7-sonnet", "path": "claude/claude-3.7-sonnet"},
+    {"name": "claude-3.7-sonnet-with-news", "path": "claude/claude-3.7-sonnet-with-news"},
+    {"name": "claude-3.7-sonnet-ReverseExpectations", "path": "claude/claude-3.7-sonnet-ReverseExpectations"},
 ]
+OUTPUT_FILENAME = "agents_data_claude.json"
 
 def load_jsonl(file_path):
     """加载JSONL文件"""
@@ -118,9 +118,16 @@ def calculate_total_asset(position, price_cache, initial_cash=5000.0):
     
     return cash + total_stock_value
 
-def process_agent_data(agent_name, price_cache):
+def resolve_agent_dir(agent_path: str) -> Path:
+    path_obj = Path(agent_path)
+    if path_obj.is_absolute() or str(path_obj).startswith("../"):
+        return path_obj
+    return DATA_DIR / path_obj
+
+
+def process_agent_data(agent_name, agent_path, price_cache):
     """处理单个agent的数据"""
-    agent_dir = DATA_DIR / agent_name
+    agent_dir = resolve_agent_dir(agent_path)
     
     # 处理position数据
     position_file = agent_dir / "position" / "position.jsonl"
@@ -193,21 +200,23 @@ def main():
     
     # 处理每个agent
     for agent in AGENTS:
-        print(f"\n处理 {agent}...")
+        agent_name = agent["name"]
+        agent_path = agent["path"]
+        print(f"\n处理 {agent_name}...")
         try:
-            data = process_agent_data(agent, price_cache)
-            all_data[agent] = data
+            data = process_agent_data(agent_name, agent_path, price_cache)
+            all_data[agent_name] = data
             print(f"  - 日期数量: {data['summary']['total_dates']}")
             print(f"  - 初始现金: ${data['summary']['initial_cash']:.2f}")
             print(f"  - 最终总资产: ${data['summary']['final_total_asset']:.2f}")
         except Exception as e:
-            print(f"处理 {agent} 时出错: {e}")
+            print(f"处理 {agent_name} 时出错: {e}")
             import traceback
             traceback.print_exc()
             continue
     
     # 保存为JSON文件
-    output_file = OUTPUT_DIR / "agents_data.json"
+    output_file = OUTPUT_DIR / OUTPUT_FILENAME
     with open(output_file, 'w', encoding='utf-8') as f:
         json.dump(all_data, f, ensure_ascii=False, indent=2)
     

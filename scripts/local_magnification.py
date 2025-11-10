@@ -19,7 +19,7 @@ def _add_glow_border(
     glow_layers: int = 4,
     alpha_decay: float = 0.35,
 ):
-    """在给定坐标轴（0-1 范围）内绘制带渐变发光效果的矩形边框。"""
+    """Draw a rectangular border with a gradient glowing effect within the given coordinate axis (range 0-1)"""
 
     rgb = mcolors.to_rgb(color)
     for layer in range(glow_layers, 0, -1):
@@ -54,7 +54,7 @@ def _add_glow_border(
 
 
 def _gaussian_blur(mask: np.ndarray, sigma: float) -> np.ndarray:
-    """对二维数组执行 separable Gaussian blur（无需额外依赖）。"""
+    """对Perform on a two-dimensional array separable Gaussian blur."""
 
     if sigma <= 0:
         return mask
@@ -70,7 +70,6 @@ def _gaussian_blur(mask: np.ndarray, sigma: float) -> np.ndarray:
 
 
 def _dilate_mask(mask: np.ndarray, iterations: int = 1) -> np.ndarray:
-    """简单的八邻域膨胀，用于加粗线条。"""
 
     mask = mask.astype(np.uint8)
     for _ in range(max(iterations, 0)):
@@ -99,7 +98,7 @@ def _enhance_zoom_lines(
     dilation_passes: int = 3,
     blend_factor: float = 0.15,
 ) -> np.ndarray:
-    """针对放大区域中的曲线加粗，尽可能保持原有色调。"""
+    """Thicken the curves in the enlarged area as much as possible while preserving the original hue."""
 
     if zoom_img.ndim != 3 or zoom_img.shape[2] < 3:
         return zoom_img
@@ -169,27 +168,19 @@ def _enhance_zoom_lines(
 
 
 def zoom_asset_graph():
-    # 图片路径
     img_path = "assets/attack_with_reverse_expectations.png"
-    # 放大区域（[x1, x2, y1, y2]，单位：像素，需根据实际图片尺寸调整，此处为示例值）
     box = [391, 549, 157, 380]  
-    # 若实际放大效果不对，可通过图像工具（如画图软件）查看准确像素坐标后调整此box
-    
-    # 读取原图
     img = mpimg.imread(img_path)
     h, w, _ = img.shape
 
-    # 创建画布
     fig = plt.figure(figsize=(12, 8), dpi=300)
     plt.rcParams['font.family'] = 'Times New Roman'
 
-    # 显示完整原图
     left_big, bottom_big, width_big, height_big = 0.05, 0.05, 0.9, 0.9
     ax_big = fig.add_axes([left_big, bottom_big, width_big, height_big])
     ax_big.imshow(img)
     ax_big.axis('off')
 
-    # 在原图上标记放大区域
     x1, x2, y1, y2 = box
     ax_big.plot(
         [x1, x2, x2, x1, x1],
@@ -199,7 +190,6 @@ def zoom_asset_graph():
         linewidth=3,
     )
 
-    # 显示放大区域
     zoomed_img = img[int(y1):int(y2), int(x1):int(x2)]
     left_zoom, bottom_zoom, width_zoom, height_zoom = 0.42, 0.34, 0.35, 0.35
     zoomed_img = _enhance_zoom_lines(zoomed_img)
@@ -252,9 +242,9 @@ def zoom_asset_graph():
 
     plt.savefig(
         'assets/zoomed_attack_with_reverse_expectations1.png',
-        bbox_inches='tight',  # 裁剪到内容边界
-        pad_inches=0,         # 边界与内容的距离设为0
-        dpi=300               # 保持高清
+        bbox_inches='tight',
+        pad_inches=0,
+        dpi=300
     )
     plt.show()
 

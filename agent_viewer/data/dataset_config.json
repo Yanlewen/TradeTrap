@@ -1,0 +1,20 @@
+{
+  "source": "agents_data_claude.json",
+  "datasets": [
+    {
+      "id": "claude-3.7-sonnet",
+      "label": "Claude Sonnet",
+      "color": "#f5cb5c"
+    },
+    {
+      "id": "claude-3.7-sonnet-with-news",
+      "label": "Claude Sonnet + news",
+      "color": "#3480b8"
+    },
+    {
+      "id": "claude-3.7-sonnet-ReverseExpectations",
+      "label": "Claude Reverse Expectations",
+      "color": "#c82423"
+    }
+  ]
+}

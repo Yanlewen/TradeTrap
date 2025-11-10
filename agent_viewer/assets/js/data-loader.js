@@ -5,15 +5,20 @@ class DataLoader {
     constructor() {
         this.data = null;
         this.agents = {};
+        this.config = null;
+        this.datasetMeta = [];
+        this.qqqCurve = null;
     }
 
     async load() {
         try {
-            const response = await fetch('data/agents_data.json');
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
+            await this.loadConfig();
+            const sourceUrl = this.resolveSourceUrl();
+            const dataResp = await fetch(sourceUrl);
+            if (!dataResp.ok) {
+                throw new Error(`HTTP error! status: ${dataResp.status}`);
             }
-            this.data = await response.json();
+            this.data = await dataResp.json();
             this.processData();
             return this.data;
         } catch (error) {
@@ -22,10 +27,62 @@ class DataLoader {
         }
     }
 
+    async loadConfig() {
+        const defaultConfig = {
+            source: 'agents_data.json',
+            datasets: []
+        };
+        try {
+            const resp = await fetch('data/dataset_config.json', { cache: 'no-store' });
+            if (resp.ok) {
+                this.config = await resp.json();
+            } else {
+                this.config = defaultConfig;
+            }
+        } catch (err) {
+            this.config = defaultConfig;
+        }
+        if (!Array.isArray(this.config.datasets)) {
+            this.config.datasets = [];
+        }
+        this.datasetMeta = this.config.datasets;
+    }
+
+    resolveSourceUrl() {
+        const candidates = [];
+        if (this.config && this.config.source) {
+            candidates.push(this.prefixDataPath(this.config.source));
+        }
+        candidates.push('data/agents_data.json');
+
+        for (const url of candidates) {
+            if (url) return url;
+        }
+        return 'data/agents_data.json';
+    }
+
+    prefixDataPath(source) {
+        if (!source) return null;
+        if (source.startsWith('http://') || source.startsWith('https://')) {
+            return source;
+        }
+        if (source.startsWith('data/')) {
+            return source;
+        }
+        return `data/${source}`;
+    }
+
     processData() {
         if (!this.data) return;
 
+        const allowed = this.datasetMeta.length > 0
+            ? new Set(this.datasetMeta.map(meta => meta.id))
+            : null;
+
         Object.keys(this.data).forEach(agentName => {
+            if (allowed && !allowed.has(agentName)) {
+                return;
+            }
             const agentData = this.data[agentName];
             this.agents[agentName] = {
                 name: agentName,
@@ -35,6 +92,30 @@ class DataLoader {
                 summary: agentData.summary || {}
             };
         });
+    }
+
+    getConfiguredAgents() {
+        return Array.isArray(this.datasetMeta) ? [...this.datasetMeta] : [];
+    }
+
+    getColorOverrides() {
+        const map = {};
+        (this.datasetMeta || []).forEach(meta => {
+            if (meta.color) {
+                map[meta.id] = meta.color;
+            }
+        });
+        return map;
+    }
+
+    getLabelMap() {
+        const map = {};
+        (this.datasetMeta || []).forEach(meta => {
+            if (meta.id) {
+                map[meta.id] = meta.label || meta.id;
+            }
+        });
+        return map;
     }
 
     getAgentNames() {

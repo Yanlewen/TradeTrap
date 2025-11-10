@@ -1,7 +1,5 @@
 #!/usr/bin/env python3
-"""
-根据 agent_data 中的仓位记录与行情数据，直接计算每个模型在两种策略下的最终资产并绘制柱状图。
-"""
+"""Calculate final portfolio values from position records and price data, then plot bar charts."""
 
 from __future__ import annotations
 
@@ -9,14 +7,14 @@ import argparse
 import json
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Dict, Iterable, List, Optional, Tuple
+from typing import Dict, List, Optional
 
 import matplotlib.pyplot as plt
 import numpy as np
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 DATA_ROOT = PROJECT_ROOT / "data"
-DEFAULT_OUTPUT_PATH = PROJECT_ROOT / "assets" / "final_assets_from_positions.png"
+DEFAULT_OUTPUT_PATH = PROJECT_ROOT / "assets" / "final_assets_from_positions1.png"
 
 DEFAULT_BASE_MODELS: List[str] = [
     "deepseek-v3",
@@ -31,7 +29,6 @@ DEFAULT_OPERATIONS: List[str] = [
     "injection",
 ]
 
-# 需要用户补齐的 position.jsonl 路径（相对于仓库根目录或绝对路径均可）
 MODEL_SOURCES: Dict[str, Dict[str, str]] = {
     "deepseek-v3": {
         "normal": "data/agent_data/deepseek/deepseek-v3-whole-month-with-x-and-reddit-1105/position/position.jsonl",
@@ -91,7 +88,7 @@ def _load_price_data(symbol: str, cache: Dict[str, Dict[str, float]]) -> Dict[st
 
     price_file = DATA_ROOT / f"daily_prices_{symbol}.json"
     if not price_file.exists():
-        raise FileNotFoundError(f"找不到 {symbol} 的行情数据文件: {price_file}")
+        raise FileNotFoundError(f"Price data file not found for {symbol}: {price_file}")
 
     with price_file.open("r", encoding="utf-8") as f:
         payload = json.load(f)
@@ -102,7 +99,7 @@ def _load_price_data(symbol: str, cache: Dict[str, Dict[str, float]]) -> Dict[st
     elif "Time Series (Daily)" in payload:
         time_series = payload["Time Series (Daily)"]
     elif isinstance(payload, dict):
-        time_series = payload  # 退化为直接的字典
+        time_series = payload
 
     prices: Dict[str, float] = {}
     if time_series:
@@ -162,7 +159,7 @@ def _compute_final_asset(
 ) -> FinalAssetRecord:
     entries = _load_jsonl(position_path)
     if not entries:
-        raise ValueError(f"{position_path} 中没有任何仓位记录。")
+        raise ValueError(f"{position_path} has no position records.")
 
     first_positions = entries[0].get("positions", {}) or {}
     initial_cash = float(first_positions.get("CASH", INITIAL_CASH_FALLBACK))
@@ -172,7 +169,7 @@ def _compute_final_asset(
     cash = float(positions.get("CASH", initial_cash))
     date_str = final_entry.get("date")
     if not date_str:
-        raise ValueError(f"{position_path} 的最后一条记录缺少日期字段。")
+        raise ValueError(f"{position_path} has no date field in the last record.")
 
     total_asset = cash
     missing_symbols: List[str] = []
@@ -241,7 +238,7 @@ def gather_assets() -> Dict[str, Dict[str, FinalAssetRecord]]:
 
             if not position_path.exists():
                 print(
-                    f"[警告] 找不到 position 文件: {position_path}（{base_model} / {operation}），使用默认资产值 {PLACEHOLDER_ASSET_VALUE}"
+                    f"[Warning] Position file not found: {position_path} ({base_model} / {operation}), using placeholder value {PLACEHOLDER_ASSET_VALUE}"
                 )
                 record = FinalAssetRecord(
                     base_model=base_model,
@@ -265,7 +262,7 @@ def gather_assets() -> Dict[str, Dict[str, FinalAssetRecord]]:
 
             if record.missing_symbols:
                 print(
-                    f"[警告] {base_model} / {operation} 缺少以下股票价格，按缺失忽略: "
+                    f"[Warning] {base_model} / {operation} has missing stock prices, ignoring: "
                     f"{', '.join(record.missing_symbols)}"
                 )
 
@@ -283,7 +280,7 @@ def plot_bars(
 ) -> None:
     bases = [base for base in DEFAULT_BASE_MODELS if assets.get(base)]
     if not bases:
-        raise ValueError("没有找到任何可以绘制的底座模型。")
+        raise ValueError("No base models found for plotting.")
 
     operations = DEFAULT_OPERATIONS
     num_ops = len(operations)
@@ -381,35 +378,35 @@ def plot_bars(
     output_path.parent.mkdir(parents=True, exist_ok=True)
     fig.savefig(output_path, dpi=220)
     plt.close(fig)
-    print(f"柱状图已保存到: {output_path}")
+    print(f"Bar chart saved to: {output_path}")
 
 
 def main() -> None:
     parser = argparse.ArgumentParser(
-        description="读取 agent_data 中的仓位信息计算最终资产并绘制柱状图"
+        description="Read position records from agent_data and calculate final portfolio values, then plot bar charts."
     )
     parser.add_argument(
         "--output-path",
         type=Path,
         default=DEFAULT_OUTPUT_PATH,
-        help="输出图像路径",
+        help="Output image path",
     )
     parser.add_argument(
         "--title",
         type=str,
         default="Final Portfolio Value Comparison",
-        help="图表标题",
+        help="Chart title",
     )
     parser.add_argument(
         "--no-annotate",
         action="store_true",
-        help="关闭柱体顶部的涨跌幅标注",
+        help="Disable percentage change annotations on bar tops",
     )
     parser.add_argument(
         "--baseline",
         type=int,
         default=5265,
-        help="参考基准资产值（绘制横线），设为 0 可关闭",
+        help="Reference baseline asset value (draw horizontal line), set to 0 to disable",
     )
     args = parser.parse_args()
 
