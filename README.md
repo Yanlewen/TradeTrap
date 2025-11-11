@@ -16,7 +16,7 @@
 
 <div align="center" style="margin-top: 2px; gap: 20px; display: inline-flex;">
   <a href="README.md" style="color: auto; text-decoration: none; padding: 0 12px;">English</a>
-  <a href="README.zh.md" style="color: gray; text-decoration: none; padding: 0 12px;">中文</a>
+  <a href="README_CN.md" style="color: gray; text-decoration: none; padding: 0 12px;">中文</a>
 </div>
 
 
