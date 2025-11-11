@@ -166,7 +166,7 @@ Attack capabilities (delivered and planned)
 - [ ] Tool misuse — execute rogue orders to breach risk and compliance hard limits
 ---
 
-## 🎭 What’s new Inside This Repo
+## 🎭 What’s New Inside This Repo
 
 <div align="center" style="margin: 24px 0;">
   <img src="assets/repo_frame.png" alt="Repository Structure Overview" width="500" />
@@ -207,7 +207,7 @@ Attack capabilities (delivered and planned)
 
 ## 🔧 Operational Steps Example
 
-### Start the AI-Trader core stack
+### Start the AI-Trader Core Stack
 ```bash
 # 1. Clone the repository and install dependencies
 git clone https://github.com/TradeTrap/Safe-TradingAgent.git
@@ -221,7 +221,7 @@ cd ..
 python main.py --signature clean-run
 ```
 
-### Run the MCP hijacking scenario
+### Run the MCP Hijacking Scenario
 ```bash
 #  Switch to the fake services and replay the compromised signature
 cd agent_tools/fake_tool
@@ -235,7 +235,7 @@ python3 -m http.server 8000
 # Open http://localhost:8000 and compare the signatures
 ```
 
-### Run the prompt-injection scenario
+### Run the Prompt-injection Scenario
 - Enable the prompt-injection agent:
   - Set `agent_type` to `PromptInjectionAgent` (or `PromptInjectionAgent_Hour`) in `configs/my_config.json`.
   - Add or enable the desired rules inside `prompts/prompt_injections.json`.
