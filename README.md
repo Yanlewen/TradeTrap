@@ -70,13 +70,13 @@ For example:
   <img src="assets/agent-legend.png" alt="Agent Comparison Legend" width="600" />
 </div>
 
-<p align="center">
-  
-  - 🟨 **yellow**：baseline runs without external signals.<br>
-  - 🔵 **blue**：news-enhanced runs wire into X/Twitter and Reddit feeds.<br>
-  - 🔴 **red**：poisoned agents tasked with the same capital.<br><br>
-  *All start with USD 5,000 - watch how the battlefield splits*
-</p>
+<div align="center" style="margin: 12px 0 6px; font-size: 13px; line-height: 1.7; font-weight: 500;">
+  🟨 <strong>yellow</strong>：baseline runs without external signals.<br/>
+  🔵 <strong>blue</strong>：news-enhanced runs wire into X/Twitter and Reddit feeds.<br/>
+  🔴 <strong>red</strong>：poisoned agents tasked with the same capital.
+</div>
+
+<p align="center" style="margin: 0 0 18px; font-style: italic; font-size: 12px;">All start with USD 5,000 - watch how the battlefield splits</p>
 
 <table>
   <tr>
