@@ -69,12 +69,11 @@ For example:
 <div align="center" style="margin-bottom: 24px;">
   <img src="assets/agent-legend.png" alt="Agent Comparison Legend" width="600" />
 </div>
-<p align="center" style="font-size: 10px; margin: -48px 0 24px; line-height: 1.6;">
-  <span style="color: #eab308; font-weight: 600;">——yellow：</span> baseline runs without external signals.<br/>
-  <span style="color: #2563eb; font-weight: 600;">——blue：</span> news-enhanced runs wire into X/Twitter and Reddit feeds.<br/>
-  <span style="color: #dc2626; font-weight: 600;">——red：</span>poisoned agents tasked with the same capital.<br/>
-  <span style="font-weight: 500;">All start with USD 5,000 - watch how the battlefield splits</span>
-</p>
+
+
+- 🟨 **yellow**：baseline runs without external signals.
+- 🔵 **blue**：news-enhanced runs wire into X/Twitter and Reddit feeds.
+- 🔴 **red**：poisoned agents tasked with the same capital.
 <table>
   <tr>
     <td align="center" valign="top" width="50%">
