@@ -76,7 +76,7 @@ For example:
   🔴 <strong>red</strong>：poisoned agents tasked with the same capital.
 </div>
 
-<p align="center" style="margin: 0 0 18px; font-style: italic; font-size: 12px;">All start with USD 5,000 - watch how the battlefield splits</p>
+<p align="center" style="margin: 0 0 18px; font-style: italic; font-size: 12px;">All start with USD 5,000 - watch how the battlefield splits.</p>
 
 <table>
   <tr>
