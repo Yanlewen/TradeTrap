@@ -71,6 +71,7 @@ For example:
 </div>
 
 <p align="center">
+  
   - 🟨 **yellow**：baseline runs without external signals.<br>
   - 🔵 **blue**：news-enhanced runs wire into X/Twitter and Reddit feeds.<br>
   - 🔴 **red**：poisoned agents tasked with the same capital.<br><br>
