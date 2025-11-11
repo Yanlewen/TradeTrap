@@ -80,11 +80,13 @@ TradeTrap是一个由社区驱动且对开发者友好的工具，用于测试�
   <img src="assets/agent-legend.png" alt="Agent Comparison Legend" width="600" />
 </div>
 <p align="center" style="font-size: 10px; margin: -48px 0 24px; line-height: 1.6;">
-  <span style="color: #eab308; font-weight: 600;">——黄色：</span> 不接入任何外部信号的基线策略。<br/>
-  <span style="color: #2563eb; font-weight: 600;">——蓝色：</span> 接入 X/Twitter 与 Reddit 新闻流后的增强策略。<br/>
-  <span style="color: #dc2626; font-weight: 600;">——红色：</span> 在相同初始资金下运行的攻击版本。<br/>
-  <span style="font-weight: 500;">全部从 5,000 美元起步，看不同路线如何迅速分化。</span>
-</p>
+<div align="center" style="margin: 12px 0 6px; font-size: 13px; line-height: 1.7; font-weight: 500;">
+  🟨 <strong>黄色</strong>：不接入任何外部信号的基线策略。<br/>
+  🔵 <strong>蓝色</strong>：接入 X/Twitter 与 Reddit 新闻流后的增强策略。<br/>
+  🔴 <strong>红色</strong>：在相同初始资金下运行的攻击版本。
+</div>
+
+<p align="center" style="margin: 0 0 18px; font-style: italic; font-size: 12px;">全部从 5,000 美元起步，看不同路线如何迅速分化。</span></p>
 
 <table>
   <tr>
