@@ -92,31 +92,31 @@ TradeTrap是一个由社区驱动且对开发者友好的工具，用于测试�
   <tr>
     <td align="center" valign="top" width="50%">
       <strong style="font-size: 22px;">DeepSeek-v3</strong><br/>
-      <img src="assets/STA/assets/agent-growth_deepseek.gif" alt="DeepSeek-v3 攻击复现" width="400" /><br/>
+      <img src="assets/agent-growth_deepseek.gif" alt="DeepSeek-v3 攻击复现" width="400" /><br/>
       <em>基准线稳步攀升，而遭受攻击后曲线几乎呈单边下跌。</em>
     </td>
     <td align="center" valign="top" width="50%">
       <strong style="font-size: 22px;">Claude-4.5-Sonnet</strong><br/>
-      <img src="assets/STA/assets/agent-growth_claude.gif" alt="Claude-4.5-Sonnet 攻击复现" width="400" /><br/>
+      <img src="assets/agent-growth_claude.gif" alt="Claude-4.5-Sonnet 攻击复现" width="400" /><br/>
       <em>受攻击版本一度大幅领先，却在交易末期利润尽数回吐，迅速崩盘。</em>
     </td>
   </tr>
   <tr>
     <td align="center" valign="top" width="50%">
       <strong style="font-size: 22px;">Qwen3-Max</strong><br/>
-      <img src="assets/STA/assets/agent-growth_qwen.gif" alt="Qwen3-Max 攻击复现" width="400" /><br/>
+      <img src="assets/agent-growth_qwen.gif" alt="Qwen3-Max 攻击复现" width="400" /><br/>
       <em>基准线持续低迷，而反预期攻击却使其收益曲线陡峭上扬。</em>
     </td>
     <td align="center" valign="top" width="50%">
       <strong style="font-size: 22px;">Gemini 2.5 Flash</strong><br/>
-      <img src="assets/STA/assets/agent-growth_gemini.gif" alt="Gemini 2.5 Flash 攻击复现" width="400" /><br/>
+      <img src="assets/agent-growth_gemini.gif" alt="Gemini 2.5 Flash 攻击复现" width="400" /><br/>
       <em>从开盘起，受攻击曲线便与基准线分道扬镳，差距持续扩大。</em>
     </td>
   </tr>
   <tr>
     <td align="center" valign="top" colspan="2">
       <strong style="font-size: 22px;">GPT-5</strong><br/>
-      <img src="assets/STA/assets/agent-growth_gpt.gif" alt="GPT-5 攻击复现" width="400" /><br/>
+      <img src="assets/agent-growth_gpt.gif" alt="GPT-5 攻击复现" width="400" /><br/>
       <em>基准线无故持续飙升，而被干扰的运行则表现得如同随机游走。</em>
     </td>
   </tr>
