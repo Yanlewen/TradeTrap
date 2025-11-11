@@ -23,7 +23,7 @@
 </div>
 
 ---
-TradeTrap is a community-driven and developer-friendly tool for testing LLM-based trading Agents' reliability. A slight perturbation to the input instructions for LLM-based agents can upend an entire investment scheme！Therefore, our mission is to build the reliable financial agent community. Welcome to share feedback and issues you encounter, and invite more developers to contribute 🚀🚀🚀
+**TradeTrap** is a community-driven and developer-friendly tool for testing LLM-based trading Agents' reliability. A slight perturbation to the input instructions for LLM-based agents can upend an entire investment scheme！Therefore, our mission is to build the reliable financial agent community. Welcome to share feedback and issues you encounter, and invite more developers to contribute 🚀🚀🚀
 <div align="center">
   <strong>Multi-Model Breakdown Under Identical Exploits</strong><br/>
   <img src="assets/final_assets_from_positions.png" alt="All Models Exploit Overview" width="880" />
