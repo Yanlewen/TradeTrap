@@ -146,6 +146,12 @@ For example:
 
 ---
 
+## Latest Update
+
+- **State Tampering Plugin**: Manipulates trading agents by tampering with their position state perception. See [`plugins/README.md`](plugins/README.md) ([中文版](plugins/README_zh.md)) for details.
+
+---
+
 ## Payload Roadmap Checklist
 Infrastructure
 - [x] Integrated trading-agent platform combining core capabilities from mainstream stacks
@@ -154,14 +160,15 @@ Infrastructure
 - [ ] Adaptable to more trading platforms (e.g., NoFX, ValueCell)
 
 Attack capabilities (delivered and planned)
-
 - [x] Direct prompt injection — force catastrophic strategy pivots
 - [x] MCP tool hijacking — let polluted data drive wrong decisions
+- [ ] Memory poisoning — corrupt learned experiences to force strategy drift
+- [x] State tampering — induce cognitive confusion to desync from real positions
 - [ ] Data forgery (indirect prompt injection) — spark panic selling and irrational buying
+
 - [ ] Model backdoors — hidden triggers to drain assets on demand
 - [ ] Malicious collusion — compromised sub-agents twisting collective choices
-- [ ] Memory poisoning — corrupt learned experiences to force strategy drift
-- [ ] State tampering — induce cognitive confusion to desync from real positions
+
 - [ ] Latency / DoS shocks — block exits, freeze hedges, let losses run
 - [ ] Tool misuse — execute rogue orders to breach risk and compliance hard limits
 ---

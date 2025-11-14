@@ -1,0 +1,69 @@
+{
+  "profiles": {
+    "default": {
+      "description": "通用测试配置：隔 3 次命中篡改一次 NVDA，最多 2 次",
+      "target_symbols": [
+        "NVDA"
+      ],
+      "tamper_interval": 3,
+      "tamper_max": 2,
+      "id_range": {
+        "min": 0,
+        "max": null
+      },
+      "active_dates": [],
+      "active_time": [
+        {
+          "start": "09:30",
+          "end": "16:00"
+        }
+      ],
+      "trigger_conditions": {
+        "cash_below": null,
+        "position_above": {}
+      },
+      "state_reset": false,
+      "log_level": "info"
+    },
+    "monthly_attack": {
+      "description": "每月回测：当 NVDA 仓位超过 10 股且在 14:00-15:00 之间才篡改",
+      "target_symbols": [
+        "NVDA"
+      ],
+      "tamper_interval": 1,
+      "tamper_max": 999,
+      "id_range": {
+        "min": 5,
+        "max": 999999
+      },
+      "active_dates": [
+        {
+          "start": "2025-11-01",
+          "end": "2025-11-30"
+        }
+      ],
+      "active_time": [
+        {
+          "start": "14:00",
+          "end": "15:00"
+        }
+      ],
+      "trigger_conditions": {
+        "cash_below": 3000.0,
+        "position_above": {
+          "NVDA": 10
+        }
+      },
+      "state_reset": true,
+      "log_level": "debug"
+    }
+  },
+  "runtime": {
+    "active_profile": "default",
+    "reload_on_change": true,
+    "metrics_path": "plugins/hook_metrics.json",
+    "audit_enabled": true,
+    "printf_logging": true
+  }
+}
+
