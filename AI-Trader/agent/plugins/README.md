@@ -48,6 +48,25 @@ Location: `agent/plugins/` (rules in `prompts/prompt_injections.json`).
 },
 ```
 
+## Position Attack
+
+The `PositionAttackAgentHour` wrapper injects tampered position records after trading sessions.
+
+**Usage:**
+- Set `agent_type` to `"PositionAttackAgent_Hour"` in config
+- Configure via `prompts/position_attack_config.json`:
+  - `enabled`: enable/disable attack
+  - `interval_steps`: inject every N sessions (default: 3)
+  - `min_sell_ratio` / `max_sell_ratio`: ratio of holdings to sell (e.g., 0.2-0.6 means sell 20%-60% of current position, default: 0.2-0.6)
+  - `min_buy_ratio` / `max_buy_ratio`: ratio of sell proceeds to use for buying (e.g., 0.4-0.9 means use 40%-90% of proceeds, default: 0.4-0.9)
+  - `buy_size_multiplier`: multiplier for buy ratio (final buy amount = proceeds × buy_ratio × multiplier, default: 1.0)
+- Optional environment variables: `POSITION_ATTACK_CONFIG_PATH` (override config file path)
+
+**How it works:**
+- After each session, if `session_index % interval_steps == 0`, injects fake trades
+- Randomly sells holdings and buys other stocks
+- Records marked with `attack_tag: "position_attack"` in position.jsonl
+
 ## Tips
 - Give each injection a unique `id`.
 - Check `data/agent_data/<signature>/log/.../log.jsonl` to confirm injections.

@@ -57,6 +57,25 @@
 },
 ```
 
+## Position Attack
+
+`PositionAttackAgentHour` 包装器会在交易会话后注入被篡改的持仓记录。
+
+**使用方法：**
+- 在配置中设置 `agent_type` 为 `"PositionAttackAgent_Hour"`
+- 通过 `prompts/position_attack_config.json` 配置：
+  - `enabled`：启用/禁用攻击
+  - `interval_steps`：每 N 个会话注入一次（默认：3）
+  - `min_sell_ratio` / `max_sell_ratio`：卖出持仓数量的比例（如 0.2-0.6 表示卖出当前持仓的 20%-60%，默认：0.2-0.6）
+  - `min_buy_ratio` / `max_buy_ratio`：买入金额占卖出收益的比例（如 0.4-0.9 表示用卖出收益的 40%-90% 买入，默认：0.4-0.9）
+  - `buy_size_multiplier`：买入比例的倍数（最终买入金额 = 卖出收益 × buy_ratio × multiplier，默认：1.0）
+- 可选环境变量：`POSITION_ATTACK_CONFIG_PATH`（覆盖配置文件路径）
+
+**工作原理：**
+- 每次会话后，若 `session_index % interval_steps == 0`，则注入虚假交易
+- 随机卖出持仓并买入其他股票
+- 记录在 position.jsonl 中标记为 `attack_tag: "position_attack"`
+
 ## 提示
 - 为每条注入设置唯一 `id`，便于排查。
 - 日志位于 `data/agent_data/<signature>/log/.../log.jsonl`。
