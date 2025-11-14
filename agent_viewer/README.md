@@ -44,9 +44,26 @@ The dashboard reads `data/dataset_config.json` to decide which signatures to plo
 
 After editing `dataset_config.json`, simply refresh the dashboard in the browser (hard refresh `Ctrl/Cmd + Shift + R` recommended) and the new selection will render automatically—no additional code changes required.
 
-## 3. Optional: baseline reference line
+## 3. Optional: baseline / benchmark line
 
-The chart automatically draws a grey reference line representing the initial capital ($5,000). QQQ benchmarking can be re-enabled by providing a `data/Adaily_prices_QQQ.json` file and restoring the related logic in `data-loader.js` if needed.
+`dataset_config.json` 支持一个 `baseline` 段，允许自定义基准线：
+```json
+{
+  "baseline": {
+    "type": "price_series",
+    "label": "QQQ Benchmark",
+    "source": "Adaily_prices_QQQ.json",
+    "initial_capital": 5000,
+    "color": "#94a3b8"
+  }
+}
+```
+- `type`: 支持 `price_series`（将价格转成资产价值）或 `constant`（固定数值）。如果设置为 `none` 或删除该段，则不渲染基准线，前端会默认显示常量 `$5,000`。
+- `source`: 指向 `agent_viewer/data/` 下的价格 JSON（或 URL），格式可为 AlphaVantage Time Series、自定义 `{ dates, values }`、或 `{ timestamp: close }`。
+- `initial_capital`: 用于将价格系列转换成“如果以该资金买入”的资产曲线（仅 `price_series` 生效）。
+- `label` / `color`: 控制图例名称与曲线颜色。
+
+若省略 `baseline` 字段，系统会绘制默认的 "Initial Balance ($5,000)" 虚线基准。需要换成其他标的（例如 `daily_prices_NVDA.json`）时，只需调整 `baseline` 中的配置并刷新页面。
 
 ---
 

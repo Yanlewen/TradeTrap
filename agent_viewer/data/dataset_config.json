@@ -1,20 +1,33 @@
 {
-  "source": "agents_data_claude.json",
+  "source": "agents_data_deepseek.json",
+  "baseline": {
+    "type": "price_series",
+    "label": "QQQ Benchmark",
+    "source": "Adaily_prices_QQQ.json",
+    "initial_capital": 5000,
+    "color": "#94a3b8"
+  },
   "datasets": [
     {
-      "id": "claude-3.7-sonnet",
-      "label": "Claude Sonnet",
-      "color": "#f5cb5c"
+      "id": "base",
+      "label": "Baseline (No Tools)",
+      "description": "DeepSeek baseline configuration",
+      "color": "#f5cb5c",
+      "default": true
     },
     {
-      "id": "claude-3.7-sonnet-with-news",
-      "label": "Claude Sonnet + news",
-      "color": "#3480b8"
+      "id": "with news",
+      "label": "With news",
+      "description": "DeepSeek with X & Reddit ingestion",
+      "color": "#3480b8",
+      "default": true
     },
     {
-      "id": "claude-3.7-sonnet-ReverseExpectations",
-      "label": "Claude Reverse Expectations",
-      "color": "#c82423"
+      "id": "state tampering",
+      "label": "State tampering",
+      "description": "DeepSeek state tampering configuration",
+      "color": "#c82423",
+      "default": true
     }
   ]
 }

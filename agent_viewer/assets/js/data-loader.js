@@ -8,6 +8,8 @@ class DataLoader {
         this.config = null;
         this.datasetMeta = [];
         this.qqqCurve = null;
+        this.baselineMeta = null;
+        this.baselineCurve = null;
     }
 
     async load() {
@@ -20,6 +22,7 @@ class DataLoader {
             }
             this.data = await dataResp.json();
             this.processData();
+            await this.prepareBaseline();
             return this.data;
         } catch (error) {
             console.error('加载数据失败:', error);
@@ -33,7 +36,7 @@ class DataLoader {
             datasets: []
         };
         try {
-            const resp = await fetch('data/dataset_config.json', { cache: 'no-store' });
+            const resp = await fetch(this.withCacheBuster('data/dataset_config.json'), { cache: 'no-store' });
             if (resp.ok) {
                 this.config = await resp.json();
             } else {
@@ -56,9 +59,9 @@ class DataLoader {
         candidates.push('data/agents_data.json');
 
         for (const url of candidates) {
-            if (url) return url;
+            if (url) return this.withCacheBuster(url);
         }
-        return 'data/agents_data.json';
+        return this.withCacheBuster('data/agents_data.json');
     }
 
     prefixDataPath(source) {
@@ -70,6 +73,12 @@ class DataLoader {
             return source;
         }
         return `data/${source}`;
+    }
+
+    withCacheBuster(url) {
+        if (!url) return url;
+        const separator = url.includes('?') ? '&' : '?';
+        return `${url}${separator}_=${Date.now()}`;
     }
 
     processData() {
@@ -116,6 +125,13 @@ class DataLoader {
             }
         });
         return map;
+    }
+
+    getBaselineOptions() {
+        return {
+            meta: this.baselineMeta,
+            curve: this.baselineCurve
+        };
     }
 
     getAgentNames() {
@@ -221,6 +237,112 @@ class DataLoader {
         });
 
         return stats;
+    }
+
+    async prepareBaseline() {
+        const defaultBaseline = {
+            type: 'constant',
+            value: 5000,
+            label: 'Initial Balance ($5,000)',
+            color: '#64748b'
+        };
+
+        const meta = (this.config && this.config.baseline !== undefined)
+            ? this.config.baseline
+            : defaultBaseline;
+
+        if (!meta || meta.type === 'none') {
+            this.baselineMeta = null;
+            this.baselineCurve = null;
+            console.log('Baseline disabled');
+            return;
+        }
+
+        this.baselineMeta = { ...defaultBaseline, ...meta };
+        const type = (this.baselineMeta.type || 'constant').toLowerCase();
+        console.log('Preparing baseline:', this.baselineMeta);
+
+        if (type === 'price_series') {
+            await this.loadBaselineCurve(this.baselineMeta);
+            console.log('Baseline curve points:', this.baselineCurve ? this.baselineCurve.dates.length : 0);
+        } else {
+            this.baselineCurve = null;
+        }
+    }
+
+    async loadBaselineCurve(meta) {
+        try {
+            const sourcePath = this.prefixDataPath(meta.source);
+            if (!sourcePath) {
+                this.baselineCurve = null;
+                return;
+            }
+            const resp = await fetch(this.withCacheBuster(sourcePath), { cache: 'no-store' });
+            if (!resp.ok) {
+                console.warn(`Baseline source ${sourcePath} failed: ${resp.status}`);
+                this.baselineCurve = null;
+                return;
+            }
+            const payload = await resp.json();
+            this.baselineCurve = this.processBaselinePayload(payload, meta);
+        } catch (err) {
+            console.warn('Failed to load baseline curve:', err);
+            this.baselineCurve = null;
+        }
+    }
+
+    processBaselinePayload(payload, meta) {
+        if (!payload) return null;
+        let entries = [];
+
+        if (payload['Time Series (60min)']) {
+            entries = Object.entries(payload['Time Series (60min)']).map(([date, values]) => ({
+                date,
+                close: parseFloat(values['4. close'] || values['4. Close'] || values['close'])
+            }));
+        } else if (payload['Time Series (Daily)']) {
+            entries = Object.entries(payload['Time Series (Daily)']).map(([date, values]) => ({
+                date,
+                close: parseFloat(values['4. close'] || values['4. Close'] || values['close'])
+            }));
+        } else if (payload.dates && payload.values) {
+            entries = payload.dates.map((date, idx) => ({
+                date,
+                close: parseFloat(payload.values[idx])
+            }));
+        } else if (Array.isArray(payload)) {
+            entries = payload.map(entry => ({
+                date: entry.date || entry.timestamp || entry[0],
+                close: parseFloat(entry.close || entry.value || entry[1])
+            }));
+        } else {
+            entries = Object.entries(payload).map(([date, value]) => ({
+                date,
+                close: typeof value === 'number' ? value : parseFloat(value.close || value)
+            }));
+        }
+
+        entries = entries
+            .filter(item => item.date && !Number.isNaN(item.close))
+            .sort((a, b) => new Date(a.date) - new Date(b.date));
+
+        if (!entries.length) return null;
+
+        const initialCapital = meta.initial_capital || meta.initialCapital || 5000;
+        const initialPrice = entries[0].close;
+        const dates = [];
+        const values = [];
+        entries.forEach(item => {
+            dates.push(item.date);
+            values.push(initialCapital * (item.close / initialPrice));
+        });
+
+        return {
+            label: meta.label || 'Benchmark',
+            color: meta.color || '#64748b',
+            dates,
+            values
+        };
     }
 }
 

@@ -1,17 +1,15 @@
 /**
  * Main application logic
  */
-const DEFAULT_AGENTS = [
-    'claude-3.7-sonnet',
-    'claude-3.7-sonnet-with-news',
-    'claude-3.7-sonnet-ReverseExpectations'
-];
 
 let selectedAgents = [];
 let allDates = [];
 let agentMeta = [];
 let labelMap = {};
 let colorOverrides = {};
+let baselineMeta = null;
+let baselineCurve = null;
+let baselineOptions = null;
 
 document.addEventListener('DOMContentLoaded', async () => {
     try {
@@ -41,8 +39,13 @@ document.addEventListener('DOMContentLoaded', async () => {
             agentMeta.forEach(meta => labelMap[meta.id] = meta.label || meta.id);
         }
         colorOverrides = dataLoader.getColorOverrides();
-        selectedAgents = agentMeta.map(meta => meta.id);
-
+        baselineOptions = typeof dataLoader.getBaselineOptions === 'function'
+            ? dataLoader.getBaselineOptions()
+            : { meta: null, curve: null };
+        console.log('Baseline options:', baselineOptions);
+        baselineMeta = baselineOptions.meta || null;
+        baselineCurve = baselineOptions.curve || null;
+ 
         initializePage();
         
         hideLoading();
@@ -65,27 +68,47 @@ function initializePage() {
 }
 
 function initializeAgentSelector() {
-    const checkboxes = document.querySelectorAll('.agent-checkbox input[type="checkbox"]');
-    const metaMap = agentMeta.reduce((acc, meta) => {
-        acc[meta.id] = meta;
-        return acc;
-    }, {});
+    const container = document.querySelector('.agent-checkboxes');
+    if (!container) {
+        console.warn('Agent checkbox container not found');
+        return;
+    }
 
-    selectedAgents = selectedAgents.length ? [...selectedAgents] : Array.from(Object.keys(metaMap));
+    container.innerHTML = '';
+    const metaMap = {};
+    selectedAgents = [];
 
-    checkboxes.forEach(checkbox => {
-        const meta = metaMap[checkbox.value];
-        const shouldBeChecked = selectedAgents.includes(checkbox.value);
-        checkbox.checked = shouldBeChecked;
-
-        const container = checkbox.closest('.agent-checkbox');
-        if (container && meta) {
-            const nameEl = container.querySelector('.agent-name');
-            const descEl = container.querySelector('.agent-desc');
-            if (nameEl) nameEl.textContent = meta.label || meta.id;
-            if (descEl && meta.description) descEl.textContent = meta.description;
+    agentMeta.forEach((meta, index) => {
+        if (!meta || !meta.id) {
+            return;
+        }
+        metaMap[meta.id] = meta;
+        const isChecked = meta.default !== false;
+        if (isChecked) {
+            selectedAgents.push(meta.id);
         }
 
+        const labelEl = document.createElement('label');
+        labelEl.className = 'agent-checkbox';
+        labelEl.innerHTML = `
+            <input type="checkbox" value="${meta.id}" ${isChecked ? 'checked' : ''}>
+            <span class="checkbox-label">
+                <span class="agent-name">${meta.label || meta.id}</span>
+                <span class="agent-desc">${meta.description || ''}</span>
+            </span>
+        `;
+        container.appendChild(labelEl);
+    });
+
+    if (!selectedAgents.length && agentMeta.length > 0) {
+        const first = agentMeta[0];
+        selectedAgents.push(first.id);
+        const input = container.querySelector(`input[value="${first.id}"]`);
+        if (input) input.checked = true;
+    }
+
+    const checkboxes = container.querySelectorAll('input[type="checkbox"]');
+    checkboxes.forEach(checkbox => {
         checkbox.addEventListener('change', (e) => {
             if (e.target.checked) {
                 if (!selectedAgents.includes(e.target.value)) {
@@ -97,6 +120,16 @@ function initializeAgentSelector() {
             updateDisplay();
         });
     });
+
+    const baselineSection = document.querySelector('.benchmark-info');
+    if (baselineSection) {
+        if (baselineMeta && (baselineCurve || (baselineMeta.type || 'constant') !== 'none')) {
+            baselineSection.textContent = `${baselineMeta.label || 'Baseline'}${baselineMeta.source ? ` (source: ${baselineMeta.source})` : ''}`;
+            baselineSection.style.display = '';
+        } else {
+            baselineSection.style.display = 'none';
+        }
+    }
 
     console.log('Initial agents:', selectedAgents);
 }
@@ -166,7 +199,7 @@ function updateDisplay() {
     const qqqCurve = dataLoader.getQQQCurve ? (typeof dataLoader.getQQQCurve === 'function' ? dataLoader.getQQQCurve() : null) : null;
 
     if (chartManager && Object.keys(curves).length > 0) {
-        chartManager.updateData(curves, selectedAgents, qqqCurve, colorOverrides, labelMap);
+        chartManager.updateData(curves, selectedAgents, baselineOptions, colorOverrides, labelMap);
     } else {
         console.warn('Chart manager not initialized or no curve data');
     }

@@ -273,9 +273,40 @@ python3 -m http.server 8000
 ---
 ## 🙏 Acknowledgements
 
-This project is inspired by the [AI-Trader](https://github.com/HKUDS/AI-Trader) project. We hereby express our gratitude for their pioneering work!
+-  [AI-Trader](https://github.com/HKUDS/AI-Trader) - Autonomous Trading agent system
+- [LangChain](https://github.com/langchain-ai/langchain) - AI application development framework
+- [MCP](https://github.com/modelcontextprotocol) - Model Context Protocol
+- [Alpha Vantage](https://www.alphavantage.co/) - Financial data API
+- [Jina AI](https://jina.ai/) - Information search service
 
-Building upon the original project, we focus on security research and attack scenario testing, providing tool support for the robust research of AI trading systems.
+## 👥 Administrator
+
+<div align="center">
+
+<a href="https://github.com/Yanlewen">
+  <img src="https://avatars.githubusercontent.com/Yanlewen?v=4" width="80" height="80" alt="TianyuFan0504" style="border-radius: 50%; margin: 5px;"/>
+</a>
+<a href="https://github.com/mjl0613ddm">
+  <img src="https://avatars.githubusercontent.com/mjl0613ddm?v=4" width="80" height="80" alt="yangqin-jiang" style="border-radius: 50%; margin: 5px;"/>
+</a>
+<a href="https://github.com/amandajshao">
+  <img src="https://avatars.githubusercontent.com/amandajshao?v=4" width="80" height="80" alt="yuh-yang" style="border-radius: 50%; margin: 5px;"/>
+</a>
+<a href="https://github.com/shenqildr">
+  <img src="https://avatars.githubusercontent.com/shenqildr?v=4" width="80" height="80" alt="Hoder-zyf" style="border-radius: 50%; margin: 5px;"/>
+</a>
+<a href="https://github.com/EaKal-7">
+  <img src="https://avatars.githubusercontent.com/EaKal-7?v=4" width="80" height="80" alt="Hoder-zyf" style="border-radius: 50%; margin: 5px;"/>
+</a>
+<a href="https://github.com/tmylla">
+  <img src="https://avatars.githubusercontent.com/tmylla?v=4" width="80" height="80" alt="Hoder-zyf" style="border-radius: 50%; margin: 5px;"/>
+</a>
+<a href="https://github.com/titanwings">
+  <img src="https://avatars.githubusercontent.com/titanwings?v=4" width="80" height="80" alt="Hoder-zyf" style="border-radius: 50%; margin: 5px;"/>
+</a>
+
+
+</div>
 
 
 ## ⚖️ Usage Guidelines

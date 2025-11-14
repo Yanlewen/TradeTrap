@@ -14,6 +14,84 @@ function hexToRgba(hex, alpha = 0.15) {
     return `rgba(${r}, ${g}, ${b}, ${alpha})`;
 }
 
+function buildBaselineDataset(baselineOptions, sortedDates) {
+    if (!sortedDates || !sortedDates.length) return null;
+    const defaultMeta = {
+        type: 'constant',
+        value: 5000,
+        label: 'Initial Balance ($5,000)',
+        color: '#64748b'
+    };
+
+    const meta = baselineOptions && baselineOptions.meta
+        ? { ...defaultMeta, ...baselineOptions.meta }
+        : defaultMeta;
+
+    if (!meta) return null;
+    const type = (meta.type || 'constant').toLowerCase();
+    if (type === 'none') return null;
+
+    const color = meta.color || '#64748b';
+    let data = [];
+
+    if (type === 'price_series' && baselineOptions && baselineOptions.curve) {
+        const curve = baselineOptions.curve;
+        const valueMap = {};
+        const dayValueMap = {};
+        if (curve.dates && curve.values) {
+            curve.dates.forEach((date, idx) => {
+                if (idx < curve.values.length) {
+                    const val = curve.values[idx];
+                    valueMap[date] = val;
+                    const datePart = date.split(' ')[0];
+                    if (datePart) {
+                        dayValueMap[datePart] = val;
+                    }
+                }
+            });
+        }
+        let lastValue = null;
+        sortedDates.forEach((date, idx) => {
+            let value = valueMap[date];
+            if (value === undefined) {
+                const datePart = date.split(' ')[0];
+                if (datePart && dayValueMap[datePart] !== undefined) {
+                    value = dayValueMap[datePart];
+                }
+            }
+            if (value !== undefined) {
+                lastValue = value;
+                data.push(value);
+            } else if (lastValue !== null) {
+                data.push(lastValue);
+            } else {
+                data.push(null);
+            }
+        });
+    } else {
+        const constantValue = meta.value || meta.initial_capital || meta.initialCapital || 5000;
+        data = sortedDates.map(() => constantValue);
+    }
+
+    if (data.every(v => v === null)) {
+        return null;
+    }
+
+    return {
+        label: meta.label || 'Baseline',
+        data,
+        borderColor: color,
+        backgroundColor: 'transparent',
+        borderWidth: 2,
+        borderDash: [6, 6],
+        pointRadius: 0,
+        pointHoverRadius: 0,
+        spanGaps: true,
+        tension: 0,
+        order: 0
+    };
+}
+
 class ChartManager {
     constructor(canvasId) {
         this.canvas = document.getElementById(canvasId);
@@ -149,7 +227,7 @@ class ChartManager {
         });
     }
 
-    updateData(curves, selectedAgents, referenceCurve, colorOverrides = {}, labelMap = {}) {
+    updateData(curves, selectedAgents, baselineOptions = null, colorOverrides = {}, labelMap = {}) {
         if (!this.chart) {
             console.error('Chart not initialized');
             return;
@@ -206,20 +284,10 @@ class ChartManager {
 
         const colorOverridesMap = colorOverrides || {};
 
-        // constant reference line at initial capital
-        datasets.push({
-            label: 'Initial Balance ($5,000)',
-            data: sortedDates.map(() => 5000),
-            borderColor: '#64748b',
-            backgroundColor: 'transparent',
-            borderWidth: 1.5,
-            borderDash: [6, 6],
-            pointRadius: 0,
-            pointHoverRadius: 0,
-            spanGaps: true,
-            tension: 0,
-            order: 0
-        });
+        const baselineDataset = buildBaselineDataset(baselineOptions, sortedDates);
+        if (baselineDataset) {
+            datasets.push(baselineDataset);
+        }
 
         // build datasets
         let colorIndex = 0;
@@ -261,8 +329,8 @@ class ChartManager {
                 };
             } else {
                 color = colorPalette[colorIndex % colorPalette.length];
-                colorIndex += 1;
             }
+            colorIndex += 1;
 
             const displayName = labelMap[agentName] || agentName;
 

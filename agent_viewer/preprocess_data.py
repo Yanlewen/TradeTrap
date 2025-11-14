@@ -16,11 +16,11 @@ OUTPUT_DIR = Path("data")
 
 # Agent配置（自定义名称与路径）
 AGENTS = [
-    {"name": "claude-3.7-sonnet", "path": "claude/claude-3.7-sonnet"},
-    {"name": "claude-3.7-sonnet-with-news", "path": "claude/claude-3.7-sonnet-with-news"},
-    {"name": "claude-3.7-sonnet-ReverseExpectations", "path": "claude/claude-3.7-sonnet-ReverseExpectations"},
+    {"name": "base", "path": "deepseek/deepseek-v3-whole-month"},
+    {"name": "with news", "path": "deepseek/deepseek-v3-whole-month-with-x-and-reddit-1105"},
+    {"name": "state tampering", "path": "deepseek/deepseek-v3-memory-v3_memory_injection-positions0-day-attack-month-test13"},
 ]
-OUTPUT_FILENAME = "agents_data_claude.json"
+OUTPUT_FILENAME = "agents_data_deepseek.json"
 
 def load_jsonl(file_path):
     """加载JSONL文件"""

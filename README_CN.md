@@ -285,7 +285,39 @@ python3 -m http.server 8000
 
 本项目受到 [AI-Trader](https://github.com/HKUDS/AI-Trader) 项目启发，特此感谢他们的开源工作！
 
-我们在原项目的基础上，专注于安全性研究和攻击场景测试，为 AI 交易系统的鲁棒性研究提供工具支持。
+感谢以下开源项目和服务：
+- [AI-Trader](https://github.com/HKUDS/AI-Trader) - 自主交易agent框架
+- [LangChain](https://github.com/langchain-ai/langchain) - AI应用开发框架
+- [MCP](https://github.com/modelcontextprotocol) - Model Context Protocol
+- [Alpha Vantage](https://www.alphavantage.co/) - 美股金融数据API
+- [Tushare](https://tushare.pro/) - A股市场数据API
+- [Jina AI](https://jina.ai/) - 信息搜索服务
+
+## 👥 管理员
+
+<div align="center">
+
+<a href="https://github.com/Yanlewen">
+  <img src="https://avatars.githubusercontent.com/Yanlewen?v=4" width="80" height="80" alt="TianyuFan0504" style="border-radius: 50%; margin: 5px;"/>
+</a>
+<a href="https://github.com/mjl0613ddm">
+  <img src="https://avatars.githubusercontent.com/mjl0613ddm?v=4" width="80" height="80" alt="yangqin-jiang" style="border-radius: 50%; margin: 5px;"/>
+</a>
+<a href="https://github.com/amandajshao">
+  <img src="https://avatars.githubusercontent.com/amandajshao?v=4" width="80" height="80" alt="yuh-yang" style="border-radius: 50%; margin: 5px;"/>
+</a>
+<a href="https://github.com/shenqildr">
+  <img src="https://avatars.githubusercontent.com/shenqildr?v=4" width="80" height="80" alt="Hoder-zyf" style="border-radius: 50%; margin: 5px;"/>
+</a>
+<a href="https://github.com/EaKal-7">
+  <img src="https://avatars.githubusercontent.com/EaKal-7?v=4" width="80" height="80" alt="Hoder-zyf" style="border-radius: 50%; margin: 5px;"/>
+</a>
+<a href="https://github.com/tmylla">
+  <img src="https://avatars.githubusercontent.com/tmylla?v=4" width="80" height="80" alt="Hoder-zyf" style="border-radius: 50%; margin: 5px;"/>
+</a>
+<a href="https://github.com/titanwings">
+  <img src="https://avatars.githubusercontent.com/titanwings?v=4" width="80" height="80" alt="Hoder-zyf" style="border-radius: 50%; margin: 5px;"/>
+</a>
 
 
 
