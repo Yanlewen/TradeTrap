@@ -46,12 +46,11 @@ def buy(symbol: str, amount: int) -> Dict[str, Any]:
     """
     Buy stock function
 
-    This function simulates stock buying operations, including the following steps:
+    This function stages a buy order, letting PositionLedger handle final settlement:
     1. Get current position and operation ID
     2. Get stock opening price for the day
-    3. Validate buy conditions (sufficient cash, lot size for CN market)
-    4. Update position (increase stock quantity, decrease cash)
-    5. Record transaction to position.jsonl file
+    3. Validate input basics (amount format, lot size)
+    4. Build order payload along with the agent-observed position
 
     Args:
         symbol: Stock symbol, such as "AAPL", "MSFT", etc.
@@ -60,8 +59,8 @@ def buy(symbol: str, amount: int) -> Dict[str, Any]:
 
     Returns:
         Dict[str, Any]:
-          - Success: Returns new position dictionary (containing stock quantity and cash balance)
-          - Failure: Returns {"error": error message, ...} dictionary
+          - Success: Returns {"order": {...}, "position_before": {...}}
+          - Failure: Returns {"error": error message, ...}
 
     Raises:
         ValueError: Raised when SIGNATURE environment variable is not set
@@ -82,7 +81,28 @@ def buy(symbol: str, amount: int) -> Dict[str, Any]:
     today_date = get_config_value("TODAY_DATE")
 
     # Auto-detect market type based on symbol format
-    market = "cn" if symbol.endswith((".SH", ".SZ")) else "us"
+    if symbol.endswith((".SH", ".SZ")):
+        market = "cn"
+    else:
+        market = "us"
+
+    # Amount validation for stocks
+    try:
+        amount = int(amount)  # Convert to int for stocks
+    except ValueError:
+        return {
+            "error": f"Invalid amount format. Amount must be an integer for stock trading. You provided: {amount}",
+            "symbol": symbol,
+            "date": today_date,
+        }
+
+    if amount <= 0:
+        return {
+            "error": f"Amount must be positive. You tried to buy {amount} shares.",
+            "symbol": symbol,
+            "amount": amount,
+            "date": today_date,
+        }
 
     # 🇨🇳 Chinese A-shares trading rule: Must trade in lots of 100 shares (一手 = 100股)
     if market == "cn" and amount % 100 != 0:
@@ -135,45 +155,24 @@ def buy(symbol: str, amount: int) -> Dict[str, Any]:
             "symbol": symbol,
             "date": today_date,
         }
-    else:
-        # Step 5: Execute buy operation, update position
-        # Create a copy of current position to avoid directly modifying original data
-        new_position = current_position.copy()
-
-        # Decrease cash balance
-        new_position["CASH"] = cash_left
-
-        # Increase stock position quantity
-        new_position[symbol] += amount
-
-        # Step 6: Record transaction to position.jsonl file
-        # Build file path: {project_root}/data/{log_path}/{signature}/position/position.jsonl
-        # Use append mode ("a") to write new transaction record
-        # Each operation ID increments by 1, ensuring uniqueness of operation sequence
-        log_path = get_config_value("LOG_PATH", "./data/agent_data")
-        if log_path.startswith("./data/"):
-            log_path = log_path[7:]  # Remove "./data/" prefix
-        position_file_path = os.path.join(project_root, "data", log_path, signature, "position", "position.jsonl")
-        with open(position_file_path, "a") as f:
-            # Write JSON format transaction record, containing date, operation ID, transaction details and updated position
-            print(
-                f"Writing to position.jsonl: {json.dumps({'date': today_date, 'id': current_action_id + 1, 'this_action':{'action':'buy','symbol':symbol,'amount':amount},'positions': new_position})}"
-            )
-            f.write(
-                json.dumps(
-                    {
-                        "date": today_date,
+    order_payload = {
                         "id": current_action_id + 1,
-                        "this_action": {"action": "buy", "symbol": symbol, "amount": amount},
-                        "positions": new_position,
-                    }
-                )
-                + "\n"
-            )
-        # Step 7: Return updated position
-        write_config_value("IF_TRADE", True)
-        print("IF_TRADE", get_config_value("IF_TRADE"))
-        return new_position
+        "timestamp": today_date,
+        "action": "buy",
+        "symbol": symbol,
+        "amount": amount,
+        "price": this_symbol_price,
+        "market": market,
+    }
+
+    staged_record = {
+        "order": order_payload,
+        "position_before": current_position,
+    }
+
+    write_config_value("IF_TRADE", True)
+    print("IF_TRADE", get_config_value("IF_TRADE"))
+    return staged_record
 
 
 def _get_today_buy_amount(symbol: str, today_date: str, signature: str) -> int:
@@ -255,7 +254,28 @@ def sell(symbol: str, amount: int) -> Dict[str, Any]:
     today_date = get_config_value("TODAY_DATE")
 
     # Auto-detect market type based on symbol format
-    market = "cn" if symbol.endswith((".SH", ".SZ")) else "us"
+    if symbol.endswith((".SH", ".SZ")):
+        market = "cn"
+    else:
+        market = "us"
+
+    # Amount validation for stocks
+    try:
+        amount = int(amount)  # Convert to int for stocks
+    except ValueError:
+        return {
+            "error": f"Invalid amount format. Amount must be an integer for stock trading. You provided: {amount}",
+            "symbol": symbol,
+            "date": today_date,
+        }
+
+    if amount <= 0:
+        return {
+            "error": f"Amount must be positive. You tried to sell {amount} shares.",
+            "symbol": symbol,
+            "amount": amount,
+            "date": today_date,
+        }
 
     # 🇨🇳 Chinese A-shares trading rule: Must trade in lots of 100 shares (一手 = 100股)
     if market == "cn" and amount % 100 != 0:
@@ -321,45 +341,23 @@ def sell(symbol: str, amount: int) -> Dict[str, Any]:
                     "date": today_date,
                 }
 
-    # Step 5: Execute sell operation, update position
-    # Create a copy of current position to avoid directly modifying original data
-    new_position = current_position.copy()
-
-    # Decrease stock position quantity
-    new_position[symbol] -= amount
-
-    # Increase cash balance: sell price × sell quantity
-    # Use get method to ensure CASH field exists, default to 0 if not present
-    new_position["CASH"] = new_position.get("CASH", 0) + this_symbol_price * amount
-
-    # Step 6: Record transaction to position.jsonl file
-    # Build file path: {project_root}/data/{log_path}/{signature}/position/position.jsonl
-    # Use append mode ("a") to write new transaction record
-    # Each operation ID increments by 1, ensuring uniqueness of operation sequence
-    log_path = get_config_value("LOG_PATH", "./data/agent_data")
-    if log_path.startswith("./data/"):
-        log_path = log_path[7:]  # Remove "./data/" prefix
-    position_file_path = os.path.join(project_root, "data", log_path, signature, "position", "position.jsonl")
-    with open(position_file_path, "a") as f:
-        # Write JSON format transaction record, containing date, operation ID and updated position
-        print(
-            f"Writing to position.jsonl: {json.dumps({'date': today_date, 'id': current_action_id + 1, 'this_action':{'action':'sell','symbol':symbol,'amount':amount},'positions': new_position})}"
-        )
-        f.write(
-            json.dumps(
-                {
-                    "date": today_date,
+    order_payload = {
                     "id": current_action_id + 1,
-                    "this_action": {"action": "sell", "symbol": symbol, "amount": amount},
-                    "positions": new_position,
-                }
-            )
-            + "\n"
-        )
+        "timestamp": today_date,
+        "action": "sell",
+        "symbol": symbol,
+        "amount": amount,
+        "price": this_symbol_price,
+        "market": market,
+    }
 
-    # Step 7: Return updated position
+    staged_record = {
+        "order": order_payload,
+        "position_before": current_position,
+                }
+
     write_config_value("IF_TRADE", True)
-    return new_position
+    return staged_record
 
 
 if __name__ == "__main__":

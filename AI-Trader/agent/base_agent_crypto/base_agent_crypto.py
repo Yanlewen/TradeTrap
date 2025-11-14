@@ -1,5 +1,5 @@
 """
-BaseAgent class - Base class for trading agents
+BaseAgentCrypto class - Base class for cryptocurrency trading agents
 Encapsulates core functionality including MCP tool management, AI agent creation, and trading execution
 """
 
@@ -81,20 +81,18 @@ class DeepSeekChatOpenAI(ChatOpenAI):
         return result
 
 
-from prompts.agent_prompt import STOP_SIGNAL, get_agent_system_prompt
+from prompts.agent_prompt_crypto import STOP_SIGNAL, get_agent_system_prompt_crypto
 from tools.general_tools import (extract_conversation, extract_tool_messages,
-                                 get_config_value, write_config_value,
-                                 _resolve_runtime_env_path)
+                                 get_config_value, write_config_value)
 from tools.price_tools import add_no_trade_record
-from agent_tools.position_ledger import PositionLedger
 
 # Load environment variables
 load_dotenv()
 
 
-class BaseAgent:
+class BaseAgentCrypto:
     """
-    Base class for trading agents
+    Base class for cryptocurrency trading agents
 
     Main functionalities:
     1. MCP tool management and connection
@@ -104,116 +102,23 @@ class BaseAgent:
     5. Position and configuration management
     """
 
-    # Default NASDAQ 100 stock symbols
-    DEFAULT_STOCK_SYMBOLS = [
-        "NVDA",
-        "MSFT",
-        "AAPL",
-        "GOOG",
-        "GOOGL",
-        "AMZN",
-        "META",
-        "AVGO",
-        "TSLA",
-        "NFLX",
-        "PLTR",
-        "COST",
-        "ASML",
-        "AMD",
-        "CSCO",
-        "AZN",
-        "TMUS",
-        "MU",
-        "LIN",
-        "PEP",
-        "SHOP",
-        "APP",
-        "INTU",
-        "AMAT",
-        "LRCX",
-        "PDD",
-        "QCOM",
-        "ARM",
-        "INTC",
-        "BKNG",
-        "AMGN",
-        "TXN",
-        "ISRG",
-        "GILD",
-        "KLAC",
-        "PANW",
-        "ADBE",
-        "HON",
-        "CRWD",
-        "CEG",
-        "ADI",
-        "ADP",
-        "DASH",
-        "CMCSA",
-        "VRTX",
-        "MELI",
-        "SBUX",
-        "CDNS",
-        "ORLY",
-        "SNPS",
-        "MSTR",
-        "MDLZ",
-        "ABNB",
-        "MRVL",
-        "CTAS",
-        "TRI",
-        "MAR",
-        "MNST",
-        "CSX",
-        "ADSK",
-        "PYPL",
-        "FTNT",
-        "AEP",
-        "WDAY",
-        "REGN",
-        "ROP",
-        "NXPI",
-        "DDOG",
-        "AXON",
-        "ROST",
-        "IDXX",
-        "EA",
-        "PCAR",
-        "FAST",
-        "EXC",
-        "TTWO",
-        "XEL",
-        "ZS",
-        "PAYX",
-        "WBD",
-        "BKR",
-        "CPRT",
-        "CCEP",
-        "FANG",
-        "TEAM",
-        "CHTR",
-        "KDP",
-        "MCHP",
-        "GEHC",
-        "VRSK",
-        "CTSH",
-        "CSGP",
-        "KHC",
-        "ODFL",
-        "DXCM",
-        "TTD",
-        "ON",
-        "BIIB",
-        "LULU",
-        "CDW",
-        "GFS",
+    # CoinDesk 5 crypto symbols
+    COINDESK_5 = ["BTC-USDT", "ETH-USDT", "SOL-USDT", "XRP-USDT", "ADA-USDT"]
+
+    # Bitwise 10 crypto symbols
+    BITWISE_10 = [
+        "BTC-USDT", "ETH-USDT", "SOL-USDT", "XRP-USDT", "ADA-USDT",
+        "AVAX-USDT", "DOGE-USDT", "DOT-USDT", "LINK-USDT", "MATIC-USDT"
     ]
+
+    # Default crypto symbols
+    DEFAULT_CRYPTO_SYMBOLS = BITWISE_10
 
     def __init__(
         self,
         signature: str,
         basemodel: str,
-        stock_symbols: Optional[List[str]] = None,
+        crypto_symbols: Optional[List[str]] = None,
         mcp_config: Optional[Dict[str, Dict[str, Any]]] = None,
         log_path: Optional[str] = None,
         max_steps: int = 10,
@@ -223,42 +128,35 @@ class BaseAgent:
         openai_api_key: Optional[str] = None,
         initial_cash: float = 10000.0,
         init_date: str = "2025-10-13",
-        market: str = "us",
+        market: str = "crypto",
     ):
         """
-        Initialize BaseAgent
+        Initialize BaseAgentCrypto
 
         Args:
             signature: Agent signature/name
             basemodel: Base model name
-            stock_symbols: List of stock symbols, defaults to NASDAQ 100 for US market
+            crypto_symbols: List of crypto symbols, defaults to Bitwise 10
             mcp_config: MCP tool configuration, including port and URL information
-            log_path: Log path, defaults to ./data/agent_data
+            log_path: Log path, defaults to ./data/agent_data_crypto
             max_steps: Maximum reasoning steps
             max_retries: Maximum retry attempts
             base_delay: Base delay time for retries
             openai_base_url: OpenAI API base URL
             openai_api_key: OpenAI API key
-            initial_cash: Initial cash amount
+            initial_cash: Initial cash amount in USDT
             init_date: Initialization date
-            market: Market type, "us" for US stocks or "cn" for A-shares
+            market: Market type, hardcoded to "crypto"
         """
         self.signature = signature
         self.basemodel = basemodel
-        self.market = market
+        self.market = "crypto"  # Hardcoded to crypto
 
-        # Auto-select stock symbols based on market if not provided
-        if stock_symbols is None:
-            if market == "cn":
-                # Import A-shares symbols when needed
-                from prompts.agent_prompt import all_sse_50_symbols
-
-                self.stock_symbols = all_sse_50_symbols
-            else:
-                # Default to US NASDAQ 100
-                self.stock_symbols = self.DEFAULT_STOCK_SYMBOLS
+        # Auto-select crypto symbols if not provided
+        if crypto_symbols is None:
+            self.crypto_symbols = self.DEFAULT_CRYPTO_SYMBOLS
         else:
-            self.stock_symbols = stock_symbols
+            self.crypto_symbols = crypto_symbols
 
         self.max_steps = max_steps
         self.max_retries = max_retries
@@ -270,7 +168,7 @@ class BaseAgent:
         self.mcp_config = mcp_config or self._get_default_mcp_config()
 
         # Set log path
-        self.base_log_path = log_path or "./data/agent_data"
+        self.base_log_path = log_path or "./data/agent_data_crypto"
 
         # Set OpenAI configuration
         if openai_base_url == None:
@@ -293,29 +191,29 @@ class BaseAgent:
         self.position_file = os.path.join(self.data_path, "position", "position.jsonl")
 
     def _get_default_mcp_config(self) -> Dict[str, Dict[str, Any]]:
-        """Get default MCP configuration"""
+        """Get default MCP configuration for crypto trading"""
         return {
             "math": {
                 "transport": "streamable_http",
                 "url": f"http://localhost:{os.getenv('MATH_HTTP_PORT', '8000')}/mcp",
             },
-            "stock_local": {
+            "search": {
+                "transport": "streamable_http",
+                "url": f"http://localhost:{os.getenv('SEARCH_HTTP_PORT', '8001')}/mcp",
+            },
+            "price": {
                 "transport": "streamable_http",
                 "url": f"http://localhost:{os.getenv('GETPRICE_HTTP_PORT', '8003')}/mcp",
             },
-            "search": {
-                "transport": "streamable_http",
-                "url": f"http://localhost:{os.getenv('SEARCH_HTTP_PORT', '8004')}/mcp",
-            },
             "trade": {
                 "transport": "streamable_http",
-                "url": f"http://localhost:{os.getenv('TRADE_HTTP_PORT', '8002')}/mcp",
+                "url": f"http://localhost:{os.getenv('CRYPTO_HTTP_PORT', '8005')}/mcp",
             },
         }
 
     async def initialize(self) -> None:
         """Initialize MCP client and AI model"""
-        print(f"🚀 Initializing agent: {self.signature}")
+        print(f"🚀 Initializing crypto agent: {self.signature}")
 
         # Validate OpenAI configuration
         if not self.openai_api_key:
@@ -327,6 +225,7 @@ class BaseAgent:
 
         try:
             # Create MCP client
+            # print(f"🔧 MCP configuration: {self.mcp_config}")
             self.client = MultiServerMCPClient(self.mcp_config)
 
             # Get tools
@@ -368,7 +267,7 @@ class BaseAgent:
         # Note: agent will be created in run_trading_session() based on specific date
         # because system_prompt needs the current date and price information
 
-        print(f"✅ Agent {self.signature} initialization completed")
+        print(f"✅ Crypto Agent {self.signature} initialization completed")
 
     def _setup_logging(self, today_date: str) -> str:
         """Set up log file path"""
@@ -386,94 +285,6 @@ class BaseAgent:
         }
         with open(log_file, "a", encoding="utf-8") as f:
             f.write(json.dumps(log_entry, ensure_ascii=False) + "\n")
-
-    def _handle_tool_messages(self, tool_messages: List[Any]) -> str:
-        """
-        将工具返回交给 PositionLedger 处理，并转换为字符串结果。
-        """
-        if not tool_messages:
-            return ""
-
-        outputs: List[str] = []
-        ledger = PositionLedger(self.signature)
-
-        for msg in tool_messages:
-            content = getattr(msg, "content", None)
-            print(f"[ledger debug] tool message content: {content}")
-
-            payload = self._extract_trade_payload(content)
-            if payload:
-                try:
-                    ledger.process(payload)
-                except Exception as err:
-                    outputs.append(f"[ledger error] {err}")
-
-            outputs.append(self._stringify_tool_content(content))
-
-        return "\n".join([text for text in outputs if text])
-
-    def _extract_trade_payload(self, content: Any) -> Optional[Dict[str, Any]]:
-        """
-        尝试从工具内容中提取包含 order 字段的结构化数据。
-        """
-        if not content:
-            return None
-
-        if isinstance(content, dict):
-            if "order" in content:
-                return content
-            json_payload = content.get("json")
-            if isinstance(json_payload, dict) and "order" in json_payload:
-                return json_payload
-            data_payload = content.get("data")
-            if isinstance(data_payload, dict) and "order" in data_payload:
-                return data_payload
-            return None
-
-        if isinstance(content, str):
-            try:
-                parsed = json.loads(content)
-            except json.JSONDecodeError:
-                return None
-            return parsed if isinstance(parsed, dict) and "order" in parsed else None
-
-        if isinstance(content, list):
-            for item in content:
-                payload = self._extract_trade_payload(item)
-                if payload:
-                    return payload
-            return None
-
-        return None
-
-    def _stringify_tool_content(self, content: Any) -> str:
-        """
-        将工具内容转换为字符串，兼容多种结构。
-        """
-        if content is None:
-            return ""
-
-        if isinstance(content, str):
-            return content
-
-        if isinstance(content, dict):
-            try:
-                return json.dumps(content, ensure_ascii=False)
-            except TypeError:
-                return str(content)
-
-        if isinstance(content, list):
-            parts: List[str] = []
-            for item in content:
-                if isinstance(item, dict):
-                    text = item.get("text")
-                    if text:
-                        parts.append(text)
-                elif item is not None:
-                    parts.append(str(item))
-            return "\n".join(parts)
-
-        return str(content)
 
     async def _ainvoke_with_retry(self, message: List[Dict[str, str]]) -> Any:
         """Agent invocation with retry"""
@@ -494,7 +305,7 @@ class BaseAgent:
         Args:
             today_date: Trading date
         """
-        print(f"📈 Starting trading session: {today_date}")
+        print(f"📈 Starting crypto trading session: {today_date}")
 
         # Set up logging
         log_file = self._setup_logging(today_date)
@@ -503,7 +314,7 @@ class BaseAgent:
         self.agent = create_agent(
             self.model,
             tools=self.tools,
-            system_prompt=get_agent_system_prompt(today_date, self.signature, self.market, self.stock_symbols),
+            system_prompt=get_agent_system_prompt_crypto(today_date, self.signature, self.market, self.crypto_symbols),
         )
 
         # Initial user query
@@ -523,19 +334,19 @@ class BaseAgent:
                 # Call agent
                 response = await self._ainvoke_with_retry(message)
 
-                # Extract tool messages
-                tool_msgs = extract_tool_messages(response)
-                tool_response = self._handle_tool_messages(tool_msgs)
-
                 # Extract agent response
                 agent_response = extract_conversation(response, "final")
 
-                # Check stop signal (after processing tool payloads)
+                # Check stop signal
                 if STOP_SIGNAL in agent_response:
                     print("✅ Received stop signal, trading session ended")
                     print(agent_response)
                     self._log_message(log_file, [{"role": "assistant", "content": agent_response}])
                     break
+
+                # Extract tool messages
+                tool_msgs = extract_tool_messages(response)
+                tool_response = "\n".join([msg.content for msg in tool_msgs])
 
                 # Prepare new messages
                 new_messages = [
@@ -563,15 +374,13 @@ class BaseAgent:
         if_trade = get_config_value("IF_TRADE")
         if if_trade:
             write_config_value("IF_TRADE", False)
-            print("✅ Trading completed")
+            print("✅ Crypto trading completed")
         else:
             print("📊 No trading, maintaining positions")
             try:
-                staged = add_no_trade_record(today_date, self.signature)
-                if staged:
-                    PositionLedger(self.signature).process(staged)
-            except Exception as e:
-                print(f"❌ Failed to record no-trade: {e}")
+                add_no_trade_record(today_date, self.signature)
+            except NameError as e:
+                print(f"❌ NameError: {e}")
                 raise
             write_config_value("IF_TRADE", False)
 
@@ -589,17 +398,17 @@ class BaseAgent:
             print(f"📁 Created position directory: {position_dir}")
 
         # Create initial positions
-        init_position = {symbol: 0 for symbol in self.stock_symbols}
+        init_position = {symbol: 0.0 for symbol in self.crypto_symbols}
         init_position["CASH"] = self.initial_cash
 
         with open(self.position_file, "w") as f:  # Use "w" mode to ensure creating new file
             f.write(json.dumps({"date": self.init_date, "id": 0, "positions": init_position}) + "\n")
 
-        print(f"✅ Agent {self.signature} registration completed")
+        print(f"✅ Crypto Agent {self.signature} registration completed")
         print(f"📁 Position file: {self.position_file}")
-        currency_symbol = "¥" if self.market == "cn" else "$"
+        currency_symbol = "USDT"
         print(f"💰 Initial cash: {currency_symbol}{self.initial_cash:,.2f}")
-        print(f"📊 Number of stocks: {len(self.stock_symbols)}")
+        print(f"📊 Number of cryptocurrencies: {len(self.crypto_symbols)}")
 
     def get_trading_dates(self, init_date: str, end_date: str) -> List[str]:
         """
@@ -610,7 +419,7 @@ class BaseAgent:
             end_date: End date
 
         Returns:
-            List of trading dates (excluding weekends and holidays)
+            List of trading dates (crypto trades every day)
         """
         from tools.price_tools import is_trading_day
 
@@ -680,7 +489,7 @@ class BaseAgent:
             init_date: Start date
             end_date: End date
         """
-        print(f"📅 Running date range: {init_date} to {end_date}")
+        print(f"📅 Running crypto date range: {init_date} to {end_date}")
 
         # Get trading date list
         trading_dates = self.get_trading_dates(init_date, end_date)
@@ -706,7 +515,7 @@ class BaseAgent:
                 print(e)
                 raise
 
-        print(f"✅ {self.signature} processing completed")
+        print(f"✅ {self.signature} crypto processing completed")
 
     def get_position_summary(self) -> Dict[str, Any]:
         """Get position summary"""
@@ -731,7 +540,7 @@ class BaseAgent:
 
     def __str__(self) -> str:
         return (
-            f"BaseAgent(signature='{self.signature}', basemodel='{self.basemodel}', stocks={len(self.stock_symbols)})"
+            f"BaseAgentCrypto(signature='{self.signature}', basemodel='{self.basemodel}', cryptos={len(self.crypto_symbols)})"
         )
 
     def __repr__(self) -> str:

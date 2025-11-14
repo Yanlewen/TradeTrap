@@ -52,6 +52,7 @@ def get_config_value(key: str, default=None):
 
     if key in _RUNTIME_ENV:
         return _RUNTIME_ENV[key]
+
     return os.getenv(key, default)
 
 

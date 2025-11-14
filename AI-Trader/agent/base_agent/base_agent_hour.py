@@ -20,7 +20,9 @@ import sys
 project_root = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 sys.path.insert(0, project_root)
 
-from tools.general_tools import extract_conversation, extract_tool_messages, get_config_value, write_config_value
+from tools.general_tools import (extract_conversation, extract_tool_messages,
+                                 get_config_value, write_config_value,
+                                 _resolve_runtime_env_path)
 from tools.price_tools import add_no_trade_record
 from prompts.agent_prompt import get_agent_system_prompt, STOP_SIGNAL
 
@@ -77,19 +79,19 @@ class BaseAgent_Hour(BaseAgent):
                 # Call agent
                 response = await self._ainvoke_with_retry(message)
                 
+                # Extract tool messages with None check
+                tool_msgs = extract_tool_messages(response)
+                tool_response = self._handle_tool_messages(tool_msgs)
+                
                 # Extract agent response
                 agent_response = extract_conversation(response, "final")
                 
-                # Check stop signal
+                # Check stop signal (after工具处理)
                 if STOP_SIGNAL in agent_response:
                     print("✅ Received stop signal, trading session ended")
                     print(agent_response)
                     self._log_message(log_file, [{"role": "assistant", "content": agent_response}])
                     break
-                
-                # Extract tool messages with None check
-                tool_msgs = extract_tool_messages(response)
-                tool_response = '\n'.join([msg.content for msg in tool_msgs if msg.content is not None])
                 
                 # Prepare new messages
                 new_messages = [
