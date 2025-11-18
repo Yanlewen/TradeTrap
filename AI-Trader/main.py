@@ -1,5 +1,6 @@
 import asyncio
 import json
+import logging
 import os
 from datetime import datetime, timedelta
 from pathlib import Path
@@ -7,6 +8,19 @@ from pathlib import Path as _Path
 from dotenv import load_dotenv
 
 load_dotenv()
+
+# Configure logging
+# Set INFO level for main modules, but reduce noise from third-party libraries
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
+)
+
+# Reduce noise from third-party libraries
+logging.getLogger("httpx").setLevel(logging.WARNING)
+logging.getLogger("httpcore").setLevel(logging.WARNING)
+logging.getLogger("openai").setLevel(logging.WARNING)
+logging.getLogger("numexpr").setLevel(logging.WARNING)
 
 from prompts.agent_prompt import all_nasdaq_100_symbols
 # Import tools and prompts
@@ -34,6 +48,18 @@ AGENT_REGISTRY = {
         "module": "agent.plugins.prompt_injection_agent_hour",
         "class": "PromptInjectionAgentHour"
     },
+    "PositionAttackAgent_Hour": {
+        "module": "agent.plugins.position_attack_agent",
+        "class": "PositionAttackAgentHour"
+    },
+    "BaseAgentCrypto": {
+        "module": "agent.base_agent_crypto.base_agent_crypto",
+        "class": "BaseAgentCrypto"
+    },
+    "AutoTradingStandalone": {
+        "module": "auto_trading_standalone.auto_trading_agent.agent",
+        "class": "AutoTradingAgent"
+    }
 }
 
 
@@ -128,7 +154,15 @@ async def main(config_path=None):
     # Auto-detect market from agent_type (BaseAgentAStock always uses CN market)
     if agent_type == "BaseAgentAStock":
         market = "cn"
-    print(f"🌍 Market type: {'A-shares (China)' if market == 'cn' else 'US stocks'}")
+    elif agent_type == "BaseAgentCrypto":
+        market = "crypto"
+
+    if market == "crypto":
+        print(f"🌍 Market type: Cryptocurrency (24/7 trading)")
+    elif market == "cn":
+        print(f"🌍 Market type: A-shares (China)")
+    else:
+        print(f"🌍 Market type: US stocks")
 
     # Get date range from configuration file
     INIT_DATE = config["date_range"]["init_date"]
@@ -229,9 +263,11 @@ async def main(config_path=None):
         
         print(f"✅ Runtime config initialized: SIGNATURE={signature}, MARKET={market}")
 
-        # Select stock symbols based on agent type and market
-        # BaseAgentAStock has its own default symbols, only set for BaseAgent
-        if agent_type == "BaseAgentAStock":
+        # Select symbols based on agent type and market
+        # Crypto agents don't use stock_symbols parameter
+        if agent_type == "BaseAgentCrypto":
+            stock_symbols = None  # Crypto agent uses its own crypto_symbols
+        elif agent_type == "BaseAgentAStock":
             stock_symbols = None  # Let BaseAgentAStock use its default SSE 50
         elif market == "cn":
             from prompts.agent_prompt import all_sse_50_symbols
@@ -242,36 +278,136 @@ async def main(config_path=None):
 
         try:
             # Dynamically create Agent instance
-            agent = AgentClass(
-                signature=signature,
-                basemodel=basemodel,
-                stock_symbols=stock_symbols,
-                log_path=log_path,
-                max_steps=max_steps,
-                max_retries=max_retries,
-                base_delay=base_delay,
-                initial_cash=initial_cash,
-                init_date=INIT_DATE,
-                openai_base_url=openai_base_url,
-                openai_api_key=openai_api_key
-            )
+            # AutoTradingStandalone has different parameter requirements
+            if agent_type == "AutoTradingStandalone":
+                from auto_trading_standalone.auto_trading_agent.agent import AutoTradingAgent
+                
+                # Get agent_config from config file
+                agent_config_data = agent_config.copy()
+                
+                # Determine market_type (default to crypto for backward compatibility)
+                market_type = agent_config_data.get("market_type", "crypto")
+                
+                # Prepare config dict for factory method
+                config_dict = {
+                    "initial_capital": agent_config_data.get("initial_capital", initial_cash),
+                    "check_interval": agent_config_data.get("check_interval", 60),
+                    "risk_per_trade": agent_config_data.get("risk_per_trade", 0.05),
+                    "max_positions": agent_config_data.get("max_positions", 5),
+                    "use_ai_signals": agent_config_data.get("use_ai_signals", True),
+                    "agent_model": basemodel or agent_config_data.get("agent_model", "gpt-4o-mini"),
+                    "exchange": agent_config_data.get("exchange", "paper"),
+                    "exchange_network": agent_config_data.get("exchange_network", "paper"),
+                    "allow_live_trading": agent_config_data.get("allow_live_trading", False),
+                    "market_type": market_type,
+                    # Data requirements
+                    "min_bars_daily": agent_config_data.get("min_bars_daily", 15),
+                    "min_bars_hourly": agent_config_data.get("min_bars_hourly", 50),
+                    "data_interval": agent_config_data.get("data_interval", None),
+                    "data_period_daily": agent_config_data.get("data_period_daily", "30d"),
+                    "data_period_hourly": agent_config_data.get("data_period_hourly", "5d"),
+                }
+                
+                # Add market-specific symbols
+                if market_type == "crypto":
+                    crypto_symbols = agent_config_data.get("crypto_symbols", ["BTC-USD", "ETH-USD"])
+                    if isinstance(crypto_symbols, str):
+                        crypto_symbols = [s.strip() for s in crypto_symbols.split(",")]
+                    config_dict["crypto_symbols"] = crypto_symbols
+                elif market_type == "stock":
+                    # stock_symbols can be None to use default (NASDAQ 100 or SSE 50)
+                    stock_symbols = agent_config_data.get("stock_symbols", None)
+                    if stock_symbols is not None:
+                        if isinstance(stock_symbols, str):
+                            stock_symbols = [s.strip() for s in stock_symbols.split(",")]
+                        config_dict["stock_symbols"] = stock_symbols
+                    # If None, will use default symbols based on market
+                    config_dict["market"] = agent_config_data.get("market", "us")
+                
+                # Use factory method to create agent
+                agent = AutoTradingAgent.create(
+                    config_dict=config_dict,
+                    signature=signature,
+                    log_path=log_path
+                )
+            elif agent_type == "BaseAgentCrypto":
+                agent = AgentClass(
+                    signature=signature,
+                    basemodel=basemodel,
+                    log_path=log_path,
+                    max_steps=max_steps,
+                    max_retries=max_retries,
+                    base_delay=base_delay,
+                    initial_cash=initial_cash,
+                    init_date=INIT_DATE,
+                    openai_base_url=openai_base_url,
+                    openai_api_key=openai_api_key
+                )
+            else:
+                agent = AgentClass(
+                    signature=signature,
+                    basemodel=basemodel,
+                    stock_symbols=stock_symbols,
+                    log_path=log_path,
+                    max_steps=max_steps,
+                    max_retries=max_retries,
+                    base_delay=base_delay,
+                    initial_cash=initial_cash,
+                    init_date=INIT_DATE,
+                    openai_base_url=openai_base_url,
+                    openai_api_key=openai_api_key
+                )
 
             print(f"✅ {agent_type} instance created successfully: {agent}")
 
-            # Initialize MCP connection and AI model
-            await agent.initialize()
-            print("✅ Initialization successful")
-            # Run all trading days in date range
-            await agent.run_date_range(INIT_DATE, END_DATE)
+            # AutoTradingStandalone doesn't need initialize(), it uses run_date_range directly
+            if agent_type == "AutoTradingStandalone":
+                # Run all trading days in date range
+                await agent.run_date_range(INIT_DATE, END_DATE)
+            else:
+                # Initialize MCP connection and AI model
+                await agent.initialize()
+                print("✅ Initialization successful")
+                # Run all trading days in date range
+                await agent.run_date_range(INIT_DATE, END_DATE)
 
             # Display final position summary
-            summary = agent.get_position_summary()
-            # Get currency symbol from agent's actual market (more accurate)
-            currency_symbol = "¥" if agent.market == "cn" else "$"
-            print(f"📊 Final position summary:")
-            print(f"   - Latest date: {summary.get('latest_date')}")
-            print(f"   - Total records: {summary.get('total_records')}")
-            print(f"   - Cash balance: {currency_symbol}{summary.get('positions', {}).get('CASH', 0):,.2f}")
+            if agent_type == "AutoTradingStandalone":
+                # AutoTradingStandalone doesn't have get_position_summary method
+                # Summary is already displayed in run_date_range
+                # Get currency symbol from agent's market_type and market config
+                if agent.market_type == "crypto":
+                    currency_symbol = "USDT"
+                elif agent.market_type == "stock":
+                    # For stock agent, check stock_config.market
+                    if hasattr(agent, 'stock_config') and agent.stock_config.market == "cn":
+                        currency_symbol = "¥"
+                    else:
+                        currency_symbol = "$"
+                else:
+                    currency_symbol = "$"
+                # Summary already displayed in run_date_range, skip here
+            else:
+                summary = agent.get_position_summary()
+                # Get currency symbol from agent's actual market (more accurate)
+                if agent.market == "crypto":
+                    currency_symbol = "USDT"
+                elif agent.market == "cn":
+                    currency_symbol = "¥"
+                else:
+                    currency_symbol = "$"
+                print(f"📊 Final position summary:")
+                print(f"   - Latest date: {summary.get('latest_date')}")
+                print(f"   - Total records: {summary.get('total_records')}")
+                print(f"   - Cash balance: {currency_symbol}{summary.get('positions', {}).get('CASH', 0):,.2f}")
+
+                # Show crypto positions if this is a crypto agent
+                if agent.market == "crypto" and hasattr(agent, 'crypto_symbols'):
+                    crypto_positions = {k: v for k, v in summary.get('positions', {}).items() if k.endswith('-USDT') and v > 0}
+                    if crypto_positions:
+                        print(f"   - Crypto positions:")
+                        for symbol, amount in crypto_positions.items():
+                            print(f"     • {symbol}: {amount}")
 
         except Exception as e:
             print(f"❌ Error processing model {model_name} ({signature}): {str(e)}")

@@ -4,3 +4,8 @@ langchain-mcp-adapters>=0.1.0
 fastmcp==2.12.5
 
 tushare
+
+# Auto Trading Standalone dependencies
+pydantic>=2.0.0
+pandas>=2.0.0
+pytz>=2023.3

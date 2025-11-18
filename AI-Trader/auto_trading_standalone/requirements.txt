@@ -1,0 +1,10 @@
+# Core dependencies
+pydantic>=2.0.0
+
+# Data processing
+pandas>=2.0.0
+
+# Utilities
+pytz>=2023.3
+
+

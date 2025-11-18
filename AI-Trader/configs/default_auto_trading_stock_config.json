@@ -1,0 +1,35 @@
+{
+  "agent_type": "AutoTradingStandalone",
+  "market": "us",
+  "date_range": {
+    "init_date": "2025-01-01",
+    "end_date": "2025-01-31"
+  },
+  "models": [
+    {
+      "name": "gpt-4o-mini",
+      "basemodel": "openai/gpt-4o-mini",
+      "signature": "auto-trading-stock-gpt-4o-mini",
+      "enabled": true
+    }
+  ],
+  "agent_config": {
+    "initial_capital": 100000.0,
+    "stock_symbols": null,
+    "market": "us",
+    "market_type": "stock",
+    "check_interval": 60,
+    "risk_per_trade": 0.05,
+    "max_positions": 5,
+    "use_ai_signals": true,
+    "agent_model": "gpt-4o-mini",
+    "exchange": "paper",
+    "exchange_network": "paper",
+    "allow_live_trading": false
+  },
+  "log_config": {
+    "log_path": "./data/agent_data"
+  }
+}
+
+

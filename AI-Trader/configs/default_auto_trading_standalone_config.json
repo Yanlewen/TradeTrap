@@ -1,0 +1,42 @@
+{
+  "agent_type": "AutoTradingStandalone",
+  "market": "crypto",
+  "date_range": {
+    "init_date": "2025-01-01",
+    "end_date": "2025-01-31"
+  },
+  "models": [
+    {
+      "name": "gpt-4o-mini",
+      "basemodel": "openai/gpt-4o-mini",
+      "signature": "auto-trading-standalone-gpt-4o-mini",
+      "enabled": true,
+      "openai_base_url": "Optional: YOUR_OPENAI_BASE_URL,you can write them in .env file",
+      "openai_api_key": "Optional: YOUR_OPENAI_API_KEY,you can write them in .env file"
+    }
+  ],
+  "agent_config": {
+    "initial_capital": 100000.0,
+    "crypto_symbols": ["BTC-USD", "ETH-USD"],
+    "market_type": "crypto",
+    "check_interval": 60,
+    "risk_per_trade": 0.05,
+    "max_positions": 5,
+    "use_ai_signals": true,
+    "agent_model": "gpt-4o-mini",
+    "exchange": "paper",
+    "exchange_network": "paper",
+    "allow_live_trading": false,
+    "okx_api_key": null,
+    "okx_api_secret": null,
+    "okx_api_passphrase": null,
+    "okx_margin_mode": "cash",
+    "okx_use_server_time": false
+  },
+  "log_config": {
+    "log_path": "./data/agent_data"
+  }
+}
+
+
+
