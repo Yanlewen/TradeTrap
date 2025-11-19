@@ -157,7 +157,7 @@ Infrastructure
 - [x] Integrated trading-agent platform combining core capabilities from mainstream stacks
 - [x] Simple attack interfaces for rapid experimentation
 - [x] Lightweight plugin system for extending payloads
-- [ ] Adaptable to more trading platforms (e.g., NoFX, ValueCell)
+- [x] Adaptable to more trading platforms (e.g., NoFX, ValueCell)
 
 Attack capabilities (delivered and planned)
 - [x] Direct prompt injection — force catastrophic strategy pivots
