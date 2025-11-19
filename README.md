@@ -36,7 +36,7 @@
 
 ## Overall Potential Vulnerability in Financial Trading Agents
 <div align="center">
-  <img src="assets/frame.jpeg" alt="Attack_overall_framework" width="820" />
+  <img src="assets/frame.jpg" alt="Attack_overall_framework" width="820" />
 </div>
 
 
@@ -148,7 +148,9 @@ For example:
 
 ## Latest Update
 
-- **State Tampering Attack**: Manipulates trading agents by tampering with their position state perception. See [`plugins/README.md`](plugins/README.md) ([中文版](plugins/README_zh.md)) for details.
+- [Update on 19/11/2025] **AI-Trader Long-term Memory** — Added historical trading memory to AI-Trader prompts. Agents now review past positions, prices, and wins/losses before making decisions, improving consistency and testing for memory-related vulnerabilities. See [`AI-Trader/README.md`](AI-Trader/README.md) for visuals and configuration details.
+- [Update on 18/11/2025] **Valuecell Agent Option** — Introduced the Valuecell standalone auto-trading agent alongside AI-Trader. Users can now choose either pipeline directly from the project root (`README` explains how to run both flows).
+- [Update on 14/11/2025] **State Tampering Attack** — Manipulates trading agents by tampering with their position state perception. Full documentation: [`plugins/README.md`](plugins/README.md) · [中文版](plugins/README_zh.md).
 
 ---
 

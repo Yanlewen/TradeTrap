@@ -34,7 +34,7 @@
 
 ## 金融交易场景的潜在脆弱点
 <div align="center">
-  <img src="assets/frame.jpeg" alt="攻击面分层示意图" width="820" />
+  <img src="assets/frame.jpg" alt="攻击面分层示意图" width="820" />
 </div>
 
 - **市场情报**  
@@ -155,7 +155,9 @@
 
 ## 最新更新
 
-- **状态篡改插件**：通过篡改智能体对持仓状态的认知来操纵交易智能体。详见 [`plugins/README_zh.md`](plugins/README_zh.md) ([English](plugins/README.md))。
+- 【2025/11/19 更新】**AI-Trader 长期记忆** —— AI-Trader 的系统提示词现已内置历史交易记忆，智能体会在每次决策前回顾过往持仓、成交价与成败，总结经验以提升策略鲁棒性，也便于复现记忆相关的安全测试。详见[`AI-Trader/README.md`](AI-Trader/README.md)
+- 【2025/11/18 更新】**Valuecell 智能体选项** —— 在现有 AI-Trader 流程之外新增 Valuecell 独立自动交易智能体，可直接在仓库根目录选择任一管线运行，详见 README 中的“选择目标：AI-Trader 或 Valuecell”。
+- 【2025/11/14 更新】**状态篡改插件** —— 通过篡改智能体对持仓状态的认知来操纵交易行为。详见 [`plugins/README_zh.md`](plugins/README_zh.md)（[English](plugins/README.md)）。
 
 ---
 
