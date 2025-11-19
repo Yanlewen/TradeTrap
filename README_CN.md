@@ -223,67 +223,78 @@
 
 ## 🔧 操作步骤示例
 
-### 启动 AI-Trader 核心服务
+### 1. 环境设置
 ```bash
-# 1. 克隆仓库并安装依赖
-git clone https://TradeTrap/your-org/Safe-TradingAgent.git
-cd Safe-TradingAgent/AI-Trader
+# 克隆仓库
+git clone https://github.com/TradeTrap/Safe-TradingAgent.git
+cd Safe-TradingAgent
+
+# 安装依赖（统一的 requirements.txt 在根目录）
 pip install -r requirements.txt
 
-# 2. 启动官方 MCP 服务，记录干净签名
-cd agent_tools
-python start_mcp_services.py &
-cd ..
-python main.py --signature clean-run
+# 配置环境变量
+cp .env.example .env
+# 编辑 .env 并填入您的 API 密钥（OPENAI_API_KEY、TUSHARE_TOKEN 等）
 ```
 
-### 复现 MCP 劫持场景
+### 2. 选择目标：AI-Trader 或 Valuecell
+
+TradeTrap 支持测试两种不同的交易智能体实现。根据您的测试需求选择其一：
+
+#### 选项 A：运行 AI-Trader
+AI-Trader 是集成了 MCP（Model Context Protocol）的原始交易智能体。
+
 ```bash
-# 切换到假服务并重放被污染的签名
-cd agent_tools/fake_tool
-python start_fake_mcp_services.py
+# 1. 启动官方 MCP 服务（AI-Trader 必需）
+cd AI-Trader/agent_tools
+python start_mcp_services.py &
 cd ../..
-python main.py --signature corrupted-run
 
-# 打开浏览器面板复盘曲线
-cd agent_viewer
-python3 -m http.server 8000
-# 浏览器访问 http://localhost:8000 对比两条签名
+# 2. 使用配置文件运行 AI-Trader
+python main.py configs/default_config.json
+# 或使用其他 AI-Trader 配置：
+# python main.py configs/default_astock_config.json  # A股市场
+# python main.py configs/default_crypto_config.json # 加密货币市场
 ```
 
-### 复现提示词注入场景
-- 启用提示词注入 agent：
-  - 在 `configs/my_config.json` 中将 `agent_type` 设置为 `PromptInjectionAgent`（或小时级的 `PromptInjectionAgent_Hour`）。
-  - 在 `prompts/prompt_injections.json` 的 `injections` 数组内添加 / 启用所需规则。
-- 执行实验：
-  ```bash
-  python main.py --config configs/my_config.json --signature gemini-2.5-flash-with-injection
-  ```
-- 参考的注册表片段：
-  ```bash
-  AGENT_REGISTRY = {
-      "BaseAgent": {
-          "module": "agent.base_agent.base_agent",
-          "class": "BaseAgent"
-      },
-      "BaseAgent_Hour": {
-          "module": "agent.base_agent.base_agent_hour",
-          "class": "BaseAgent_Hour"
-      },
-      "BaseAgentAStock": {
-          "module": "agent.base_agent_astock.base_agent_astock",
-          "class": "BaseAgentAStock"
-      },
-      "PromptInjectionAgent": {
-          "module": "agent.plugins.prompt_injection_agent",
-          "class": "PromptInjectionAgent"
-      },
-      "PromptInjectionAgent_Hour": {
-          "module": "agent.plugins.prompt_injection_agent_hour",
-          "class": "PromptInjectionAgentHour"
-      }
-  }
-  ```
+**可用的 AI-Trader agent 类型：**
+- `BaseAgent` - 标准交易智能体
+- `BaseAgent_Hour` - 小时级交易智能体
+- `BaseAgentAStock` - A股市场智能体
+- `BaseAgentCrypto` - 加密货币智能体
+- `PromptInjectionAgent` - 用于提示词注入测试
+- `PositionAttackAgent_Hour` - 用于持仓攻击测试
+
+#### 选项 B：运行 Valuecell
+Valuecell 是一个独立的自动交易智能体，内置技术分析和投资组合管理功能。
+
+```bash
+# Valuecell 不需要 MCP 服务，直接运行：
+python main.py configs/valuecell_config.json
+# 或使用其他 valuecell 配置：
+# python main.py configs/default_auto_trading_standalone_config.json  # 加密货币
+# python main.py configs/default_auto_trading_stock_config.json        # 股票
+```
+
+**Valuecell agent 类型：**
+- `Valuecell` - 支持股票和加密货币市场的统一智能体
+
+### 3. 运行攻击场景
+
+TradeTrap 支持多种攻击场景来测试智能体的可靠性：
+
+- **MCP 劫持**：测试智能体如何响应被操纵的外部数据
+  - 参见：[`AI-Trader/agent_tools/fake_tool/README.md`](AI-Trader/agent_tools/fake_tool/README.md)
+
+- **状态篡改攻击**：测试智能体如何处理被篡改的持仓状态信息
+  - 通过 `LD_PRELOAD` 使用文件钩子在运行时拦截并修改智能体读取的持仓数据
+  - 使智能体基于错误的状态认知做出交易决策，而实际账本保持不变
+  - 参见：[`plugins/README.md`](plugins/README.md) 了解详细使用说明
+
+- **插件攻击模块**：`AI-Trader/agent/plugins/` 目录包含多个攻击插件，可用于测试智能体漏洞：
+  - **提示词注入**：测试智能体如何处理注入到决策过程中的对抗性提示
+  - **持仓攻击**：测试智能体如何处理修改交易历史的被篡改持仓记录
+  - 参见：[`AI-Trader/agent/plugins/README.md`](AI-Trader/agent/plugins/README.md) 了解详细使用说明
 
 
 

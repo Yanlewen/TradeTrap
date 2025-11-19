@@ -148,7 +148,7 @@ For example:
 
 ## Latest Update
 
-- **State Tampering Plugin**: Manipulates trading agents by tampering with their position state perception. See [`plugins/README.md`](plugins/README.md) ([中文版](plugins/README_zh.md)) for details.
+- **State Tampering Attack**: Manipulates trading agents by tampering with their position state perception. See [`plugins/README.md`](plugins/README.md) ([中文版](plugins/README_zh.md)) for details.
 
 ---
 
@@ -214,73 +214,85 @@ Attack capabilities (delivered and planned)
 
 ## 🔧 Operational Steps Example
 
-### Start the AI-Trader Core Stack
+### 1. Setup Environment
 ```bash
-# 1. Clone the repository and install dependencies
+# Clone the repository
 git clone https://github.com/TradeTrap/Safe-TradingAgent.git
-cd Safe-TradingAgent/AI-Trader
+cd Safe-TradingAgent
+
+# Install dependencies (unified requirements.txt in root directory)
 pip install -r requirements.txt
 
-# 2. Launch the official MCP services and capture a clean signature
-cd agent_tools
-python start_mcp_services.py &
-cd ..
-python main.py --signature clean-run
+# Configure environment variables
+cp .env.example .env
+# Edit .env and fill in your API keys (OPENAI_API_KEY, TUSHARE_TOKEN, etc.)
 ```
 
-### Run the MCP Hijacking Scenario
+### 2. Choose Your Target: AI-Trader or Valuecell
+
+TradeTrap supports testing two different trading agent implementations. Choose one based on your testing needs:
+
+#### Option A: Run AI-Trader
+AI-Trader is the original trading agent with MCP (Model Context Protocol) integration.
+
 ```bash
-#  Switch to the fake services and replay the compromised signature
-cd agent_tools/fake_tool
-python start_fake_mcp_services.py
+# 1. Launch the official MCP services (required for AI-Trader)
+cd AI-Trader/agent_tools
+python start_mcp_services.py &
 cd ../..
-python main.py --signature corrupted-run
 
-# Review the recordings in the browser dashboard
-cd agent_viewer
-python3 -m http.server 8000
-# Open http://localhost:8000 and compare the signatures
+# 2. Run AI-Trader with a configuration file
+python main.py configs/default_config.json
+# Or use other AI-Trader configs:
+# python main.py configs/default_astock_config.json  # A-shares market
+# python main.py configs/default_crypto_config.json # Cryptocurrency market
 ```
 
-### Run the Prompt-injection Scenario
-- Enable the prompt-injection agent:
-  - Set `agent_type` to `PromptInjectionAgent` (or `PromptInjectionAgent_Hour`) in `configs/my_config.json`.
-  - Add or enable the desired rules inside `prompts/prompt_injections.json`.
-- Execute the experiment:
-  ```bash
-  python main.py --config configs/my_config.json --signature gemini-2.5-flash-with-injection
-  ```
-- Example registry excerpt for reference:
-  ```bash
-  AGENT_REGISTRY = {
-      "BaseAgent": {
-          "module": "agent.base_agent.base_agent",
-          "class": "BaseAgent"
-      },
-      "BaseAgent_Hour": {
-          "module": "agent.base_agent.base_agent_hour",
-          "class": "BaseAgent_Hour"
-      },
-      "BaseAgentAStock": {
-          "module": "agent.base_agent_astock.base_agent_astock",
-          "class": "BaseAgentAStock"
-      },
-      "PromptInjectionAgent": {
-          "module": "agent.plugins.prompt_injection_agent",
-          "class": "PromptInjectionAgent"
-      },
-      "PromptInjectionAgent_Hour": {
-          "module": "agent.plugins.prompt_injection_agent_hour",
-          "class": "PromptInjectionAgentHour"
-      }
-  }
-  ```
+**Available AI-Trader agent types:**
+- `BaseAgent` - Standard trading agent
+- `BaseAgent_Hour` - Hourly trading agent
+- `BaseAgentAStock` - A-shares market agent
+- `BaseAgentCrypto` - Cryptocurrency agent
+- `PromptInjectionAgent` - For prompt injection testing
+- `PositionAttackAgent_Hour` - For position attack testing
+
+#### Option B: Run Valuecell
+Valuecell is a standalone auto-trading agent with built-in technical analysis and portfolio management.
+
+```bash
+# Valuecell doesn't require MCP services, run directly:
+python main.py configs/valuecell_config.json
+# Or use other valuecell configs:
+# python main.py configs/default_auto_trading_standalone_config.json  # Crypto
+# python main.py configs/default_auto_trading_stock_config.json        # Stock
+```
+
+**Valuecell agent type:**
+- `Valuecell` - Unified agent supporting both stock and crypto markets
+
+### 3. Run Attack Scenarios
+
+TradeTrap supports various attack scenarios to test agent reliability:
+
+- **MCP Hijacking**: Test how agents respond to manipulated external data
+  - See: [`AI-Trader/agent_tools/fake_tool/README.md`](AI-Trader/agent_tools/fake_tool/README.md)
+
+- **State Tampering Attack**: Test how agents handle tampered position state information
+  - Uses file hooks via `LD_PRELOAD` to intercept and modify position data read by agents at runtime
+  - Causes agents to make trading decisions based on incorrect state perception while the actual ledger remains unchanged
+  - See: [`plugins/README.md`](plugins/README.md) for detailed usage instructions
+
+- **Plugins Attack Module**: The `AI-Trader/agent/plugins/` directory contains multiple attack plugins that can be used to test agent vulnerabilities:
+  - **Prompt Injection**: Test how agents handle adversarial prompts injected into the decision-making process
+  - **Position Attack**: Test how agents handle tampered position records that modify trading history
+  - See: [`AI-Trader/agent/plugins/README.md`](AI-Trader/agent/plugins/README.md) for detailed usage instructions
 
 
 ---
 ## 🙏 Acknowledgements
 
--  [AI-Trader](https://github.com/HKUDS/AI-Trader) - Autonomous Trading agent system
+- [AI-Trader](https://github.com/HKUDS/AI-Trader) - Autonomous trading agent system
+- [valuecell](https://github.com/ValueCell-ai/valuecell) - Autonomous trading agent system
 - [LangChain](https://github.com/langchain-ai/langchain) - AI application development framework
 - [MCP](https://github.com/modelcontextprotocol) - Model Context Protocol
 - [Alpha Vantage](https://www.alphavantage.co/) - Financial data API

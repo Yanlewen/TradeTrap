@@ -1,5 +1,5 @@
 {
-  "agent_type": "AutoTradingStandalone",
+  "agent_type": "Valuecell",
   "market": "us",
   "date_range": {
     "init_date": "2025-01-01",

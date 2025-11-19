@@ -63,7 +63,7 @@ AGENT_REGISTRY = {
         "module": "agent.base_agent_crypto.base_agent_crypto",
         "class": "BaseAgentCrypto"
     },
-    "AutoTradingStandalone": {
+    "Valuecell": {
         "module": "valuecell.auto_trading_agent.agent",
         "class": "AutoTradingAgent"
     }
@@ -137,6 +137,140 @@ def load_config(config_path=None):
     except Exception as e:
         print(f"❌ Failed to load configuration file: {e}")
         exit(1)
+
+
+async def create_valuecell_agent(
+    agent_config,
+    basemodel,
+    signature,
+    log_path,
+    initial_cash
+):
+    """
+    Create and return a Valuecell agent instance
+
+    Args:
+        agent_config: Agent configuration from config file
+        basemodel: AI model name
+        signature: Model signature
+        log_path: Log file path
+        initial_cash: Initial capital
+
+    Returns:
+        AutoTradingAgent: Created agent instance
+    """
+    from valuecell.auto_trading_agent.agent import AutoTradingAgent
+
+    agent_config_data = agent_config.copy()
+    market_type = agent_config_data.get("market_type", "crypto")
+
+    # Build configuration dictionary
+    config_dict = {
+        "initial_capital": agent_config_data.get("initial_capital", initial_cash),
+        "check_interval": agent_config_data.get("check_interval", 60),
+        "risk_per_trade": agent_config_data.get("risk_per_trade", 0.05),
+        "max_positions": agent_config_data.get("max_positions", 5),
+        "use_ai_signals": agent_config_data.get("use_ai_signals", True),
+        "agent_model": basemodel or agent_config_data.get("agent_model", "gpt-4o-mini"),
+        "exchange": agent_config_data.get("exchange", "paper"),
+        "exchange_network": agent_config_data.get("exchange_network", "paper"),
+        "allow_live_trading": agent_config_data.get("allow_live_trading", False),
+        "market_type": market_type,
+        # Data requirements
+        "min_bars_daily": agent_config_data.get("min_bars_daily", 15),
+        "min_bars_hourly": agent_config_data.get("min_bars_hourly", 50),
+        "data_interval": agent_config_data.get("data_interval", None),
+        "data_period_daily": agent_config_data.get("data_period_daily", "30d"),
+        "data_period_hourly": agent_config_data.get("data_period_hourly", "5d"),
+    }
+
+    # Add market-specific symbols
+    if market_type == "crypto":
+        crypto_symbols = agent_config_data.get("crypto_symbols", ["BTC-USD", "ETH-USD"])
+        if isinstance(crypto_symbols, str):
+            crypto_symbols = [s.strip() for s in crypto_symbols.split(",")]
+        config_dict["crypto_symbols"] = crypto_symbols
+    elif market_type == "stock":
+        # stock_symbols can be None to use default (NASDAQ 100 or SSE 50)
+        stock_symbols = agent_config_data.get("stock_symbols", None)
+        if stock_symbols is not None:
+            if isinstance(stock_symbols, str):
+                stock_symbols = [s.strip() for s in stock_symbols.split(",")]
+            config_dict["stock_symbols"] = stock_symbols
+        # If None, will use default symbols based on market
+        config_dict["market"] = agent_config_data.get("market", "us")
+
+    # Create and return agent
+    return AutoTradingAgent.create(
+        config_dict=config_dict,
+        signature=signature,
+        log_path=log_path
+    )
+
+
+async def create_ai_trader_agent(
+    AgentClass,
+    agent_type,
+    signature,
+    basemodel,
+    log_path,
+    max_steps,
+    max_retries,
+    base_delay,
+    initial_cash,
+    INIT_DATE,
+    stock_symbols,
+    openai_base_url,
+    openai_api_key
+):
+    """
+    Create and return an AI-Trader agent instance
+
+    Args:
+        AgentClass: Agent class to instantiate
+        agent_type: Agent type name
+        signature: Model signature
+        basemodel: AI model name
+        log_path: Log file path
+        max_steps: Maximum steps per trading session
+        max_retries: Maximum retries
+        base_delay: Base delay between operations
+        initial_cash: Initial capital
+        INIT_DATE: Initial date
+        stock_symbols: Stock symbols to trade
+        openai_base_url: OpenAI API base URL
+        openai_api_key: OpenAI API key
+
+    Returns:
+        Agent instance
+    """
+    if agent_type == "BaseAgentCrypto":
+        return AgentClass(
+            signature=signature,
+            basemodel=basemodel,
+            log_path=log_path,
+            max_steps=max_steps,
+            max_retries=max_retries,
+            base_delay=base_delay,
+            initial_cash=initial_cash,
+            init_date=INIT_DATE,
+            openai_base_url=openai_base_url,
+            openai_api_key=openai_api_key
+        )
+    else:
+        return AgentClass(
+            signature=signature,
+            basemodel=basemodel,
+            stock_symbols=stock_symbols,
+            log_path=log_path,
+            max_steps=max_steps,
+            max_retries=max_retries,
+            base_delay=base_delay,
+            initial_cash=initial_cash,
+            init_date=INIT_DATE,
+            openai_base_url=openai_base_url,
+            openai_api_key=openai_api_key
+        )
 
 
 async def main(config_path=None):
@@ -284,91 +418,36 @@ async def main(config_path=None):
             stock_symbols = all_nasdaq_100_symbols
 
         try:
-            # Dynamically create Agent instance
-            # AutoTradingStandalone has different parameter requirements
-            if agent_type == "AutoTradingStandalone":
-                from valuecell.auto_trading_agent.agent import AutoTradingAgent
-                
-                # Get agent_config from config file
-                agent_config_data = agent_config.copy()
-                
-                # Determine market_type (default to crypto for backward compatibility)
-                market_type = agent_config_data.get("market_type", "crypto")
-                
-                # Prepare config dict for factory method
-                config_dict = {
-                    "initial_capital": agent_config_data.get("initial_capital", initial_cash),
-                    "check_interval": agent_config_data.get("check_interval", 60),
-                    "risk_per_trade": agent_config_data.get("risk_per_trade", 0.05),
-                    "max_positions": agent_config_data.get("max_positions", 5),
-                    "use_ai_signals": agent_config_data.get("use_ai_signals", True),
-                    "agent_model": basemodel or agent_config_data.get("agent_model", "gpt-4o-mini"),
-                    "exchange": agent_config_data.get("exchange", "paper"),
-                    "exchange_network": agent_config_data.get("exchange_network", "paper"),
-                    "allow_live_trading": agent_config_data.get("allow_live_trading", False),
-                    "market_type": market_type,
-                    # Data requirements
-                    "min_bars_daily": agent_config_data.get("min_bars_daily", 15),
-                    "min_bars_hourly": agent_config_data.get("min_bars_hourly", 50),
-                    "data_interval": agent_config_data.get("data_interval", None),
-                    "data_period_daily": agent_config_data.get("data_period_daily", "30d"),
-                    "data_period_hourly": agent_config_data.get("data_period_hourly", "5d"),
-                }
-                
-                # Add market-specific symbols
-                if market_type == "crypto":
-                    crypto_symbols = agent_config_data.get("crypto_symbols", ["BTC-USD", "ETH-USD"])
-                    if isinstance(crypto_symbols, str):
-                        crypto_symbols = [s.strip() for s in crypto_symbols.split(",")]
-                    config_dict["crypto_symbols"] = crypto_symbols
-                elif market_type == "stock":
-                    # stock_symbols can be None to use default (NASDAQ 100 or SSE 50)
-                    stock_symbols = agent_config_data.get("stock_symbols", None)
-                    if stock_symbols is not None:
-                        if isinstance(stock_symbols, str):
-                            stock_symbols = [s.strip() for s in stock_symbols.split(",")]
-                        config_dict["stock_symbols"] = stock_symbols
-                    # If None, will use default symbols based on market
-                    config_dict["market"] = agent_config_data.get("market", "us")
-                
-                # Use factory method to create agent
-                agent = AutoTradingAgent.create(
-                    config_dict=config_dict,
-                    signature=signature,
-                    log_path=log_path
-                )
-            elif agent_type == "BaseAgentCrypto":
-                agent = AgentClass(
-                    signature=signature,
+            # Create Agent instance based on type
+            if agent_type == "Valuecell":
+                agent = await create_valuecell_agent(
+                    agent_config=agent_config,
                     basemodel=basemodel,
+                    signature=signature,
                     log_path=log_path,
-                    max_steps=max_steps,
-                    max_retries=max_retries,
-                    base_delay=base_delay,
-                    initial_cash=initial_cash,
-                    init_date=INIT_DATE,
-                    openai_base_url=openai_base_url,
-                    openai_api_key=openai_api_key
+                    initial_cash=initial_cash
                 )
             else:
-                agent = AgentClass(
+                agent = await create_ai_trader_agent(
+                    AgentClass=AgentClass,
+                    agent_type=agent_type,
                     signature=signature,
                     basemodel=basemodel,
-                    stock_symbols=stock_symbols,
                     log_path=log_path,
                     max_steps=max_steps,
                     max_retries=max_retries,
                     base_delay=base_delay,
                     initial_cash=initial_cash,
-                    init_date=INIT_DATE,
+                    INIT_DATE=INIT_DATE,
+                    stock_symbols=stock_symbols,
                     openai_base_url=openai_base_url,
                     openai_api_key=openai_api_key
                 )
 
             print(f"✅ {agent_type} instance created successfully: {agent}")
 
-            # AutoTradingStandalone doesn't need initialize(), it uses run_date_range directly
-            if agent_type == "AutoTradingStandalone":
+            # Valuecell doesn't need initialize(), it uses run_date_range directly
+            if agent_type == "Valuecell":
                 # Run all trading days in date range
                 await agent.run_date_range(INIT_DATE, END_DATE)
             else:
@@ -379,8 +458,8 @@ async def main(config_path=None):
                 await agent.run_date_range(INIT_DATE, END_DATE)
 
             # Display final position summary
-            if agent_type == "AutoTradingStandalone":
-                # AutoTradingStandalone doesn't have get_position_summary method
+            if agent_type == "Valuecell":
+                # Valuecell doesn't have get_position_summary method
                 # Summary is already displayed in run_date_range
                 # Get currency symbol from agent's market_type and market config
                 if agent.market_type == "crypto":

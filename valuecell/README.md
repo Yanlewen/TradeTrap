@@ -70,7 +70,7 @@ python main.py configs/valuecell_config.json
 
 ```json
 {
-  "agent_type": "AutoTradingStandalone",
+  "agent_type": "Valuecell",
   "market": "us",
   "date_range": {
     "init_date": "2025-10-02 10:00:00",
@@ -128,9 +128,9 @@ python main.py configs/valuecell_config.json
 
 ## 与其他 Agent 的区别
 
-### AutoTradingStandalone vs BaseAgent
+### Valuecell vs BaseAgent
 
-| 特性 | AutoTradingStandalone | BaseAgent/PositionAttackAgent |
+| 特性 | Valuecell | BaseAgent/PositionAttackAgent |
 |------|----------------------|------------------------------|
 | **架构** | Pydantic 配置 + Factory Pattern | 直接实例化 |
 | **初始化** | 不需要 `initialize()` | 需要 `initialize()` 连接 MCP |
@@ -139,7 +139,7 @@ python main.py configs/valuecell_config.json
 | **交易所** | 模块化适配器（支持扩展） | 内置逻辑 |
 | **代码风格** | 现代化、类型安全 | 传统风格 |
 
-### 为什么选择 AutoTradingStandalone？
+### 为什么选择 Valuecell？
 
 1. **更清晰的架构**：基于 Pydantic 的配置管理，类型安全
 2. **易于扩展**：模块化设计，易于添加新的交易所或市场
@@ -166,7 +166,7 @@ pytz>=2023.3
 ## 输出示例
 
 ```
-✅ AutoTradingStandalone instance created successfully
+✅ Valuecell instance created successfully
 📊 Running trading for date range: 2025-10-02 10:00:00 to 2025-10-31 15:00:00
 🔄 [2025-10-02 10:00:00] Check #1
 📈 Technical Analysis Results:
@@ -182,4 +182,4 @@ pytz>=2023.3
 
 - 原始模块来自 valuecell 项目
 - 集成到 TradeTrap by @meijilin
-- 如遇问题，请查看 `main.py` 中的 AutoTradingStandalone 处理逻辑（第 282-410 行）
+- 如遇问题，请查看 `main.py` 中的 Valuecell 处理逻辑
