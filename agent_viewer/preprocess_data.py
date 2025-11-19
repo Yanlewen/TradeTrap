@@ -16,9 +16,9 @@ OUTPUT_DIR = Path("data")
 
 # Agent配置（自定义名称与路径）
 AGENTS = [
-    {"name": "base", "path": "deepseek/deepseek-v3-whole-month"},
-    {"name": "with news", "path": "deepseek/deepseek-v3-whole-month-with-x-and-reddit-1105"},
-    {"name": "state tampering", "path": "deepseek/deepseek-v3-memory-v3_memory_injection-positions0-day-attack-month-test13"},
+    {"name": "base", "path": "deepseek/deepseek-v3-whole-month-with-x-and-reddit-1105"},
+    {"name": "with memory (long time)", "path": "deepseek/deepseek-v3-prompt-memory-5000/deepseek-v3-prompt-memory-5000-without-news"},
+    {"name": "with memory (with think and summary)", "path": "deepseek/DeepSeek-V3.1-summary"},
 ]
 OUTPUT_FILENAME = "agents_data_deepseek.json"
 
@@ -163,6 +163,11 @@ def process_agent_data(agent_name, agent_path, price_cache):
             
             logs = load_jsonl(log_file)
             logs_by_date[date_str].extend(logs)
+    
+    # 将positions中的所有日期也加入到dates集合中
+    # 这样确保前端能正确显示所有position时间点的数据
+    for pos_date in positions_by_date.keys():
+        dates.add(pos_date)
     
     # 计算最终总资产
     final_total_asset = initial_cash

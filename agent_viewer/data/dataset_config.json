@@ -2,7 +2,7 @@
   "source": "agents_data_deepseek.json",
   "baseline": {
     "type": "price_series",
-    "label": "QQQ Benchmark",
+    "label": "qqq Benchmark",
     "source": "Adaily_prices_QQQ.json",
     "initial_capital": 5000,
     "color": "#94a3b8"
@@ -10,23 +10,23 @@
   "datasets": [
     {
       "id": "base",
-      "label": "Baseline (No Tools)",
+      "label": "DeepSeek Baseline (With News)",
       "description": "DeepSeek baseline configuration",
       "color": "#f5cb5c",
       "default": true
     },
     {
-      "id": "with news",
-      "label": "With news",
-      "description": "DeepSeek with X & Reddit ingestion",
-      "color": "#3480b8",
+      "id": "with memory (long time)",
+      "label": "DeepSeek with memory(long time)",
+      "description": "DeepSeek state with memory configuration",
+      "color": "#c82423",
       "default": true
     },
     {
-      "id": "state tampering",
-      "label": "State tampering",
-      "description": "DeepSeek state tampering configuration",
-      "color": "#c82423",
+      "id": "with memory (with think and summary)",
+      "label": "DeepSeek with memory(with think and summary)",
+      "description": "DeepSeek state with memory configuration",
+      "color": "#3480b8",
       "default": true
     }
   ]

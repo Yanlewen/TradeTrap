@@ -170,8 +170,12 @@ class DataLoader {
             if (!agent) return;
 
             const dates = agent.dates;
-            const values = dates.map(date => {
-                const position = agent.positions[date];
+            const positions = agent.positions;
+            
+            // 构建一个辅助函数来查找position值
+            const getPositionValue = (date) => {
+                // 首先尝试精确匹配
+                let position = positions[date];
                 if (position) {
                     if (position.total_asset !== undefined) {
                         return position.total_asset;
@@ -181,7 +185,71 @@ class DataLoader {
                         return cash;
                     }
                 }
-                return 0;
+                
+                // 如果找不到精确匹配，尝试查找相同日期前缀的最近一个position
+                const datePrefix = date.split(' ')[0];
+                const matchingDates = Object.keys(positions)
+                    .filter(d => d.startsWith(datePrefix))
+                    .sort();
+                
+                if (matchingDates.length > 0) {
+                    // 找到相同日期前缀的所有positions，选择最接近的一个
+                    // 如果当前时间早于所有匹配的时间，使用第一个
+                    // 如果当前时间晚于所有匹配的时间，使用最后一个
+                    const currentTime = date.includes(' ') ? date.split(' ')[1] : '';
+                    let bestMatch = null;
+                    
+                    if (currentTime) {
+                        // 找到最接近的时间点
+                        for (const matchDate of matchingDates) {
+                            if (matchDate <= date) {
+                                bestMatch = matchDate;
+                            } else {
+                                break;
+                            }
+                        }
+                        // 如果没有找到更早的，使用第一个匹配的
+                        if (!bestMatch && matchingDates.length > 0) {
+                            bestMatch = matchingDates[0];
+                        }
+                    } else {
+                        // 如果没有时间部分，使用最后一个匹配的
+                        bestMatch = matchingDates[matchingDates.length - 1];
+                    }
+                    
+                    if (bestMatch) {
+                        position = positions[bestMatch];
+                        if (position) {
+                            if (position.total_asset !== undefined) {
+                                return position.total_asset;
+                            }
+                            if (position.positions) {
+                                const cash = position.positions.CASH || 0;
+                                return cash;
+                            }
+                        }
+                    }
+                }
+                
+                return null; // 返回null而不是0，让前端处理
+            };
+            
+            // 使用前向填充策略
+            const values = [];
+            let lastValue = null;
+            
+            dates.forEach(date => {
+                const value = getPositionValue(date);
+                if (value !== null && value !== undefined) {
+                    lastValue = value;
+                    values.push(value);
+                } else if (lastValue !== null) {
+                    // 前向填充：使用最后一个有效值
+                    values.push(lastValue);
+                } else {
+                    // 如果还没有有效值，返回null
+                    values.push(null);
+                }
             });
 
             curves[agentName] = {
