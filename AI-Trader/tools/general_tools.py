@@ -14,27 +14,59 @@ def _resolve_runtime_env_path() -> str:
     1. Read RUNTIME_ENV_PATH from environment (.env file)
     2. If relative path, resolve from project root
     3. Return the path (will be created by write_config_value if needed)
+    
+    Returns:
+        str: Resolved absolute path to runtime env file
     """
     path = os.environ.get("RUNTIME_ENV_PATH")
     
-    if not path:
+    if not path or not isinstance(path, str) or not path.strip():
         # Fallback to default if not set
         path = "data/.runtime_env.json"
+    else:
+        path = path.strip()
+        # If empty after strip, use default
+        if not path:
+            path = "data/.runtime_env.json"
     
-    # If relative path, resolve from project root (TradeTrap directory)
+    # If relative path, resolve from project root
     if not os.path.isabs(path):
+        try:
+            base_dir = Path(__file__).resolve().parents[2]
+            path = str(base_dir / path)
+        except Exception as e:
+            # Fallback to default if path resolution fails
+            base_dir = Path(__file__).resolve().parents[2]
+            path = str(base_dir / "data/.runtime_env.json")
+    
+    # Normalize the path
+    try:
+        path = os.path.normpath(path)
+    except Exception:
+        # If normalization fails, use default
         base_dir = Path(__file__).resolve().parents[2]
-        path = str(base_dir / path)
+        path = str(base_dir / "data/.runtime_env.json")
+    
+    # Validate path is not empty
+    if not path or not path.strip():
+        base_dir = Path(__file__).resolve().parents[2]
+        path = str(base_dir / "data/.runtime_env.json")
     
     # Ensure directory exists
-    Path(path).parent.mkdir(parents=True, exist_ok=True)
+    try:
+        path_obj = Path(path)
+        if path_obj.parent:
+            path_obj.parent.mkdir(parents=True, exist_ok=True)
+    except Exception as e:
+        # If directory creation fails, log but continue
+        print(f"⚠️  Warning: Failed to create directory for runtime env path: {e}")
     
     return path
 
 
 def _load_runtime_env() -> dict:
     path = _resolve_runtime_env_path()
-    if path is None:
+    if not path or not isinstance(path, str):
         return {}
     try:
         if os.path.exists(path):
@@ -58,12 +90,14 @@ def get_config_value(key: str, default=None):
 
 def write_config_value(key: str, value: Any):
     path = _resolve_runtime_env_path()
-    if path is None:
-        print(f"⚠️  WARNING: RUNTIME_ENV_PATH not set, config value '{key}' not persisted")
+    if not path or not isinstance(path, str):
+        print(f"⚠️  WARNING: Invalid runtime env path, config value '{key}' not persisted")
         return
     _RUNTIME_ENV = _load_runtime_env()
     _RUNTIME_ENV[key] = value
     try:
+        # Ensure directory exists before writing
+        Path(path).parent.mkdir(parents=True, exist_ok=True)
         with open(path, "w", encoding="utf-8") as f:
             json.dump(_RUNTIME_ENV, f, ensure_ascii=False, indent=4)
     except Exception as e:

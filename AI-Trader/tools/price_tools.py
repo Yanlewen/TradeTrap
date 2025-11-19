@@ -10,7 +10,7 @@ from pathlib import Path
 from typing import Dict, List, Optional, Tuple, Any
 
 # 将项目根目录加入 Python 路径，便于从子目录直接运行本文件
-project_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+project_root = str(Path(__file__).resolve().parents[2])
 if project_root not in sys.path:
     sys.path.insert(0, project_root)
 from tools.general_tools import get_config_value
@@ -209,7 +209,6 @@ def get_merged_file_path(market: str = "us") -> Path:
     Returns:
         Path object pointing to the merged.jsonl file
     """
-    # Get project root (TradeTrap directory) - now AI-Trader is a subdirectory
     base_dir = Path(__file__).resolve().parents[2]
     if market == "cn":
         return base_dir / "data" / "A_stock" / "merged.jsonl"
@@ -710,7 +709,6 @@ def get_today_init_position(today_date: str, signature: str) -> Dict[str, float]
     from tools.general_tools import get_config_value
     import os
 
-    # Get project root (TradeTrap directory) - now AI-Trader is a subdirectory
     base_dir = Path(__file__).resolve().parents[2]
 
     # Get log_path from config, default to "agent_data" for backward compatibility
@@ -762,6 +760,136 @@ def get_today_init_position(today_date: str, signature: str) -> Dict[str, float]
     return all_records[0].get("positions", {})
 
 
+def get_trading_history_summary(
+    today_date: str, 
+    signature: str, 
+    lookback_days: int = 30,
+    max_records: int = 100
+) -> Dict[str, Any]:
+    """
+    获取历史交易记录摘要，用于提供长时记忆和交易模式学习。
+    
+    Args:
+        today_date: 日期字符串，格式 YYYY-MM-DD
+        signature: 模型名称
+        lookback_days: 回溯天数，默认30天
+        max_records: 最大记录数，避免提示词过长
+    
+    Returns:
+        包含以下字段的字典：
+        - performance_stats: 历史表现统计（总交易次数、持仓天数等）
+        - recent_actions: 最近的交易记录（包含价格信息）
+    """
+    from tools.general_tools import get_config_value
+    import os
+    from collections import Counter
+    
+    base_dir = Path(__file__).resolve().parents[2]
+    log_path = get_config_value("LOG_PATH", "./data/agent_data")
+    
+    # 构建文件路径
+    if os.path.isabs(log_path):
+        position_file = Path(log_path) / signature / "position" / "position.jsonl"
+    else:
+        if log_path.startswith("./data/"):
+            log_path = log_path[7:]
+        position_file = base_dir / "data" / log_path / signature / "position" / "position.jsonl"
+    
+    if not position_file.exists():
+        return {
+            "performance_stats": {},
+            "recent_actions": []
+        }
+    
+    # 计算回溯日期
+    try:
+        today_obj = datetime.strptime(today_date.split()[0], "%Y-%m-%d")
+        lookback_date = (today_obj - timedelta(days=lookback_days)).strftime("%Y-%m-%d")
+    except:
+        lookback_date = None
+    
+    # 读取所有历史记录
+    all_records = []
+    with position_file.open("r", encoding="utf-8") as f:
+        for line in f:
+            if not line.strip():
+                continue
+            try:
+                doc = json.loads(line)
+                record_date = doc.get("date", "")
+                if record_date:
+                    # 只取日期部分进行比较
+                    date_part = record_date.split()[0] if " " in record_date else record_date
+                    if date_part < today_date.split()[0]:
+                        if lookback_date is None or date_part >= lookback_date:
+                            all_records.append(doc)
+            except Exception:
+                continue
+    
+    if not all_records:
+        return {
+            "performance_stats": {},
+            "recent_actions": []
+        }
+    
+    # 按日期和id排序
+    all_records.sort(key=lambda x: (x.get("date", ""), x.get("id", 0)))
+    
+    # 计算表现统计
+    action_types = Counter()
+    for record in all_records:
+        action = record.get("this_action", {})
+        if action:
+            action_type = action.get("action", "")
+            if action_type in ["buy", "sell", "buy_crypto", "sell_crypto"]:
+                action_types[action_type] += 1
+    
+    total_trades = sum(action_types.values())
+    total_buys = sum([action_types.get("buy", 0), action_types.get("buy_crypto", 0)])
+    total_sells = sum([action_types.get("sell", 0), action_types.get("sell_crypto", 0)])
+    
+    # 计算持仓天数（有持仓的日期数）
+    dates_with_positions = set()
+    for record in all_records:
+        positions = record.get("positions", {})
+        if positions:
+            # 检查是否有非现金持仓
+            has_stock = any(k != "CASH" and v > 0 for k, v in positions.items())
+            if has_stock:
+                date_part = record.get("date", "").split()[0] if " " in record.get("date", "") else record.get("date", "")
+                dates_with_positions.add(date_part)
+    
+    holding_days = len(dates_with_positions)
+    
+    # 获取最近的交易记录（包含价格信息）
+    recent_actions = []
+    for record in reversed(all_records[-max_records:]):
+        action = record.get("this_action", {})
+        if action and action.get("action") not in ["no_trade"]:
+            recent_actions.append({
+                "date": record.get("date", ""),
+                "id": record.get("id", 0),
+                "action": action.get("action", ""),
+                "symbol": action.get("symbol", ""),
+                "amount": action.get("amount", 0),
+                "price": action.get("price")  # 添加价格信息
+            })
+            if len(recent_actions) >= 30:  # 只保留最近30条交易记录
+                break
+    
+    return {
+        "performance_stats": {
+            "total_trades": total_trades,
+            "total_buys": total_buys,
+            "total_sells": total_sells,
+            "holding_days": holding_days,
+            "lookback_days": lookback_days,
+            "records_analyzed": len(all_records)
+        },
+        "recent_actions": recent_actions
+    }
+
+
 def get_latest_position(today_date: str, signature: str) -> Tuple[Dict[str, float], int]:
     """
     获取最新持仓。从 ../data/agent_data/{signature}/position/position.jsonl 中读取。
@@ -780,7 +908,6 @@ def get_latest_position(today_date: str, signature: str) -> Tuple[Dict[str, floa
     from tools.general_tools import get_config_value
     import os
 
-    # Get project root (TradeTrap directory) - now AI-Trader is a subdirectory
     base_dir = Path(__file__).resolve().parents[2]
 
     # Get log_path from config, default to "agent_data" for backward compatibility

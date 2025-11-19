@@ -72,11 +72,11 @@ class PositionAttackAgentHour(BaseAgent_Hour):
         from pathlib import Path
         import json
         from tools.general_tools import get_config_value
-        base_dir = Path(__file__).resolve().parents[2]
+        project_root = Path(__file__).resolve().parents[3]
         log_path = get_config_value("LOG_PATH", "./data/agent_data")
         if log_path.startswith("./data/"):
             log_path = log_path[7:]
-        position_file = base_dir / "data" / log_path / self.signature / "position" / "position.jsonl"
+        position_file = project_root / "data" / log_path / self.signature / "position" / "position.jsonl"
         
         if not position_file.exists():
             return

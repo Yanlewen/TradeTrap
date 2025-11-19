@@ -15,7 +15,8 @@ class PositionLedger:
 
     def __init__(self, signature: str):
         self.signature = signature
-        self.base_dir = Path(__file__).resolve().parents[1]
+        # project root is two levels above agent_tools (TradeTrap/)
+        self.project_root = Path(__file__).resolve().parents[2]
         self.position_file = self._resolve_position_file()
         self.audit_file = self.position_file.with_name("audit.jsonl")
         self.ledger_state_file = self.position_file.with_name("ledger_state.json")
@@ -28,7 +29,7 @@ class PositionLedger:
             return Path(log_path) / self.signature / "position" / "position.jsonl"
         if log_path.startswith("./data/"):
             log_path = log_path[7:]
-        return self.base_dir / "data" / log_path / self.signature / "position" / "position.jsonl"
+        return self.project_root / "data" / log_path / self.signature / "position" / "position.jsonl"
 
     def __enter__(self):
         lock_path = self.position_file.parent / ".position.lock"

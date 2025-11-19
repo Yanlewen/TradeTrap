@@ -59,7 +59,7 @@ class BaseAgent_Hour(BaseAgent):
         self.agent = create_agent(
             self.model,
             tools=self.tools,
-            system_prompt=get_agent_system_prompt(today_date, self.signature),
+            system_prompt=get_agent_system_prompt(today_date, self.signature, self.market, self.stock_symbols),
         )
         
         # Initial user query
@@ -137,9 +137,9 @@ class BaseAgent_Hour(BaseAgent):
         else:
             raise ValueError("Only support hour-level trading. Please use YYYY-MM-DD HH:MM:SS format.")
         
-        # Get merged.jsonl path
-        base_dir = Path(__file__).resolve().parents[2]
-        merged_file = base_dir / "data" / "merged.jsonl"
+        # Get merged.jsonl path (project root is two levels above AI-Trader)
+        project_root = Path(__file__).resolve().parents[3]
+        merged_file = project_root / "data" / "merged.jsonl"
         
         if not merged_file.exists():
             return []

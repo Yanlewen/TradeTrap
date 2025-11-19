@@ -16,7 +16,7 @@ from pathlib import Path
 from typing import Dict, List, Optional
 
 # Add project root directory to Python path
-project_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+project_root = str(Path(__file__).resolve().parents[2])
 sys.path.insert(0, project_root)
 from tools.general_tools import get_config_value
 from tools.price_tools import (all_sse_50_symbols,

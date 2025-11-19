@@ -66,7 +66,11 @@ AGENT_REGISTRY = {
     "Valuecell": {
         "module": "valuecell.auto_trading_agent.agent",
         "class": "AutoTradingAgent"
-    }
+    },
+    "memory_agent": {
+        "module": "agent.plugins.memory_agent",
+        "class": "MemoryAgent"
+    },
 }
 
 
