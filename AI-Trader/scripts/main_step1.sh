@@ -2,9 +2,10 @@
 
 # prepare data
 
-# Get the project root directory (parent of scripts/)
+# Get the TradeTrap root directory (parent of AI-Trader/)
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-PROJECT_ROOT="$( cd "$SCRIPT_DIR/.." && pwd )"
+AI_TRADER_DIR="$( cd "$SCRIPT_DIR/.." && pwd )"
+PROJECT_ROOT="$( cd "$AI_TRADER_DIR/.." && pwd )"
 
 cd "$PROJECT_ROOT"
 

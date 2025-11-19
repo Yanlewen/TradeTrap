@@ -21,9 +21,9 @@ def _resolve_runtime_env_path() -> str:
         # Fallback to default if not set
         path = "data/.runtime_env.json"
     
-    # If relative path, resolve from project root
+    # If relative path, resolve from project root (TradeTrap directory)
     if not os.path.isabs(path):
-        base_dir = Path(__file__).resolve().parents[1]
+        base_dir = Path(__file__).resolve().parents[2]
         path = str(base_dir / path)
     
     # Ensure directory exists

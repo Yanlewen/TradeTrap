@@ -209,7 +209,8 @@ def get_merged_file_path(market: str = "us") -> Path:
     Returns:
         Path object pointing to the merged.jsonl file
     """
-    base_dir = Path(__file__).resolve().parents[1]
+    # Get project root (TradeTrap directory) - now AI-Trader is a subdirectory
+    base_dir = Path(__file__).resolve().parents[2]
     if market == "cn":
         return base_dir / "data" / "A_stock" / "merged.jsonl"
     elif market == "crypto":
@@ -709,7 +710,8 @@ def get_today_init_position(today_date: str, signature: str) -> Dict[str, float]
     from tools.general_tools import get_config_value
     import os
 
-    base_dir = Path(__file__).resolve().parents[1]
+    # Get project root (TradeTrap directory) - now AI-Trader is a subdirectory
+    base_dir = Path(__file__).resolve().parents[2]
 
     # Get log_path from config, default to "agent_data" for backward compatibility
     log_path = get_config_value("LOG_PATH", "./data/agent_data")
@@ -778,7 +780,8 @@ def get_latest_position(today_date: str, signature: str) -> Tuple[Dict[str, floa
     from tools.general_tools import get_config_value
     import os
 
-    base_dir = Path(__file__).resolve().parents[1]
+    # Get project root (TradeTrap directory) - now AI-Trader is a subdirectory
+    base_dir = Path(__file__).resolve().parents[2]
 
     # Get log_path from config, default to "agent_data" for backward compatibility
     log_path = get_config_value("LOG_PATH", "./data/agent_data")

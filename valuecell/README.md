@@ -14,7 +14,7 @@
 ## 架构设计
 
 ```
-auto_trading_standalone/
+valuecell/
 ├── auto_trading_agent/
 │   ├── agent.py                    # 统一入口（Factory Pattern）
 │   ├── base/                       # 基类

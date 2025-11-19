@@ -1,0 +1,34 @@
+# TradeTrap - Unified Dependencies
+# This file contains all dependencies for AI-Trader and valuecell modules
+
+# ============================================================================
+# AI-Trader Dependencies
+# ============================================================================
+
+# LangChain and MCP
+langchain==1.0.2
+langchain-openai==1.0.1
+langchain-mcp-adapters>=0.1.0
+fastmcp==2.12.5
+
+# Data sources
+tushare
+
+# ============================================================================
+# Valuecell Dependencies
+# ============================================================================
+
+# Core dependencies
+pydantic>=2.0.0
+
+# Data processing
+pandas>=2.0.0
+
+# Utilities
+pytz>=2023.3
+
+# ============================================================================
+# Common Dependencies (used by both modules)
+# ============================================================================
+# Note: pydantic, pandas, pytz are already listed above
+

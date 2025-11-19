@@ -7,9 +7,10 @@ set -e  # 遇到错误时退出
 
 echo "🚀 Launching AI Trader Environment..."
 
-# Get the project root directory (parent of scripts/)
+# Get the TradeTrap root directory (parent of AI-Trader/)
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-PROJECT_ROOT="$( cd "$SCRIPT_DIR/.." && pwd )"
+AI_TRADER_DIR="$( cd "$SCRIPT_DIR/.." && pwd )"
+PROJECT_ROOT="$( cd "$AI_TRADER_DIR/.." && pwd )"
 
 cd "$PROJECT_ROOT"
 
@@ -20,9 +21,9 @@ python merge_jsonl.py
 cd ..
 
 echo "🔧 Now starting MCP services..."
-cd agent_tools
+cd "$AI_TRADER_DIR/agent_tools"
 python start_mcp_services.py
-cd ..
+cd "$PROJECT_ROOT"
 
 #waiting for MCP services to start
 sleep 2
@@ -33,7 +34,7 @@ python main.py configs/default_config.json
 echo "✅ AI-Trader stopped"
 
 echo "🔄 Starting web server..."
-cd docs
+cd "$AI_TRADER_DIR/docs"
 python3 -m http.server 8888
 
 echo "✅ Web server started"

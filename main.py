@@ -2,10 +2,17 @@ import asyncio
 import json
 import logging
 import os
+import sys
 from datetime import datetime, timedelta
 from pathlib import Path
 from pathlib import Path as _Path
 from dotenv import load_dotenv
+
+# Add AI-Trader directory to Python path for imports
+# Since Python module names cannot contain hyphens, we add the directory to sys.path
+_ai_trader_path = Path(__file__).parent / "AI-Trader"
+if str(_ai_trader_path) not in sys.path:
+    sys.path.insert(0, str(_ai_trader_path))
 
 load_dotenv()
 
@@ -57,7 +64,7 @@ AGENT_REGISTRY = {
         "class": "BaseAgentCrypto"
     },
     "AutoTradingStandalone": {
-        "module": "auto_trading_standalone.auto_trading_agent.agent",
+        "module": "valuecell.auto_trading_agent.agent",
         "class": "AutoTradingAgent"
     }
 }
@@ -280,7 +287,7 @@ async def main(config_path=None):
             # Dynamically create Agent instance
             # AutoTradingStandalone has different parameter requirements
             if agent_type == "AutoTradingStandalone":
-                from auto_trading_standalone.auto_trading_agent.agent import AutoTradingAgent
+                from valuecell.auto_trading_agent.agent import AutoTradingAgent
                 
                 # Get agent_config from config file
                 agent_config_data = agent_config.copy()

@@ -1,12 +1,13 @@
 #!/bin/bash
 
-# Get the project root directory (parent of scripts/)
+# Get the TradeTrap root directory (parent of AI-Trader/)
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-PROJECT_ROOT="$( cd "$SCRIPT_DIR/.." && pwd )"
+AI_TRADER_DIR="$( cd "$SCRIPT_DIR/.." && pwd )"
+PROJECT_ROOT="$( cd "$AI_TRADER_DIR/.." && pwd )"
 
 cd "$PROJECT_ROOT"
 
 echo "🔧 Now starting MCP services..."
-cd agent_tools
+cd "$AI_TRADER_DIR/agent_tools"
 python start_mcp_services.py
-cd ..
+cd "$PROJECT_ROOT"

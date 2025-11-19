@@ -64,7 +64,8 @@ def get_available_date_range(signature: str) -> Tuple[str, str]:
     """
     from tools.general_tools import get_config_value
 
-    base_dir = Path(__file__).resolve().parents[1]
+    # Get project root (TradeTrap directory) - now AI-Trader is a subdirectory
+    base_dir = Path(__file__).resolve().parents[2]
 
     # Get log_path from config, default to "agent_data" for backward compatibility
     log_path = get_config_value("LOG_PATH", "./data/agent_data")
@@ -116,7 +117,8 @@ def get_daily_portfolio_values(
     from tools.price_tools import (all_nasdaq_100_symbols, all_sse_50_symbols,
                                    get_merged_file_path)
 
-    base_dir = Path(__file__).resolve().parents[1]
+    # Get project root (TradeTrap directory) - now AI-Trader is a subdirectory
+    base_dir = Path(__file__).resolve().parents[2]
 
     # Get log_path from config, default to "agent_data" for backward compatibility
     log_path = get_config_value("LOG_PATH", "./data/agent_data")
@@ -646,7 +648,8 @@ def save_metrics_to_jsonl(metrics: Dict[str, any], signature: str, output_dir: O
     """
     from tools.general_tools import get_config_value
 
-    base_dir = Path(__file__).resolve().parents[1]
+    # Get project root (TradeTrap directory) - now AI-Trader is a subdirectory
+    base_dir = Path(__file__).resolve().parents[2]
 
     if output_dir is None:
         # Get log_path from config, default to "agent_data" for backward compatibility
@@ -727,7 +730,8 @@ def get_latest_metrics(signature: str, output_dir: Optional[str] = None) -> Opti
     """
     from tools.general_tools import get_config_value
 
-    base_dir = Path(__file__).resolve().parents[1]
+    # Get project root (TradeTrap directory) - now AI-Trader is a subdirectory
+    base_dir = Path(__file__).resolve().parents[2]
 
     if output_dir is None:
         # Get log_path from config, default to "agent_data" for backward compatibility
@@ -778,7 +782,8 @@ def get_metrics_history(
     """
     from tools.general_tools import get_config_value
 
-    base_dir = Path(__file__).resolve().parents[1]
+    # Get project root (TradeTrap directory) - now AI-Trader is a subdirectory
+    base_dir = Path(__file__).resolve().parents[2]
 
     if output_dir is None:
         # Get log_path from config, default to "agent_data" for backward compatibility
