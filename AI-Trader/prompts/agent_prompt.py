@@ -71,6 +71,9 @@ Current buying prices:
 📊 Historical Trading Memory (Learn from your past):
 {trading_history}
 
+## Your Recent Portfolio Decision Details:
+{historical_summaries}
+
 When you think your task is complete, output
 {STOP_SIGNAL}
 """
@@ -109,6 +112,7 @@ def get_agent_system_prompt(
             "Trading memory loading is disabled (ENABLE_TRADING_MEMORY=false)."
         )
     
+    historical_summaries = get_recent_portfolio_summaries(signature, limit=7) 
     return agent_system_prompt.format(
         date=today_date,
         positions=today_init_position,
@@ -116,8 +120,57 @@ def get_agent_system_prompt(
         yesterday_close_price=yesterday_sell_prices,
         today_buy_price=today_buy_price,
         trading_history=trading_history_text,
+        historical_summaries=historical_summaries,
         # yesterday_profit=yesterday_profit
     )
+
+def get_recent_portfolio_summaries(signature: str, limit: int = 7) -> str:
+    """
+    Get recent portfolio summaries from portfolio_memory.jsonl
+    
+    Args:
+        signature: Model signature
+        limit: Number of recent summaries to retrieve (default: 7)
+    
+    Returns:
+        Formatted string of recent summaries, or empty string if no history
+    """
+    try:
+        # Build portfolio memory file path
+        log_path = get_config_value("LOG_PATH", "./data/agent_data")
+        if log_path.startswith("./data/"):
+            log_path = log_path[7:]  # Remove "./data/" prefix
+        
+        memory_file = os.path.join(project_root, "data", log_path, signature, "portfolio_memory", "portfolio_memory.jsonl")
+        
+        if not os.path.exists(memory_file):
+            return ""
+        
+        # Read all entries
+        entries = []
+        with open(memory_file, "r", encoding="utf-8") as f:
+            for line in f:
+                if line.strip():
+                    entries.append(json.loads(line))
+        
+        if not entries:
+            return ""
+        
+        # Get last 'limit' entries
+        recent_entries = entries[-limit:] if len(entries) > limit else entries
+        
+        # Format the summaries
+        summary_text = "## Your Recent Portfolio Decision History:\n\n"
+        for i, entry in enumerate(recent_entries, 1):
+            summary_text += f"### Decision #{i} - {entry['today_date']}\n"
+            summary_text += f"{entry['agent_response']}\n\n"
+            summary_text += "---\n\n"
+        
+        return summary_text
+    
+    except Exception as e:
+        print(f"⚠️  Warning: Failed to load portfolio history: {e}")
+        return ""
 
 
 def _format_trading_history(history_summary: Dict[str, Any]) -> str:

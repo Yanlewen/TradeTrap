@@ -91,6 +91,10 @@ class BaseAgent_Hour(BaseAgent):
                     print("✅ Received stop signal, trading session ended")
                     print(agent_response)
                     self._log_message(log_file, [{"role": "assistant", "content": agent_response}])
+                    # Save portfolio summary to portfolio_memory.jsonl
+                    print("💾 Attempting to save portfolio summary to portfolio_memory...")
+                    self._save_portfolio_memory(today_date, agent_response)
+                    self._log_message(log_file, [{"role": "assistant", "content": agent_response}])
                     break
                 
                 # Prepare new messages
