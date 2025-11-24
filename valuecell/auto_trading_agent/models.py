@@ -2,7 +2,7 @@
 
 from datetime import datetime
 from enum import Enum
-from typing import List, Optional
+from typing import Dict, List, Optional
 
 from pydantic import BaseModel, Field, field_validator
 
@@ -300,3 +300,62 @@ class TradingInstanceData(BaseModel):
         None, description="Last market check time"
     )
     total_trades: int = Field(default=0, description="Total number of trades executed")
+
+
+class AssetAnalysis:
+    """Analysis result for a single asset"""
+    
+    def __init__(
+        self,
+        symbol: str,
+        indicators: "TechnicalIndicators",
+        technical_action: TradeAction,
+        technical_trade_type: TradeType,
+        ai_action: Optional[TradeAction] = None,
+        ai_trade_type: Optional[TradeType] = None,
+        ai_reasoning: Optional[str] = None,
+        ai_confidence: Optional[float] = None,
+    ):
+        self.symbol = symbol
+        self.indicators = indicators
+        self.technical_action = technical_action
+        self.technical_trade_type = technical_trade_type
+        self.ai_action = ai_action
+        self.ai_trade_type = ai_trade_type
+        self.ai_reasoning = ai_reasoning
+        self.ai_confidence = ai_confidence
+        
+        # Final recommendation (AI takes precedence if available)
+        self.recommended_action = ai_action or technical_action
+        self.recommended_trade_type = ai_trade_type or technical_trade_type
+    
+    @property
+    def current_price(self) -> float:
+        """Get current price from indicators"""
+        return self.indicators.close_price
+    
+    def to_dict(self) -> Dict:
+        """Convert analysis to dictionary for prompt construction"""
+        return {
+            "symbol": self.symbol,
+            "current_price": self.current_price,
+            "volume": self.indicators.volume,
+            "technical_indicators": {
+                "macd": self.indicators.macd,
+                "macd_signal": self.indicators.macd_signal,
+                "macd_histogram": self.indicators.macd_histogram,
+                "rsi": self.indicators.rsi,
+                "ema_12": self.indicators.ema_12,
+                "ema_26": self.indicators.ema_26,
+                "ema_50": self.indicators.ema_50,
+                "bb_upper": self.indicators.bb_upper,
+                "bb_middle": self.indicators.bb_middle,
+                "bb_lower": self.indicators.bb_lower,
+            },
+            "technical_action": self.technical_action.value,
+            "technical_trade_type": self.technical_trade_type.value,
+            "ai_action": self.ai_action.value if self.ai_action else None,
+            "ai_trade_type": self.ai_trade_type.value if self.ai_trade_type else None,
+            "ai_confidence": self.ai_confidence,
+            "ai_reasoning": self.ai_reasoning,
+        }

@@ -48,11 +48,8 @@ from ..exchanges import (
     PaperTrading,
 )
 from ..market_data import MarketDataProvider
-from ..models import SUPPORTED_EXCHANGES, SUPPORTED_NETWORKS
-from ..portfolio_decision_manager import (
-    AssetAnalysis,
-    PortfolioDecisionManager,
-)
+from ..models import AssetAnalysis, SUPPORTED_EXCHANGES, SUPPORTED_NETWORKS
+from ..portfolio_decision_manager import PortfolioDecisionManager
 from ..technical_analysis import AISignalGenerator, TechnicalAnalyzer
 from ..trading_executor import TradingExecutor
 from ..position_persistence import PositionPersistence
@@ -182,7 +179,7 @@ class AutoTradingAgentBase(ABC):
                 llm_client = llm_client._client
 
             logger.info(f"Initialized AI signal generator: model_id={model_id}")
-            return AISignalGenerator(llm_client)
+            return AISignalGenerator(llm_client, signature=self.signature)
 
         except Exception as e:
             logger.error(f"Failed to initialize AI signal generator: {e}")
@@ -262,7 +259,7 @@ class AutoTradingAgentBase(ABC):
             if self.ai_signal_generator and self.ai_signal_generator.llm_client:
                 llm_client = self.ai_signal_generator.llm_client
 
-            portfolio_manager = PortfolioDecisionManager(self.config, llm_client)
+            portfolio_manager = PortfolioDecisionManager(self.config, llm_client, signature=self.signature)
 
             # Use abstract method to get symbols
             symbols = self._get_symbols()

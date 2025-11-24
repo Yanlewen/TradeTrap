@@ -1,0 +1,2804 @@
+{
+  "date": "2025-10-30",
+  "hour": "13",
+  "datetime": "2025-10-30 13:00:00",
+  "timestamp": "2025-11-24T11:13:16.317091",
+  "phase1_analysis": [
+    {
+      "symbol": "NVDA",
+      "price": 204.18,
+      "indicators": {
+        "macd": 4.611761122526957,
+        "macd_signal": 4.988542389842258,
+        "macd_histogram": -0.3767812673153008,
+        "rsi": 71.42067440574897,
+        "ema_12": 202.91632798317497,
+        "ema_26": 198.304566860648,
+        "bb_upper": 213.22591140821308,
+        "bb_middle": 200.087915,
+        "bb_lower": 186.94991859178694
+      },
+      "technical_signal": {
+        "action": "buy",
+        "trade_type": "short"
+      },
+      "ai_signal": {
+        "action": "hold",
+        "trade_type": "long",
+        "confidence": 70.0,
+        "reasoning": "NVDA is trading above key EMAs, indicating a strong uptrend, but the RSI above 70 suggests overbought conditions and the negative MACD histogram signals weakening momentum; waiting for a pullback or confirmation before entering is prudent."
+      },
+      "recommended_action": "hold",
+      "recommended_trade_type": "long"
+    },
+    {
+      "symbol": "MSFT",
+      "price": 526.66,
+      "indicators": {
+        "macd": 0.24912765173041862,
+        "macd_signal": 2.6036707935061028,
+        "macd_histogram": -2.354543141775684,
+        "rsi": 31.54817851716139,
+        "ema_12": 532.5853717330033,
+        "ema_26": 532.3362440812729,
+        "bb_upper": 549.4527184461807,
+        "bb_middle": 536.18145,
+        "bb_lower": 522.9101815538194
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "long"
+      },
+      "ai_signal": {
+        "action": "buy",
+        "trade_type": "long",
+        "confidence": 75.0,
+        "reasoning": "RSI near 30 indicates oversold conditions, and price is close to the lower Bollinger Band, suggesting a potential rebound. Despite a bearish MACD histogram, the proximity to support levels favors a short-term long entry."
+      },
+      "recommended_action": "buy",
+      "recommended_trade_type": "long"
+    },
+    {
+      "symbol": "AAPL",
+      "price": 272.0,
+      "indicators": {
+        "macd": 1.894908133945023,
+        "macd_signal": 1.827469298804856,
+        "macd_histogram": 0.06743883514016713,
+        "rsi": 64.56173421300653,
+        "ema_12": 269.82226283942595,
+        "ema_26": 267.9273547054809,
+        "bb_upper": 272.3080542713482,
+        "bb_middle": 268.967005,
+        "bb_lower": 265.6259557286517
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "short"
+      },
+      "ai_signal": {
+        "action": "buy",
+        "trade_type": "long",
+        "confidence": 78.0,
+        "reasoning": "MACD is above its signal line with a positive histogram, indicating bullish momentum. RSI at 64.56 shows moderate strength without being overbought, and price near the upper Bollinger Band suggests continued upward pressure supported by EMAs trending higher."
+      },
+      "recommended_action": "buy",
+      "recommended_trade_type": "long"
+    },
+    {
+      "symbol": "GOOG",
+      "price": 284.8,
+      "indicators": {
+        "macd": 6.245701802420683,
+        "macd_signal": 4.943196275060744,
+        "macd_histogram": 1.3025055273599389,
+        "rsi": 81.54158582799944,
+        "ema_12": 278.6973846539327,
+        "ema_26": 272.45168285151203,
+        "bb_upper": 288.069469365358,
+        "bb_middle": 273.56990499999995,
+        "bb_lower": 259.0703406346419
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "long"
+      },
+      "ai_signal": {
+        "action": "sell",
+        "trade_type": "short",
+        "confidence": 85.0,
+        "reasoning": "RSI above 80 indicates overbought conditions, and price is near the upper Bollinger Band, suggesting potential pullback despite bullish MACD momentum."
+      },
+      "recommended_action": "sell",
+      "recommended_trade_type": "short"
+    },
+    {
+      "symbol": "GOOGL",
+      "price": 283.995,
+      "indicators": {
+        "macd": 6.24071215636468,
+        "macd_signal": 4.942392014007904,
+        "macd_histogram": 1.2983201423567756,
+        "rsi": 80.37874802735396,
+        "ema_12": 277.9446490891673,
+        "ema_26": 271.7039369328026,
+        "bb_upper": 287.3200430614813,
+        "bb_middle": 272.843005,
+        "bb_lower": 258.36596693851874
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "long"
+      },
+      "ai_signal": {
+        "action": "sell",
+        "trade_type": "short",
+        "confidence": 85.0,
+        "reasoning": "GOOGL is trading near the upper Bollinger Band with an RSI above 80, indicating overbought conditions. Despite a bullish MACD crossover, the price is extended above key EMAs, suggesting a likely short-term pullback."
+      },
+      "recommended_action": "sell",
+      "recommended_trade_type": "short"
+    },
+    {
+      "symbol": "AMZN",
+      "price": 225.3278,
+      "indicators": {
+        "macd": 0.8384180931760739,
+        "macd_signal": 1.6944353805891152,
+        "macd_histogram": -0.8560172874130414,
+        "rsi": 40.13572157930556,
+        "ema_12": 227.8374025814848,
+        "ema_26": 226.99898448830874,
+        "bb_upper": 232.25614670287575,
+        "bb_middle": 228.570765,
+        "bb_lower": 224.88538329712424
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "long"
+      },
+      "ai_signal": {
+        "action": "hold",
+        "trade_type": "long",
+        "confidence": 65.0,
+        "reasoning": "MACD histogram is negative and RSI near 40 suggests mild bearish momentum, but price is close to the 50 EMA and lower Bollinger Band, indicating potential support and limited downside. Waiting for confirmation before entering a new position is prudent."
+      },
+      "recommended_action": "hold",
+      "recommended_trade_type": "long"
+    },
+    {
+      "symbol": "META",
+      "price": 674.38,
+      "indicators": {
+        "macd": -15.535543724752756,
+        "macd_signal": -5.495667303094614,
+        "macd_histogram": -10.039876421658143,
+        "rsi": 24.31870731479124,
+        "ema_12": 710.3003820801813,
+        "ema_26": 725.835925804934,
+        "bb_upper": 802.5914277761877,
+        "bb_middle": 734.1319550000001,
+        "bb_lower": 665.6724822238124
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "long"
+      },
+      "ai_signal": {
+        "action": "buy",
+        "trade_type": "long",
+        "confidence": 78.0,
+        "reasoning": "META is trading near the lower Bollinger Band with an RSI of 24.32, indicating oversold conditions. Despite bearish MACD momentum, the price is significantly below short-term EMAs, suggesting a potential rebound opportunity for a short-term long position."
+      },
+      "recommended_action": "buy",
+      "recommended_trade_type": "long"
+    },
+    {
+      "symbol": "AVGO",
+      "price": 378.51,
+      "indicators": {
+        "macd": 6.003314114142086,
+        "macd_signal": 6.577853914006446,
+        "macd_histogram": -0.5745397998643602,
+        "rsi": 61.699954516800865,
+        "ema_12": 375.1925371942631,
+        "ema_26": 369.189223080121,
+        "bb_upper": 387.74532695539284,
+        "bb_middle": 372.07518500000003,
+        "bb_lower": 356.4050430446072
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "long"
+      },
+      "ai_signal": {
+        "action": "hold",
+        "trade_type": "long",
+        "confidence": 70.0,
+        "reasoning": "AVGO is trading above key EMAs, indicating bullish momentum, but the negative MACD histogram and RSI near 62 suggest limited upside and potential short-term consolidation before a clearer breakout."
+      },
+      "recommended_action": "hold",
+      "recommended_trade_type": "long"
+    },
+    {
+      "symbol": "TSLA",
+      "price": 444.685,
+      "indicators": {
+        "macd": -0.03636125575883398,
+        "macd_signal": 2.510294410639751,
+        "macd_histogram": -2.546655666398585,
+        "rsi": 25.521508544490345,
+        "ema_12": 451.7114211096677,
+        "ema_26": 451.74778236542653,
+        "bb_upper": 471.3358647311597,
+        "bb_middle": 456.7197,
+        "bb_lower": 442.1035352688403
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "long"
+      },
+      "ai_signal": {
+        "action": "buy",
+        "trade_type": "long",
+        "confidence": 78.0,
+        "reasoning": "TSLA is trading near the lower Bollinger Band with an RSI of 25.52, indicating oversold conditions. Despite bearish MACD momentum, the proximity to support levels suggests a potential short-term rebound opportunity."
+      },
+      "recommended_action": "buy",
+      "recommended_trade_type": "long"
+    },
+    {
+      "symbol": "NFLX",
+      "price": 1101.705,
+      "indicators": {
+        "macd": -7.650935835225937,
+        "macd_signal": -10.064392996874732,
+        "macd_histogram": 2.413457161648795,
+        "rsi": 51.58386148590231,
+        "ema_12": 1099.1820546712916,
+        "ema_26": 1106.8329905065175,
+        "bb_upper": 1107.4519891902462,
+        "bb_middle": 1100.1508,
+        "bb_lower": 1092.8496108097536
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "short"
+      },
+      "ai_signal": {
+        "action": "buy",
+        "trade_type": "long",
+        "confidence": 70.0,
+        "reasoning": "The MACD histogram is positive, indicating bullish momentum as the MACD line crosses above the signal line. Price is near the middle Bollinger Band and slightly above the 12-EMA, suggesting a potential short-term upward move while RSI near 52 shows neutral-to-bullish sentiment."
+      },
+      "recommended_action": "buy",
+      "recommended_trade_type": "long"
+    },
+    {
+      "symbol": "PLTR",
+      "price": 198.355,
+      "indicators": {
+        "macd": 3.649587531861499,
+        "macd_signal": 3.4938232397715945,
+        "macd_histogram": 0.15576429208990472,
+        "rsi": 77.76579983194014,
+        "ema_12": 196.04957231871933,
+        "ema_26": 192.39998478685783,
+        "bb_upper": 202.00374223112115,
+        "bb_middle": 193.544305,
+        "bb_lower": 185.08486776887887
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "long"
+      },
+      "ai_signal": {
+        "action": "hold",
+        "trade_type": "long",
+        "confidence": 72.0,
+        "reasoning": "PLTR shows bullish momentum with MACD above its signal and price above key EMAs, but the RSI near 78 indicates overbought conditions and limited short-term upside; waiting for a pullback before adding long exposure is prudent."
+      },
+      "recommended_action": "hold",
+      "recommended_trade_type": "long"
+    },
+    {
+      "symbol": "COST",
+      "price": 917.0121,
+      "indicators": {
+        "macd": -4.6050981170271825,
+        "macd_signal": -5.080606689996941,
+        "macd_histogram": 0.47550857296975835,
+        "rsi": 36.30374490929884,
+        "ema_12": 916.4602848036857,
+        "ema_26": 921.0653829207129,
+        "bb_upper": 932.1636233872264,
+        "bb_middle": 919.258475,
+        "bb_lower": 906.3533266127736
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "short"
+      },
+      "ai_signal": {
+        "action": "buy",
+        "trade_type": "long",
+        "confidence": 72.0,
+        "reasoning": "RSI near 36 indicates the stock is approaching oversold territory, and the positive MACD histogram suggests early bullish momentum. Price is slightly below key EMAs, implying potential for a rebound toward the middle Bollinger Band."
+      },
+      "recommended_action": "buy",
+      "recommended_trade_type": "long"
+    },
+    {
+      "symbol": "ASML",
+      "price": 1080.39,
+      "indicators": {
+        "macd": 10.23549752278177,
+        "macd_signal": 9.05746114936477,
+        "macd_histogram": 1.178036373417001,
+        "rsi": 71.75052140656214,
+        "ema_12": 1072.0937339462907,
+        "ema_26": 1061.858236423509,
+        "bb_upper": 1087.1619633392027,
+        "bb_middle": 1064.613835,
+        "bb_lower": 1042.0657066607976
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "long"
+      },
+      "ai_signal": {
+        "action": "hold",
+        "trade_type": "long",
+        "confidence": 72.0,
+        "reasoning": "ASML shows bullish momentum with MACD above its signal and price above key EMAs, but RSI near 72 indicates overbought conditions and price approaching the upper Bollinger Band suggests limited short-term upside; a hold is prudent until a clearer breakout or pullback occurs."
+      },
+      "recommended_action": "hold",
+      "recommended_trade_type": "long"
+    },
+    {
+      "symbol": "AMD",
+      "price": 260.6664,
+      "indicators": {
+        "macd": 3.384435950952934,
+        "macd_signal": 4.1776043394985125,
+        "macd_histogram": -0.7931683885455785,
+        "rsi": 50.18781986620541,
+        "ema_12": 259.9375701065853,
+        "ema_26": 256.5531341556324,
+        "bb_upper": 264.63509166923586,
+        "bb_middle": 259.83011,
+        "bb_lower": 255.0251283307641
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "long"
+      },
+      "ai_signal": {
+        "action": "hold",
+        "trade_type": "long",
+        "confidence": 65.0,
+        "reasoning": "AMD is trading slightly above key EMAs, indicating mild bullish momentum, but the negative MACD histogram and neutral RSI suggest limited short-term upside. Waiting for a clearer MACD crossover or breakout above the Bollinger upper band would improve confidence in a long position."
+      },
+      "recommended_action": "hold",
+      "recommended_trade_type": "long"
+    },
+    {
+      "symbol": "CSCO",
+      "price": 72.8,
+      "indicators": {
+        "macd": 0.3894913328590661,
+        "macd_signal": 0.34030928792684934,
+        "macd_histogram": 0.049182044932216784,
+        "rsi": 65.10707690831919,
+        "ema_12": 72.14693469456803,
+        "ema_26": 71.75744336170897,
+        "bb_upper": 73.06169541957478,
+        "bb_middle": 71.91909000000001,
+        "bb_lower": 70.77648458042525
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "short"
+      },
+      "ai_signal": {
+        "action": "buy",
+        "trade_type": "long",
+        "confidence": 78.0,
+        "reasoning": "MACD is above its signal line with a positive histogram, indicating bullish momentum. RSI at 65 shows moderate strength without being overbought, and price trading above key EMAs suggests continued upward trend potential toward the upper Bollinger Band."
+      },
+      "recommended_action": "buy",
+      "recommended_trade_type": "long"
+    },
+    {
+      "symbol": "AZN",
+      "price": 82.56,
+      "indicators": {
+        "macd": -0.31579965543683386,
+        "macd_signal": -0.32625994651608203,
+        "macd_histogram": 0.010460291079248174,
+        "rsi": 47.97441364605546,
+        "ema_12": 82.44273193093748,
+        "ema_26": 82.75853158637432,
+        "bb_upper": 84.20687119684978,
+        "bb_middle": 82.75,
+        "bb_lower": 81.29312880315022
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "short"
+      },
+      "ai_signal": {
+        "action": "buy",
+        "trade_type": "long",
+        "confidence": 68.0,
+        "reasoning": "MACD histogram turning positive suggests early bullish momentum, RSI near neutral indicates room for upside, and price holding above EMA12 but below EMA26 implies potential short-term recovery toward the middle Bollinger Band."
+      },
+      "recommended_action": "buy",
+      "recommended_trade_type": "long"
+    },
+    {
+      "symbol": "TMUS",
+      "price": 211.43,
+      "indicators": {
+        "macd": -2.4080023192401825,
+        "macd_signal": -2.0210154137857126,
+        "macd_histogram": -0.3869869054544699,
+        "rsi": 20.839377749472206,
+        "ema_12": 214.4272697033237,
+        "ema_26": 216.83527202256388,
+        "bb_upper": 224.73062855300628,
+        "bb_middle": 217.06272000000004,
+        "bb_lower": 209.3948114469938
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "long"
+      },
+      "ai_signal": {
+        "action": "buy",
+        "trade_type": "long",
+        "confidence": 75.0,
+        "reasoning": "RSI at 20.84 indicates strong oversold conditions, and the price is near the lower Bollinger Band, suggesting a potential rebound. Although MACD remains bearish, the risk-reward favors a short-term long entry."
+      },
+      "recommended_action": "buy",
+      "recommended_trade_type": "long"
+    },
+    {
+      "symbol": "MU",
+      "price": 226.48,
+      "indicators": {
+        "macd": 3.650411154618496,
+        "macd_signal": 4.216353564784555,
+        "macd_histogram": -0.5659424101660591,
+        "rsi": 64.72432111393404,
+        "ema_12": 225.70670309162765,
+        "ema_26": 222.05629193700915,
+        "bb_upper": 232.96772746017228,
+        "bb_middle": 223.96313500000002,
+        "bb_lower": 214.95854253982776
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "long"
+      },
+      "ai_signal": {
+        "action": "hold",
+        "trade_type": "long",
+        "confidence": 70.0,
+        "reasoning": "Price is above key EMAs, indicating bullish momentum, but the negative MACD histogram and RSI near 65 suggest limited short-term upside and potential consolidation before a clearer breakout."
+      },
+      "recommended_action": "hold",
+      "recommended_trade_type": "long"
+    },
+    {
+      "symbol": "LIN",
+      "price": 432.78,
+      "indicators": {
+        "macd": -4.105898749965888,
+        "macd_signal": -3.647427711983659,
+        "macd_histogram": -0.4584710379822292,
+        "rsi": 16.949342918117566,
+        "ema_12": 435.65194829383455,
+        "ema_26": 439.75784704380044,
+        "bb_upper": 451.4310445723267,
+        "bb_middle": 439.4824,
+        "bb_lower": 427.53375542767327
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "long"
+      },
+      "ai_signal": {
+        "action": "buy",
+        "trade_type": "long",
+        "confidence": 78.0,
+        "reasoning": "RSI at 16.95 indicates strong oversold conditions, and price is near the lower Bollinger Band, suggesting a potential rebound. Despite bearish MACD momentum, the setup favors a short-term recovery opportunity."
+      },
+      "recommended_action": "buy",
+      "recommended_trade_type": "long"
+    },
+    {
+      "symbol": "PEP",
+      "price": 147.76,
+      "indicators": {
+        "macd": -1.3541485065937025,
+        "macd_signal": -1.3140981936449179,
+        "macd_histogram": -0.04005031294878458,
+        "rsi": 26.291709030409393,
+        "ema_12": 147.9408554090259,
+        "ema_26": 149.2950039156196,
+        "bb_upper": 154.72930594700276,
+        "bb_middle": 149.33497500000001,
+        "bb_lower": 143.94064405299727
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "long"
+      },
+      "ai_signal": {
+        "action": "buy",
+        "trade_type": "long",
+        "confidence": 78.0,
+        "reasoning": "PEP is trading below all key EMAs with an RSI of 26.29, indicating oversold conditions. Although MACD remains slightly bearish, the proximity to the lower Bollinger Band suggests potential for a short-term rebound."
+      },
+      "recommended_action": "buy",
+      "recommended_trade_type": "long"
+    },
+    {
+      "symbol": "SHOP",
+      "price": 175.97,
+      "indicators": {
+        "macd": 1.5457774969838454,
+        "macd_signal": 2.397236919758262,
+        "macd_histogram": -0.8514594227744166,
+        "rsi": 46.48936170212763,
+        "ema_12": 177.21564473569975,
+        "ema_26": 175.6698672387159,
+        "bb_upper": 181.94059936576713,
+        "bb_middle": 177.543815,
+        "bb_lower": 173.14703063423286
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "long"
+      },
+      "ai_signal": {
+        "action": "hold",
+        "trade_type": "long",
+        "confidence": 65.0,
+        "reasoning": "MACD is below its signal line and histogram is negative, indicating short-term bearish momentum, but RSI near 46 and price near EMA levels suggest consolidation rather than a clear trend reversal. Waiting for confirmation before entering a new position is prudent."
+      },
+      "recommended_action": "hold",
+      "recommended_trade_type": "long"
+    },
+    {
+      "symbol": "APP",
+      "price": 632.06,
+      "indicators": {
+        "macd": 6.978707775296016,
+        "macd_signal": 8.428657694529747,
+        "macd_histogram": -1.449949919233731,
+        "rsi": 53.961191447287,
+        "ema_12": 629.7295247575142,
+        "ema_26": 622.7508169822182,
+        "bb_upper": 642.1996025021599,
+        "bb_middle": 630.7719999999999,
+        "bb_lower": 619.34439749784
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "long"
+      },
+      "ai_signal": {
+        "action": "hold",
+        "trade_type": "long",
+        "confidence": 65.0,
+        "reasoning": "The MACD histogram is negative, indicating short-term bearish momentum, but price remains above key EMAs and near the Bollinger middle band, suggesting consolidation rather than a clear trend reversal. RSI is neutral, supporting a wait-and-see approach before entering a new position."
+      },
+      "recommended_action": "hold",
+      "recommended_trade_type": "long"
+    },
+    {
+      "symbol": "INTU",
+      "price": 660.135,
+      "indicators": {
+        "macd": -5.331402505260712,
+        "macd_signal": -4.26015550516193,
+        "macd_histogram": -1.071247000098782,
+        "rsi": 27.812526775769115,
+        "ema_12": 663.418499711192,
+        "ema_26": 668.7499022164527,
+        "bb_upper": 698.5527431633668,
+        "bb_middle": 670.76225,
+        "bb_lower": 642.9717568366332
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "long"
+      },
+      "ai_signal": {
+        "action": "buy",
+        "trade_type": "long",
+        "confidence": 78.0,
+        "reasoning": "INTU is trading below all key EMAs and near the lower Bollinger Band, indicating potential oversold conditions. The RSI at 27.81 suggests the stock is deeply oversold, and while MACD remains bearish, a rebound is likely as selling pressure eases."
+      },
+      "recommended_action": "buy",
+      "recommended_trade_type": "long"
+    },
+    {
+      "symbol": "AMAT",
+      "price": 233.0475,
+      "indicators": {
+        "macd": 1.5365634459311366,
+        "macd_signal": 1.5509638379398685,
+        "macd_histogram": -0.014400392008731888,
+        "rsi": 60.99058534588624,
+        "ema_12": 233.89201288851882,
+        "ema_26": 232.35544944258768,
+        "bb_upper": 238.84909776335115,
+        "bb_middle": 232.569475,
+        "bb_lower": 226.28985223664887
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "long"
+      },
+      "ai_signal": {
+        "action": "hold",
+        "trade_type": "long",
+        "confidence": 70.0,
+        "reasoning": "AMAT is trading slightly below its short-term EMA (12) but above longer-term EMAs, indicating mild consolidation within an overall uptrend. The MACD histogram is slightly negative, suggesting limited bullish momentum, while RSI near 61 shows moderate strength without being overbought. Waiting for a clearer MACD crossover or price move above EMA 12 would confirm a stronger buy signal."
+      },
+      "recommended_action": "hold",
+      "recommended_trade_type": "long"
+    },
+    {
+      "symbol": "LRCX",
+      "price": 161.315,
+      "indicators": {
+        "macd": 2.8471893307103358,
+        "macd_signal": 2.922341090770005,
+        "macd_histogram": -0.07515176005966939,
+        "rsi": 74.2497662161012,
+        "ema_12": 159.99950008625476,
+        "ema_26": 157.15231075554442,
+        "bb_upper": 164.02266543572065,
+        "bb_middle": 158.44305,
+        "bb_lower": 152.86343456427934
+      },
+      "technical_signal": {
+        "action": "buy",
+        "trade_type": "short"
+      },
+      "ai_signal": {
+        "action": "hold",
+        "trade_type": "long",
+        "confidence": 70.0,
+        "reasoning": "LRCX is trading above key EMAs, indicating a strong uptrend, but the RSI at 74.25 suggests overbought conditions and the negative MACD histogram signals weakening momentum. Waiting for a pullback or confirmation of renewed strength is prudent before entering new long positions."
+      },
+      "recommended_action": "hold",
+      "recommended_trade_type": "long"
+    },
+    {
+      "symbol": "PDD",
+      "price": 136.19,
+      "indicators": {
+        "macd": 0.5406636024055445,
+        "macd_signal": 0.9724673388359089,
+        "macd_histogram": -0.4318037364303644,
+        "rsi": 47.64648025853584,
+        "ema_12": 136.82568789215023,
+        "ema_26": 136.28502428974468,
+        "bb_upper": 139.0852424524245,
+        "bb_middle": 137.3557,
+        "bb_lower": 135.62615754757553
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "long"
+      },
+      "ai_signal": {
+        "action": "hold",
+        "trade_type": "long",
+        "confidence": 65.0,
+        "reasoning": "PDD is trading slightly below its short-term EMAs with a neutral RSI and a negative MACD histogram, indicating mild bearish momentum but no strong sell signal. Consolidation near the middle Bollinger Band suggests waiting for clearer direction before entering a new position."
+      },
+      "recommended_action": "hold",
+      "recommended_trade_type": "long"
+    },
+    {
+      "symbol": "QCOM",
+      "price": 179.43,
+      "indicators": {
+        "macd": 0.8112098353841191,
+        "macd_signal": 1.687075778314131,
+        "macd_histogram": -0.875865942930012,
+        "rsi": 37.72190546682546,
+        "ema_12": 180.02827731145697,
+        "ema_26": 179.21706747607286,
+        "bb_upper": 190.2932637318497,
+        "bb_middle": 182.38788,
+        "bb_lower": 174.4824962681503
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "long"
+      },
+      "ai_signal": {
+        "action": "buy",
+        "trade_type": "long",
+        "confidence": 72.0,
+        "reasoning": "RSI near 38 suggests the stock is approaching oversold territory, and price is slightly below short-term EMAs, indicating potential rebound support near the lower Bollinger Band. Despite a weak MACD histogram, the setup favors a short-term recovery opportunity."
+      },
+      "recommended_action": "buy",
+      "recommended_trade_type": "long"
+    },
+    {
+      "symbol": "ARM",
+      "price": 168.2,
+      "indicators": {
+        "macd": -1.2472024525782217,
+        "macd_signal": -0.30265047214553203,
+        "macd_histogram": -0.9445519804326896,
+        "rsi": 31.934877896055013,
+        "ema_12": 170.06928804036806,
+        "ema_26": 171.3164904929463,
+        "bb_upper": 180.73368417800592,
+        "bb_middle": 172.987745,
+        "bb_lower": 165.24180582199406
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "long"
+      },
+      "ai_signal": {
+        "action": "buy",
+        "trade_type": "long",
+        "confidence": 78.0,
+        "reasoning": "ARM is trading near the lower Bollinger Band with an RSI of 31.93, indicating oversold conditions. Despite bearish MACD momentum, the proximity to support and potential for a rebound suggest a short-term buying opportunity."
+      },
+      "recommended_action": "buy",
+      "recommended_trade_type": "long"
+    },
+    {
+      "symbol": "INTC",
+      "price": 41.345,
+      "indicators": {
+        "macd": 0.621051341089796,
+        "macd_signal": 0.7636900334634535,
+        "macd_histogram": -0.14263869237365756,
+        "rsi": 45.82594714927648,
+        "ema_12": 41.18302783579434,
+        "ema_26": 40.561976494704545,
+        "bb_upper": 42.862442260087846,
+        "bb_middle": 41.07971,
+        "bb_lower": 39.29697773991215
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "long"
+      },
+      "ai_signal": {
+        "action": "hold",
+        "trade_type": "long",
+        "confidence": 65.0,
+        "reasoning": "The MACD histogram is slightly negative, indicating mild bearish momentum, while RSI near 46 suggests neutral conditions. Price remains above key EMAs and near the Bollinger middle band, implying consolidation rather than a clear breakout or breakdown."
+      },
+      "recommended_action": "hold",
+      "recommended_trade_type": "long"
+    },
+    {
+      "symbol": "BKNG",
+      "price": 5144.67,
+      "indicators": {
+        "macd": -8.206346982920877,
+        "macd_signal": -6.808054320980863,
+        "macd_histogram": -1.3982926619400144,
+        "rsi": 41.572470416859765,
+        "ema_12": 5157.461998947364,
+        "ema_26": 5165.668345930285,
+        "bb_upper": 5304.455915367436,
+        "bb_middle": 5181.236,
+        "bb_lower": 5058.016084632563
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "long"
+      },
+      "ai_signal": {
+        "action": "hold",
+        "trade_type": "long",
+        "confidence": 65.0,
+        "reasoning": "BKNG is trading below its short- and medium-term EMAs with a negative MACD and histogram, indicating mild bearish momentum. However, the RSI near 41 suggests it is approaching oversold territory, so waiting for confirmation of a reversal before entering a long position is prudent."
+      },
+      "recommended_action": "hold",
+      "recommended_trade_type": "long"
+    },
+    {
+      "symbol": "AMGN",
+      "price": 291.82,
+      "indicators": {
+        "macd": -0.20517111456433668,
+        "macd_signal": -0.5147612795578783,
+        "macd_histogram": 0.30959016499354164,
+        "rsi": 53.18642048838594,
+        "ema_12": 292.40301592280605,
+        "ema_26": 292.6081870373704,
+        "bb_upper": 294.7253443533319,
+        "bb_middle": 291.661,
+        "bb_lower": 288.5966556466681
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "short"
+      },
+      "ai_signal": {
+        "action": "buy",
+        "trade_type": "long",
+        "confidence": 68.0,
+        "reasoning": "MACD histogram turning positive suggests emerging bullish momentum, RSI near neutral indicates room for upside, and price slightly below short-term EMAs and near Bollinger middle band implies potential rebound toward upper band."
+      },
+      "recommended_action": "buy",
+      "recommended_trade_type": "long"
+    },
+    {
+      "symbol": "TXN",
+      "price": 159.3684,
+      "indicators": {
+        "macd": -2.7882403792886805,
+        "macd_signal": -2.5807731747391975,
+        "macd_histogram": -0.20746720454948298,
+        "rsi": 17.307801120334958,
+        "ema_12": 161.48118841968235,
+        "ema_26": 164.26942879897103,
+        "bb_upper": 171.12335283482525,
+        "bb_middle": 163.89656499999998,
+        "bb_lower": 156.6697771651747
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "long"
+      },
+      "ai_signal": {
+        "action": "buy",
+        "trade_type": "long",
+        "confidence": 82.0,
+        "reasoning": "RSI at 17.31 indicates strong oversold conditions, and the price is near the lower Bollinger Band, suggesting a potential rebound. Despite bearish MACD momentum, the setup favors a short-term recovery opportunity."
+      },
+      "recommended_action": "buy",
+      "recommended_trade_type": "long"
+    },
+    {
+      "symbol": "ISRG",
+      "price": 532.08,
+      "indicators": {
+        "macd": 0.7229233668567758,
+        "macd_signal": 3.5594046106250534,
+        "macd_histogram": -2.8364812437682776,
+        "rsi": 18.864628820960235,
+        "ema_12": 537.2644473534148,
+        "ema_26": 536.541523986558,
+        "bb_upper": 553.1810099689927,
+        "bb_middle": 541.66025,
+        "bb_lower": 530.1394900310073
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "long"
+      },
+      "ai_signal": {
+        "action": "buy",
+        "trade_type": "long",
+        "confidence": 82.0,
+        "reasoning": "RSI at 18.86 indicates extreme oversold conditions, and price is near the lower Bollinger Band, suggesting a potential rebound. Despite a negative MACD histogram showing short-term bearish momentum, the setup favors a technical bounce opportunity."
+      },
+      "recommended_action": "buy",
+      "recommended_trade_type": "long"
+    },
+    {
+      "symbol": "GILD",
+      "price": 119.68,
+      "indicators": {
+        "macd": -0.35389920209796344,
+        "macd_signal": -0.6423009515472888,
+        "macd_histogram": 0.2884017494493254,
+        "rsi": 60.42918454935623,
+        "ema_12": 119.07065388805167,
+        "ema_26": 119.42455309014963,
+        "bb_upper": 120.78895621154726,
+        "bb_middle": 118.93125,
+        "bb_lower": 117.07354378845275
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "short"
+      },
+      "ai_signal": {
+        "action": "buy",
+        "trade_type": "long",
+        "confidence": 75.0,
+        "reasoning": "MACD histogram turning positive indicates bullish momentum, RSI near 60 shows moderate strength without being overbought, and price trading above short-term EMAs but below the 50 EMA suggests potential for an upward move toward resistance near $120.79."
+      },
+      "recommended_action": "buy",
+      "recommended_trade_type": "long"
+    },
+    {
+      "symbol": "KLAC",
+      "price": 1196.325,
+      "indicators": {
+        "macd": 10.039584708706116,
+        "macd_signal": 15.435288514104622,
+        "macd_histogram": -5.395703805398506,
+        "rsi": 46.81918135874392,
+        "ema_12": 1220.6758179157928,
+        "ema_26": 1210.6362332070867,
+        "bb_upper": 1259.0190498221234,
+        "bb_middle": 1220.4270000000001,
+        "bb_lower": 1181.8349501778769
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "long"
+      },
+      "ai_signal": {
+        "action": "hold",
+        "trade_type": "long",
+        "confidence": 65.0,
+        "reasoning": "KLAC is trading near its 50-day EMA and below both short-term EMAs, indicating mild short-term weakness. The negative MACD histogram and RSI near neutral suggest consolidation rather than a clear trend reversal, so holding until momentum strengthens is prudent."
+      },
+      "recommended_action": "hold",
+      "recommended_trade_type": "long"
+    },
+    {
+      "symbol": "PANW",
+      "price": 220.9,
+      "indicators": {
+        "macd": 0.8020860288177971,
+        "macd_signal": 0.9004707239934737,
+        "macd_histogram": -0.0983846951756766,
+        "rsi": 44.53410269125013,
+        "ema_12": 219.7238069257658,
+        "ema_26": 218.92172089694802,
+        "bb_upper": 223.74966434719613,
+        "bb_middle": 219.98967,
+        "bb_lower": 216.22967565280385
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "long"
+      },
+      "ai_signal": {
+        "action": "hold",
+        "trade_type": "long",
+        "confidence": 65.0,
+        "reasoning": "MACD histogram is slightly negative, indicating mild bearish momentum, but price remains above key EMAs and near the middle of the Bollinger Band range. RSI at 44.5 suggests neutral momentum, so waiting for a clearer signal is prudent before entering a new position."
+      },
+      "recommended_action": "hold",
+      "recommended_trade_type": "long"
+    },
+    {
+      "symbol": "ADBE",
+      "price": 342.24,
+      "indicators": {
+        "macd": -3.5249461999264895,
+        "macd_signal": -2.4198043146778385,
+        "macd_histogram": -1.105141885248651,
+        "rsi": 24.27769140628037,
+        "ema_12": 344.847546472437,
+        "ema_26": 348.3724926723635,
+        "bb_upper": 369.3447117846188,
+        "bb_middle": 350.29522499999996,
+        "bb_lower": 331.2457382153811
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "long"
+      },
+      "ai_signal": {
+        "action": "buy",
+        "trade_type": "long",
+        "confidence": 78.0,
+        "reasoning": "ADBE is trading near the lower Bollinger Band with an RSI of 24.28, indicating oversold conditions. Despite bearish MACD momentum, the price is likely near a short-term support level, suggesting a potential rebound opportunity."
+      },
+      "recommended_action": "buy",
+      "recommended_trade_type": "long"
+    },
+    {
+      "symbol": "HON",
+      "price": 201.82,
+      "indicators": {
+        "macd": 0.09268290164547466,
+        "macd_signal": 0.13332252399536682,
+        "macd_histogram": -0.04063962234989216,
+        "rsi": 49.71138676648004,
+        "ema_12": 201.99314620029108,
+        "ema_26": 201.9004632986456,
+        "bb_upper": 204.3857292090085,
+        "bb_middle": 202.01504500000001,
+        "bb_lower": 199.64436079099153
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "long"
+      },
+      "ai_signal": {
+        "action": "hold",
+        "trade_type": "long",
+        "confidence": 65.0,
+        "reasoning": "The MACD histogram is slightly negative, indicating mild bearish momentum, while RSI near 50 shows a neutral trend. Price is hovering around the EMAs and the middle Bollinger Band, suggesting consolidation rather than a clear breakout or breakdown."
+      },
+      "recommended_action": "hold",
+      "recommended_trade_type": "long"
+    },
+    {
+      "symbol": "CRWD",
+      "price": 547.3,
+      "indicators": {
+        "macd": 6.466122645260384,
+        "macd_signal": 7.502659984959996,
+        "macd_histogram": -1.0365373396996116,
+        "rsi": 50.65930799033329,
+        "ema_12": 544.5824222682782,
+        "ema_26": 538.1162996230178,
+        "bb_upper": 556.449338612243,
+        "bb_middle": 542.4230249999999,
+        "bb_lower": 528.3967113877569
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "long"
+      },
+      "ai_signal": {
+        "action": "hold",
+        "trade_type": "long",
+        "confidence": 65.0,
+        "reasoning": "CRWD is trading slightly above key EMAs, indicating mild bullish momentum, but the negative MACD histogram and neutral RSI suggest limited short-term upside. Waiting for MACD crossover confirmation or stronger volume before entering a new position is prudent."
+      },
+      "recommended_action": "hold",
+      "recommended_trade_type": "long"
+    },
+    {
+      "symbol": "CEG",
+      "price": 390.4,
+      "indicators": {
+        "macd": 4.3061046511732,
+        "macd_signal": 5.483766265365633,
+        "macd_histogram": -1.1776616141924325,
+        "rsi": 56.37578070784174,
+        "ema_12": 393.0045764679467,
+        "ema_26": 388.6984718167735,
+        "bb_upper": 406.7338555982311,
+        "bb_middle": 391.18025,
+        "bb_lower": 375.6266444017689
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "long"
+      },
+      "ai_signal": {
+        "action": "hold",
+        "trade_type": "long",
+        "confidence": 68.0,
+        "reasoning": "The MACD histogram is negative, indicating short-term bearish momentum, but the RSI is neutral and price is near the middle Bollinger Band, suggesting consolidation. EMAs show mild bullish alignment, so waiting for a clearer MACD crossover or breakout is prudent before entering a new position."
+      },
+      "recommended_action": "hold",
+      "recommended_trade_type": "long"
+    },
+    {
+      "symbol": "ADI",
+      "price": 234.6675,
+      "indicators": {
+        "macd": -1.9245500103025677,
+        "macd_signal": -1.4877741616607119,
+        "macd_histogram": -0.4367758486418558,
+        "rsi": 14.352321102777097,
+        "ema_12": 236.77859182091353,
+        "ema_26": 238.7031418312161,
+        "bb_upper": 245.78313115225885,
+        "bb_middle": 239.19162500000002,
+        "bb_lower": 232.6001188477412
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "long"
+      },
+      "ai_signal": {
+        "action": "buy",
+        "trade_type": "long",
+        "confidence": 82.0,
+        "reasoning": "The RSI at 14.35 indicates extreme oversold conditions, suggesting a potential rebound. Despite bearish MACD and EMAs, the price is near the lower Bollinger Band, which often signals a short-term buying opportunity for a technical bounce."
+      },
+      "recommended_action": "buy",
+      "recommended_trade_type": "long"
+    },
+    {
+      "symbol": "ADP",
+      "price": 261.23,
+      "indicators": {
+        "macd": -5.413256447422327,
+        "macd_signal": -4.371616323905879,
+        "macd_histogram": -1.0416401235164479,
+        "rsi": 14.071610413073913,
+        "ema_12": 266.371575688392,
+        "ema_26": 271.7848321358143,
+        "bb_upper": 290.43073389461335,
+        "bb_middle": 272.31463,
+        "bb_lower": 254.19852610538666
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "long"
+      },
+      "ai_signal": {
+        "action": "buy",
+        "trade_type": "long",
+        "confidence": 78.0,
+        "reasoning": "ADP is trading near the lower Bollinger Band with an extremely oversold RSI (14.07), suggesting a potential rebound. Despite bearish MACD momentum, the price is significantly below short-term EMAs, indicating a possible short-term recovery opportunity."
+      },
+      "recommended_action": "buy",
+      "recommended_trade_type": "long"
+    },
+    {
+      "symbol": "DASH",
+      "price": 256.81,
+      "indicators": {
+        "macd": -0.31578609947132463,
+        "macd_signal": 0.639861916240344,
+        "macd_histogram": -0.9556480157116687,
+        "rsi": 37.73172255780048,
+        "ema_12": 261.06370308626543,
+        "ema_26": 261.37948918573676,
+        "bb_upper": 268.37968164328174,
+        "bb_middle": 262.63123,
+        "bb_lower": 256.8827783567183
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "long"
+      },
+      "ai_signal": {
+        "action": "buy",
+        "trade_type": "long",
+        "confidence": 72.0,
+        "reasoning": "DASH is trading near the lower Bollinger Band and below all key EMAs, suggesting short-term oversold conditions. RSI at 37.73 indicates potential for a rebound, despite bearish MACD momentum, making this a moderate-confidence buy opportunity for a short-term bounce."
+      },
+      "recommended_action": "buy",
+      "recommended_trade_type": "long"
+    },
+    {
+      "symbol": "CMCSA",
+      "price": 27.725,
+      "indicators": {
+        "macd": -0.3993676062807552,
+        "macd_signal": -0.26344684924377937,
+        "macd_histogram": -0.13592075703697581,
+        "rsi": 22.416429975966906,
+        "ema_12": 28.402028532630364,
+        "ema_26": 28.80139613891112,
+        "bb_upper": 30.09603127075826,
+        "bb_middle": 28.86739,
+        "bb_lower": 27.63874872924174
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "long"
+      },
+      "ai_signal": {
+        "action": "buy",
+        "trade_type": "long",
+        "confidence": 78.0,
+        "reasoning": "RSI at 22.42 indicates strong oversold conditions, and price is near the lower Bollinger Band ($27.64), suggesting a potential rebound. Although MACD remains bearish, the risk-reward favors a short-term long entry for a technical bounce."
+      },
+      "recommended_action": "buy",
+      "recommended_trade_type": "long"
+    },
+    {
+      "symbol": "VRTX",
+      "price": 420.81,
+      "indicators": {
+        "macd": -0.6774364304978917,
+        "macd_signal": -0.8249230298136513,
+        "macd_histogram": 0.14748659931575958,
+        "rsi": 52.40183792815367,
+        "ema_12": 420.2299877956088,
+        "ema_26": 420.9074242261067,
+        "bb_upper": 423.69422771272144,
+        "bb_middle": 420.38604999999995,
+        "bb_lower": 417.07787228727847
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "short"
+      },
+      "ai_signal": {
+        "action": "buy",
+        "trade_type": "long",
+        "confidence": 68.0,
+        "reasoning": "MACD histogram turning positive and price slightly above short-term EMA suggest emerging bullish momentum, while RSI near neutral indicates room for upside without being overbought."
+      },
+      "recommended_action": "buy",
+      "recommended_trade_type": "long"
+    },
+    {
+      "symbol": "MELI",
+      "price": 2416.08,
+      "indicators": {
+        "macd": 54.97538784336757,
+        "macd_signal": 46.606063500624884,
+        "macd_histogram": 8.369324342742686,
+        "rsi": 88.50408610723551,
+        "ema_12": 2347.8286848819184,
+        "ema_26": 2292.853297038551,
+        "bb_upper": 2414.246984657806,
+        "bb_middle": 2313.44025,
+        "bb_lower": 2212.633515342194
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "long"
+      },
+      "ai_signal": {
+        "action": "sell",
+        "trade_type": "short",
+        "confidence": 85.0,
+        "reasoning": "RSI at 88.5 indicates extreme overbought conditions, and price is touching the upper Bollinger Band, suggesting a potential pullback despite strong MACD momentum."
+      },
+      "recommended_action": "sell",
+      "recommended_trade_type": "short"
+    },
+    {
+      "symbol": "SBUX",
+      "price": 84.921,
+      "indicators": {
+        "macd": -0.3506457425667122,
+        "macd_signal": -0.2840878745375157,
+        "macd_histogram": -0.0665578680291965,
+        "rsi": 32.92412365034767,
+        "ema_12": 85.09180397820906,
+        "ema_26": 85.44244972077577,
+        "bb_upper": 88.10417003581681,
+        "bb_middle": 85.69395,
+        "bb_lower": 83.2837299641832
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "long"
+      },
+      "ai_signal": {
+        "action": "buy",
+        "trade_type": "long",
+        "confidence": 78.0,
+        "reasoning": "RSI near 33 indicates the stock is approaching oversold territory, and price is near the lower Bollinger Band, suggesting potential for a rebound. Although MACD remains slightly bearish, the downside momentum appears to be weakening, making this a favorable entry point for a short-term long position."
+      },
+      "recommended_action": "buy",
+      "recommended_trade_type": "long"
+    },
+    {
+      "symbol": "CDNS",
+      "price": 335.3,
+      "indicators": {
+        "macd": -1.3813422343847606,
+        "macd_signal": 0.06537855819492683,
+        "macd_histogram": -1.4467207925796874,
+        "rsi": 33.72184907151312,
+        "ema_12": 339.5533602304285,
+        "ema_26": 340.93470246481326,
+        "bb_upper": 353.4143315169748,
+        "bb_middle": 343.016775,
+        "bb_lower": 332.6192184830252
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "long"
+      },
+      "ai_signal": {
+        "action": "buy",
+        "trade_type": "long",
+        "confidence": 72.0,
+        "reasoning": "RSI near 33 indicates the stock is approaching oversold territory, and price is close to the lower Bollinger Band, suggesting potential rebound. Despite bearish MACD, the proximity to support levels favors a short-term recovery opportunity."
+      },
+      "recommended_action": "buy",
+      "recommended_trade_type": "long"
+    },
+    {
+      "symbol": "ORLY",
+      "price": 95.5675,
+      "indicators": {
+        "macd": -0.6618572496995654,
+        "macd_signal": -0.7564704956312317,
+        "macd_histogram": 0.09461324593166631,
+        "rsi": 32.44638082237893,
+        "ema_12": 95.71611731527398,
+        "ema_26": 96.37797456497354,
+        "bb_upper": 97.60266135247599,
+        "bb_middle": 96.000365,
+        "bb_lower": 94.39806864752401
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "short"
+      },
+      "ai_signal": {
+        "action": "buy",
+        "trade_type": "long",
+        "confidence": 75.0,
+        "reasoning": "RSI near 32 indicates the stock is approaching oversold territory, and the positive MACD histogram suggests early bullish momentum. Price is also near the lower Bollinger Band, signaling a potential rebound opportunity."
+      },
+      "recommended_action": "buy",
+      "recommended_trade_type": "long"
+    },
+    {
+      "symbol": "SNPS",
+      "price": 440.55,
+      "indicators": {
+        "macd": -4.182946308824057,
+        "macd_signal": -2.666417486159092,
+        "macd_histogram": -1.5165288226649651,
+        "rsi": 39.5294117647059,
+        "ema_12": 448.8638395088024,
+        "ema_26": 453.04678581762647,
+        "bb_upper": 468.3269047706137,
+        "bb_middle": 453.13080999999994,
+        "bb_lower": 437.9347152293862
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "long"
+      },
+      "ai_signal": {
+        "action": "hold",
+        "trade_type": "long",
+        "confidence": 70.0,
+        "reasoning": "SNPS is trading below key EMAs with a negative MACD and RSI near 40, indicating bearish momentum but approaching oversold territory near the lower Bollinger Band, suggesting limited downside and potential stabilization."
+      },
+      "recommended_action": "hold",
+      "recommended_trade_type": "long"
+    },
+    {
+      "symbol": "MSTR",
+      "price": 263.36,
+      "indicators": {
+        "macd": -6.710453219178476,
+        "macd_signal": -4.419954134071909,
+        "macd_histogram": -2.2904990851065667,
+        "rsi": 11.0892691951898,
+        "ema_12": 274.5757015133903,
+        "ema_26": 281.2861547325688,
+        "bb_upper": 305.7926775445972,
+        "bb_middle": 283.28937,
+        "bb_lower": 260.7860624554028
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "long"
+      },
+      "ai_signal": {
+        "action": "buy",
+        "trade_type": "long",
+        "confidence": 85.0,
+        "reasoning": "RSI at 11.09 indicates extreme oversold conditions, and price is near the lower Bollinger Band, suggesting a potential rebound despite bearish MACD momentum."
+      },
+      "recommended_action": "buy",
+      "recommended_trade_type": "long"
+    },
+    {
+      "symbol": "MDLZ",
+      "price": 58.15,
+      "indicators": {
+        "macd": -0.9145197932712108,
+        "macd_signal": -0.8295377128421617,
+        "macd_histogram": -0.08498208042904909,
+        "rsi": 19.726858877086528,
+        "ema_12": 58.67284367586542,
+        "ema_26": 59.58736346913663,
+        "bb_upper": 63.456322034599104,
+        "bb_middle": 59.705589999999994,
+        "bb_lower": 55.95485796540088
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "long"
+      },
+      "ai_signal": {
+        "action": "buy",
+        "trade_type": "long",
+        "confidence": 85.0,
+        "reasoning": "RSI at 19.73 indicates the stock is deeply oversold, and price is near the lower Bollinger Band, suggesting a potential rebound. Despite bearish MACD momentum, the setup favors a short-term recovery opportunity."
+      },
+      "recommended_action": "buy",
+      "recommended_trade_type": "long"
+    },
+    {
+      "symbol": "ABNB",
+      "price": 128.215,
+      "indicators": {
+        "macd": -0.267091091709446,
+        "macd_signal": -0.23203286760006048,
+        "macd_histogram": -0.03505822410938553,
+        "rsi": 36.50934995547647,
+        "ema_12": 127.60582724263222,
+        "ema_26": 127.87291833434166,
+        "bb_upper": 130.1436597379567,
+        "bb_middle": 128.104395,
+        "bb_lower": 126.0651302620433
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "long"
+      },
+      "ai_signal": {
+        "action": "buy",
+        "trade_type": "long",
+        "confidence": 68.0,
+        "reasoning": "RSI near 36 indicates the stock is approaching oversold territory, and price is slightly above key EMAs, suggesting potential support. Despite a mildly negative MACD, the proximity to the lower Bollinger Band implies limited downside and possible rebound."
+      },
+      "recommended_action": "buy",
+      "recommended_trade_type": "long"
+    },
+    {
+      "symbol": "MRVL",
+      "price": 89.765,
+      "indicators": {
+        "macd": 0.9869366166422964,
+        "macd_signal": 1.164858664372078,
+        "macd_histogram": -0.1779220477297816,
+        "rsi": 57.16682981401208,
+        "ema_12": 89.38265658154933,
+        "ema_26": 88.39571996490703,
+        "bb_upper": 90.96224913448336,
+        "bb_middle": 89.2101,
+        "bb_lower": 87.45795086551664
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "long"
+      },
+      "ai_signal": {
+        "action": "hold",
+        "trade_type": "long",
+        "confidence": 70.0,
+        "reasoning": "MRVL is trading slightly above key EMAs, indicating mild bullish momentum, but the negative MACD histogram and RSI near neutral suggest limited short-term upside. Waiting for a stronger MACD crossover or breakout above the Bollinger upper band would confirm a clearer buy signal."
+      },
+      "recommended_action": "hold",
+      "recommended_trade_type": "long"
+    },
+    {
+      "symbol": "CTAS",
+      "price": 184.305,
+      "indicators": {
+        "macd": -1.8257676236472378,
+        "macd_signal": -1.6642583736249745,
+        "macd_histogram": -0.16150925002226324,
+        "rsi": 33.37974242951614,
+        "ema_12": 185.99735420461352,
+        "ema_26": 187.82312182826075,
+        "bb_upper": 191.6000996881907,
+        "bb_middle": 187.3372,
+        "bb_lower": 183.07430031180928
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "long"
+      },
+      "ai_signal": {
+        "action": "buy",
+        "trade_type": "long",
+        "confidence": 75.0,
+        "reasoning": "CTAS is trading near the lower Bollinger Band with an RSI of 33, indicating it is approaching oversold territory. Although the MACD remains slightly bearish, the proximity to support levels suggests a potential short-term rebound opportunity."
+      },
+      "recommended_action": "buy",
+      "recommended_trade_type": "long"
+    },
+    {
+      "symbol": "TRI",
+      "price": 154.34,
+      "indicators": {
+        "macd": -2.2574938217015017,
+        "macd_signal": -1.8051248152989838,
+        "macd_histogram": -0.45236900640251787,
+        "rsi": 20.073800738007648,
+        "ema_12": 155.58353900968604,
+        "ema_26": 157.84103283138754,
+        "bb_upper": 166.71715544315128,
+        "bb_middle": 158.26225,
+        "bb_lower": 149.8073445568487
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "long"
+      },
+      "ai_signal": {
+        "action": "buy",
+        "trade_type": "long",
+        "confidence": 78.0,
+        "reasoning": "RSI at 20.07 indicates strong oversold conditions, and price is near the lower Bollinger Band, suggesting a potential rebound. Despite bearish MACD momentum, the setup favors a short-term recovery opportunity."
+      },
+      "recommended_action": "buy",
+      "recommended_trade_type": "long"
+    },
+    {
+      "symbol": "MAR",
+      "price": 266.51,
+      "indicators": {
+        "macd": -1.1366471653369672,
+        "macd_signal": -1.0883835023913515,
+        "macd_histogram": -0.04826366294561568,
+        "rsi": 40.25852265328617,
+        "ema_12": 266.1303063447341,
+        "ema_26": 267.26695351007106,
+        "bb_upper": 272.3839818264796,
+        "bb_middle": 267.23859,
+        "bb_lower": 262.09319817352036
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "long"
+      },
+      "ai_signal": {
+        "action": "hold",
+        "trade_type": "long",
+        "confidence": 65.0,
+        "reasoning": "MACD is slightly bearish with a negative histogram, but RSI near 40 suggests the stock is approaching oversold territory. Price is near the lower Bollinger Band, indicating potential stabilization before a reversal; thus, holding is prudent until clearer momentum develops."
+      },
+      "recommended_action": "hold",
+      "recommended_trade_type": "long"
+    },
+    {
+      "symbol": "MNST",
+      "price": 66.967,
+      "indicators": {
+        "macd": -0.7993094165115764,
+        "macd_signal": -0.6635756729187355,
+        "macd_histogram": -0.13573374359284085,
+        "rsi": 31.877323420074347,
+        "ema_12": 67.25887606469918,
+        "ema_26": 68.05818548121076,
+        "bb_upper": 70.8189109332772,
+        "bb_middle": 68.117605,
+        "bb_lower": 65.4162990667228
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "long"
+      },
+      "ai_signal": {
+        "action": "buy",
+        "trade_type": "long",
+        "confidence": 75.0,
+        "reasoning": "RSI near 32 indicates the stock is approaching oversold territory, and price is close to the lower Bollinger Band, suggesting potential for a rebound despite short-term bearish momentum from the MACD."
+      },
+      "recommended_action": "buy",
+      "recommended_trade_type": "long"
+    },
+    {
+      "symbol": "CSX",
+      "price": 35.78,
+      "indicators": {
+        "macd": -0.08861465057962903,
+        "macd_signal": -0.13024963172648363,
+        "macd_histogram": 0.0416349811468546,
+        "rsi": 52.391037026916266,
+        "ema_12": 35.57893633971317,
+        "ema_26": 35.667550990292796,
+        "bb_upper": 35.97228504764475,
+        "bb_middle": 35.599734999999995,
+        "bb_lower": 35.22718495235524
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "short"
+      },
+      "ai_signal": {
+        "action": "buy",
+        "trade_type": "long",
+        "confidence": 72.0,
+        "reasoning": "MACD histogram turning positive suggests emerging bullish momentum, RSI near neutral indicates room for upside, and price trading slightly above short-term EMAs and near the Bollinger middle band supports a modest long entry."
+      },
+      "recommended_action": "buy",
+      "recommended_trade_type": "long"
+    },
+    {
+      "symbol": "ADSK",
+      "price": 301.37,
+      "indicators": {
+        "macd": -2.9606906095440877,
+        "macd_signal": -2.208048993651218,
+        "macd_histogram": -0.7526416158928697,
+        "rsi": 26.3176387912861,
+        "ema_12": 302.8079732616876,
+        "ema_26": 305.7686638712317,
+        "bb_upper": 320.2409046162609,
+        "bb_middle": 306.86894,
+        "bb_lower": 293.49697538373914
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "long"
+      },
+      "ai_signal": {
+        "action": "buy",
+        "trade_type": "long",
+        "confidence": 78.0,
+        "reasoning": "RSI at 26.32 indicates oversold conditions, and price is near the lower Bollinger Band, suggesting potential rebound. Despite bearish MACD, short-term mean reversion toward EMA levels is likely."
+      },
+      "recommended_action": "buy",
+      "recommended_trade_type": "long"
+    },
+    {
+      "symbol": "PYPL",
+      "price": 68.69,
+      "indicators": {
+        "macd": -0.4959531190544908,
+        "macd_signal": 0.10377787462227259,
+        "macd_histogram": -0.5997309936767634,
+        "rsi": 4.86910994764402,
+        "ema_12": 70.42600436826223,
+        "ema_26": 70.92195748731672,
+        "bb_upper": 77.56626030963403,
+        "bb_middle": 71.972005,
+        "bb_lower": 66.37774969036596
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "long"
+      },
+      "ai_signal": {
+        "action": "buy",
+        "trade_type": "long",
+        "confidence": 85.0,
+        "reasoning": "PYPL is trading below all key EMAs and near the lower Bollinger Band, indicating potential oversold conditions. The extremely low RSI (4.87) suggests a strong likelihood of a short-term rebound from current levels."
+      },
+      "recommended_action": "buy",
+      "recommended_trade_type": "long"
+    },
+    {
+      "symbol": "FTNT",
+      "price": 85.55,
+      "indicators": {
+        "macd": -0.06565268979736061,
+        "macd_signal": -0.04013592094796674,
+        "macd_histogram": -0.02551676884939387,
+        "rsi": 38.472317267898404,
+        "ema_12": 85.19864250099857,
+        "ema_26": 85.26429519079593,
+        "bb_upper": 87.10674553429023,
+        "bb_middle": 85.4613,
+        "bb_lower": 83.81585446570976
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "long"
+      },
+      "ai_signal": {
+        "action": "hold",
+        "trade_type": "long",
+        "confidence": 65.0,
+        "reasoning": "FTNT is trading near its EMA cluster with a slightly negative MACD and RSI below 40, indicating mild bearish momentum but potential for stabilization; waiting for confirmation before entering a long position is prudent."
+      },
+      "recommended_action": "hold",
+      "recommended_trade_type": "long"
+    },
+    {
+      "symbol": "AEP",
+      "price": 121.86,
+      "indicators": {
+        "macd": 1.448762201680978,
+        "macd_signal": 1.0904192410366704,
+        "macd_histogram": 0.3583429606443076,
+        "rsi": 77.85388127853875,
+        "ema_12": 120.48822078060951,
+        "ema_26": 119.03945857892853,
+        "bb_upper": 124.67002186111125,
+        "bb_middle": 118.6665,
+        "bb_lower": 112.66297813888875
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "long"
+      },
+      "ai_signal": {
+        "action": "sell",
+        "trade_type": "short",
+        "confidence": 82.0,
+        "reasoning": "RSI at 77.85 indicates overbought conditions, and price is near the upper Bollinger Band, suggesting limited upside. Although MACD remains bullish, momentum may be peaking, making a short-term pullback likely."
+      },
+      "recommended_action": "sell",
+      "recommended_trade_type": "short"
+    },
+    {
+      "symbol": "WDAY",
+      "price": 234.7,
+      "indicators": {
+        "macd": -2.1468342656165476,
+        "macd_signal": -2.256100844031412,
+        "macd_histogram": 0.10926657841486431,
+        "rsi": 33.659525617049596,
+        "ema_12": 234.3691342057481,
+        "ema_26": 236.51596847136466,
+        "bb_upper": 244.28478579607852,
+        "bb_middle": 236.0123,
+        "bb_lower": 227.7398142039215
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "short"
+      },
+      "ai_signal": {
+        "action": "buy",
+        "trade_type": "long",
+        "confidence": 75.0,
+        "reasoning": "RSI near 33 indicates the stock is approaching oversold territory, and the positive MACD histogram suggests early bullish momentum. Price is also near the lower Bollinger Band, hinting at a potential rebound from support."
+      },
+      "recommended_action": "buy",
+      "recommended_trade_type": "long"
+    },
+    {
+      "symbol": "REGN",
+      "price": 657.125,
+      "indicators": {
+        "macd": 18.278383208094283,
+        "macd_signal": 18.24471157870843,
+        "macd_histogram": 0.03367162938585366,
+        "rsi": 69.1738113795792,
+        "ema_12": 649.9667878406735,
+        "ema_26": 631.6884046325792,
+        "bb_upper": 695.1127595421096,
+        "bb_middle": 636.85575,
+        "bb_lower": 578.5987404578902
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "short"
+      },
+      "ai_signal": {
+        "action": "hold",
+        "trade_type": "long",
+        "confidence": 70.0,
+        "reasoning": "REGN shows bullish momentum with price above key EMAs and a positive MACD crossover, but RSI near 70 indicates overbought conditions, suggesting limited short-term upside and potential consolidation before further gains."
+      },
+      "recommended_action": "hold",
+      "recommended_trade_type": "long"
+    },
+    {
+      "symbol": "ROP",
+      "price": 448.7,
+      "indicators": {
+        "macd": -8.262889889983683,
+        "macd_signal": -9.193019154989383,
+        "macd_histogram": 0.9301292650057,
+        "rsi": 31.247048566965773,
+        "ema_12": 452.00416278011375,
+        "ema_26": 460.2670526700974,
+        "bb_upper": 466.62948182998696,
+        "bb_middle": 454.912385,
+        "bb_lower": 443.195288170013
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "short"
+      },
+      "ai_signal": {
+        "action": "buy",
+        "trade_type": "long",
+        "confidence": 75.0,
+        "reasoning": "RSI near 30 indicates oversold conditions, and the positive MACD histogram suggests potential bullish momentum forming. Price is also near the lower Bollinger Band, signaling a possible rebound opportunity."
+      },
+      "recommended_action": "buy",
+      "recommended_trade_type": "long"
+    },
+    {
+      "symbol": "NXPI",
+      "price": 208.48,
+      "indicators": {
+        "macd": -3.2286410488424337,
+        "macd_signal": -3.0910727180112483,
+        "macd_histogram": -0.13756833083118547,
+        "rsi": 27.969079409697812,
+        "ema_12": 209.21097912963356,
+        "ema_26": 212.439620178476,
+        "bb_upper": 225.01142908079507,
+        "bb_middle": 212.53036000000003,
+        "bb_lower": 200.049290919205
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "long"
+      },
+      "ai_signal": {
+        "action": "buy",
+        "trade_type": "long",
+        "confidence": 78.0,
+        "reasoning": "RSI at 27.97 indicates oversold conditions, and price is near the lower Bollinger Band, suggesting potential rebound. Despite bearish MACD, short-term momentum may shift upward as selling pressure eases."
+      },
+      "recommended_action": "buy",
+      "recommended_trade_type": "long"
+    },
+    {
+      "symbol": "DDOG",
+      "price": 158.05,
+      "indicators": {
+        "macd": 0.22622187355574397,
+        "macd_signal": 0.12530581740210872,
+        "macd_histogram": 0.10091605615363525,
+        "rsi": 49.9399038461539,
+        "ema_12": 157.39753235956235,
+        "ema_26": 157.1713104860066,
+        "bb_upper": 159.01815001903395,
+        "bb_middle": 157.34525,
+        "bb_lower": 155.67234998096603
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "short"
+      },
+      "ai_signal": {
+        "action": "buy",
+        "trade_type": "long",
+        "confidence": 70.0,
+        "reasoning": "MACD is positive with a bullish crossover and histogram expansion, indicating upward momentum. RSI is neutral near 50, suggesting room for upside, and price is slightly above key EMAs, confirming mild bullish bias near the middle of the Bollinger Band range."
+      },
+      "recommended_action": "buy",
+      "recommended_trade_type": "long"
+    },
+    {
+      "symbol": "AXON",
+      "price": 742.33,
+      "indicators": {
+        "macd": 5.566466571701881,
+        "macd_signal": 9.114420836251439,
+        "macd_histogram": -3.547954264549558,
+        "rsi": 25.13018778601858,
+        "ema_12": 750.8384484017422,
+        "ema_26": 745.2719818300403,
+        "bb_upper": 764.5463922335073,
+        "bb_middle": 753.528125,
+        "bb_lower": 742.5098577664928
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "long"
+      },
+      "ai_signal": {
+        "action": "buy",
+        "trade_type": "long",
+        "confidence": 78.0,
+        "reasoning": "RSI at 25.13 indicates oversold conditions, and price is near the lower Bollinger Band, suggesting potential rebound. Despite a bearish MACD histogram, short-term momentum may shift upward as price stabilizes near support."
+      },
+      "recommended_action": "buy",
+      "recommended_trade_type": "long"
+    },
+    {
+      "symbol": "ROST",
+      "price": 158.93,
+      "indicators": {
+        "macd": 0.03177214964367181,
+        "macd_signal": 0.3177198344536287,
+        "macd_histogram": -0.2859476848099569,
+        "rsi": 39.90683229813682,
+        "ema_12": 159.15646465713843,
+        "ema_26": 159.12469250749476,
+        "bb_upper": 162.12188713327058,
+        "bb_middle": 159.94875,
+        "bb_lower": 157.7756128667294
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "long"
+      },
+      "ai_signal": {
+        "action": "hold",
+        "trade_type": "long",
+        "confidence": 65.0,
+        "reasoning": "ROST is trading slightly below its short-term EMAs with a weak MACD and RSI near 40, suggesting mild bearish momentum but not oversold enough for a strong buy signal. Consolidation near support levels indicates a wait-and-see approach before entering a long position."
+      },
+      "recommended_action": "hold",
+      "recommended_trade_type": "long"
+    },
+    {
+      "symbol": "IDXX",
+      "price": 629.88,
+      "indicators": {
+        "macd": -3.135758857659539,
+        "macd_signal": -2.649532925344984,
+        "macd_histogram": -0.486225932314555,
+        "rsi": 34.90373395565929,
+        "ema_12": 631.6639822624843,
+        "ema_26": 634.7997411201438,
+        "bb_upper": 650.5759627536146,
+        "bb_middle": 635.755805,
+        "bb_lower": 620.9356472463854
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "long"
+      },
+      "ai_signal": {
+        "action": "buy",
+        "trade_type": "long",
+        "confidence": 72.0,
+        "reasoning": "IDXX is trading below key EMAs and near the lower Bollinger Band, suggesting potential oversold conditions. RSI at 34.9 indicates bearish momentum may be easing, making a short-term rebound likely."
+      },
+      "recommended_action": "buy",
+      "recommended_trade_type": "long"
+    },
+    {
+      "symbol": "EA",
+      "price": 200.33,
+      "indicators": {
+        "macd": -0.08637924097465088,
+        "macd_signal": -0.07990483616802745,
+        "macd_histogram": -0.006474404806623438,
+        "rsi": 41.58415841584237,
+        "ema_12": 200.34613209032318,
+        "ema_26": 200.43251133129783,
+        "bb_upper": 200.74153104336713,
+        "bb_middle": 200.42675,
+        "bb_lower": 200.11196895663286
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "long"
+      },
+      "ai_signal": {
+        "action": "hold",
+        "trade_type": "long",
+        "confidence": 65.0,
+        "reasoning": "EA is trading slightly below its short-term EMAs with a weak negative MACD and RSI near neutral, suggesting mild bearish momentum but no strong sell signal. Price is near the Bollinger middle band, indicating consolidation rather than a clear trend reversal."
+      },
+      "recommended_action": "hold",
+      "recommended_trade_type": "long"
+    },
+    {
+      "symbol": "PCAR",
+      "price": 99.69,
+      "indicators": {
+        "macd": -0.15050360793135553,
+        "macd_signal": -0.10087558911613524,
+        "macd_histogram": -0.04962801881522029,
+        "rsi": 46.01344860710849,
+        "ema_12": 99.27599439645584,
+        "ema_26": 99.4264980043872,
+        "bb_upper": 101.23841740795392,
+        "bb_middle": 99.65073500000001,
+        "bb_lower": 98.0630525920461
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "long"
+      },
+      "ai_signal": {
+        "action": "hold",
+        "trade_type": "long",
+        "confidence": 65.0,
+        "reasoning": "MACD is slightly bearish with the histogram below zero, but RSI near 46 and price hovering around EMAs suggest neutral momentum. Bollinger Bands show limited volatility, indicating consolidation rather than a clear trend direction."
+      },
+      "recommended_action": "hold",
+      "recommended_trade_type": "long"
+    },
+    {
+      "symbol": "FAST",
+      "price": 41.28,
+      "indicators": {
+        "macd": -0.3535566656339526,
+        "macd_signal": -0.35394315608344895,
+        "macd_histogram": 0.00038649044949634614,
+        "rsi": 32.064017660044115,
+        "ema_12": 41.3828976679066,
+        "ema_26": 41.73645433354055,
+        "bb_upper": 42.73101012782928,
+        "bb_middle": 41.650185,
+        "bb_lower": 40.56935987217072
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "short"
+      },
+      "ai_signal": {
+        "action": "buy",
+        "trade_type": "long",
+        "confidence": 75.0,
+        "reasoning": "RSI near 32 indicates the stock is approaching oversold territory, and the MACD histogram turning slightly positive suggests potential bullish momentum. Price is also near the lower Bollinger Band, hinting at a possible rebound."
+      },
+      "recommended_action": "buy",
+      "recommended_trade_type": "long"
+    },
+    {
+      "symbol": "EXC",
+      "price": 47.165,
+      "indicators": {
+        "macd": -0.18208885143925357,
+        "macd_signal": -0.1461328196354023,
+        "macd_histogram": -0.03595603180385126,
+        "rsi": 26.75585284280953,
+        "ema_12": 47.38391541571649,
+        "ema_26": 47.56600426715574,
+        "bb_upper": 48.230837654994225,
+        "bb_middle": 47.59125,
+        "bb_lower": 46.95166234500578
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "long"
+      },
+      "ai_signal": {
+        "action": "buy",
+        "trade_type": "long",
+        "confidence": 78.0,
+        "reasoning": "RSI at 26.76 indicates oversold conditions, and price is near the lower Bollinger Band, suggesting a potential rebound. Although MACD remains slightly bearish, the downside momentum appears limited, favoring a short-term long entry."
+      },
+      "recommended_action": "buy",
+      "recommended_trade_type": "long"
+    },
+    {
+      "symbol": "TTWO",
+      "price": 254.21,
+      "indicators": {
+        "macd": -0.6301108377463152,
+        "macd_signal": -1.062429081809159,
+        "macd_histogram": 0.4323182440628439,
+        "rsi": 50.47863247863252,
+        "ema_12": 253.27765985737597,
+        "ema_26": 253.90777069512228,
+        "bb_upper": 256.2919770003052,
+        "bb_middle": 253.23796500000003,
+        "bb_lower": 250.1839529996948
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "short"
+      },
+      "ai_signal": {
+        "action": "buy",
+        "trade_type": "long",
+        "confidence": 72.0,
+        "reasoning": "MACD histogram turning positive indicates bullish momentum, price trading slightly above short-term EMAs suggests potential upward continuation, and RSI near neutral implies room for upside without being overbought."
+      },
+      "recommended_action": "buy",
+      "recommended_trade_type": "long"
+    },
+    {
+      "symbol": "XEL",
+      "price": 81.565,
+      "indicators": {
+        "macd": 0.1940371115460806,
+        "macd_signal": -0.014787491917825822,
+        "macd_histogram": 0.20882460346390644,
+        "rsi": 61.79129005751849,
+        "ema_12": 80.80416197756401,
+        "ema_26": 80.61012486601793,
+        "bb_upper": 81.84715161858996,
+        "bb_middle": 80.42925,
+        "bb_lower": 79.01134838141003
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "short"
+      },
+      "ai_signal": {
+        "action": "buy",
+        "trade_type": "long",
+        "confidence": 78.0,
+        "reasoning": "MACD is positive and above its signal line, indicating bullish momentum. RSI at 61.79 shows moderate strength without being overbought, and price trading near the upper Bollinger Band suggests continued upward pressure supported by EMAs trending upward."
+      },
+      "recommended_action": "buy",
+      "recommended_trade_type": "long"
+    },
+    {
+      "symbol": "ZS",
+      "price": 326.41,
+      "indicators": {
+        "macd": 1.4901410822121193,
+        "macd_signal": 1.7252529535703287,
+        "macd_histogram": -0.23511187135820943,
+        "rsi": 50.05289139633291,
+        "ema_12": 324.15443179309915,
+        "ema_26": 322.66429071088703,
+        "bb_upper": 330.21846411474945,
+        "bb_middle": 324.553355,
+        "bb_lower": 318.88824588525057
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "long"
+      },
+      "ai_signal": {
+        "action": "hold",
+        "trade_type": "long",
+        "confidence": 65.0,
+        "reasoning": "ZS is trading slightly above key EMAs, indicating mild bullish momentum, but the negative MACD histogram and neutral RSI suggest limited short-term upside. Waiting for a stronger MACD crossover or breakout above the Bollinger upper band would confirm a clearer buy signal."
+      },
+      "recommended_action": "hold",
+      "recommended_trade_type": "long"
+    },
+    {
+      "symbol": "PAYX",
+      "price": 117.095,
+      "indicators": {
+        "macd": -2.1062369077056786,
+        "macd_signal": -1.8205127383185165,
+        "macd_histogram": -0.28572416938716216,
+        "rsi": 16.780155642023487,
+        "ema_12": 119.14037600169303,
+        "ema_26": 121.2466129093987,
+        "bb_upper": 127.5049930781298,
+        "bb_middle": 121.18350000000001,
+        "bb_lower": 114.86200692187022
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "long"
+      },
+      "ai_signal": {
+        "action": "buy",
+        "trade_type": "long",
+        "confidence": 85.0,
+        "reasoning": "RSI at 16.78 indicates strong oversold conditions, and price is near the lower Bollinger Band ($114.86), suggesting a potential rebound. Despite bearish MACD momentum, the setup favors a short-term recovery opportunity."
+      },
+      "recommended_action": "buy",
+      "recommended_trade_type": "long"
+    },
+    {
+      "symbol": "WBD",
+      "price": 21.7201,
+      "indicators": {
+        "macd": 0.24698642819910077,
+        "macd_signal": 0.23078892893297728,
+        "macd_histogram": 0.01619749926612349,
+        "rsi": 76.69749605233488,
+        "ema_12": 21.47356994695884,
+        "ema_26": 21.22658351875974,
+        "bb_upper": 21.83132934989127,
+        "bb_middle": 21.29733,
+        "bb_lower": 20.763330650108728
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "long"
+      },
+      "ai_signal": {
+        "action": "sell",
+        "trade_type": "short",
+        "confidence": 82.0,
+        "reasoning": "RSI at 76.7 indicates overbought conditions, and price is near the upper Bollinger Band, suggesting limited upside. Despite a slightly positive MACD, momentum may be weakening, making a short-term pullback likely."
+      },
+      "recommended_action": "sell",
+      "recommended_trade_type": "short"
+    },
+    {
+      "symbol": "BKR",
+      "price": 48.6217,
+      "indicators": {
+        "macd": 0.4263504912507159,
+        "macd_signal": 0.3649959198318385,
+        "macd_histogram": 0.0613545714188774,
+        "rsi": 75.1402659288294,
+        "ema_12": 48.25739942480718,
+        "ema_26": 47.83104893355647,
+        "bb_upper": 49.37564525397575,
+        "bb_middle": 47.76031,
+        "bb_lower": 46.144974746024246
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "long"
+      },
+      "ai_signal": {
+        "action": "hold",
+        "trade_type": "long",
+        "confidence": 70.0,
+        "reasoning": "BKR is trading above all key EMAs with a positive MACD crossover, indicating bullish momentum, but the RSI at 75 suggests overbought conditions near the upper Bollinger Band, signaling potential short-term consolidation before further upside."
+      },
+      "recommended_action": "hold",
+      "recommended_trade_type": "long"
+    },
+    {
+      "symbol": "CPRT",
+      "price": 42.685,
+      "indicators": {
+        "macd": -0.535911673676722,
+        "macd_signal": -0.4775995267596862,
+        "macd_histogram": -0.05831214691703579,
+        "rsi": 16.885964912280443,
+        "ema_12": 43.0587016848642,
+        "ema_26": 43.59461335854092,
+        "bb_upper": 45.02741432150574,
+        "bb_middle": 43.5335,
+        "bb_lower": 42.039585678494255
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "long"
+      },
+      "ai_signal": {
+        "action": "buy",
+        "trade_type": "long",
+        "confidence": 78.0,
+        "reasoning": "RSI at 16.89 indicates extreme oversold conditions, and price is near the lower Bollinger Band, suggesting a potential rebound. Despite bearish MACD momentum, the setup favors a short-term recovery opportunity."
+      },
+      "recommended_action": "buy",
+      "recommended_trade_type": "long"
+    },
+    {
+      "symbol": "CCEP",
+      "price": 89.32,
+      "indicators": {
+        "macd": -0.628743970901624,
+        "macd_signal": -0.4695119354250631,
+        "macd_histogram": -0.15923203547656095,
+        "rsi": 26.477541371158168,
+        "ema_12": 89.81294294849769,
+        "ema_26": 90.44168691939932,
+        "bb_upper": 93.16762913945287,
+        "bb_middle": 90.60275,
+        "bb_lower": 88.03787086054713
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "long"
+      },
+      "ai_signal": {
+        "action": "buy",
+        "trade_type": "long",
+        "confidence": 75.0,
+        "reasoning": "The RSI at 26.48 indicates the stock is oversold, and the price is near the lower Bollinger Band, suggesting a potential rebound. Although MACD remains bearish, the oversold conditions and proximity to support levels favor a short-term long entry."
+      },
+      "recommended_action": "buy",
+      "recommended_trade_type": "long"
+    },
+    {
+      "symbol": "FANG",
+      "price": 144.2193,
+      "indicators": {
+        "macd": 0.015247675818699236,
+        "macd_signal": -0.12584749190454012,
+        "macd_histogram": 0.14109516772323935,
+        "rsi": 66.99638474874675,
+        "ema_12": 143.7215877828829,
+        "ema_26": 143.7063401070642,
+        "bb_upper": 146.1115671942017,
+        "bb_middle": 143.27844,
+        "bb_lower": 140.44531280579827
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "short"
+      },
+      "ai_signal": {
+        "action": "buy",
+        "trade_type": "long",
+        "confidence": 78.0,
+        "reasoning": "MACD is positive and crossing above the signal line, indicating bullish momentum; RSI at 67 shows strong but not overbought conditions, and price trading above EMAs suggests continued upward trend toward the upper Bollinger Band."
+      },
+      "recommended_action": "buy",
+      "recommended_trade_type": "long"
+    },
+    {
+      "symbol": "TEAM",
+      "price": 162.47,
+      "indicators": {
+        "macd": -0.5057858185347186,
+        "macd_signal": -0.5243065317430556,
+        "macd_histogram": 0.018520713208337036,
+        "rsi": 46.69874365143007,
+        "ema_12": 162.4290381566851,
+        "ema_26": 162.9348239752198,
+        "bb_upper": 166.49272959654238,
+        "bb_middle": 162.99875000000003,
+        "bb_lower": 159.50477040345768
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "short"
+      },
+      "ai_signal": {
+        "action": "hold",
+        "trade_type": "long",
+        "confidence": 65.0,
+        "reasoning": "TEAM is trading near its short-term EMAs with a slightly positive MACD histogram and neutral RSI, suggesting consolidation rather than a clear trend. Momentum is weak but not bearish enough to justify selling; waiting for a stronger breakout signal is prudent."
+      },
+      "recommended_action": "hold",
+      "recommended_trade_type": "long"
+    },
+    {
+      "symbol": "CHTR",
+      "price": 238.115,
+      "indicators": {
+        "macd": -1.6045808138998723,
+        "macd_signal": -1.2108660242747473,
+        "macd_histogram": -0.39371478962512496,
+        "rsi": 32.59040655419989,
+        "ema_12": 242.1212344682192,
+        "ema_26": 243.72581528211907,
+        "bb_upper": 249.8835702502042,
+        "bb_middle": 243.89094999999998,
+        "bb_lower": 237.89832974979575
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "long"
+      },
+      "ai_signal": {
+        "action": "buy",
+        "trade_type": "long",
+        "confidence": 78.0,
+        "reasoning": "RSI near 32 indicates the stock is approaching oversold territory, and price is near the lower Bollinger Band, suggesting potential rebound. Despite bearish MACD, the proximity to support levels favors a short-term recovery opportunity."
+      },
+      "recommended_action": "buy",
+      "recommended_trade_type": "long"
+    },
+    {
+      "symbol": "KDP",
+      "price": 27.7,
+      "indicators": {
+        "macd": -0.15393737768312832,
+        "macd_signal": -0.06743082363554806,
+        "macd_histogram": -0.08650655404758026,
+        "rsi": 30.69679849340855,
+        "ema_12": 27.778388562262833,
+        "ema_26": 27.93232593994596,
+        "bb_upper": 29.67363824502205,
+        "bb_middle": 28.230699999999995,
+        "bb_lower": 26.78776175497794
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "long"
+      },
+      "ai_signal": {
+        "action": "buy",
+        "trade_type": "long",
+        "confidence": 75.0,
+        "reasoning": "KDP is trading near the lower Bollinger Band with an RSI around 30, indicating potential oversold conditions. Although MACD remains negative, the proximity to support levels suggests a possible short-term rebound opportunity."
+      },
+      "recommended_action": "buy",
+      "recommended_trade_type": "long"
+    },
+    {
+      "symbol": "MCHP",
+      "price": 62.815,
+      "indicators": {
+        "macd": -0.5333251137239898,
+        "macd_signal": -0.49187938895291816,
+        "macd_histogram": -0.04144572477107167,
+        "rsi": 34.29319371727743,
+        "ema_12": 63.23816545127866,
+        "ema_26": 63.77149056500265,
+        "bb_upper": 65.17827770151597,
+        "bb_middle": 63.71625,
+        "bb_lower": 62.25422229848404
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "long"
+      },
+      "ai_signal": {
+        "action": "buy",
+        "trade_type": "long",
+        "confidence": 78.0,
+        "reasoning": "MCHP is trading near the lower Bollinger Band with an RSI of 34.29, indicating oversold conditions. Although MACD is slightly bearish, the proximity to support and potential for a rebound suggest a favorable risk-reward for a short-term long entry."
+      },
+      "recommended_action": "buy",
+      "recommended_trade_type": "long"
+    },
+    {
+      "symbol": "GEHC",
+      "price": 75.98,
+      "indicators": {
+        "macd": -0.35382881450684067,
+        "macd_signal": -0.0006965653506336156,
+        "macd_histogram": -0.35313224915620706,
+        "rsi": 33.697688944409705,
+        "ema_12": 77.03887673837517,
+        "ema_26": 77.392705552882,
+        "bb_upper": 80.22374076800412,
+        "bb_middle": 77.904375,
+        "bb_lower": 75.58500923199588
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "long"
+      },
+      "ai_signal": {
+        "action": "buy",
+        "trade_type": "long",
+        "confidence": 70.0,
+        "reasoning": "RSI near 33 indicates the stock is approaching oversold territory, and price is near the lower Bollinger Band, suggesting potential for a short-term rebound despite bearish MACD and EMAs."
+      },
+      "recommended_action": "buy",
+      "recommended_trade_type": "long"
+    },
+    {
+      "symbol": "VRSK",
+      "price": 216.575,
+      "indicators": {
+        "macd": -5.8716894476983725,
+        "macd_signal": -5.722976177214446,
+        "macd_histogram": -0.14871327048392669,
+        "rsi": 29.93191515246312,
+        "ema_12": 216.00565765894441,
+        "ema_26": 221.8773471066428,
+        "bb_upper": 247.9855330926189,
+        "bb_middle": 222.17810499999996,
+        "bb_lower": 196.370676907381
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "long"
+      },
+      "ai_signal": {
+        "action": "buy",
+        "trade_type": "long",
+        "confidence": 75.0,
+        "reasoning": "RSI near 30 indicates oversold conditions, and price is below key EMAs suggesting potential rebound. Despite weak MACD momentum, the setup favors a short-term recovery from oversold levels."
+      },
+      "recommended_action": "buy",
+      "recommended_trade_type": "long"
+    },
+    {
+      "symbol": "CTSH",
+      "price": 72.44,
+      "indicators": {
+        "macd": 1.2256364589850222,
+        "macd_signal": 0.9734200514676771,
+        "macd_histogram": 0.2522164075173451,
+        "rsi": 77.84471218206167,
+        "ema_12": 71.51153255831315,
+        "ema_26": 70.28589609932813,
+        "bb_upper": 74.36873947398074,
+        "bb_middle": 70.11925,
+        "bb_lower": 65.86976052601925
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "long"
+      },
+      "ai_signal": {
+        "action": "sell",
+        "trade_type": "short",
+        "confidence": 82.0,
+        "reasoning": "RSI at 77.84 indicates overbought conditions, and price is near the upper Bollinger Band ($74.37), suggesting limited upside. Despite a positive MACD, momentum may be peaking, making a short-term pullback likely."
+      },
+      "recommended_action": "sell",
+      "recommended_trade_type": "short"
+    },
+    {
+      "symbol": "CSGP",
+      "price": 69.985,
+      "indicators": {
+        "macd": -2.191768826021814,
+        "macd_signal": -1.9032246326061606,
+        "macd_histogram": -0.2885441934156536,
+        "rsi": 32.87756370416406,
+        "ema_12": 70.79432395566158,
+        "ema_26": 72.9860927816834,
+        "bb_upper": 83.93908805776753,
+        "bb_middle": 73.396375,
+        "bb_lower": 62.85366194223247
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "long"
+      },
+      "ai_signal": {
+        "action": "buy",
+        "trade_type": "long",
+        "confidence": 75.0,
+        "reasoning": "CSGP is trading below all key EMAs with an RSI near 30, indicating oversold conditions. Although MACD remains bearish, the proximity to the lower Bollinger Band suggests a potential rebound opportunity for a short-term long entry."
+      },
+      "recommended_action": "buy",
+      "recommended_trade_type": "long"
+    },
+    {
+      "symbol": "KHC",
+      "price": 24.7501,
+      "indicators": {
+        "macd": -0.2527017593558405,
+        "macd_signal": -0.24204036440027063,
+        "macd_histogram": -0.010661394955569864,
+        "rsi": 33.21279657577209,
+        "ema_12": 24.704007850274273,
+        "ema_26": 24.956709609630114,
+        "bb_upper": 26.142692395571004,
+        "bb_middle": 24.99401,
+        "bb_lower": 23.845327604428995
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "long"
+      },
+      "ai_signal": {
+        "action": "buy",
+        "trade_type": "long",
+        "confidence": 78.0,
+        "reasoning": "RSI near 33 indicates the stock is approaching oversold territory, and price is slightly below key EMAs and near the lower Bollinger Band, suggesting potential for a short-term rebound despite weak MACD momentum."
+      },
+      "recommended_action": "buy",
+      "recommended_trade_type": "long"
+    },
+    {
+      "symbol": "ODFL",
+      "price": 138.255,
+      "indicators": {
+        "macd": 0.1267112995651587,
+        "macd_signal": -0.013752627676841434,
+        "macd_histogram": 0.14046392724200013,
+        "rsi": 54.654465130956126,
+        "ema_12": 138.24897485612638,
+        "ema_26": 138.12226355656122,
+        "bb_upper": 141.00626377795047,
+        "bb_middle": 137.768865,
+        "bb_lower": 134.53146622204954
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "short"
+      },
+      "ai_signal": {
+        "action": "buy",
+        "trade_type": "long",
+        "confidence": 72.0,
+        "reasoning": "MACD is positive and rising above its signal line, indicating bullish momentum. RSI is neutral around 55, suggesting room for upside, and price is near the EMA support zone with Bollinger Bands showing moderate expansion, supporting a potential continuation of the upward move."
+      },
+      "recommended_action": "buy",
+      "recommended_trade_type": "long"
+    },
+    {
+      "symbol": "DXCM",
+      "price": 68.87,
+      "indicators": {
+        "macd": -0.36295502827437076,
+        "macd_signal": -0.357928791999221,
+        "macd_histogram": -0.005026236275149754,
+        "rsi": 49.518304431599255,
+        "ema_12": 68.7834437399548,
+        "ema_26": 69.14639876822918,
+        "bb_upper": 70.6787367452415,
+        "bb_middle": 69.050495,
+        "bb_lower": 67.4222532547585
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "long"
+      },
+      "ai_signal": {
+        "action": "hold",
+        "trade_type": "long",
+        "confidence": 65.0,
+        "reasoning": "DXCM is trading near its short-term EMAs with a neutral RSI and a slightly negative MACD histogram, indicating indecision. The price is mid-range between Bollinger Bands, suggesting consolidation rather than a clear trend direction."
+      },
+      "recommended_action": "hold",
+      "recommended_trade_type": "long"
+    },
+    {
+      "symbol": "TTD",
+      "price": 49.79,
+      "indicators": {
+        "macd": -0.9745519748139486,
+        "macd_signal": -0.7999764360633161,
+        "macd_histogram": -0.17457553875063248,
+        "rsi": 4.807692307692292,
+        "ema_12": 50.61296534187785,
+        "ema_26": 51.5875173166918,
+        "bb_upper": 54.54691761457427,
+        "bb_middle": 51.606700000000004,
+        "bb_lower": 48.66648238542574
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "long"
+      },
+      "ai_signal": {
+        "action": "buy",
+        "trade_type": "long",
+        "confidence": 80.0,
+        "reasoning": "RSI at 4.81 indicates extreme oversold conditions, and price is near the lower Bollinger Band, suggesting a potential rebound despite bearish MACD and EMA trends."
+      },
+      "recommended_action": "buy",
+      "recommended_trade_type": "long"
+    },
+    {
+      "symbol": "ON",
+      "price": 51.36,
+      "indicators": {
+        "macd": -0.3228903302182218,
+        "macd_signal": -0.316130325191253,
+        "macd_histogram": -0.006760005026968774,
+        "rsi": 41.722972972972975,
+        "ema_12": 51.64557567299219,
+        "ema_26": 51.96846600321041,
+        "bb_upper": 52.894418249492,
+        "bb_middle": 51.924,
+        "bb_lower": 50.953581750508
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "long"
+      },
+      "ai_signal": {
+        "action": "hold",
+        "trade_type": "long",
+        "confidence": 65.0,
+        "reasoning": "The MACD is slightly bearish and below the signal line, while RSI near 42 suggests mild oversold conditions. Price is below short-term EMAs but near the Bollinger middle band, indicating consolidation rather than a clear trend reversal."
+      },
+      "recommended_action": "hold",
+      "recommended_trade_type": "long"
+    },
+    {
+      "symbol": "BIIB",
+      "price": 151.83,
+      "indicators": {
+        "macd": 0.5812426372545474,
+        "macd_signal": 0.31225476002472347,
+        "macd_histogram": 0.2689878772298239,
+        "rsi": 61.398609369656896,
+        "ema_12": 150.24948025812648,
+        "ema_26": 149.66823762087193,
+        "bb_upper": 152.07208224101254,
+        "bb_middle": 149.67356,
+        "bb_lower": 147.27503775898748
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "short"
+      },
+      "ai_signal": {
+        "action": "buy",
+        "trade_type": "long",
+        "confidence": 78.0,
+        "reasoning": "BIIB is trading slightly below the upper Bollinger Band with a positive MACD crossover and RSI near 61, indicating moderate bullish momentum. Price above key EMAs suggests continued upward trend potential."
+      },
+      "recommended_action": "buy",
+      "recommended_trade_type": "long"
+    },
+    {
+      "symbol": "LULU",
+      "price": 171.56,
+      "indicators": {
+        "macd": -2.226590362418847,
+        "macd_signal": -1.697967338844084,
+        "macd_histogram": -0.5286230235747629,
+        "rsi": 33.20254874979861,
+        "ema_12": 172.85834808315616,
+        "ema_26": 175.084938445575,
+        "bb_upper": 184.83610747438544,
+        "bb_middle": 175.69901,
+        "bb_lower": 166.56191252561453
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "long"
+      },
+      "ai_signal": {
+        "action": "buy",
+        "trade_type": "long",
+        "confidence": 75.0,
+        "reasoning": "LULU is trading below all key EMAs with an RSI near 33, indicating it is approaching oversold territory. Although MACD remains bearish, the proximity to the lower Bollinger Band suggests a potential short-term rebound opportunity."
+      },
+      "recommended_action": "buy",
+      "recommended_trade_type": "long"
+    },
+    {
+      "symbol": "CDW",
+      "price": 157.385,
+      "indicators": {
+        "macd": -0.05096358034330706,
+        "macd_signal": -0.1181022952409792,
+        "macd_histogram": 0.06713871489767215,
+        "rsi": 55.3732567678425,
+        "ema_12": 157.2696995934221,
+        "ema_26": 157.3206631737654,
+        "bb_upper": 158.62826435543943,
+        "bb_middle": 157.0695,
+        "bb_lower": 155.51073564456058
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "short"
+      },
+      "ai_signal": {
+        "action": "buy",
+        "trade_type": "long",
+        "confidence": 70.0,
+        "reasoning": "MACD histogram turning positive indicates emerging bullish momentum, RSI is neutral around 55 suggesting room for upside, and price trading slightly above key EMAs and near the Bollinger middle band supports a modest bullish bias."
+      },
+      "recommended_action": "buy",
+      "recommended_trade_type": "long"
+    },
+    {
+      "symbol": "GFS",
+      "price": 36.825,
+      "indicators": {
+        "macd": 0.22063179919964426,
+        "macd_signal": -0.012785747368929214,
+        "macd_histogram": 0.23341754656857347,
+        "rsi": 73.80116959064333,
+        "ema_12": 35.58023361674683,
+        "ema_26": 35.35960181754719,
+        "bb_upper": 36.61000384006701,
+        "bb_middle": 35.212,
+        "bb_lower": 33.813996159933
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "long"
+      },
+      "ai_signal": {
+        "action": "sell",
+        "trade_type": "short",
+        "confidence": 78.0,
+        "reasoning": "GFS is trading above its upper Bollinger Band and has an RSI of 73.8, indicating overbought conditions. Although MACD is positive, the price appears extended and due for a short-term pullback."
+      },
+      "recommended_action": "sell",
+      "recommended_trade_type": "short"
+    }
+  ],
+  "phase2_portfolio_decision": {
+    "reasoning": "Rule-based decision: 0 trades selected",
+    "risk_level": 0.44084695984472133,
+    "trades_to_execute": [],
+    "trades_count": 0
+  },
+  "phase3_trades_executed": [],
+  "summary": {
+    "total_symbols_analyzed": 101,
+    "symbols_with_data": 101,
+    "skipped_symbols_count": 0,
+    "current_cash": 3025.3703232086705,
+    "portfolio_value": 4997.4704096527585,
+    "total_pnl": -2.5295903472415375,
+    "pnl_percentage": -0.05059180694483075,
+    "positions_count": 10,
+    "positions": {
+      "NVDA": {
+        "quantity": 1.3743815283122593,
+        "entry_price": 181.9,
+        "trade_type": "long"
+      },
+      "MSFT": {
+        "quantity": 0.4622961030871647,
+        "entry_price": 513.74,
+        "trade_type": "long"
+      },
+      "AAPL": {
+        "quantity": 0.9098882929386619,
+        "entry_price": 247.97,
+        "trade_type": "long"
+      },
+      "GOOG": {
+        "quantity": 0.8457543354311756,
+        "entry_price": 253.435,
+        "trade_type": "long"
+      },
+      "META": {
+        "quantity": 0.2854391243096246,
+        "entry_price": 713.38,
+        "trade_type": "long"
+      },
+      "GOOGL": {
+        "quantity": 0.7291420911611253,
+        "entry_price": 252.04,
+        "trade_type": "long"
+      },
+      "AMZN": {
+        "quantity": 0.8134578511948443,
+        "entry_price": 214.62,
+        "trade_type": "long"
+      },
+      "NFLX": {
+        "quantity": 0.1396823625916682,
+        "entry_price": 1187.3733,
+        "trade_type": "long"
+      },
+      "PLTR": {
+        "quantity": 0.880868961411697,
+        "entry_price": 178.8715,
+        "trade_type": "long"
+      },
+      "COST": {
+        "quantity": 0.17375169737263482,
+        "entry_price": 916.4228,
+        "trade_type": "long"
+      }
+    }
+  }
+}

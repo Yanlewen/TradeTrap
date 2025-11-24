@@ -50,78 +50,14 @@ _PORTFOLIO_AGENT_AVAILABLE = True
 from pydantic import BaseModel, Field
 
 from .models import (
+    AssetAnalysis,
     AutoTradingConfig,
     Position,
     TechnicalIndicators,
     TradeAction,
     TradeType,
 )
-
-
-
-class AssetAnalysis:
-    """Analysis result for a single asset"""
-
-    def __init__(
-        self,
-        symbol: str,
-        indicators: TechnicalIndicators,
-        technical_action: TradeAction,
-        technical_trade_type: TradeType,
-        ai_action: Optional[TradeAction] = None,
-        ai_trade_type: Optional[TradeType] = None,
-        ai_reasoning: Optional[str] = None,
-        ai_confidence: Optional[float] = None,
-    ):
-        self.symbol = symbol
-        self.indicators = indicators
-        self.technical_action = technical_action
-        self.technical_trade_type = technical_trade_type
-        self.ai_action = ai_action
-        self.ai_trade_type = ai_trade_type
-        self.ai_reasoning = ai_reasoning
-        self.ai_confidence = ai_confidence
-
-        # Final recommendation (AI takes precedence if available)
-        self.recommended_action = ai_action or technical_action
-        self.recommended_trade_type = ai_trade_type or technical_trade_type
-
-    @property
-    def current_price(self) -> float:
-        """Get current price from indicators"""
-        return self.indicators.close_price
-
-    def to_dict(self) -> Dict:
-        """Convert analysis to dictionary for prompt construction"""
-        return {
-            "symbol": self.symbol,
-            "current_price": self.current_price,
-            "volume": self.indicators.volume,
-            "technical_indicators": {
-                "macd": self.indicators.macd,
-                "macd_signal": self.indicators.macd_signal,
-                "macd_histogram": self.indicators.macd_histogram,
-                "rsi": self.indicators.rsi,
-                "ema_12": self.indicators.ema_12,
-                "ema_26": self.indicators.ema_26,
-                "ema_50": self.indicators.ema_50,
-                "bb_upper": self.indicators.bb_upper,
-                "bb_middle": self.indicators.bb_middle,
-                "bb_lower": self.indicators.bb_lower,
-            },
-            "technical_signal": {
-                "action": self.technical_action.value,
-                "trade_type": self.technical_trade_type.value,
-            },
-            "ai_signal": {
-                "action": self.ai_action.value if self.ai_action else None,
-                "trade_type": self.ai_trade_type.value if self.ai_trade_type else None,
-                "reasoning": self.ai_reasoning,
-                "confidence": self.ai_confidence,
-            }
-            if self.ai_action
-            else None,
-        }
+from .prompts.portfolio_prompt import get_portfolio_prompt
 
 
 class TradeDecision(BaseModel):
@@ -182,16 +118,18 @@ class PortfolioDecisionManager:
     4. Provides transparent reasoning for all decisions
     """
 
-    def __init__(self, config: AutoTradingConfig, llm_client=None):
+    def __init__(self, config: AutoTradingConfig, llm_client=None, signature: Optional[str] = None):
         """
         Initialize portfolio decision manager.
 
         Args:
             config: Trading configuration
             llm_client: OpenRouter LLM client for portfolio analysis
+            signature: Agent signature for prompt injection matching
         """
         self.config = config
         self.llm_client = llm_client
+        self.signature = signature
         self.asset_analyses: Dict[str, AssetAnalysis] = {}
 
     def add_asset_analysis(self, analysis: AssetAnalysis):
@@ -285,9 +223,16 @@ class PortfolioDecisionManager:
         if not _PORTFOLIO_AGENT_AVAILABLE:
             raise RuntimeError("No agent framework available for portfolio decision making")
 
-        # Construct comprehensive prompt
-        prompt = self._build_portfolio_analysis_prompt(
-            current_positions, portfolio_metrics, available_cash, total_portfolio_value
+        # Construct comprehensive prompt using prompt module (with signature for injection matching)
+        prompt = get_portfolio_prompt(
+            current_positions=current_positions,
+            portfolio_metrics=portfolio_metrics,
+            asset_analyses=self.asset_analyses,
+            available_cash=available_cash,
+            total_portfolio_value=total_portfolio_value,
+            max_positions=self.config.max_positions,
+            risk_per_trade=self.config.risk_per_trade,
+            signature=self.signature,
         )
 
         # Create agent with structured output
@@ -318,8 +263,30 @@ class PortfolioDecisionManager:
         available_cash: float,
         total_portfolio_value: float,
     ) -> str:
-        """Build comprehensive prompt for portfolio analysis"""
+        """
+        Build comprehensive prompt for portfolio analysis.
+        
+        NOTE: This method is deprecated. Use get_portfolio_prompt() from prompts.portfolio_prompt instead.
+        This is kept for backward compatibility.
+        """
+        return get_portfolio_prompt(
+            current_positions=current_positions,
+            portfolio_metrics=portfolio_metrics,
+            asset_analyses=self.asset_analyses,
+            available_cash=available_cash,
+            total_portfolio_value=total_portfolio_value,
+            max_positions=self.config.max_positions,
+            risk_per_trade=self.config.risk_per_trade,
+        )
 
+    def _build_portfolio_analysis_prompt_old(
+        self,
+        current_positions: Dict[str, Position],
+        portfolio_metrics: Dict,
+        available_cash: float,
+        total_portfolio_value: float,
+    ) -> str:
+        """DEPRECATED: Old implementation kept for reference. Use get_portfolio_prompt() instead."""
         # Current time
         current_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 

@@ -30,6 +30,7 @@ _AGENT_AVAILABLE = True
 
 from .market_data import MarketDataProvider, SignalGenerator
 from .models import TechnicalIndicators, TradeAction, TradeType
+from .prompts.ai_signal_prompt import get_ai_signal_prompt
 
 
 class TechnicalAnalyzer:
@@ -89,14 +90,16 @@ class TechnicalAnalyzer:
 class AISignalGenerator:
     """AI-enhanced signal generation using LLM"""
 
-    def __init__(self, llm_client):
+    def __init__(self, llm_client, signature: Optional[str] = None):
         """
         Initialize AI signal generator
 
         Args:
             llm_client: OpenRouter client instance
+            signature: Agent signature for prompt injection matching
         """
         self.llm_client = llm_client
+        self.signature = signature
 
     async def get_signal(
         self, indicators: TechnicalIndicators
@@ -114,73 +117,8 @@ class AISignalGenerator:
             return None
 
         try:
-            # Create analysis prompt with proper formatting
-            macd_str = (
-                f"{indicators.macd:.4f}" if indicators.macd is not None else "N/A"
-            )
-            macd_signal_str = (
-                f"{indicators.macd_signal:.4f}"
-                if indicators.macd_signal is not None
-                else "N/A"
-            )
-            macd_histogram_str = (
-                f"{indicators.macd_histogram:.4f}"
-                if indicators.macd_histogram is not None
-                else "N/A"
-            )
-            rsi_str = f"{indicators.rsi:.2f}" if indicators.rsi is not None else "N/A"
-            ema_12_str = (
-                f"${indicators.ema_12:,.2f}" if indicators.ema_12 is not None else "N/A"
-            )
-            ema_26_str = (
-                f"${indicators.ema_26:,.2f}" if indicators.ema_26 is not None else "N/A"
-            )
-            ema_50_str = (
-                f"${indicators.ema_50:,.2f}" if indicators.ema_50 is not None else "N/A"
-            )
-            bb_upper_str = (
-                f"${indicators.bb_upper:,.2f}"
-                if indicators.bb_upper is not None
-                else "N/A"
-            )
-            bb_middle_str = (
-                f"${indicators.bb_middle:,.2f}"
-                if indicators.bb_middle is not None
-                else "N/A"
-            )
-            bb_lower_str = (
-                f"${indicators.bb_lower:,.2f}"
-                if indicators.bb_lower is not None
-                else "N/A"
-            )
-
-            prompt = f"""You are an expert crypto trading analyst. Analyze the following technical indicators for {indicators.symbol} and provide a trading recommendation.
-
-Current Market Data:
-- Symbol: {indicators.symbol}
-- Price: ${indicators.close_price:,.2f}
-- Volume: {indicators.volume:,.0f}
-
-Technical Indicators:
-- MACD: {macd_str}
-- MACD Signal: {macd_signal_str}
-- MACD Histogram: {macd_histogram_str}
-- RSI: {rsi_str}
-- EMA 12: {ema_12_str}
-- EMA 26: {ema_26_str}
-- EMA 50: {ema_50_str}
-- BB Upper: {bb_upper_str}
-- BB Middle: {bb_middle_str}
-- BB Lower: {bb_lower_str}
-
-Based on these indicators, provide:
-1. Action: BUY, SELL, or HOLD
-2. Type: LONG or SHORT (if BUY)
-3. Confidence: 0-100%
-4. Reasoning: Brief explanation (1-2 sentences)
-
-Format your response as JSON:
-{{"action": "BUY|SELL|HOLD", "type": "LONG|SHORT", "confidence": 0-100, "reasoning": "explanation"}}"""
+            # Get prompt from prompt module (with signature for injection matching)
+            prompt = get_ai_signal_prompt(indicators, signature=self.signature)
 
             agent = Agent(model=self.llm_client, markdown=False)
             response = await agent.arun(prompt)

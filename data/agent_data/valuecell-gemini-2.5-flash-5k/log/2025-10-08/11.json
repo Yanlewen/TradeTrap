@@ -1,0 +1,15 @@
+{
+  "date": "2025-10-08",
+  "hour": "11",
+  "datetime": "2025-10-08 11:00:00",
+  "timestamp": "2025-11-21T20:58:22.365550",
+  "phase1_analysis": [],
+  "phase2_portfolio_decision": null,
+  "phase3_trades_executed": [],
+  "summary": {
+    "total_symbols_analyzed": 101,
+    "symbols_with_data": 0,
+    "skipped_symbols_count": 101,
+    "error": "No symbols with sufficient data"
+  }
+}

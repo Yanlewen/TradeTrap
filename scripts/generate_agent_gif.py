@@ -25,14 +25,14 @@ plt.rcParams.update(
 )
 
 # Paths (relative to repo root)
-DATA_PATH = Path("agent_viewer/data/agents_data_gpt.json")
-OUTPUT_PATH = Path("assets/agent-growth_gpt.gif")
+DATA_PATH = Path("agent_viewer/data/agents_data_gemini.json")
+OUTPUT_PATH = Path("assets/agent-growth_gemini_memory.gif")
 
 # Agent configuration: (title, key in json, color)
 AGENT_CONFIG: List[Tuple[str, str, str]] = [
-    ("Baseline (No Tools)", "gpt-5", "#f5cb5c"),
-        ("With news", "gpt-5-with-news", "#3480b8"),
-        ("Malicious Injection", "gpt-5-ReverseExpectations", "#c82423"),
+    ("Baseline (No Tools)", "base", "#f5cb5c"),
+        ("With Memory(first time)", "with memory (long time)", "#3480b8"),
+        ("With Memory(second time)", "with memory (with think and summary)", "#c82423"),
 ]
 
 # Animation tuning

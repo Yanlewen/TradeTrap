@@ -29,7 +29,11 @@ class LocalPriceProvider:
     # ------------------------------------------------------------------
     def get_price(self, symbol: str, target: Optional[datetime] = None) -> Optional[float]:
         """Return close price up to the given timestamp (or latest if None)."""
-        df = self._get_series(symbol, self._HOURLY_KEY) or self._get_series(symbol, self._DAILY_KEY)
+        # Try hourly first, then daily - need to check for None explicitly to avoid DataFrame boolean ambiguity
+        df = self._get_series(symbol, self._HOURLY_KEY)
+        if df is None or df.empty:
+            df = self._get_series(symbol, self._DAILY_KEY)
+        
         if df is None or df.empty:
             # Use debug level to reduce noise - summary will be shown at agent level
             logger.debug("No local data available for %s", symbol)
