@@ -102,13 +102,16 @@ class AISignalGenerator:
         self.signature = signature
 
     async def get_signal(
-        self, indicators: TechnicalIndicators
+        self,
+        indicators: TechnicalIndicators,
+        news_result: Optional[any] = None,
     ) -> Optional[tuple[TradeAction, TradeType, str, float]]:
         """
         Get AI-enhanced trading signal using OpenRouter model
 
         Args:
             indicators: Technical indicators for analysis
+            news_result: News result (NewsResult object) if news collection is enabled
 
         Returns:
             Tuple of (TradeAction, TradeType, reasoning, confidence) or None if AI not available
@@ -118,7 +121,10 @@ class AISignalGenerator:
 
         try:
             # Get prompt from prompt module (with signature for injection matching)
-            prompt = get_ai_signal_prompt(indicators, signature=self.signature)
+            news_summary = None
+            if news_result is not None:
+                news_summary = getattr(news_result, "to_prompt_text", lambda: None)()
+            prompt = get_ai_signal_prompt(indicators, news_summary=news_summary, signature=self.signature)
 
             agent = Agent(model=self.llm_client, markdown=False)
             response = await agent.arun(prompt)

@@ -315,6 +315,7 @@ class AssetAnalysis:
         ai_trade_type: Optional[TradeType] = None,
         ai_reasoning: Optional[str] = None,
         ai_confidence: Optional[float] = None,
+        news_result: Optional[any] = None,  # NewsResult object or None
     ):
         self.symbol = symbol
         self.indicators = indicators
@@ -324,7 +325,8 @@ class AssetAnalysis:
         self.ai_trade_type = ai_trade_type
         self.ai_reasoning = ai_reasoning
         self.ai_confidence = ai_confidence
-        
+        self.news_result = news_result  # Add news result
+
         # Final recommendation (AI takes precedence if available)
         self.recommended_action = ai_action or technical_action
         self.recommended_trade_type = ai_trade_type or technical_trade_type
@@ -336,7 +338,7 @@ class AssetAnalysis:
     
     def to_dict(self) -> Dict:
         """Convert analysis to dictionary for prompt construction"""
-        return {
+        result = {
             "symbol": self.symbol,
             "current_price": self.current_price,
             "volume": self.indicators.volume,
@@ -359,3 +361,14 @@ class AssetAnalysis:
             "ai_confidence": self.ai_confidence,
             "ai_reasoning": self.ai_reasoning,
         }
+
+        # Add news data if available
+        if self.news_result is not None:
+            result["news"] = {
+                "alpha_vantage": getattr(self.news_result, "alpha_vantage_news", []),
+                "x_posts": getattr(self.news_result, "x_posts", []),
+                "reddit_posts": getattr(self.news_result, "reddit_posts", []),
+                "prompt_text": getattr(self.news_result, "to_prompt_text", lambda: "")(),
+            }
+
+        return result

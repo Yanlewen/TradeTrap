@@ -186,6 +186,11 @@ async def create_valuecell_agent(
         "data_interval": agent_config_data.get("data_interval", None),
         "data_period_daily": agent_config_data.get("data_period_daily", "30d"),
         "data_period_hourly": agent_config_data.get("data_period_hourly", "5d"),
+        # News collection settings
+        "enable_news": agent_config_data.get("enable_news", False),
+        "enable_alpha_vantage_news": agent_config_data.get("enable_alpha_vantage_news", True),
+        "enable_x_news": agent_config_data.get("enable_x_news", False),
+        "enable_reddit_news": agent_config_data.get("enable_reddit_news", False),
     }
 
     # Add market-specific symbols

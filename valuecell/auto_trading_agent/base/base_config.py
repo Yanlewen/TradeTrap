@@ -92,5 +92,22 @@ class BaseTradingConfig(BaseModel):
         default="5d",
         description="Data period for hourly data analysis (e.g., '5d' means 5 days of historical data). Format: 'Nd' for N days",
     )
+    # News scraping settings
+    enable_news: bool = Field(
+        default=False,
+        description="Enable news collection for AI signals. Requires ALPHAADVANTAGE_API_KEY for Alpha Vantage news",
+    )
+    enable_alpha_vantage_news: bool = Field(
+        default=True,
+        description="Enable Alpha Vantage news (professional financial news). Requires ALPHAADVANTAGE_API_KEY",
+    )
+    enable_x_news: bool = Field(
+        default=False,
+        description="Enable X/Twitter news search. Requires X_BEARER_TOKEN environment variable",
+    )
+    enable_reddit_news: bool = Field(
+        default=False,
+        description="Enable Reddit news search. Requires REDDIT_CLIENT_ID and REDDIT_CLIENT_SECRET",
+    )
 
 

@@ -283,7 +283,36 @@ class AutoTradingAgentBase(ABC):
             
             # Determine data period based on interval type
             period = self.config.data_period_daily if use_daily_data else self.config.data_period_hourly
-            
+
+            # Collect news for all symbols if enabled (parallel, outside loop)
+            news_dict = {}
+            if self.config.enable_news:
+                from ..news_collector import NewsCollector
+                collector = NewsCollector(
+                    enable_alpha_vantage=self.config.enable_alpha_vantage_news,
+                    enable_x=self.config.enable_x_news,
+                    enable_reddit=self.config.enable_reddit_news,
+                    current_date=self.current_date,  # Pass trading date for backtesting
+                )
+                try:
+                    news_dict = await collector.collect_news_for_symbols(symbols)
+                    logger.debug(f"Collected news for {len(symbols)} symbols")
+                    
+                    # Calculate total news count for user verification
+                    total_news = 0
+                    for sym, result in news_dict.items():
+                        if result:
+                            total_news += len(getattr(result, "alpha_vantage_news", []))
+                            total_news += len(getattr(result, "x_posts", []))
+                            total_news += len(getattr(result, "reddit_posts", []))
+                    
+                    print(f"[{self.current_date or datetime.now().strftime('%Y-%m-%d %H:%M:%S')}] 📰 News Collection: Fetched {total_news} items for {len(symbols)} symbols")
+
+                    if self.current_date:
+                        logger.debug(f"Date filter applied: {self.current_date}")
+                except Exception as e:
+                    logger.warning(f"Failed to collect news: {e}")
+
             for symbol in symbols:
                 # Calculate indicators
                 indicators = TechnicalAnalyzer.calculate_indicators(symbol, period=period, interval=interval)
@@ -308,7 +337,12 @@ class AutoTradingAgentBase(ABC):
                 )
 
                 if self.ai_signal_generator:
-                    ai_signal = await self.ai_signal_generator.get_signal(indicators)
+                    # Get news for this symbol if enabled
+                    news_result = news_dict.get(symbol) if self.config.enable_news else None
+                    ai_signal = await self.ai_signal_generator.get_signal(
+                        indicators,
+                        news_result=news_result,  # Pass news to AI
+                    )
                     if ai_signal:
                         (
                             ai_action,
@@ -332,6 +366,7 @@ class AutoTradingAgentBase(ABC):
                     ai_trade_type=ai_trade_type,
                     ai_reasoning=ai_reasoning,
                     ai_confidence=ai_confidence,
+                    news_result=news_dict.get(symbol),  # Add news result
                 )
 
                 # Add to portfolio manager
@@ -365,6 +400,17 @@ class AutoTradingAgentBase(ABC):
                     "recommended_action": asset_analysis.recommended_action.value,
                     "recommended_trade_type": asset_analysis.recommended_trade_type.value,
                 }
+
+                # Add news data if enabled
+                if self.config.enable_news and news_dict.get(symbol) is not None:
+                    news_result = news_dict.get(symbol)
+                    asset_data["news"] = {
+                        "alpha_vantage": getattr(news_result, "alpha_vantage_news", []),
+                        "x_posts": getattr(news_result, "x_posts", []),
+                        "reddit_posts": getattr(news_result, "reddit_posts", []),
+                        "errors": getattr(news_result, "errors", []),
+                    }
+
                 self.session_data["phase1_analysis"].append(asset_data)
 
                 # Log individual asset analysis (use debug to reduce noise)

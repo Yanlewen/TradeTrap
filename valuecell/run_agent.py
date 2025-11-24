@@ -6,6 +6,20 @@ import os
 import sys
 from pathlib import Path
 
+# Load environment variables from .env file in project root
+# This must be done before importing other modules that use environment variables
+from dotenv import load_dotenv
+
+# Look for .env in parent directory (project root)
+project_root = Path(__file__).parent.parent
+env_file = project_root / ".env"
+if env_file.exists():
+    load_dotenv(env_file)
+    print(f"✅ Loaded environment variables from: {env_file}")
+else:
+    print(f"⚠️  .env file not found at: {env_file}")
+    print("   Please copy .env.example to .env and configure your API keys")
+
 # Add current directory to path
 sys.path.insert(0, str(Path(__file__).parent))
 
@@ -45,6 +59,15 @@ def load_config_from_env() -> AutoTradingConfig:
     # Parse agent model
     agent_model = os.getenv("AGENT_MODEL", "gpt-4o-mini")
 
+    # Parse news settings
+    enable_news = os.getenv("ENABLE_NEWS", "false").lower() in {"true", "1", "yes"}
+    enable_alpha_vantage_news = os.getenv("ENABLE_ALPHA_VANTAGE_NEWS", "true").lower() in {"true", "1", "yes"}
+    enable_x_news = os.getenv("ENABLE_X_NEWS", "false").lower() in {"true", "1", "yes"}
+    enable_reddit_news = os.getenv("ENABLE_REDDIT_NEWS", "false").lower() in {"true", "1", "yes"}
+
+    # Parse market type
+    market_type = os.getenv("MARKET_TYPE", "crypto")
+
     return AutoTradingConfig(
         initial_capital=initial_capital,
         crypto_symbols=crypto_symbols,
@@ -55,6 +78,11 @@ def load_config_from_env() -> AutoTradingConfig:
         agent_model=agent_model,
         exchange="paper",
         exchange_network="paper",
+        market_type=market_type,
+        enable_news=enable_news,
+        enable_alpha_vantage_news=enable_alpha_vantage_news,
+        enable_x_news=enable_x_news,
+        enable_reddit_news=enable_reddit_news,
     )
 
 
@@ -66,6 +94,11 @@ async def main():
     try:
         config = load_config_from_env()
         logger.info("✅ Configuration loaded from environment variables")
+        logger.info(f"News collection: {'✅ Enabled' if config.enable_news else '❌ Disabled'}")
+        if config.enable_news:
+            logger.info(f"  Alpha Vantage: {'✅' if config.enable_alpha_vantage_news else '❌'}")
+            logger.info(f"  X/Twitter: {'✅' if config.enable_x_news else '❌'}")
+            logger.info(f"  Reddit: {'✅' if config.enable_reddit_news else '❌'}")
     except Exception as e:
         logger.error(f"❌ Failed to load configuration: {e}")
         return
