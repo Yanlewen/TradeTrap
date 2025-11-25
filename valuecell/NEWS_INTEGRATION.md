@@ -366,10 +366,9 @@ class FilteredNewsResult(NewsResult):
 
 Planned improvements:
 
-- [ ] **News Sentiment Scoring**: Automatic sentiment analysis using LLM
-- [ ] **News Caching**: Cache news across trading cycles to reduce API calls
+- [x] **News Sentiment Scoring**: Automatic sentiment analysis using LLM
+- [x] **Duplicate Detection**: Remove duplicate news across sources
 - [ ] **Weighted Importance**: Prioritize news by source credibility and recency
-- [ ] **Duplicate Detection**: Remove duplicate news across sources
 - [ ] **Custom Filters**: Filter news by keywords, sentiment, or sources
 - [ ] **News Impact Analysis**: Historical analysis of news impact on prices
 
