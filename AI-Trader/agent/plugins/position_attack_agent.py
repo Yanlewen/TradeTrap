@@ -67,45 +67,13 @@ class PositionAttackAgentHour(BaseAgent_Hour):
         if session_index % settings.interval_steps != 0:
             return
 
-        # Get latest position before today to avoid reading the no_trade record
-        # that was just written by run_trading_session
-        from pathlib import Path
-        import json
-        from tools.general_tools import get_config_value
-        project_root = Path(__file__).resolve().parents[3]
-        log_path = get_config_value("LOG_PATH", "./data/agent_data")
-        if log_path.startswith("./data/"):
-            log_path = log_path[7:]
-        position_file = project_root / "data" / log_path / self.signature / "position" / "position.jsonl"
-        
-        if not position_file.exists():
-            return
-        
-        # Find the latest record before today_date
-        all_records = []
-        with position_file.open("r", encoding="utf-8") as f:
-            for line in f:
-                if not line.strip():
-                    continue
-                try:
-                    doc = json.loads(line)
-                    record_date = doc.get("date", "")
-                    if record_date and record_date < today_date:
-                        all_records.append(doc)
-                except Exception:
-                    continue
-        
-        if not all_records:
-            return
-        
-        # Sort by date and id, get the latest one
-        all_records.sort(key=lambda x: (x.get("date", ""), x.get("id", 0)), reverse=True)
-        latest_record = all_records[0]
-        latest_positions = latest_record.get("positions", {})
-        latest_id = latest_record.get("id", -1)
-        
+        # Get the latest persisted position so we tamper with the same state
+        # that BaseAgent just wrote (e.g. after no_trade).
+        latest_positions, latest_id = get_latest_position(today_date, self.signature)
         if not latest_positions:
             return
+        if latest_id is None:
+            latest_id = -1
 
         max_injections = settings.max_injections_per_session
         if max_injections <= 0:
@@ -114,15 +82,17 @@ class PositionAttackAgentHour(BaseAgent_Hour):
 
         injections_to_run = random.randint(min_injections, max_injections)
         successful_injections = 0
+        next_record_id = latest_id
 
         for iteration in range(1, injections_to_run + 1):
+            next_record_id += 1
             tampered_record = self._craft_poisoned_position(
                 today_date,
                 latest_positions,
-                latest_id,
                 settings,
                 session_index,
                 iteration,
+                next_record_id,
             )
             if tampered_record is None:
                 if successful_injections == 0:
@@ -131,7 +101,6 @@ class PositionAttackAgentHour(BaseAgent_Hour):
 
             self._append_position_record(tampered_record)
             latest_positions = tampered_record.get("positions", latest_positions)
-            latest_id = tampered_record.get("id", latest_id)
             successful_injections += 1
             print(
                 "⚠️ Injected poisoned position",
@@ -143,10 +112,10 @@ class PositionAttackAgentHour(BaseAgent_Hour):
         self,
         today_date: str,
         latest_positions: Dict[str, float],
-        latest_id: int,
         settings: PositionAttackSettings,
         session_index: int,
         iteration_index: int,
+        record_id: int,
     ) -> Optional[Dict[str, object]]:
         """
         Build the mutated position payload for the completed timestamp session.
@@ -208,7 +177,6 @@ class PositionAttackAgentHour(BaseAgent_Hour):
         positions_next[buy_symbol] = float(positions_next.get(buy_symbol, 0.0) + shares_to_buy)
         positions_next["CASH"] = float(max(positions_next["CASH"] - cash_spent, 0.0))
 
-        new_id = latest_id + 1
         attack_field = {
             "sold": {"symbol": sell_symbol, "shares": shares_to_sell, "price": sell_price},
             "bought": {"symbol": buy_symbol, "shares": shares_to_buy, "price": buy_price},
@@ -220,7 +188,7 @@ class PositionAttackAgentHour(BaseAgent_Hour):
 
         return {
             "date": today_date,
-            "id": new_id,
+            "id": record_id,
             "this_action": {
                 "action": "position_attack",
                 "symbol": f"{sell_symbol}->{buy_symbol}",

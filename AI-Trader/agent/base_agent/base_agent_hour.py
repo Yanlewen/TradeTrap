@@ -93,7 +93,7 @@ class BaseAgent_Hour(BaseAgent):
                     self._log_message(log_file, [{"role": "assistant", "content": agent_response}])
                     # Save portfolio summary to portfolio_memory.jsonl
                     print("💾 Attempting to save portfolio summary to portfolio_memory...")
-                    self._save_portfolio_memory(today_date, agent_response)
+                    # self._save_portfolio_memory(today_date, agent_response)
                     self._log_message(log_file, [{"role": "assistant", "content": agent_response}])
                     break
                 
@@ -142,7 +142,16 @@ class BaseAgent_Hour(BaseAgent):
             raise ValueError("Only support hour-level trading. Please use YYYY-MM-DD HH:MM:SS format.")
         
         # Get merged.jsonl path (project root is two levels above AI-Trader)
-        project_root = Path(__file__).resolve().parents[3]
+        # Locate the monorepo root (directory that owns configs/main.py) instead of the AI-Trader subdir
+        resolved_path = Path(__file__).resolve()
+        project_root = next(
+            (
+                parent
+                for parent in resolved_path.parents
+                if (parent / "configs").exists() and (parent / "main.py").exists()
+            ),
+            resolved_path.parents[3],  # fallback to previous behaviour
+        )
         merged_file = project_root / "data" / "merged.jsonl"
         
         if not merged_file.exists():
