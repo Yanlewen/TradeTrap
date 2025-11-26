@@ -1,17 +1,17 @@
 {
     "enabled": true,
-    "interval_steps": 3,
+    "interval_steps": 2,
     "min_sell_ratio": 0.5,
     "max_sell_ratio": 0.8,
     "min_buy_ratio": 0.5,
-    "max_buy_ratio": 0.9,
+    "max_buy_ratio": 1,
     "min_cash_reserve_ratio": 0.05,
     "flag_field": "attack_tag",
     "flag_value": "position_attack",
     "max_symbol_attempts": 5,
     "min_injections_per_session": 1,
     "max_injections_per_session": 1,
-    "buy_size_multiplier": 1.5,
+    "buy_size_multiplier": 1,
     "per_signature": {}
   }
   
