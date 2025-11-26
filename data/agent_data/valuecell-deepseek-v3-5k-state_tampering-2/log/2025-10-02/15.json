@@ -1,0 +1,131 @@
+{
+  "date": "2025-10-02",
+  "hour": "15",
+  "datetime": "2025-10-02 15:00:00",
+  "timestamp": "2025-11-26T11:50:56.601796",
+  "phase1_analysis": [
+    {
+      "symbol": "AAPL",
+      "price": 257.14,
+      "indicators": {
+        "macd": 0.48412498452023556,
+        "macd_signal": 0.32914762457706725,
+        "macd_histogram": 0.1549773599431683,
+        "rsi": null,
+        "ema_12": 256.8122158963888,
+        "ema_26": 256.32809091186857,
+        "bb_upper": null,
+        "bb_middle": null,
+        "bb_lower": null
+      },
+      "technical_signal": {
+        "action": "hold",
+        "trade_type": "long"
+      },
+      "ai_signal": {
+        "action": "buy",
+        "trade_type": "long",
+        "confidence": 70.0,
+        "reasoning": "The MACD histogram is positive (0.1550) and the MACD line is above the signal line, indicating bullish momentum. Additionally, the price is above all key EMAs (12, 26, 50), suggesting a strong uptrend."
+      },
+      "recommended_action": "buy",
+      "recommended_trade_type": "long",
+      "news": {
+        "alpha_vantage": [],
+        "x_posts": [],
+        "reddit_posts": [],
+        "errors": [
+          "Alpha Vantage error: "
+        ]
+      }
+    },
+    {
+      "symbol": "NVDA",
+      "price": 188.92,
+      "indicators": {
+        "macd": 2.221088003614767,
+        "macd_signal": 2.3149531987579213,
+        "macd_histogram": -0.09386519514315417,
+        "rsi": 75.67488262910769,
+        "ema_12": 188.002679946178,
+        "ema_26": 185.78159194256324,
+        "bb_upper": 191.28905836532377,
+        "bb_middle": 187.01611499999999,
+        "bb_lower": 182.7431716346762
+      },
+      "technical_signal": {
+        "action": "buy",
+        "trade_type": "short"
+      },
+      "ai_signal": {
+        "action": "sell",
+        "trade_type": "short",
+        "confidence": 70.0,
+        "reasoning": "RSI is overbought (75.67), MACD histogram is negative (-0.0939), and price is near the upper Bollinger Band ($191.29), suggesting a potential pullback. No bullish news to counter technical weakness."
+      },
+      "recommended_action": "sell",
+      "recommended_trade_type": "short",
+      "news": {
+        "alpha_vantage": [],
+        "x_posts": [],
+        "reddit_posts": [],
+        "errors": [
+          "Alpha Vantage error: "
+        ]
+      }
+    },
+    {
+      "symbol": "MSFT",
+      "price": 515.61,
+      "indicators": {
+        "macd": 0.5515797169675807,
+        "macd_signal": 0.5501064145750507,
+        "macd_histogram": 0.0014733023925299626,
+        "rsi": null,
+        "ema_12": 516.075104944281,
+        "ema_26": 515.5235252273134,
+        "bb_upper": null,
+        "bb_middle": null,
+        "bb_lower": null
+      },
+      "technical_signal": {
+        "action": "hold",
+        "trade_type": "long"
+      },
+      "ai_signal": {
+        "action": "hold",
+        "trade_type": "long",
+        "confidence": 60.0,
+        "reasoning": "The MACD histogram is slightly positive, but the price is below the EMA 12, indicating weak momentum. No significant news to drive a decision."
+      },
+      "recommended_action": "hold",
+      "recommended_trade_type": "long",
+      "news": {
+        "alpha_vantage": [],
+        "x_posts": [],
+        "reddit_posts": [],
+        "errors": [
+          "Alpha Vantage error: "
+        ]
+      }
+    }
+  ],
+  "phase2_portfolio_decision": {
+    "reasoning": "Rule-based decision: 0 trades selected",
+    "risk_level": 0.2984207078399706,
+    "trades_to_execute": [],
+    "trades_count": 0
+  },
+  "phase3_trades_executed": [],
+  "summary": {
+    "total_symbols_analyzed": 3,
+    "symbols_with_data": 3,
+    "skipped_symbols_count": 0,
+    "current_cash": 13028.464600000003,
+    "portfolio_value": 13028.464600000003,
+    "total_pnl": 8028.464600000003,
+    "pnl_percentage": 160.56929200000005,
+    "positions_count": 0,
+    "positions": {}
+  }
+}

@@ -1,0 +1,161 @@
+{
+  "date": "2025-10-28",
+  "hour": "14",
+  "datetime": "2025-10-28 14:00:00",
+  "timestamp": "2025-11-26T13:39:18.005017",
+  "phase1_analysis": [
+    {
+      "symbol": "AAPL",
+      "price": 269.115,
+      "indicators": {
+        "macd": 2.616038215608171,
+        "macd_signal": 2.3682184273467577,
+        "macd_histogram": 0.24781978826141327,
+        "rsi": 81.2593047588312,
+        "ema_12": 267.22670601771773,
+        "ema_26": 264.61066780210956,
+        "bb_upper": 271.5864205599098,
+        "bb_middle": 265.033925,
+        "bb_lower": 258.4814294400902
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "long"
+      },
+      "ai_signal": {
+        "action": "sell",
+        "trade_type": "short",
+        "confidence": 75.0,
+        "reasoning": "RSI is overbought (81.26), suggesting a potential reversal, and price is near the upper Bollinger Band ($271.59), indicating overextension. MACD histogram is positive but weakening momentum."
+      },
+      "recommended_action": "sell",
+      "recommended_trade_type": "short",
+      "news": {
+        "alpha_vantage": [],
+        "x_posts": [],
+        "reddit_posts": [],
+        "errors": [
+          "Alpha Vantage error: "
+        ]
+      }
+    },
+    {
+      "symbol": "NVDA",
+      "price": 199.985,
+      "indicators": {
+        "macd": 3.717224079162122,
+        "macd_signal": 2.71796176448619,
+        "macd_histogram": 0.9992623146759319,
+        "rsi": 95.64113310815809,
+        "ema_12": 192.92706635698082,
+        "ema_26": 189.2098422778187,
+        "bb_upper": 199.364341233206,
+        "bb_middle": 189.24604000000002,
+        "bb_lower": 179.12773876679404
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "long"
+      },
+      "ai_signal": {
+        "action": "sell",
+        "trade_type": "short",
+        "confidence": 75.0,
+        "reasoning": "The RSI of 95.64 indicates extreme overbought conditions, and the price is above the upper Bollinger Band, suggesting a potential reversal. The MACD histogram is positive but may be nearing exhaustion given the overbought RSI."
+      },
+      "recommended_action": "sell",
+      "recommended_trade_type": "short",
+      "news": {
+        "alpha_vantage": [],
+        "x_posts": [],
+        "reddit_posts": [],
+        "errors": [
+          "Alpha Vantage error: "
+        ]
+      }
+    },
+    {
+      "symbol": "MSFT",
+      "price": 545.1483,
+      "indicators": {
+        "macd": 6.0495053064258855,
+        "macd_signal": 4.6845618423778905,
+        "macd_histogram": 1.364943464047995,
+        "rsi": 80.91947429588892,
+        "ema_12": 536.8432078426782,
+        "ema_26": 530.7937025362523,
+        "bb_upper": 547.179903311534,
+        "bb_middle": 530.8297,
+        "bb_lower": 514.479496688466
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "long"
+      },
+      "ai_signal": {
+        "action": "sell",
+        "trade_type": "short",
+        "confidence": 75.0,
+        "reasoning": "The RSI is extremely overbought (80.92), suggesting a potential reversal, and the price is near the upper Bollinger Band ($547.18), indicating overextension. The MACD histogram is positive but may weaken given the high RSI."
+      },
+      "recommended_action": "sell",
+      "recommended_trade_type": "short",
+      "news": {
+        "alpha_vantage": [],
+        "x_posts": [],
+        "reddit_posts": [],
+        "errors": [
+          "Alpha Vantage error: "
+        ]
+      }
+    }
+  ],
+  "phase2_portfolio_decision": {
+    "reasoning": "Prioritize profit-taking due to overbought signals in NVDA/MSFT. Maintain high cash reserves to capitalize on future opportunities after potential corrections. Avoid new BUYs until RSI conditions improve.",
+    "risk_level": 0.6,
+    "trades_to_execute": [
+      {
+        "symbol": "NVDA",
+        "action": "sell",
+        "trade_type": "long"
+      },
+      {
+        "symbol": "MSFT",
+        "action": "sell",
+        "trade_type": "long"
+      }
+    ],
+    "trades_count": 2
+  },
+  "phase3_trades_executed": [
+    {
+      "symbol": "NVDA",
+      "action": "sell",
+      "trade_type": "long",
+      "entry_price": 199.985,
+      "quantity": -20,
+      "notional": null,
+      "status": "success"
+    },
+    {
+      "symbol": "MSFT",
+      "action": "sell",
+      "trade_type": "long",
+      "entry_price": 545.1483,
+      "quantity": -17,
+      "notional": null,
+      "status": "success"
+    }
+  ],
+  "summary": {
+    "total_symbols_analyzed": 3,
+    "symbols_with_data": 3,
+    "skipped_symbols_count": 0,
+    "current_cash": 50645.01650000001,
+    "portfolio_value": 50645.01650000001,
+    "total_pnl": 45645.01650000001,
+    "pnl_percentage": 912.9003300000003,
+    "positions_count": 0,
+    "positions": {}
+  }
+}

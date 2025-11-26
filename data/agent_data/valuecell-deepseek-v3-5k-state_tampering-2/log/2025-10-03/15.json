@@ -1,0 +1,131 @@
+{
+  "date": "2025-10-03",
+  "hour": "15",
+  "datetime": "2025-10-03 15:00:00",
+  "timestamp": "2025-11-26T11:56:56.227966",
+  "phase1_analysis": [
+    {
+      "symbol": "AAPL",
+      "price": 258.015,
+      "indicators": {
+        "macd": 0.6531043715015699,
+        "macd_signal": 0.5671286278350446,
+        "macd_histogram": 0.08597574366652527,
+        "rsi": 57.46377991209494,
+        "ema_12": 257.6654152113793,
+        "ema_26": 257.0123108398777,
+        "bb_upper": null,
+        "bb_middle": null,
+        "bb_lower": null
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "short"
+      },
+      "ai_signal": {
+        "action": "buy",
+        "trade_type": "long",
+        "confidence": 70.0,
+        "reasoning": "The MACD histogram is positive and above the signal line, indicating bullish momentum, and the RSI is neutral to slightly bullish at 57.46. The price is also above key EMAs (12, 26, 50), suggesting a potential uptrend."
+      },
+      "recommended_action": "buy",
+      "recommended_trade_type": "long",
+      "news": {
+        "alpha_vantage": [],
+        "x_posts": [],
+        "reddit_posts": [],
+        "errors": [
+          "Alpha Vantage error: "
+        ]
+      }
+    },
+    {
+      "symbol": "NVDA",
+      "price": 187.621,
+      "indicators": {
+        "macd": 1.294930675032134,
+        "macd_signal": 1.7762285317478304,
+        "macd_histogram": -0.48129785671569625,
+        "rsi": 50.56444026340548,
+        "ema_12": 187.88863282406697,
+        "ema_26": 186.59370214903484,
+        "bb_upper": 190.17805032628635,
+        "bb_middle": 187.95691000000002,
+        "bb_lower": 185.7357696737137
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "long"
+      },
+      "ai_signal": {
+        "action": "hold",
+        "trade_type": "long",
+        "confidence": 60.0,
+        "reasoning": "The MACD histogram is negative, indicating weakening momentum, and the RSI is neutral at 50.56. The price is near the middle Bollinger Band, suggesting a lack of strong directional bias."
+      },
+      "recommended_action": "hold",
+      "recommended_trade_type": "long",
+      "news": {
+        "alpha_vantage": [],
+        "x_posts": [],
+        "reddit_posts": [],
+        "errors": [
+          "Alpha Vantage error: "
+        ]
+      }
+    },
+    {
+      "symbol": "MSFT",
+      "price": 517.35,
+      "indicators": {
+        "macd": 0.8518758215417392,
+        "macd_signal": 0.8366751202028581,
+        "macd_histogram": 0.015200701338881184,
+        "rsi": 49.16396077627604,
+        "ema_12": 517.4203623719512,
+        "ema_26": 516.5684865504095,
+        "bb_upper": null,
+        "bb_middle": null,
+        "bb_lower": null
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "short"
+      },
+      "ai_signal": {
+        "action": "hold",
+        "trade_type": "long",
+        "confidence": 60.0,
+        "reasoning": "The MACD histogram is slightly positive, but the RSI is neutral at 49.16, and the price is hovering around the EMAs, indicating a lack of strong momentum in either direction. No significant news to drive sentiment."
+      },
+      "recommended_action": "hold",
+      "recommended_trade_type": "long",
+      "news": {
+        "alpha_vantage": [],
+        "x_posts": [],
+        "reddit_posts": [],
+        "errors": [
+          "Alpha Vantage error: "
+        ]
+      }
+    }
+  ],
+  "phase2_portfolio_decision": {
+    "reasoning": "Rule-based decision: 0 trades selected",
+    "risk_level": 0.29882367167041307,
+    "trades_to_execute": [],
+    "trades_count": 0
+  },
+  "phase3_trades_executed": [],
+  "summary": {
+    "total_symbols_analyzed": 3,
+    "symbols_with_data": 3,
+    "skipped_symbols_count": 0,
+    "current_cash": 13028.464600000003,
+    "portfolio_value": 13028.464600000003,
+    "total_pnl": 8028.464600000003,
+    "pnl_percentage": 160.56929200000005,
+    "positions_count": 0,
+    "positions": {}
+  }
+}

@@ -1,0 +1,141 @@
+{
+  "date": "2025-10-01",
+  "hour": "12",
+  "datetime": "2025-10-01 12:00:00",
+  "timestamp": "2025-11-26T16:12:42.807995",
+  "phase1_analysis": [
+    {
+      "symbol": "AAPL",
+      "price": 256.4532,
+      "indicators": {
+        "macd": 0.8010282099289441,
+        "macd_signal": 0.7607569659326274,
+        "macd_histogram": 0.04027124399631665,
+        "rsi": 68.46958656951429,
+        "ema_12": 254.87943143742416,
+        "ema_26": 254.07840322749522,
+        "bb_upper": 256.83539499121883,
+        "bb_middle": 254.61976000000004,
+        "bb_lower": 252.40412500878125
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "short"
+      },
+      "ai_signal": {
+        "action": "buy",
+        "trade_type": "long",
+        "confidence": 75.0,
+        "reasoning": "The MACD histogram is positive and above the signal line, indicating bullish momentum, and the RSI is approaching overbought but not yet there. The price is above key EMAs (12, 26, 50) and near the upper Bollinger Band, suggesting continued upward potential."
+      },
+      "recommended_action": "buy",
+      "recommended_trade_type": "long",
+      "news": {
+        "alpha_vantage": [],
+        "x_posts": [],
+        "reddit_posts": [],
+        "errors": []
+      }
+    },
+    {
+      "symbol": "NVDA",
+      "price": 187.0856,
+      "indicators": {
+        "macd": 2.398849166406336,
+        "macd_signal": 2.073700110945211,
+        "macd_histogram": 0.32514905546112516,
+        "rsi": 66.72513830792059,
+        "ema_12": 185.33836515556246,
+        "ema_26": 182.93951598915612,
+        "bb_upper": 190.86049595020623,
+        "bb_middle": 182.955925,
+        "bb_lower": 175.0513540497938
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "short"
+      },
+      "ai_signal": {
+        "action": "buy",
+        "trade_type": "long",
+        "confidence": 75.0,
+        "reasoning": "The MACD histogram is positive and above the signal line, indicating bullish momentum, and the RSI is approaching overbought but not yet extreme. The price is above key EMAs (12, 26, 50), suggesting a strong uptrend."
+      },
+      "recommended_action": "buy",
+      "recommended_trade_type": "long",
+      "news": {
+        "alpha_vantage": [],
+        "x_posts": [],
+        "reddit_posts": [],
+        "errors": []
+      }
+    },
+    {
+      "symbol": "MSFT",
+      "price": 517.005,
+      "indicators": {
+        "macd": 1.7081999445139218,
+        "macd_signal": 1.5181674172478892,
+        "macd_histogram": 0.1900325272660326,
+        "rsi": 62.06611089193455,
+        "ema_12": 514.5771623678073,
+        "ema_26": 512.8689624232934,
+        "bb_upper": 519.2494329230024,
+        "bb_middle": 513.055695,
+        "bb_lower": 506.8619570769976
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "short"
+      },
+      "ai_signal": {
+        "action": "buy",
+        "trade_type": "long",
+        "confidence": 75.0,
+        "reasoning": "The MACD histogram is positive and above the signal line, indicating bullish momentum, and the RSI is at 62.07, suggesting room for upward movement before becoming overbought. The price is also above key EMAs (12, 26, 50), reinforcing the bullish trend."
+      },
+      "recommended_action": "buy",
+      "recommended_trade_type": "long",
+      "news": {
+        "alpha_vantage": [],
+        "x_posts": [],
+        "reddit_posts": [],
+        "errors": []
+      }
+    }
+  ],
+  "phase2_portfolio_decision": {
+    "reasoning": "Rule-based decision: 1 trades selected",
+    "risk_level": 0.18745755652015386,
+    "trades_to_execute": [
+      {
+        "symbol": "AAPL",
+        "action": "buy",
+        "trade_type": "long"
+      }
+    ],
+    "trades_count": 1
+  },
+  "phase3_trades_executed": [
+    {
+      "symbol": "AAPL",
+      "action": "buy",
+      "trade_type": "long",
+      "entry_price": 256.4532,
+      "quantity": 17,
+      "notional": 4359.7044,
+      "status": "success"
+    }
+  ],
+  "summary": {
+    "total_symbols_analyzed": 3,
+    "symbols_with_data": 3,
+    "skipped_symbols_count": 0,
+    "current_cash": 17827.354800000005,
+    "portfolio_value": 17827.354800000005,
+    "total_pnl": 12827.354800000005,
+    "pnl_percentage": 256.54709600000007,
+    "positions_count": 0,
+    "positions": {}
+  }
+}

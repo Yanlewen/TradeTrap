@@ -1,0 +1,131 @@
+{
+  "date": "2025-10-28",
+  "hour": "10",
+  "datetime": "2025-10-28 10:00:00",
+  "timestamp": "2025-11-26T13:35:20.297188",
+  "phase1_analysis": [
+    {
+      "symbol": "AAPL",
+      "price": 268.82,
+      "indicators": {
+        "macd": 2.444019809649319,
+        "macd_signal": 2.0307843521100457,
+        "macd_histogram": 0.4132354575392734,
+        "rsi": 86.68771677246203,
+        "ema_12": 265.4161098065206,
+        "ema_26": 262.97208999687126,
+        "bb_upper": 269.3407155562124,
+        "bb_middle": 263.134785,
+        "bb_lower": 256.92885444378766
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "long"
+      },
+      "ai_signal": {
+        "action": "sell",
+        "trade_type": "short",
+        "confidence": 75.0,
+        "reasoning": "The RSI is extremely overbought at 86.69, suggesting a potential reversal, and the price is near the upper Bollinger Band, indicating overextension. The MACD histogram is positive but may not sustain given the overbought conditions."
+      },
+      "recommended_action": "sell",
+      "recommended_trade_type": "short",
+      "news": {
+        "alpha_vantage": [],
+        "x_posts": [],
+        "reddit_posts": [],
+        "errors": [
+          "Alpha Vantage error: "
+        ]
+      }
+    },
+    {
+      "symbol": "NVDA",
+      "price": 193.18,
+      "indicators": {
+        "macd": 2.6730278091476976,
+        "macd_signal": 1.9353980620927507,
+        "macd_histogram": 0.7376297470549469,
+        "rsi": 88.14392303453621,
+        "ema_12": 189.23348044999466,
+        "ema_26": 186.56045264084696,
+        "bb_upper": 194.47672675858317,
+        "bb_middle": 186.320285,
+        "bb_lower": 178.16384324141686
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "long"
+      },
+      "ai_signal": {
+        "action": "sell",
+        "trade_type": "short",
+        "confidence": 75.0,
+        "reasoning": "The RSI of 88.14 indicates NVDA is heavily overbought, and the price is near the upper Bollinger Band, suggesting a potential pullback. The MACD histogram is positive but may be nearing exhaustion given the extreme RSI."
+      },
+      "recommended_action": "sell",
+      "recommended_trade_type": "short",
+      "news": {
+        "alpha_vantage": [],
+        "x_posts": [],
+        "reddit_posts": [],
+        "errors": [
+          "Alpha Vantage error: "
+        ]
+      }
+    },
+    {
+      "symbol": "MSFT",
+      "price": 542.47,
+      "indicators": {
+        "macd": 4.488367803819642,
+        "macd_signal": 3.3200917709125095,
+        "macd_histogram": 1.1682760329071327,
+        "rsi": 76.83129855715853,
+        "ema_12": 530.8935877499067,
+        "ema_26": 526.4052199460871,
+        "bb_upper": 538.3563172359129,
+        "bb_middle": 526.657535,
+        "bb_lower": 514.9587527640872
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "long"
+      },
+      "ai_signal": {
+        "action": "hold",
+        "trade_type": "long",
+        "confidence": 70.0,
+        "reasoning": "The RSI is overbought (76.83), suggesting potential for a pullback, but the MACD histogram is positive (1.1683) and price is above key EMAs, indicating bullish momentum. No news to sway sentiment, so holding is prudent."
+      },
+      "recommended_action": "hold",
+      "recommended_trade_type": "long",
+      "news": {
+        "alpha_vantage": [],
+        "x_posts": [],
+        "reddit_posts": [],
+        "errors": [
+          "Alpha Vantage error: "
+        ]
+      }
+    }
+  ],
+  "phase2_portfolio_decision": {
+    "reasoning": "Rule-based decision: 0 trades selected",
+    "risk_level": 0.21868950162855239,
+    "trades_to_execute": [],
+    "trades_count": 0
+  },
+  "phase3_trades_executed": [],
+  "summary": {
+    "total_symbols_analyzed": 3,
+    "symbols_with_data": 3,
+    "skipped_symbols_count": 0,
+    "current_cash": 37377.79540000002,
+    "portfolio_value": 37377.79540000002,
+    "total_pnl": 32377.795400000017,
+    "pnl_percentage": 647.5559080000004,
+    "positions_count": 0,
+    "positions": {}
+  }
+}

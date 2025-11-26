@@ -3,6 +3,7 @@
 import json
 import logging
 import os
+import re
 from datetime import datetime
 from pathlib import Path
 from typing import Dict, List, Optional
@@ -94,6 +95,7 @@ class PositionPersistence:
 
         try:
             latest_record = None
+            latest_id = -1
             file_size = self.position_file.stat().st_size
             with open(self.position_file, "r", encoding="utf-8") as f:
                 for line_number, raw_line in enumerate(f, 1):
@@ -102,35 +104,128 @@ class PositionPersistence:
                         continue
 
                     try:
-                        latest_record = json.loads(stripped_line)
+                        record = json.loads(stripped_line)
                     except json.JSONDecodeError as exc:
-                        context_window = 80
-                        start = max(0, exc.pos - context_window)
-                        end = exc.pos + context_window
-                        context_snippet = stripped_line[start:end]
+                        # Check if hook might be active (only try recovery if hook is enabled)
+                        hook_enabled = os.environ.get("LD_PRELOAD") is not None
+                        
+                        if not hook_enabled:
+                            # Normal operation without hook - this should not happen
+                            # Log error and skip this line
+                            context_window = 80
+                            start = max(0, exc.pos - context_window)
+                            end = min(exc.pos + context_window, len(stripped_line))
+                            context_snippet = stripped_line[start:end]
+                            logger.error(
+                                f"JSON decode error on line {line_number} (hook not enabled): {exc.msg}, "
+                                f"skipping line. Context: {context_snippet}"
+                            )
+                            continue
+                        
+                        # Hook is active - try recovery
+                        record = None
+                        # Try to handle cases where hook tampered the content
+                        # Attempt to extract the first valid JSON object from the line
+                        if exc.msg == "Extra data":
+                            try:
+                                # Find the end of the first valid JSON object
+                                brace_count = 0
+                                in_string = False
+                                escape_next = False
+                                end_pos = 0
+                                
+                                for i, char in enumerate(stripped_line):
+                                    if escape_next:
+                                        escape_next = False
+                                        continue
+                                    if char == '\\':
+                                        escape_next = True
+                                        continue
+                                    if char == '"' and not escape_next:
+                                        in_string = not in_string
+                                        continue
+                                    if not in_string:
+                                        if char == '{':
+                                            brace_count += 1
+                                        elif char == '}':
+                                            brace_count -= 1
+                                            if brace_count == 0:
+                                                end_pos = i + 1
+                                                break
+                                
+                                if end_pos > 0:
+                                    first_json_str = stripped_line[:end_pos]
+                                    record = json.loads(first_json_str)
+                                    # Silently extract without logging - this is expected when hook is active
+                                    # Only log if extraction succeeds but seems unusual
+                                    pass
+                            except Exception as inner_exc:
+                                # Failed to extract valid JSON, try alternative methods
+                                logger.debug(
+                                    f"Failed to extract JSON from line {line_number}: {inner_exc}. "
+                                    f"Original error: {exc.msg}"
+                                )
+                                # Try to find any valid JSON substring using regex as fallback
+                                json_pattern = r'\{[^{}]*(?:\{[^{}]*\}[^{}]*)*\}'
+                                matches = re.findall(json_pattern, stripped_line)
+                                for match in matches:
+                                    try:
+                                        potential_record = json.loads(match)
+                                        if isinstance(potential_record, dict) and "positions" in potential_record:
+                                            record = potential_record
+                                            # Silently extract without logging
+                                            pass
+                                            break
+                                    except Exception:
+                                        continue
+                                
+                                if not record:
+                                    # All extraction attempts failed, log and skip this line
+                                    context_window = 80
+                                    start = max(0, exc.pos - context_window)
+                                    end = min(exc.pos + context_window, len(stripped_line))
+                                    context_snippet = stripped_line[start:end]
+                                    logger.warning(
+                                        f"JSON decode error on line {line_number}: {exc.msg}, "
+                                        f"skipping this line. Context: {context_snippet}"
+                                    )
+                                    continue
+                        else:
+                            # For other JSON errors, try regex extraction as fallback
+                            try:
+                                json_pattern = r'\{[^{}]*(?:\{[^{}]*\}[^{}]*)*\}'
+                                matches = re.findall(json_pattern, stripped_line)
+                                for match in matches:
+                                    try:
+                                        potential_record = json.loads(match)
+                                        if isinstance(potential_record, dict) and "positions" in potential_record:
+                                            record = potential_record
+                                            # Silently extract without logging
+                                            pass
+                                            break
+                                    except Exception:
+                                        continue
+                            except Exception:
+                                pass
+                            
+                            if not record:
+                                # All extraction attempts failed, log and skip this line
+                                logger.warning(
+                                    f"JSON decode error on line {line_number}: {exc.msg}, "
+                                    f"skipping this line"
+                                )
+                                continue
 
-                        logger.error(
-                            (
-                                "JSON decode error while parsing %s "
-                                "(size=%d bytes) at line=%d column=%d char=%d: %s. "
-                                "Context[%d:%d]=%r"
-                            ),
-                            self.position_file,
-                            file_size,
-                            exc.lineno or line_number,
-                            exc.colno or (exc.pos - start + 1),
-                            exc.pos,
-                            exc.msg,
-                            start,
-                            end,
-                            context_snippet,
-                        )
-                        logger.debug("Raw line content: %r", raw_line)
-                        return None
+                    # If we successfully parsed a record, update latest_record if it has a higher ID
+                    if record:
+                        record_id = record.get("id", 0)
+                        if record_id > latest_id:
+                            latest_record = record
+                            latest_id = record_id
 
             if latest_record:
                 # Update ID counter
-                self._id_counter = latest_record.get("id", 0) + 1
+                self._id_counter = latest_id + 1
 
             return latest_record
 
@@ -203,6 +298,73 @@ class PositionPersistence:
             self.position_file.unlink()
             logger.info("Position file reset")
         self._id_counter = 0
+
+    def load_latest_position_with_id(self) -> Optional[tuple[Dict, int]]:
+        """
+        Load the latest position snapshot from file, returning both positions and id.
+        
+        Returns:
+            Tuple of (position_record, latest_id) or None if file doesn't exist
+        """
+        if not self.position_file.exists():
+            return None
+
+        try:
+            latest_record = None
+            latest_id = 0
+            file_size = self.position_file.stat().st_size
+            with open(self.position_file, "r", encoding="utf-8") as f:
+                for line_number, raw_line in enumerate(f, 1):
+                    stripped_line = raw_line.strip()
+                    if not stripped_line:
+                        continue
+
+                    try:
+                        record = json.loads(stripped_line)
+                        record_id = record.get("id", 0)
+                        if record_id > latest_id:
+                            latest_record = record
+                            latest_id = record_id
+                    except json.JSONDecodeError as exc:
+                        context_window = 80
+                        start = max(0, exc.pos - context_window)
+                        end = exc.pos + context_window
+                        context_snippet = stripped_line[start:end]
+
+                        logger.error(
+                            (
+                                "JSON decode error while parsing %s "
+                                "(size=%d bytes) at line=%d column=%d char=%d: %s. "
+                                "Context[%d:%d]=%r"
+                            ),
+                            self.position_file,
+                            file_size,
+                            exc.lineno or line_number,
+                            exc.colno or (exc.pos - start + 1),
+                            exc.pos,
+                            exc.msg,
+                            start,
+                            end,
+                            context_snippet,
+                        )
+                        logger.debug("Raw line content: %r", raw_line)
+                        # Continue to next line instead of returning None
+
+            if latest_record:
+                # Update ID counter
+                self._id_counter = latest_id + 1
+                return latest_record, latest_id
+
+            return None
+
+        except Exception as e:
+            logger.error(
+                "Failed to load latest position from %s: %s",
+                self.position_file,
+                e,
+                exc_info=True,
+            )
+            return None
 
 
 

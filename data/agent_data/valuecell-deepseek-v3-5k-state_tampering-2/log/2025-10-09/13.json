@@ -1,0 +1,131 @@
+{
+  "date": "2025-10-09",
+  "hour": "13",
+  "datetime": "2025-10-09 13:00:00",
+  "timestamp": "2025-11-26T12:18:57.747298",
+  "phase1_analysis": [
+    {
+      "symbol": "AAPL",
+      "price": 253.63,
+      "indicators": {
+        "macd": -0.5490571902208785,
+        "macd_signal": -0.13004974014025272,
+        "macd_histogram": -0.4190074500806258,
+        "rsi": 31.983805668016018,
+        "ema_12": 255.73353323108608,
+        "ema_26": 256.28259042130696,
+        "bb_upper": 259.07744006540895,
+        "bb_middle": 256.30375,
+        "bb_lower": 253.53005993459104
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "long"
+      },
+      "ai_signal": {
+        "action": "buy",
+        "trade_type": "long",
+        "confidence": 70.0,
+        "reasoning": "RSI indicates oversold conditions (31.98), and price is near the Bollinger Band lower band ($253.53), suggesting potential reversal. MACD histogram is negative but may signal a buying opportunity if momentum shifts."
+      },
+      "recommended_action": "buy",
+      "recommended_trade_type": "long",
+      "news": {
+        "alpha_vantage": [],
+        "x_posts": [],
+        "reddit_posts": [],
+        "errors": [
+          "Alpha Vantage error: "
+        ]
+      }
+    },
+    {
+      "symbol": "NVDA",
+      "price": 193.005,
+      "indicators": {
+        "macd": 1.7318700107131804,
+        "macd_signal": 1.0644651365667548,
+        "macd_histogram": 0.6674048741464256,
+        "rsi": 75.9438182143496,
+        "ema_12": 190.42636424691764,
+        "ema_26": 188.69449423620446,
+        "bb_upper": 194.25077957565514,
+        "bb_middle": 188.16336500000003,
+        "bb_lower": 182.0759504243449
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "long"
+      },
+      "ai_signal": {
+        "action": "hold",
+        "trade_type": "long",
+        "confidence": 70.0,
+        "reasoning": "RSI is overbought (75.94), suggesting potential for a pullback, but MACD and EMAs indicate bullish momentum. No news to sway sentiment, so caution is warranted."
+      },
+      "recommended_action": "hold",
+      "recommended_trade_type": "long",
+      "news": {
+        "alpha_vantage": [],
+        "x_posts": [],
+        "reddit_posts": [],
+        "errors": [
+          "Alpha Vantage error: "
+        ]
+      }
+    },
+    {
+      "symbol": "MSFT",
+      "price": 519.5389,
+      "indicators": {
+        "macd": 0.0690066391084656,
+        "macd_signal": 1.0111369979165996,
+        "macd_histogram": -0.942130358808134,
+        "rsi": 37.845010226597815,
+        "ema_12": 521.8592927929031,
+        "ema_26": 521.7902861537947,
+        "bb_upper": 529.7335707036715,
+        "bb_middle": 523.8127200000001,
+        "bb_lower": 517.8918692963288
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "long"
+      },
+      "ai_signal": {
+        "action": "hold",
+        "trade_type": "long",
+        "confidence": 65.0,
+        "reasoning": "The MACD histogram is negative and RSI is neutral (37.85), indicating weak momentum. Price is below key EMAs (12, 26, 50), suggesting short-term bearish pressure, but no news catalyst provides clarity."
+      },
+      "recommended_action": "hold",
+      "recommended_trade_type": "long",
+      "news": {
+        "alpha_vantage": [],
+        "x_posts": [],
+        "reddit_posts": [],
+        "errors": [
+          "Alpha Vantage error: "
+        ]
+      }
+    }
+  ],
+  "phase2_portfolio_decision": {
+    "reasoning": "Rule-based decision: 0 trades selected",
+    "risk_level": 0.29601355357845727,
+    "trades_to_execute": [],
+    "trades_count": 0
+  },
+  "phase3_trades_executed": [],
+  "summary": {
+    "total_symbols_analyzed": 3,
+    "symbols_with_data": 3,
+    "skipped_symbols_count": 0,
+    "current_cash": 13309.134600000005,
+    "portfolio_value": 13309.134600000005,
+    "total_pnl": 8309.134600000005,
+    "pnl_percentage": 166.1826920000001,
+    "positions_count": 0,
+    "positions": {}
+  }
+}

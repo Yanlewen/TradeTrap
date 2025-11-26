@@ -1,0 +1,147 @@
+{
+  "date": "2025-10-27",
+  "hour": "15",
+  "datetime": "2025-10-27 15:00:00",
+  "timestamp": "2025-11-26T13:34:19.023199",
+  "phase1_analysis": [
+    {
+      "symbol": "AAPL",
+      "price": 268.74,
+      "indicators": {
+        "macd": 2.2929634838124002,
+        "macd_signal": 1.9274754877252274,
+        "macd_histogram": 0.36548799608717286,
+        "rsi": 84.24163783160294,
+        "ema_12": 264.7972206804334,
+        "ema_26": 262.504257196621,
+        "bb_upper": 268.72547539306976,
+        "bb_middle": 262.542285,
+        "bb_lower": 256.3590946069302
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "long"
+      },
+      "ai_signal": {
+        "action": "sell",
+        "trade_type": "short",
+        "confidence": 75.0,
+        "reasoning": "The RSI is extremely overbought (84.24), and the price is touching the upper Bollinger Band, suggesting a potential reversal. The MACD histogram is positive but may be peaking given the overbought conditions."
+      },
+      "recommended_action": "sell",
+      "recommended_trade_type": "short",
+      "news": {
+        "alpha_vantage": [],
+        "x_posts": [],
+        "reddit_posts": [],
+        "errors": [
+          "Alpha Vantage error: "
+        ]
+      }
+    },
+    {
+      "symbol": "NVDA",
+      "price": 191.43,
+      "indicators": {
+        "macd": 2.485042588788076,
+        "macd_signal": 1.7509906253290137,
+        "macd_histogram": 0.7340519634590623,
+        "rsi": 86.83522952771536,
+        "ema_12": 188.5159314409028,
+        "ema_26": 186.0308888521147,
+        "bb_upper": 193.73810977301434,
+        "bb_middle": 185.60479,
+        "bb_lower": 177.47147022698567
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "long"
+      },
+      "ai_signal": {
+        "action": "sell",
+        "trade_type": "short",
+        "confidence": 75.0,
+        "reasoning": "RSI is extremely overbought (86.84), and price is near the upper Bollinger Band ($193.74), suggesting a potential pullback. MACD histogram is positive but may be nearing exhaustion."
+      },
+      "recommended_action": "sell",
+      "recommended_trade_type": "short",
+      "news": {
+        "alpha_vantage": [],
+        "x_posts": [],
+        "reddit_posts": [],
+        "errors": [
+          "Alpha Vantage error: "
+        ]
+      }
+    },
+    {
+      "symbol": "MSFT",
+      "price": 531.41,
+      "indicators": {
+        "macd": 3.668747980842909,
+        "macd_signal": 3.028022762685726,
+        "macd_histogram": 0.6407252181571828,
+        "rsi": 66.93724015046502,
+        "ema_12": 528.788785522617,
+        "ema_26": 525.1200375417741,
+        "bb_upper": 534.9678956233881,
+        "bb_middle": 525.508535,
+        "bb_lower": 516.049174376612
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "short"
+      },
+      "ai_signal": {
+        "action": "buy",
+        "trade_type": "long",
+        "confidence": 75.0,
+        "reasoning": "The MACD histogram is positive and above the signal line, indicating bullish momentum, and the RSI is approaching overbought but not yet extreme. The price is above key EMAs (12, 26, 50), suggesting a strong uptrend."
+      },
+      "recommended_action": "buy",
+      "recommended_trade_type": "long",
+      "news": {
+        "alpha_vantage": [],
+        "x_posts": [],
+        "reddit_posts": [],
+        "errors": [
+          "Alpha Vantage error: "
+        ]
+      }
+    }
+  ],
+  "phase2_portfolio_decision": {
+    "reasoning": "Rule-based decision: 1 trades selected",
+    "risk_level": 0.09299680559016182,
+    "trades_to_execute": [
+      {
+        "symbol": "MSFT",
+        "action": "buy",
+        "trade_type": "long"
+      }
+    ],
+    "trades_count": 1
+  },
+  "phase3_trades_executed": [
+    {
+      "symbol": "MSFT",
+      "action": "buy",
+      "trade_type": "long",
+      "entry_price": 531.41,
+      "quantity": 17,
+      "notional": 9033.97,
+      "status": "success"
+    }
+  ],
+  "summary": {
+    "total_symbols_analyzed": 3,
+    "symbols_with_data": 3,
+    "skipped_symbols_count": 0,
+    "current_cash": 37377.79540000002,
+    "portfolio_value": 37377.79540000002,
+    "total_pnl": 32377.795400000017,
+    "pnl_percentage": 647.5559080000004,
+    "positions_count": 0,
+    "positions": {}
+  }
+}

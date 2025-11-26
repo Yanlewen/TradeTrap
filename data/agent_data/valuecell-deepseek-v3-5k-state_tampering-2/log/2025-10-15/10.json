@@ -1,0 +1,175 @@
+{
+  "date": "2025-10-15",
+  "hour": "10",
+  "datetime": "2025-10-15 10:00:00",
+  "timestamp": "2025-11-26T12:40:21.224526",
+  "phase1_analysis": [
+    {
+      "symbol": "AAPL",
+      "price": 250.5378,
+      "indicators": {
+        "macd": -1.412777018660023,
+        "macd_signal": -1.8516102202191769,
+        "macd_histogram": 0.43883320155915384,
+        "rsi": 71.13333892133016,
+        "ema_12": 248.55162691587728,
+        "ema_26": 249.9644039345373,
+        "bb_upper": 252.6798336303398,
+        "bb_middle": 248.46336499999998,
+        "bb_lower": 244.24689636966016
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "long"
+      },
+      "ai_signal": {
+        "action": "sell",
+        "trade_type": "short",
+        "confidence": 70.0,
+        "reasoning": "The RSI is overbought (71.13), and the price is above the EMA 50, suggesting potential downside. The MACD histogram is positive but still below the signal line, indicating weak bullish momentum."
+      },
+      "recommended_action": "sell",
+      "recommended_trade_type": "short",
+      "news": {
+        "alpha_vantage": [],
+        "x_posts": [],
+        "reddit_posts": [],
+        "errors": [
+          "Alpha Vantage error: "
+        ]
+      }
+    },
+    {
+      "symbol": "NVDA",
+      "price": 182.7699,
+      "indicators": {
+        "macd": -1.8854264206282778,
+        "macd_signal": -1.259565840092294,
+        "macd_histogram": -0.6258605805359838,
+        "rsi": 42.239638692023924,
+        "ema_12": 183.91692249051692,
+        "ema_26": 185.8023489111452,
+        "bb_upper": 193.9342728068138,
+        "bb_middle": 186.181055,
+        "bb_lower": 178.42783719318618
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "long"
+      },
+      "ai_signal": {
+        "action": "hold",
+        "trade_type": "long",
+        "confidence": 65.0,
+        "reasoning": "The MACD and RSI indicate bearish momentum, but the price is near the lower Bollinger Band, suggesting potential support. No significant news to drive a clear direction."
+      },
+      "recommended_action": "hold",
+      "recommended_trade_type": "long",
+      "news": {
+        "alpha_vantage": [],
+        "x_posts": [],
+        "reddit_posts": [],
+        "errors": [
+          "Alpha Vantage error: "
+        ]
+      }
+    },
+    {
+      "symbol": "MSFT",
+      "price": 516.485,
+      "indicators": {
+        "macd": -1.381879162315272,
+        "macd_signal": -1.8720439356459795,
+        "macd_histogram": 0.4901647733307075,
+        "rsi": 54.495031199445464,
+        "ema_12": 514.3218719818553,
+        "ema_26": 515.7037511441706,
+        "bb_upper": 519.8642187986677,
+        "bb_middle": 514.4234899999999,
+        "bb_lower": 508.9827612013321
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "short"
+      },
+      "ai_signal": {
+        "action": "hold",
+        "trade_type": "long",
+        "confidence": 65.0,
+        "reasoning": "The MACD histogram is positive but still below the signal line, and RSI is neutral at 54.50. Price is near the EMA 50, suggesting a potential consolidation phase with no clear trend."
+      },
+      "recommended_action": "hold",
+      "recommended_trade_type": "long",
+      "news": {
+        "alpha_vantage": [],
+        "x_posts": [],
+        "reddit_posts": [],
+        "errors": [
+          "Alpha Vantage error: "
+        ]
+      }
+    }
+  ],
+  "phase2_portfolio_decision": {
+    "reasoning": "Prioritize closing positions to reduce risk and preserve capital. MSFT profit-taking and NVDA loss-cutting align with neutral/bearish signals. AAPL short offers contrarian exposure but requires careful risk management.",
+    "risk_level": 0.6,
+    "trades_to_execute": [
+      {
+        "symbol": "MSFT",
+        "action": "sell",
+        "trade_type": "long"
+      },
+      {
+        "symbol": "NVDA",
+        "action": "sell",
+        "trade_type": "long"
+      },
+      {
+        "symbol": "AAPL",
+        "action": "buy",
+        "trade_type": "short"
+      }
+    ],
+    "trades_count": 3
+  },
+  "phase3_trades_executed": [
+    {
+      "symbol": "MSFT",
+      "action": "sell",
+      "trade_type": "long",
+      "entry_price": 516.485,
+      "quantity": -7,
+      "notional": null,
+      "status": "success"
+    },
+    {
+      "symbol": "NVDA",
+      "action": "sell",
+      "trade_type": "long",
+      "entry_price": 182.7699,
+      "quantity": -20,
+      "notional": null,
+      "status": "success"
+    },
+    {
+      "symbol": "AAPL",
+      "action": "buy",
+      "trade_type": "short",
+      "entry_price": 250.5378,
+      "quantity": -21,
+      "notional": 5261.2938,
+      "status": "success"
+    }
+  ],
+  "summary": {
+    "total_symbols_analyzed": 3,
+    "symbols_with_data": 3,
+    "skipped_symbols_count": 0,
+    "current_cash": 22142.026200000008,
+    "portfolio_value": 22142.026200000008,
+    "total_pnl": 17142.026200000008,
+    "pnl_percentage": 342.84052400000013,
+    "positions_count": 0,
+    "positions": {}
+  }
+}

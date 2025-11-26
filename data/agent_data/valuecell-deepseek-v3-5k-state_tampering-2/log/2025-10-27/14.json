@@ -1,0 +1,131 @@
+{
+  "date": "2025-10-27",
+  "hour": "14",
+  "datetime": "2025-10-27 14:00:00",
+  "timestamp": "2025-11-26T13:33:09.138389",
+  "phase1_analysis": [
+    {
+      "symbol": "AAPL",
+      "price": 266.235,
+      "indicators": {
+        "macd": 2.074953940888804,
+        "macd_signal": 1.836103488703434,
+        "macd_histogram": 0.23885045218537004,
+        "rsi": 79.80637064483325,
+        "ema_12": 264.08035171323945,
+        "ema_26": 262.00539777235065,
+        "bb_upper": 267.97560789006855,
+        "bb_middle": 261.921785,
+        "bb_lower": 255.86796210993145
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "long"
+      },
+      "ai_signal": {
+        "action": "sell",
+        "trade_type": "short",
+        "confidence": 70.0,
+        "reasoning": "RSI is overbought (79.81), and price is near the upper Bollinger Band ($267.98), suggesting a potential pullback. MACD histogram is positive but weakening momentum."
+      },
+      "recommended_action": "sell",
+      "recommended_trade_type": "short",
+      "news": {
+        "alpha_vantage": [],
+        "x_posts": [],
+        "reddit_posts": [],
+        "errors": [
+          "Alpha Vantage error: "
+        ]
+      }
+    },
+    {
+      "symbol": "NVDA",
+      "price": 190.767,
+      "indicators": {
+        "macd": 2.3871408335103297,
+        "macd_signal": 1.567477634464248,
+        "macd_histogram": 0.8196631990460816,
+        "rsi": 86.66655501030036,
+        "ema_12": 187.9861007937942,
+        "ema_26": 185.59895996028388,
+        "bb_upper": 193.31449241258545,
+        "bb_middle": 184.91114,
+        "bb_lower": 176.50778758741453
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "long"
+      },
+      "ai_signal": {
+        "action": "sell",
+        "trade_type": "short",
+        "confidence": 75.0,
+        "reasoning": "The RSI is extremely overbought (86.67), suggesting a potential reversal, and the price is near the upper Bollinger Band ($193.31), indicating a possible pullback. The MACD histogram is positive but the high RSI outweighs bullish signals."
+      },
+      "recommended_action": "sell",
+      "recommended_trade_type": "short",
+      "news": {
+        "alpha_vantage": [],
+        "x_posts": [],
+        "reddit_posts": [],
+        "errors": [
+          "Alpha Vantage error: "
+        ]
+      }
+    },
+    {
+      "symbol": "MSFT",
+      "price": 533.57,
+      "indicators": {
+        "macd": 3.6953605270676917,
+        "macd_signal": 2.8678414581464304,
+        "macd_histogram": 0.8275190689212613,
+        "rsi": 73.70433305012742,
+        "ema_12": 528.3122010721837,
+        "ema_26": 524.616840545116,
+        "bb_upper": 534.3617157834431,
+        "bb_middle": 524.878285,
+        "bb_lower": 515.394854216557
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "long"
+      },
+      "ai_signal": {
+        "action": "sell",
+        "trade_type": "short",
+        "confidence": 70.0,
+        "reasoning": "The RSI is overbought (73.70), and the price is near the upper Bollinger Band ($534.36), suggesting a potential pullback. The MACD histogram is positive but may indicate weakening momentum."
+      },
+      "recommended_action": "sell",
+      "recommended_trade_type": "short",
+      "news": {
+        "alpha_vantage": [],
+        "x_posts": [],
+        "reddit_posts": [],
+        "errors": [
+          "Alpha Vantage error: "
+        ]
+      }
+    }
+  ],
+  "phase2_portfolio_decision": {
+    "reasoning": "Rule-based decision: 0 trades selected",
+    "risk_level": 0.09288252422304968,
+    "trades_to_execute": [],
+    "trades_count": 0
+  },
+  "phase3_trades_executed": [],
+  "summary": {
+    "total_symbols_analyzed": 3,
+    "symbols_with_data": 3,
+    "skipped_symbols_count": 0,
+    "current_cash": 46411.76540000002,
+    "portfolio_value": 46411.76540000002,
+    "total_pnl": 41411.76540000002,
+    "pnl_percentage": 828.2353080000004,
+    "positions_count": 0,
+    "positions": {}
+  }
+}

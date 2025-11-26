@@ -1,0 +1,77 @@
+{
+  "date": "2025-10-01",
+  "hour": "11",
+  "datetime": "2025-10-01 11:00:00",
+  "timestamp": "2025-11-26T11:41:57.817801",
+  "phase1_analysis": [
+    {
+      "symbol": "NVDA",
+      "price": 187.2699,
+      "indicators": {
+        "macd": 2.410567615443,
+        "macd_signal": 1.9890592230264101,
+        "macd_histogram": 0.4215083924165899,
+        "rsi": 79.07223954764633,
+        "ema_12": 185.0206920970232,
+        "ema_26": 182.6101244815802,
+        "bb_upper": 190.65207475444615,
+        "bb_middle": 182.394145,
+        "bb_lower": 174.13621524555387
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "long"
+      },
+      "ai_signal": {
+        "action": "sell",
+        "trade_type": "short",
+        "confidence": 75.0,
+        "reasoning": "RSI is overbought (79.07) and price is near the upper Bollinger Band ($190.65), suggesting a potential pullback. MACD histogram is positive but weakening momentum may lead to a reversal."
+      },
+      "recommended_action": "sell",
+      "recommended_trade_type": "short",
+      "news": {
+        "alpha_vantage": [],
+        "x_posts": [],
+        "reddit_posts": [],
+        "errors": [
+          "Alpha Vantage error: "
+        ]
+      }
+    }
+  ],
+  "phase2_portfolio_decision": {
+    "reasoning": "Rule-based decision: 1 trades selected",
+    "risk_level": 0.23133176276846368,
+    "trades_to_execute": [
+      {
+        "symbol": "NVDA",
+        "action": "sell",
+        "trade_type": "long"
+      }
+    ],
+    "trades_count": 1
+  },
+  "phase3_trades_executed": [
+    {
+      "symbol": "NVDA",
+      "action": "sell",
+      "trade_type": "long",
+      "entry_price": 187.2699,
+      "quantity": -20,
+      "notional": null,
+      "status": "success"
+    }
+  ],
+  "summary": {
+    "total_symbols_analyzed": 3,
+    "symbols_with_data": 1,
+    "skipped_symbols_count": 2,
+    "current_cash": 12489.598000000002,
+    "portfolio_value": 12489.598000000002,
+    "total_pnl": 7489.598000000002,
+    "pnl_percentage": 149.79196000000005,
+    "positions_count": 0,
+    "positions": {}
+  }
+}

@@ -1,0 +1,46 @@
+{
+    "agent_type": "Valuecell",
+    "market": "us",
+    "date_range": {
+      "init_date": "2025-10-01 10:00:00",
+      "end_date": "2025-10-31 15:00:00"
+    },
+    "models": [
+      {
+        "name": "gemini-2.5-flash",
+        "basemodel": "gemini-2.5-flash",
+        "signature": "valuecell-gemini-2.5-flash-5k-whole-month",
+        "enabled": true
+      }
+    ],
+    "agent_config": {
+      "initial_capital": 5000.0,
+      "stock_symbols": [
+        "AAPL",
+        "NVDA",
+        "MSFT"
+      ],
+      "market": "us",
+      "market_type": "stock",
+      "check_interval": 60,
+      "risk_per_trade": 0.20,
+      "max_positions": 5,
+      "use_ai_signals": true,
+      "agent_model": "gemini-2.5-flash",
+      "exchange": "paper",
+      "exchange_network": "paper",
+      "allow_live_trading": false,
+      "min_bars_daily": 10,
+      "min_bars_hourly": 10,
+      "allow_partial_data": true,
+      "data_period_daily": "10d",
+      "data_period_hourly": "14d",
+      "enable_news": true,
+      "enable_alpha_vantage_news": false,
+      "enable_x_news": false,
+      "enable_reddit_news": false
+    },
+    "log_config": {
+      "log_path": "./data/agent_data"
+    }
+  }

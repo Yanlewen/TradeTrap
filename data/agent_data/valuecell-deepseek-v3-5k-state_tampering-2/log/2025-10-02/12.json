@@ -1,0 +1,61 @@
+{
+  "date": "2025-10-02",
+  "hour": "12",
+  "datetime": "2025-10-02 12:00:00",
+  "timestamp": "2025-11-26T11:48:10.575962",
+  "phase1_analysis": [
+    {
+      "symbol": "NVDA",
+      "price": 189.425,
+      "indicators": {
+        "macd": 2.459053958811097,
+        "macd_signal": 2.3408380831026605,
+        "macd_histogram": 0.11821587570843661,
+        "rsi": 71.73691539584942,
+        "ema_12": 187.43763007788604,
+        "ema_26": 184.97857611907494,
+        "bb_upper": 191.23438586069352,
+        "bb_middle": 185.98759,
+        "bb_lower": 180.7407941393065
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "long"
+      },
+      "ai_signal": {
+        "action": "hold",
+        "trade_type": "long",
+        "confidence": 70.0,
+        "reasoning": "RSI is overbought (71.74), suggesting potential for a pullback, but MACD and EMAs indicate bullish momentum. No significant news to drive immediate action."
+      },
+      "recommended_action": "hold",
+      "recommended_trade_type": "long",
+      "news": {
+        "alpha_vantage": [],
+        "x_posts": [],
+        "reddit_posts": [],
+        "errors": [
+          "Alpha Vantage error: "
+        ]
+      }
+    }
+  ],
+  "phase2_portfolio_decision": {
+    "reasoning": "Rule-based decision: 0 trades selected",
+    "risk_level": 0.13581441208259798,
+    "trades_to_execute": [],
+    "trades_count": 0
+  },
+  "phase3_trades_executed": [],
+  "summary": {
+    "total_symbols_analyzed": 3,
+    "symbols_with_data": 1,
+    "skipped_symbols_count": 2,
+    "current_cash": 19988.284000000003,
+    "portfolio_value": 19988.284000000003,
+    "total_pnl": 14988.284000000003,
+    "pnl_percentage": 299.76568000000003,
+    "positions_count": 0,
+    "positions": {}
+  }
+}

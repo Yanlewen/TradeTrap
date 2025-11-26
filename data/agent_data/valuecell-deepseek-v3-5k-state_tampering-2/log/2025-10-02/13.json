@@ -1,0 +1,161 @@
+{
+  "date": "2025-10-02",
+  "hour": "13",
+  "datetime": "2025-10-02 13:00:00",
+  "timestamp": "2025-11-26T11:48:59.960162",
+  "phase1_analysis": [
+    {
+      "symbol": "AAPL",
+      "price": 257.12,
+      "indicators": {
+        "macd": 0.40913696279073974,
+        "macd_signal": 0.24063395528328602,
+        "macd_histogram": 0.16850300750745373,
+        "rsi": null,
+        "ema_12": 256.5392222023942,
+        "ema_26": 256.1300852396035,
+        "bb_upper": null,
+        "bb_middle": null,
+        "bb_lower": null
+      },
+      "technical_signal": {
+        "action": "hold",
+        "trade_type": "long"
+      },
+      "ai_signal": {
+        "action": "buy",
+        "trade_type": "long",
+        "confidence": 70.0,
+        "reasoning": "The MACD histogram is positive and the MACD line is above the signal line, indicating bullish momentum. Additionally, the price is above all key EMAs (12, 26, 50), suggesting a strong uptrend."
+      },
+      "recommended_action": "buy",
+      "recommended_trade_type": "long",
+      "news": {
+        "alpha_vantage": [],
+        "x_posts": [],
+        "reddit_posts": [],
+        "errors": [
+          "Alpha Vantage error: "
+        ]
+      }
+    },
+    {
+      "symbol": "NVDA",
+      "price": 188.76,
+      "indicators": {
+        "macd": 2.3754915838481168,
+        "macd_signal": 2.3390391761708877,
+        "macd_histogram": 0.036452407677229015,
+        "rsi": 66.48671619239471,
+        "ema_12": 187.64108813488633,
+        "ema_26": 185.26559655103821,
+        "bb_upper": 191.37331418959118,
+        "bb_middle": 186.31934,
+        "bb_lower": 181.26536581040884
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "short"
+      },
+      "ai_signal": {
+        "action": "buy",
+        "trade_type": "long",
+        "confidence": 75.0,
+        "reasoning": "The MACD histogram is positive and above the signal line, indicating bullish momentum, and the RSI is approaching overbought but not yet extreme. The price is above key EMAs (12, 26, 50), suggesting a strong uptrend."
+      },
+      "recommended_action": "buy",
+      "recommended_trade_type": "long",
+      "news": {
+        "alpha_vantage": [],
+        "x_posts": [],
+        "reddit_posts": [],
+        "errors": [
+          "Alpha Vantage error: "
+        ]
+      }
+    },
+    {
+      "symbol": "MSFT",
+      "price": 517.1699,
+      "indicators": {
+        "macd": 0.6023281053036271,
+        "macd_signal": 0.5264070526945702,
+        "macd_histogram": 0.0759210526090569,
+        "rsi": null,
+        "ema_12": 515.9950639304419,
+        "ema_26": 515.3927358251383,
+        "bb_upper": null,
+        "bb_middle": null,
+        "bb_lower": null
+      },
+      "technical_signal": {
+        "action": "hold",
+        "trade_type": "long"
+      },
+      "ai_signal": {
+        "action": "buy",
+        "trade_type": "long",
+        "confidence": 75.0,
+        "reasoning": "The MACD histogram is positive and above the signal line, indicating bullish momentum, and the price is above key EMAs (12, 26, 50), suggesting a strong uptrend."
+      },
+      "recommended_action": "buy",
+      "recommended_trade_type": "long",
+      "news": {
+        "alpha_vantage": [],
+        "x_posts": [],
+        "reddit_posts": [],
+        "errors": [
+          "Alpha Vantage error: "
+        ]
+      }
+    }
+  ],
+  "phase2_portfolio_decision": {
+    "reasoning": "Rule-based decision: 2 trades selected",
+    "risk_level": 0.13554825616846347,
+    "trades_to_execute": [
+      {
+        "symbol": "AAPL",
+        "action": "buy",
+        "trade_type": "long"
+      },
+      {
+        "symbol": "MSFT",
+        "action": "buy",
+        "trade_type": "long"
+      }
+    ],
+    "trades_count": 2
+  },
+  "phase3_trades_executed": [
+    {
+      "symbol": "AAPL",
+      "action": "buy",
+      "trade_type": "long",
+      "entry_price": 257.12,
+      "quantity": 15,
+      "notional": 3856.8,
+      "status": "success"
+    },
+    {
+      "symbol": "MSFT",
+      "action": "buy",
+      "trade_type": "long",
+      "entry_price": 517.1699,
+      "quantity": 6,
+      "notional": 3103.0194,
+      "status": "success"
+    }
+  ],
+  "summary": {
+    "total_symbols_analyzed": 3,
+    "symbols_with_data": 3,
+    "skipped_symbols_count": 0,
+    "current_cash": 13028.464600000003,
+    "portfolio_value": 13028.464600000003,
+    "total_pnl": 8028.464600000003,
+    "pnl_percentage": 160.56929200000005,
+    "positions_count": 0,
+    "positions": {}
+  }
+}

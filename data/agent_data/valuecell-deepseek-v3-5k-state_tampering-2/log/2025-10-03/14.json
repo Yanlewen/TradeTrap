@@ -1,0 +1,131 @@
+{
+  "date": "2025-10-03",
+  "hour": "14",
+  "datetime": "2025-10-03 14:00:00",
+  "timestamp": "2025-11-26T11:55:54.845839",
+  "phase1_analysis": [
+    {
+      "symbol": "AAPL",
+      "price": 258.3303,
+      "indicators": {
+        "macd": 0.6697586336530321,
+        "macd_signal": 0.5456346919184133,
+        "macd_histogram": 0.12412394173461883,
+        "rsi": 59.264414107613604,
+        "ema_12": 257.601854340721,
+        "ema_26": 256.93209570706796,
+        "bb_upper": null,
+        "bb_middle": null,
+        "bb_lower": null
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "short"
+      },
+      "ai_signal": {
+        "action": "buy",
+        "trade_type": "long",
+        "confidence": 70.0,
+        "reasoning": "The MACD histogram is positive and above the signal line, indicating bullish momentum, and the RSI is neutral to slightly bullish at 59.26. The price is also above key EMAs (12, 26, 50), suggesting a potential uptrend."
+      },
+      "recommended_action": "buy",
+      "recommended_trade_type": "long",
+      "news": {
+        "alpha_vantage": [],
+        "x_posts": [],
+        "reddit_posts": [],
+        "errors": [
+          "Alpha Vantage error: "
+        ]
+      }
+    },
+    {
+      "symbol": "NVDA",
+      "price": 187.66,
+      "indicators": {
+        "macd": 1.4222058861709002,
+        "macd_signal": 1.8913243250188891,
+        "macd_histogram": -0.469118438847989,
+        "rsi": 53.22537172633751,
+        "ema_12": 187.9373026985674,
+        "ema_26": 186.5150968123965,
+        "bb_upper": 190.267333450769,
+        "bb_middle": 187.87311,
+        "bb_lower": 185.478886549231
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "long"
+      },
+      "ai_signal": {
+        "action": "hold",
+        "trade_type": "long",
+        "confidence": 60.0,
+        "reasoning": "The MACD histogram is negative, indicating weakening momentum, and the RSI is neutral at 53.23. The price is near the middle Bollinger Band, suggesting a lack of strong directional bias."
+      },
+      "recommended_action": "hold",
+      "recommended_trade_type": "long",
+      "news": {
+        "alpha_vantage": [],
+        "x_posts": [],
+        "reddit_posts": [],
+        "errors": [
+          "Alpha Vantage error: "
+        ]
+      }
+    },
+    {
+      "symbol": "MSFT",
+      "price": 517.32,
+      "indicators": {
+        "macd": 0.9271900560455606,
+        "macd_signal": 0.8328749448681376,
+        "macd_histogram": 0.09431511117742297,
+        "rsi": 50.8218191684757,
+        "ema_12": 517.4331555304879,
+        "ema_26": 516.5059654744423,
+        "bb_upper": null,
+        "bb_middle": null,
+        "bb_lower": null
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "short"
+      },
+      "ai_signal": {
+        "action": "hold",
+        "trade_type": "long",
+        "confidence": 60.0,
+        "reasoning": "The MACD histogram is positive but weak, and RSI is neutral at 50.82. Price is hovering near EMAs, indicating lack of strong momentum. No news to drive sentiment."
+      },
+      "recommended_action": "hold",
+      "recommended_trade_type": "long",
+      "news": {
+        "alpha_vantage": [],
+        "x_posts": [],
+        "reddit_posts": [],
+        "errors": [
+          "Alpha Vantage error: "
+        ]
+      }
+    }
+  ],
+  "phase2_portfolio_decision": {
+    "reasoning": "Rule-based decision: 0 trades selected",
+    "risk_level": 0.29896887680839995,
+    "trades_to_execute": [],
+    "trades_count": 0
+  },
+  "phase3_trades_executed": [],
+  "summary": {
+    "total_symbols_analyzed": 3,
+    "symbols_with_data": 3,
+    "skipped_symbols_count": 0,
+    "current_cash": 13028.464600000003,
+    "portfolio_value": 13028.464600000003,
+    "total_pnl": 8028.464600000003,
+    "pnl_percentage": 160.56929200000005,
+    "positions_count": 0,
+    "positions": {}
+  }
+}

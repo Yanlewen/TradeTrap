@@ -1,0 +1,131 @@
+{
+  "date": "2025-10-06",
+  "hour": "13",
+  "datetime": "2025-10-06 13:00:00",
+  "timestamp": "2025-11-26T12:00:59.989784",
+  "phase1_analysis": [
+    {
+      "symbol": "AAPL",
+      "price": 255.615,
+      "indicators": {
+        "macd": 0.27903295608388134,
+        "macd_signal": 0.4945980404033005,
+        "macd_histogram": -0.21556508431941918,
+        "rsi": 38.26890664926889,
+        "ema_12": 257.26865600328426,
+        "ema_26": 256.9896230472004,
+        "bb_upper": 259.13610300987517,
+        "bb_middle": 257.29579,
+        "bb_lower": 255.45547699012482
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "long"
+      },
+      "ai_signal": {
+        "action": "buy",
+        "trade_type": "long",
+        "confidence": 65.0,
+        "reasoning": "The RSI is near oversold territory (38.27), and the price is near the lower Bollinger Band ($255.46), suggesting potential for a rebound. The MACD histogram is negative but converging, indicating weakening downward momentum."
+      },
+      "recommended_action": "buy",
+      "recommended_trade_type": "long",
+      "news": {
+        "alpha_vantage": [],
+        "x_posts": [],
+        "reddit_posts": [],
+        "errors": [
+          "Alpha Vantage error: "
+        ]
+      }
+    },
+    {
+      "symbol": "NVDA",
+      "price": 185.775,
+      "indicators": {
+        "macd": 0.535785527989816,
+        "macd_signal": 1.1550159944111473,
+        "macd_histogram": -0.6192304664213313,
+        "rsi": 33.42790817642512,
+        "ema_12": 186.95673331120304,
+        "ema_26": 186.42094778321322,
+        "bb_upper": 190.4964615451265,
+        "bb_middle": 187.791525,
+        "bb_lower": 185.08658845487352
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "long"
+      },
+      "ai_signal": {
+        "action": "buy",
+        "trade_type": "long",
+        "confidence": 70.0,
+        "reasoning": "RSI indicates oversold conditions (33.43), and price is near the lower Bollinger Band ($185.09), suggesting potential rebound. MACD histogram is negative but converging, hinting at weakening downward momentum."
+      },
+      "recommended_action": "buy",
+      "recommended_trade_type": "long",
+      "news": {
+        "alpha_vantage": [],
+        "x_posts": [],
+        "reddit_posts": [],
+        "errors": [
+          "Alpha Vantage error: "
+        ]
+      }
+    },
+    {
+      "symbol": "MSFT",
+      "price": 528.6,
+      "indicators": {
+        "macd": 2.510104051866165,
+        "macd_signal": 1.5254871933650729,
+        "macd_histogram": 0.9846168585010919,
+        "rsi": 78.62132820447628,
+        "ema_12": 521.4670741741445,
+        "ema_26": 518.9569701222783,
+        "bb_upper": 526.5285243481089,
+        "bb_middle": 519.047495,
+        "bb_lower": 511.5664656518912
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "long"
+      },
+      "ai_signal": {
+        "action": "sell",
+        "trade_type": "short",
+        "confidence": 75.0,
+        "reasoning": "The RSI is overbought at 78.62, and the price is above the upper Bollinger Band, suggesting a potential pullback. The MACD histogram is positive but may indicate weakening momentum."
+      },
+      "recommended_action": "sell",
+      "recommended_trade_type": "short",
+      "news": {
+        "alpha_vantage": [],
+        "x_posts": [],
+        "reddit_posts": [],
+        "errors": [
+          "Alpha Vantage error: "
+        ]
+      }
+    }
+  ],
+  "phase2_portfolio_decision": {
+    "reasoning": "Rule-based decision: 0 trades selected",
+    "risk_level": 0.21479156245882547,
+    "trades_to_execute": [],
+    "trades_count": 0
+  },
+  "phase3_trades_executed": [],
+  "summary": {
+    "total_symbols_analyzed": 3,
+    "symbols_with_data": 3,
+    "skipped_symbols_count": 0,
+    "current_cash": 16179.604600000002,
+    "portfolio_value": 16179.604600000002,
+    "total_pnl": 11179.604600000002,
+    "pnl_percentage": 223.59209200000004,
+    "positions_count": 0,
+    "positions": {}
+  }
+}

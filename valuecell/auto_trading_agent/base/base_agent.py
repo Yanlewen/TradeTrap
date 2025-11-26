@@ -48,11 +48,12 @@ from ..exchanges import (
     PaperTrading,
 )
 from ..market_data import MarketDataProvider
-from ..models import AssetAnalysis, SUPPORTED_EXCHANGES, SUPPORTED_NETWORKS
+from ..models import AssetAnalysis, Position, SUPPORTED_EXCHANGES, SUPPORTED_NETWORKS
 from ..portfolio_decision_manager import PortfolioDecisionManager
+from ..position_ledger import PositionLedger
+from ..position_persistence import PositionPersistence
 from ..technical_analysis import AISignalGenerator, TechnicalAnalyzer
 from ..trading_executor import TradingExecutor
-from ..position_persistence import PositionPersistence
 from .base_config import BaseTradingConfig
 
 logger = logging.getLogger(__name__)
@@ -283,7 +284,7 @@ class AutoTradingAgentBase(ABC):
             
             # Determine data period based on interval type
             period = self.config.data_period_daily if use_daily_data else self.config.data_period_hourly
-
+            
             # Collect news for all symbols if enabled (parallel, outside loop)
             news_dict = {}
             if self.config.enable_news:
@@ -453,10 +454,25 @@ class AutoTradingAgentBase(ABC):
             portfolio_summary = portfolio_manager.get_portfolio_summary()
             logger.debug(portfolio_summary + "\n")
 
+            # Load current positions from file (can be tampered by hook)
+            # This is the agent's view of positions, not the real ledger
+            agent_position_record = self.position_persistence.load_latest_position()
+            if agent_position_record:
+                agent_positions_dict = agent_position_record.get("positions", {})
+                # Convert file positions to Position objects for portfolio decision
+                current_positions = self._convert_file_positions_to_position_objects(
+                    agent_positions_dict
+                )
+                available_cash = agent_positions_dict.get("CASH", 0.0)
+            else:
+                # Fallback to memory positions if file doesn't exist
+                current_positions = self.executor.positions
+                available_cash = self.executor.get_current_capital()
+
             # Make coordinated decision (async call for AI analysis)
             portfolio_decision = await portfolio_manager.make_portfolio_decision(
-                current_positions=self.executor.positions,
-                available_cash=self.executor.get_current_capital(),
+                current_positions=current_positions,
+                available_cash=available_cash,
                 total_portfolio_value=self.executor.get_portfolio_value(),
             )
 
@@ -505,9 +521,9 @@ class AutoTradingAgentBase(ABC):
                     if not asset_analysis:
                         continue
 
-                    # Execute trade
+                    # Execute trade (pass current_date for backtesting)
                     trade_details = await self.executor.execute_trade(
-                        symbol, action, trade_type, asset_analysis.indicators
+                        symbol, action, trade_type, asset_analysis.indicators, trading_date=self.current_date
                     )
 
                     if trade_details:
@@ -778,7 +794,9 @@ class AutoTradingAgentBase(ABC):
         self._save_session_json(today_date, hour)
 
         # Save position snapshot (save every hour for hourly trading)
-        if self.executor:
+        # Note: If using ledger-based trading, positions are already saved by ledger
+        # This is kept for backward compatibility when ledger is not used
+        if self.executor and not (self.position_ledger and self.position_persistence):
             positions_dict = {}
             for symbol, position in self.executor.positions.items():
                 positions_dict[symbol] = position.quantity
@@ -801,6 +819,13 @@ class AutoTradingAgentBase(ABC):
                     positions=positions_dict,
                     cash=cash,
                 )
+        
+        # Save no_trade record if using ledger and no trades were executed
+        if self.position_ledger and self.executor:
+            # Check if any trades were executed in this session
+            # For now, we'll skip no_trade records to avoid clutter
+            # Can be added later if needed
+            pass
 
     async def run_date_range(self, init_date: str, end_date: str) -> None:
         """
@@ -817,8 +842,16 @@ class AutoTradingAgentBase(ABC):
         self.exchange = await self._build_exchange(self.config)
         logger.info(f"✅ Connected to {self.config.exchange} exchange")
 
-        # Initialize executor
-        self.executor = TradingExecutor(self.config, exchange=self.exchange)
+        # Initialize position ledger (for ledger-based trading)
+        self.position_ledger = PositionLedger(self.log_path, self.signature)
+        
+        # Initialize executor with ledger and persistence
+        self.executor = TradingExecutor(
+            self.config,
+            exchange=self.exchange,
+            position_ledger=self.position_ledger,
+            position_persistence=self.position_persistence,
+        )
         logger.info("✅ Trading executor initialized")
 
         # Load latest position if exists
@@ -872,6 +905,64 @@ class AutoTradingAgentBase(ABC):
                     raise
 
         print(f"\n✅ {self.signature} backtesting completed")
+    
+    def _convert_file_positions_to_position_objects(
+        self, positions_dict: Dict[str, float]
+    ) -> Dict[str, Position]:
+        """
+        Convert position dictionary from file to Position objects.
+        
+        Note: position.jsonl doesn't store entry_price or entry_time,
+        so we use current prices as approximations.
+        
+        Args:
+            positions_dict: Dictionary from position.jsonl (symbol -> quantity)
+        
+        Returns:
+            Dictionary of Position objects
+        """
+        from ..data_sources.local_price_provider import LocalPriceProvider
+        from ..models import TradeType
+        
+        position_objects = {}
+        price_provider = LocalPriceProvider()
+        
+        # Get current date/time for entry_time approximation
+        current_datetime = self.current_date
+        if isinstance(current_datetime, str):
+            try:
+                from datetime import datetime
+                current_datetime = datetime.strptime(current_datetime, "%Y-%m-%d")
+            except:
+                current_datetime = datetime.now()
+        
+        for symbol, quantity in positions_dict.items():
+            if symbol == "CASH":
+                continue
+            
+            if quantity == 0:
+                continue
+            
+            # Get current price for entry_price approximation
+            current_price = price_provider.get_price(symbol)
+            if current_price is None:
+                current_price = 0.0
+            
+            # Determine trade type from quantity sign
+            trade_type = TradeType.LONG if quantity > 0 else TradeType.SHORT
+            
+            # Create Position object with approximated values
+            position = Position(
+                symbol=symbol,
+                entry_price=current_price,  # Approximation
+                quantity=float(quantity),
+                entry_time=current_datetime,  # Approximation
+                trade_type=trade_type,
+                notional=abs(quantity) * current_price,  # Approximation
+            )
+            position_objects[symbol] = position
+        
+        return position_objects
 
         # Display final summary (brief in terminal, detailed in file)
         if self.executor:

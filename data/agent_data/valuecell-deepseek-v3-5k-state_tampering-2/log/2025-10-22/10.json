@@ -1,0 +1,147 @@
+{
+  "date": "2025-10-22",
+  "hour": "10",
+  "datetime": "2025-10-22 10:00:00",
+  "timestamp": "2025-11-26T13:10:51.430158",
+  "phase1_analysis": [
+    {
+      "symbol": "AAPL",
+      "price": 260.74,
+      "indicators": {
+        "macd": 3.298108550700931,
+        "macd_signal": 3.322721451360974,
+        "macd_histogram": -0.024612900660042847,
+        "rsi": 71.04367061864653,
+        "ema_12": 261.3233378150884,
+        "ema_26": 258.02522926438746,
+        "bb_upper": 271.0421750893687,
+        "bb_middle": 258.541495,
+        "bb_lower": 246.04081491063127
+      },
+      "technical_signal": {
+        "action": "buy",
+        "trade_type": "short"
+      },
+      "ai_signal": {
+        "action": "sell",
+        "trade_type": "short",
+        "confidence": 70.0,
+        "reasoning": "The RSI is above 70, indicating overbought conditions, and the MACD histogram is negative, suggesting weakening momentum. The price is also below the EMA 12, which may signal a short-term downtrend."
+      },
+      "recommended_action": "sell",
+      "recommended_trade_type": "short",
+      "news": {
+        "alpha_vantage": [],
+        "x_posts": [],
+        "reddit_posts": [],
+        "errors": [
+          "Alpha Vantage error: "
+        ]
+      }
+    },
+    {
+      "symbol": "NVDA",
+      "price": 180.685,
+      "indicators": {
+        "macd": -0.583984650138035,
+        "macd_signal": -0.4532718800141615,
+        "macd_histogram": -0.1307127701238735,
+        "rsi": 30.739439046240705,
+        "ema_12": 181.82768154106333,
+        "ema_26": 182.41166619120136,
+        "bb_upper": 184.52377605961766,
+        "bb_middle": 182.400545,
+        "bb_lower": 180.27731394038233
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "long"
+      },
+      "ai_signal": {
+        "action": "buy",
+        "trade_type": "long",
+        "confidence": 70.0,
+        "reasoning": "The RSI indicates oversold conditions (30.74), and the price is near the lower Bollinger Band ($180.28), suggesting potential for a rebound. The MACD histogram is negative but narrowing, hinting at weakening downward momentum."
+      },
+      "recommended_action": "buy",
+      "recommended_trade_type": "long",
+      "news": {
+        "alpha_vantage": [],
+        "x_posts": [],
+        "reddit_posts": [],
+        "errors": [
+          "Alpha Vantage error: "
+        ]
+      }
+    },
+    {
+      "symbol": "MSFT",
+      "price": 524.91,
+      "indicators": {
+        "macd": 1.277913395063024,
+        "macd_signal": 0.5509636987344628,
+        "macd_histogram": 0.7269496963285611,
+        "rsi": 73.74949440474579,
+        "ema_12": 517.3630559994735,
+        "ema_26": 516.0851426044105,
+        "bb_upper": 522.1128936934674,
+        "bb_middle": 515.538035,
+        "bb_lower": 508.96317630653266
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "long"
+      },
+      "ai_signal": {
+        "action": "sell",
+        "trade_type": "short",
+        "confidence": 70.0,
+        "reasoning": "The RSI of 73.75 indicates overbought conditions, and the price is above the upper Bollinger Band, suggesting a potential pullback. The MACD histogram is positive but may be nearing exhaustion given the overbought RSI."
+      },
+      "recommended_action": "sell",
+      "recommended_trade_type": "short",
+      "news": {
+        "alpha_vantage": [],
+        "x_posts": [],
+        "reddit_posts": [],
+        "errors": [
+          "Alpha Vantage error: "
+        ]
+      }
+    }
+  ],
+  "phase2_portfolio_decision": {
+    "reasoning": "Prioritize closing profitable MSFT position to lock gains. Hold NVDA for potential rebound due to oversold conditions. Short AAPL to capitalize on overbought technicals. Maintain balanced strategy with focus on capital preservation and opportunistic trades.",
+    "risk_level": 0.3,
+    "trades_to_execute": [
+      {
+        "symbol": "MSFT",
+        "action": "sell",
+        "trade_type": "long"
+      }
+    ],
+    "trades_count": 1
+  },
+  "phase3_trades_executed": [
+    {
+      "symbol": "MSFT",
+      "action": "sell",
+      "trade_type": "long",
+      "entry_price": 524.91,
+      "quantity": -12,
+      "notional": null,
+      "status": "success"
+    }
+  ],
+  "summary": {
+    "total_symbols_analyzed": 3,
+    "symbols_with_data": 3,
+    "skipped_symbols_count": 0,
+    "current_cash": 34949.25620000001,
+    "portfolio_value": 34949.25620000001,
+    "total_pnl": 29949.25620000001,
+    "pnl_percentage": 598.9851240000002,
+    "positions_count": 0,
+    "positions": {}
+  }
+}

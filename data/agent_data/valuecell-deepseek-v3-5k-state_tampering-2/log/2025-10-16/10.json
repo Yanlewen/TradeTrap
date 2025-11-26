@@ -1,0 +1,131 @@
+{
+  "date": "2025-10-16",
+  "hour": "10",
+  "datetime": "2025-10-16 10:00:00",
+  "timestamp": "2025-11-26T12:46:25.528690",
+  "phase1_analysis": [
+    {
+      "symbol": "AAPL",
+      "price": 248.6,
+      "indicators": {
+        "macd": -0.7186135232744846,
+        "macd_signal": -1.135107268885264,
+        "macd_histogram": 0.41649374561077934,
+        "rsi": 50.81437014286371,
+        "ema_12": 248.9733090268785,
+        "ema_26": 249.69192255015298,
+        "bb_upper": 250.8050547955194,
+        "bb_middle": 248.35789,
+        "bb_lower": 245.9107252044806
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "short"
+      },
+      "ai_signal": {
+        "action": "hold",
+        "trade_type": "long",
+        "confidence": 60.0,
+        "reasoning": "The MACD histogram is positive but the MACD and signal lines are negative, indicating weak momentum. RSI is neutral at 50.81, and price is near the middle Bollinger Band, suggesting no strong directional bias."
+      },
+      "recommended_action": "hold",
+      "recommended_trade_type": "long",
+      "news": {
+        "alpha_vantage": [],
+        "x_posts": [],
+        "reddit_posts": [],
+        "errors": [
+          "Alpha Vantage error: "
+        ]
+      }
+    },
+    {
+      "symbol": "NVDA",
+      "price": 182.48,
+      "indicators": {
+        "macd": -2.0132962685013354,
+        "macd_signal": -1.9162877488719414,
+        "macd_histogram": -0.09700851962939394,
+        "rsi": 38.88960731065994,
+        "ema_12": 181.85547979513933,
+        "ema_26": 183.86877606364067,
+        "bb_upper": 190.08184412721573,
+        "bb_middle": 183.408645,
+        "bb_lower": 176.73544587278428
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "long"
+      },
+      "ai_signal": {
+        "action": "buy",
+        "trade_type": "long",
+        "confidence": 65.0,
+        "reasoning": "The RSI is near oversold territory (38.89), and the price is below the EMA 50, suggesting potential for a rebound. The MACD histogram is slightly negative but converging, indicating weakening downward momentum."
+      },
+      "recommended_action": "buy",
+      "recommended_trade_type": "long",
+      "news": {
+        "alpha_vantage": [],
+        "x_posts": [],
+        "reddit_posts": [],
+        "errors": [
+          "Alpha Vantage error: "
+        ]
+      }
+    },
+    {
+      "symbol": "MSFT",
+      "price": 514.995,
+      "indicators": {
+        "macd": -0.9275426663983808,
+        "macd_signal": -1.3076225602038576,
+        "macd_histogram": 0.3800798938054768,
+        "rsi": 54.10342166195015,
+        "ema_12": 514.1485398407203,
+        "ema_26": 515.0760825071187,
+        "bb_upper": 516.4447548252741,
+        "bb_middle": 513.5518,
+        "bb_lower": 510.65884517472585
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "short"
+      },
+      "ai_signal": {
+        "action": "hold",
+        "trade_type": "long",
+        "confidence": 60.0,
+        "reasoning": "The MACD histogram is positive but still below the signal line, and RSI is neutral at 54.10. Price is near the middle Bollinger Band, indicating no strong momentum in either direction."
+      },
+      "recommended_action": "hold",
+      "recommended_trade_type": "long",
+      "news": {
+        "alpha_vantage": [],
+        "x_posts": [],
+        "reddit_posts": [],
+        "errors": [
+          "Alpha Vantage error: "
+        ]
+      }
+    }
+  ],
+  "phase2_portfolio_decision": {
+    "reasoning": "Rule-based decision: 0 trades selected",
+    "risk_level": 0.21431115206611034,
+    "trades_to_execute": [],
+    "trades_count": 0
+  },
+  "phase3_trades_executed": [],
+  "summary": {
+    "total_symbols_analyzed": 3,
+    "symbols_with_data": 3,
+    "skipped_symbols_count": 0,
+    "current_cash": 22142.026200000008,
+    "portfolio_value": 22142.026200000008,
+    "total_pnl": 17142.026200000008,
+    "pnl_percentage": 342.84052400000013,
+    "positions_count": 0,
+    "positions": {}
+  }
+}

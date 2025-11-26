@@ -7,9 +7,9 @@
   },
   "models": [
     {
-      "name": "gemini-2.5-flash",
-      "basemodel": "gemini-2.5-flash",
-      "signature": "valuecell-gemini-2.5-flash-5k-3",
+      "name": "deepseek-v3",
+      "basemodel": "deepseek-v3",
+      "signature": "valuecell-deepseek-v3-5k-whole-month",
       "enabled": true
     }
   ],
@@ -23,10 +23,10 @@
     "market": "us",
     "market_type": "stock",
     "check_interval": 60,
-    "risk_per_trade": 0.05,
-    "max_positions": 10,
+    "risk_per_trade": 0.20,
+    "max_positions": 5,
     "use_ai_signals": true,
-    "agent_model": "gemini-2.5-flash",
+    "agent_model": "deepseek-v3",
     "exchange": "paper",
     "exchange_network": "paper",
     "allow_live_trading": false,
@@ -36,7 +36,7 @@
     "data_period_daily": "10d",
     "data_period_hourly": "14d",
     "enable_news": true,
-    "enable_alpha_vantage_news": true,
+    "enable_alpha_vantage_news": false,
     "enable_x_news": false,
     "enable_reddit_news": false
   },

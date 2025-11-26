@@ -1,0 +1,131 @@
+{
+  "date": "2025-10-02",
+  "hour": "14",
+  "datetime": "2025-10-02 14:00:00",
+  "timestamp": "2025-11-26T11:49:57.391597",
+  "phase1_analysis": [
+    {
+      "symbol": "AAPL",
+      "price": 257.9263,
+      "indicators": {
+        "macd": 0.4894806018232316,
+        "macd_signal": 0.2904032845912752,
+        "macd_histogram": 0.19907731723195643,
+        "rsi": null,
+        "ema_12": 256.7526187866413,
+        "ema_26": 256.26313818481805,
+        "bb_upper": null,
+        "bb_middle": null,
+        "bb_lower": null
+      },
+      "technical_signal": {
+        "action": "hold",
+        "trade_type": "long"
+      },
+      "ai_signal": {
+        "action": "buy",
+        "trade_type": "long",
+        "confidence": 75.0,
+        "reasoning": "The MACD histogram is positive and the MACD line is above the signal line, indicating bullish momentum. Additionally, the price is above all key EMAs (12, 26, 50), suggesting a strong uptrend."
+      },
+      "recommended_action": "buy",
+      "recommended_trade_type": "long",
+      "news": {
+        "alpha_vantage": [],
+        "x_posts": [],
+        "reddit_posts": [],
+        "errors": [
+          "Alpha Vantage error: "
+        ]
+      }
+    },
+    {
+      "symbol": "NVDA",
+      "price": 188.9074,
+      "indicators": {
+        "macd": 2.308509811451586,
+        "macd_signal": 2.3430116346018837,
+        "macd_histogram": -0.03450182315029782,
+        "rsi": 72.84831114295687,
+        "ema_12": 187.83588626041708,
+        "ema_26": 185.5273764489655,
+        "bb_upper": 191.36471182191022,
+        "bb_middle": 186.678615,
+        "bb_lower": 181.9925181780898
+      },
+      "technical_signal": {
+        "action": "buy",
+        "trade_type": "short"
+      },
+      "ai_signal": {
+        "action": "hold",
+        "trade_type": "long",
+        "confidence": 70.0,
+        "reasoning": "RSI is overbought (72.85), and MACD histogram is slightly negative, suggesting potential short-term consolidation. No significant news to drive momentum."
+      },
+      "recommended_action": "hold",
+      "recommended_trade_type": "long",
+      "news": {
+        "alpha_vantage": [],
+        "x_posts": [],
+        "reddit_posts": [],
+        "errors": [
+          "Alpha Vantage error: "
+        ]
+      }
+    },
+    {
+      "symbol": "MSFT",
+      "price": 517.065,
+      "indicators": {
+        "macd": 0.6430622341063099,
+        "macd_signal": 0.5497380889769181,
+        "macd_histogram": 0.0933241451293918,
+        "rsi": null,
+        "ema_12": 516.1596694796048,
+        "ema_26": 515.5166072454984,
+        "bb_upper": null,
+        "bb_middle": null,
+        "bb_lower": null
+      },
+      "technical_signal": {
+        "action": "hold",
+        "trade_type": "long"
+      },
+      "ai_signal": {
+        "action": "buy",
+        "trade_type": "long",
+        "confidence": 70.0,
+        "reasoning": "The MACD histogram is positive and the MACD line is above the signal line, indicating bullish momentum. Additionally, the price is above all listed EMAs (12, 26, 50), suggesting a strong uptrend."
+      },
+      "recommended_action": "buy",
+      "recommended_trade_type": "long",
+      "news": {
+        "alpha_vantage": [],
+        "x_posts": [],
+        "reddit_posts": [],
+        "errors": [
+          "Alpha Vantage error: "
+        ]
+      }
+    }
+  ],
+  "phase2_portfolio_decision": {
+    "reasoning": "Bullish signals for AAPL/MSFT justify aggressive growth. NVDA paused due to overbought conditions. Diversify next trades to reduce sector risk.",
+    "risk_level": 0.6,
+    "trades_to_execute": [],
+    "trades_count": 0
+  },
+  "phase3_trades_executed": [],
+  "summary": {
+    "total_symbols_analyzed": 3,
+    "symbols_with_data": 3,
+    "skipped_symbols_count": 0,
+    "current_cash": 13028.464600000003,
+    "portfolio_value": 13028.464600000003,
+    "total_pnl": 8028.464600000003,
+    "pnl_percentage": 160.56929200000005,
+    "positions_count": 0,
+    "positions": {}
+  }
+}

@@ -2,30 +2,30 @@
   "source": "agents_data_deepseek.json",
   "baseline": {
     "type": "price_series",
-    "label": "qqq Benchmark",
-    "source": "Adaily_prices_QQQ.json",
+    "label": "NVDA Benchmark",
+    "source": "daily_prices_NVDA.json",
     "initial_capital": 5000,
     "color": "#94a3b8"
   },
   "datasets": [
     {
       "id": "base",
-      "label": "DeepSeek Baseline (With News)",
-      "description": "DeepSeek baseline configuration",
+      "label": "Baseline",
+      "description": "Baseline configuration",
       "color": "#f5cb5c",
       "default": true
     },
     {
-      "id": "with memory (long time)",
-      "label": "DeepSeek with memory(long time)",
-      "description": "DeepSeek state with memory configuration",
+      "id": "valuecell-state_tampering",
+      "label": "Valuecell state tampering",
+      "description": "Valuecell state tampering configuration",
       "color": "#c82423",
       "default": true
     },
     {
-      "id": "with memory (with think and summary)",
-      "label": "DeepSeek with memory(with think and summary)",
-      "description": "DeepSeek state with memory configuration",
+      "id": "ai-trader-state-tampering",
+      "label": "AI Trader state tampering",
+      "description": "AI Trader state tampering configuration",
       "color": "#3480b8",
       "default": true
     }

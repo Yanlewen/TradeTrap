@@ -1,0 +1,131 @@
+{
+  "date": "2025-10-23",
+  "hour": "11",
+  "datetime": "2025-10-23 11:00:00",
+  "timestamp": "2025-11-26T13:17:55.324780",
+  "phase1_analysis": [
+    {
+      "symbol": "AAPL",
+      "price": 260.25,
+      "indicators": {
+        "macd": 1.2375090616988018,
+        "macd_signal": 1.9271384527533986,
+        "macd_histogram": -0.6896293910545968,
+        "rsi": 43.39999999999994,
+        "ema_12": 259.4607715990423,
+        "ema_26": 258.2232625373435,
+        "bb_upper": 266.29117845426185,
+        "bb_middle": 261.326105,
+        "bb_lower": 256.3610315457381
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "long"
+      },
+      "ai_signal": {
+        "action": "hold",
+        "trade_type": "long",
+        "confidence": 60.0,
+        "reasoning": "The MACD histogram is negative, indicating bearish momentum, but the RSI is neutral (43.40) and the price is above key EMAs (12, 26, 50), suggesting potential support. No significant news to drive immediate action."
+      },
+      "recommended_action": "hold",
+      "recommended_trade_type": "long",
+      "news": {
+        "alpha_vantage": [],
+        "x_posts": [],
+        "reddit_posts": [],
+        "errors": [
+          "Alpha Vantage error: "
+        ]
+      }
+    },
+    {
+      "symbol": "NVDA",
+      "price": 182.12,
+      "indicators": {
+        "macd": -0.6431661524896697,
+        "macd_signal": -0.8011198674633858,
+        "macd_histogram": 0.15795371497371613,
+        "rsi": 48.14750778046737,
+        "ema_12": 180.81638898181436,
+        "ema_26": 181.45955513430403,
+        "bb_upper": 185.18075431922,
+        "bb_middle": 181.51385,
+        "bb_lower": 177.84694568077998
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "short"
+      },
+      "ai_signal": {
+        "action": "hold",
+        "trade_type": "long",
+        "confidence": 60.0,
+        "reasoning": "The MACD histogram is slightly positive, but the RSI is neutral at 48.15, and the price is near the middle Bollinger Band, indicating no strong trend. No significant news to drive momentum."
+      },
+      "recommended_action": "hold",
+      "recommended_trade_type": "long",
+      "news": {
+        "alpha_vantage": [],
+        "x_posts": [],
+        "reddit_posts": [],
+        "errors": [
+          "Alpha Vantage error: "
+        ]
+      }
+    },
+    {
+      "symbol": "MSFT",
+      "price": 522.4672,
+      "indicators": {
+        "macd": 1.8840407953798604,
+        "macd_signal": 1.5250657499091127,
+        "macd_histogram": 0.35897504547074766,
+        "rsi": 62.28694234474584,
+        "ema_12": 520.2148530095494,
+        "ema_26": 518.3308122141696,
+        "bb_upper": 524.8916223652495,
+        "bb_middle": 518.74627,
+        "bb_lower": 512.6009176347504
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "short"
+      },
+      "ai_signal": {
+        "action": "buy",
+        "trade_type": "long",
+        "confidence": 75.0,
+        "reasoning": "The MACD histogram is positive and above the signal line, indicating bullish momentum, and the RSI is at 62.29, suggesting room for upward movement before overbought conditions. The price is also above key EMAs (12, 26, 50), reinforcing the bullish trend."
+      },
+      "recommended_action": "buy",
+      "recommended_trade_type": "long",
+      "news": {
+        "alpha_vantage": [],
+        "x_posts": [],
+        "reddit_posts": [],
+        "errors": [
+          "Alpha Vantage error: "
+        ]
+      }
+    }
+  ],
+  "phase2_portfolio_decision": {
+    "reasoning": "Rule-based decision: 0 trades selected",
+    "risk_level": 0.303476335538663,
+    "trades_to_execute": [],
+    "trades_count": 0
+  },
+  "phase3_trades_executed": [],
+  "summary": {
+    "total_symbols_analyzed": 3,
+    "symbols_with_data": 3,
+    "skipped_symbols_count": 0,
+    "current_cash": 22763.066200000012,
+    "portfolio_value": 22763.066200000012,
+    "total_pnl": 17763.066200000012,
+    "pnl_percentage": 355.26132400000023,
+    "positions_count": 0,
+    "positions": {}
+  }
+}

@@ -16,9 +16,9 @@ OUTPUT_DIR = Path("data")
 
 # Agent配置（自定义名称与路径）
 AGENTS = [
-    {"name": "base", "path": "deepseek/deepseek-v3-whole-month-with-x-and-reddit-1105"},
-    {"name": "with memory (long time)", "path": "deepseek/deepseek-v3-prompt-memory-5000/deepseek-v3-prompt-memory-5000-without-news"},
-    {"name": "with memory (with think and summary)", "path": "deepseek/DeepSeek-V3.1-summary"},
+    {"name": "base", "path": "deepseek/deepseek-v3-whole-month"},
+    {"name": "valuecell-state_tampering", "path": "valuecell-deepseek-v3-5k-state_tampering-2"},
+    {"name": "ai-trader-state-tampering", "path": "deepseek/deepseek-v3-memory-v3_memory_injection-positions0-day-attack-month-test17"},
 ]
 OUTPUT_FILENAME = "agents_data_deepseek.json"
 
@@ -103,7 +103,7 @@ def get_stock_price(symbol, date_str, price_cache):
     return 0.0
 
 def calculate_total_asset(position, price_cache, initial_cash=5000.0):
-    """计算总资产：现金 + 持仓股票市值"""
+    """计算总资产：现金 + 持仓股票市值（含做空，负仓位会减去市值）"""
     if not position or 'positions' not in position:
         return initial_cash
     
@@ -112,7 +112,8 @@ def calculate_total_asset(position, price_cache, initial_cash=5000.0):
     
     # 计算持仓股票市值
     for symbol, quantity in position['positions'].items():
-        if symbol != 'CASH' and quantity > 0:
+        # 所有非现金仓位都计入：正数为多头，负数为空头（会减资产）
+        if symbol != 'CASH' and quantity != 0:
             price = get_stock_price(symbol, position['date'], price_cache)
             total_stock_value += price * quantity
     
@@ -135,7 +136,12 @@ def process_agent_data(agent_name, agent_path, price_cache):
     
     # 按日期组织position数据，并计算总资产
     positions_by_date = {}
+    # 初始现金：优先用第一条position里的CASH，没有就用默认
     initial_cash = 5000.0
+    if positions_data:
+        first_cash = positions_data[0].get('positions', {}).get('CASH')
+        if isinstance(first_cash, (int, float)):
+            initial_cash = float(first_cash)
     for pos in positions_data:
         date = pos.get('date', '')
         if date:
@@ -143,9 +149,6 @@ def process_agent_data(agent_name, agent_path, price_cache):
             total_asset = calculate_total_asset(pos, price_cache, initial_cash)
             pos['total_asset'] = total_asset
             positions_by_date[date] = pos
-            # 更新initial_cash（使用第一个位置）
-            if not positions_by_date or initial_cash == 5000.0:
-                initial_cash = pos.get('positions', {}).get('CASH', 5000.0)
     
     # 处理log数据
     log_dir = agent_dir / "log"

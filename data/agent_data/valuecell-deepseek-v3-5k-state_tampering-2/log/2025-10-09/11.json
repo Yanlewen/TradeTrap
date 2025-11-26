@@ -1,0 +1,147 @@
+{
+  "date": "2025-10-09",
+  "hour": "11",
+  "datetime": "2025-10-09 11:00:00",
+  "timestamp": "2025-11-26T12:17:01.468608",
+  "phase1_analysis": [
+    {
+      "symbol": "AAPL",
+      "price": 254.1,
+      "indicators": {
+        "macd": -0.1717705909368874,
+        "macd_signal": 0.06307861208870225,
+        "macd_histogram": -0.23484920302558965,
+        "rsi": 34.1417910447761,
+        "ema_12": 256.5398108764756,
+        "ema_26": 256.7115814674125,
+        "bb_upper": 258.8971730610126,
+        "bb_middle": 256.6835,
+        "bb_lower": 254.46982693898732
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "long"
+      },
+      "ai_signal": {
+        "action": "buy",
+        "trade_type": "long",
+        "confidence": 70.0,
+        "reasoning": "The RSI indicates AAPL is nearing oversold territory (34.14), and the price is near the lower Bollinger Band ($254.47), suggesting potential for a rebound. The MACD histogram is negative but could signal a reversal if the trend weakens."
+      },
+      "recommended_action": "buy",
+      "recommended_trade_type": "long",
+      "news": {
+        "alpha_vantage": [],
+        "x_posts": [],
+        "reddit_posts": [],
+        "errors": [
+          "Alpha Vantage error: "
+        ]
+      }
+    },
+    {
+      "symbol": "NVDA",
+      "price": 194.18,
+      "indicators": {
+        "macd": 1.4565669527673322,
+        "macd_signal": 0.7264871984528591,
+        "macd_histogram": 0.730079754314473,
+        "rsi": 74.69819660335553,
+        "ema_12": 189.4497855731162,
+        "ema_26": 187.99321862034887,
+        "bb_upper": 192.78227573974752,
+        "bb_middle": 187.456715,
+        "bb_lower": 182.1311542602525
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "long"
+      },
+      "ai_signal": {
+        "action": "sell",
+        "trade_type": "short",
+        "confidence": 70.0,
+        "reasoning": "RSI is overbought (74.70), and price is above the upper Bollinger Band ($192.78), suggesting a potential pullback. MACD histogram is positive but may indicate weakening momentum."
+      },
+      "recommended_action": "sell",
+      "recommended_trade_type": "short",
+      "news": {
+        "alpha_vantage": [],
+        "x_posts": [],
+        "reddit_posts": [],
+        "errors": [
+          "Alpha Vantage error: "
+        ]
+      }
+    },
+    {
+      "symbol": "MSFT",
+      "price": 519.59,
+      "indicators": {
+        "macd": 0.7634049257562765,
+        "macd_signal": 1.4806406481446548,
+        "macd_histogram": -0.7172357223883783,
+        "rsi": 22.669400746771075,
+        "ema_12": 523.0450337355423,
+        "ema_26": 522.2816288097861,
+        "bb_upper": 529.2267425240902,
+        "bb_middle": 524.403775,
+        "bb_lower": 519.5808074759098
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "long"
+      },
+      "ai_signal": {
+        "action": "buy",
+        "trade_type": "long",
+        "confidence": 75.0,
+        "reasoning": "The RSI is deeply oversold at 22.67, suggesting a potential rebound, and the price is near the lower Bollinger Band, indicating a possible bounce. The MACD histogram is negative but converging, hinting at weakening downward momentum."
+      },
+      "recommended_action": "buy",
+      "recommended_trade_type": "long",
+      "news": {
+        "alpha_vantage": [],
+        "x_posts": [],
+        "reddit_posts": [],
+        "errors": [
+          "Alpha Vantage error: "
+        ]
+      }
+    }
+  ],
+  "phase2_portfolio_decision": {
+    "reasoning": "Rule-based decision: 1 trades selected",
+    "risk_level": 0.214963212208656,
+    "trades_to_execute": [
+      {
+        "symbol": "AAPL",
+        "action": "buy",
+        "trade_type": "long"
+      }
+    ],
+    "trades_count": 1
+  },
+  "phase3_trades_executed": [
+    {
+      "symbol": "AAPL",
+      "action": "buy",
+      "trade_type": "long",
+      "entry_price": 254.1,
+      "quantity": 12,
+      "notional": 3049.2,
+      "status": "success"
+    }
+  ],
+  "summary": {
+    "total_symbols_analyzed": 3,
+    "symbols_with_data": 3,
+    "skipped_symbols_count": 0,
+    "current_cash": 13309.134600000005,
+    "portfolio_value": 13309.134600000005,
+    "total_pnl": 8309.134600000005,
+    "pnl_percentage": 166.1826920000001,
+    "positions_count": 0,
+    "positions": {}
+  }
+}

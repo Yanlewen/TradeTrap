@@ -1,0 +1,61 @@
+{
+  "date": "2025-10-01",
+  "hour": "15",
+  "datetime": "2025-10-01 15:00:00",
+  "timestamp": "2025-11-26T11:45:35.510243",
+  "phase1_analysis": [
+    {
+      "symbol": "NVDA",
+      "price": 187.17,
+      "indicators": {
+        "macd": 2.2804703692472117,
+        "macd_signal": 2.202176539268411,
+        "macd_histogram": 0.07829382997880074,
+        "rsi": 78.31706046258734,
+        "ema_12": 186.1306012547364,
+        "ema_26": 183.8501308854892,
+        "bb_upper": 190.90738254391187,
+        "bb_middle": 184.53083999999998,
+        "bb_lower": 178.1542974560881
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "long"
+      },
+      "ai_signal": {
+        "action": "hold",
+        "trade_type": "long",
+        "confidence": 70.0,
+        "reasoning": "RSI is overbought (78.32), suggesting potential for a pullback, but MACD remains bullish with the histogram positive and price above key EMAs. No news to alter sentiment."
+      },
+      "recommended_action": "hold",
+      "recommended_trade_type": "long",
+      "news": {
+        "alpha_vantage": [],
+        "x_posts": [],
+        "reddit_posts": [],
+        "errors": [
+          "Alpha Vantage error: "
+        ]
+      }
+    }
+  ],
+  "phase2_portfolio_decision": {
+    "reasoning": "Portfolio is 81.3% cash with a small NVDA position (18.7%). NVDA signals are mixed (bullish MACD vs. overbought RSI), but AI recommends holding. No concentration risks. Prioritize holding NVDA and reserving cash for future diversification opportunities.",
+    "risk_level": 0.3,
+    "trades_to_execute": [],
+    "trades_count": 0
+  },
+  "phase3_trades_executed": [],
+  "summary": {
+    "total_symbols_analyzed": 3,
+    "symbols_with_data": 1,
+    "skipped_symbols_count": 2,
+    "current_cash": 19988.284000000003,
+    "portfolio_value": 19988.284000000003,
+    "total_pnl": 14988.284000000003,
+    "pnl_percentage": 299.76568000000003,
+    "positions_count": 0,
+    "positions": {}
+  }
+}
