@@ -2,7 +2,7 @@
   "date": "2025-10-03",
   "hour": "14",
   "datetime": "2025-10-03 14:00:00",
-  "timestamp": "2025-11-26T16:20:03.045100",
+  "timestamp": "2025-11-26T17:09:15.111878",
   "phase1_analysis": [
     {
       "symbol": "AAPL",
@@ -59,7 +59,7 @@
         "action": "hold",
         "trade_type": "long",
         "confidence": 60.0,
-        "reasoning": "The MACD histogram is negative, indicating weakening momentum, and the RSI is neutral at 53.23. The price is near the middle Bollinger Band, suggesting a lack of strong directional bias."
+        "reasoning": "The MACD histogram is negative, indicating potential bearish momentum, but the RSI is neutral at 53.23. The price is near the middle Bollinger Band, suggesting a lack of strong directional bias."
       },
       "recommended_action": "hold",
       "recommended_trade_type": "long",
@@ -92,7 +92,7 @@
         "action": "hold",
         "trade_type": "long",
         "confidence": 60.0,
-        "reasoning": "The MACD histogram is slightly negative, indicating weak momentum, and the RSI is neutral at 50.82. The price is near the middle Bollinger Band and EMAs, suggesting a lack of strong directional bias."
+        "reasoning": "The MACD histogram is slightly negative, and RSI is neutral around 50.82, indicating no strong momentum. Price is near the middle Bollinger Band and EMAs, suggesting consolidation."
       },
       "recommended_action": "hold",
       "recommended_trade_type": "long",
@@ -105,20 +105,36 @@
     }
   ],
   "phase2_portfolio_decision": {
-    "reasoning": "Rule-based decision: 0 trades selected",
-    "risk_level": 0.2761911593805346,
-    "trades_to_execute": [],
-    "trades_count": 0
+    "reasoning": "Rule-based decision: 1 trades selected",
+    "risk_level": 0.0,
+    "trades_to_execute": [
+      {
+        "symbol": "AAPL",
+        "action": "buy",
+        "trade_type": "long"
+      }
+    ],
+    "trades_count": 1
   },
-  "phase3_trades_executed": [],
+  "phase3_trades_executed": [
+    {
+      "symbol": "AAPL",
+      "action": "buy",
+      "trade_type": "long",
+      "entry_price": 258.3303,
+      "quantity": 3,
+      "notional": 774.9909,
+      "status": "success"
+    }
+  ],
   "summary": {
     "total_symbols_analyzed": 3,
     "symbols_with_data": 3,
     "skipped_symbols_count": 0,
-    "current_cash": 30078.641100000008,
-    "portfolio_value": 30078.641100000008,
-    "total_pnl": 25078.641100000008,
-    "pnl_percentage": 501.57282200000014,
+    "current_cash": 4235.0915,
+    "portfolio_value": 4235.0915,
+    "total_pnl": -764.9084999999995,
+    "pnl_percentage": -15.298169999999992,
     "positions_count": 0,
     "positions": {}
   }

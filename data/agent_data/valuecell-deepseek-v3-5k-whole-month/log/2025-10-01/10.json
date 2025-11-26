@@ -2,7 +2,7 @@
   "date": "2025-10-01",
   "hour": "10",
   "datetime": "2025-10-01 10:00:00",
-  "timestamp": "2025-11-26T16:11:43.352229",
+  "timestamp": "2025-11-26T17:00:42.719187",
   "phase1_analysis": [
     {
       "symbol": "AAPL",
@@ -26,7 +26,7 @@
         "action": "hold",
         "trade_type": "long",
         "confidence": 60.0,
-        "reasoning": "The MACD histogram is negative, indicating bearish momentum, and the RSI is neutral at 47.61. The price is near the middle Bollinger Band, suggesting no strong directional bias. No significant news to influence the decision."
+        "reasoning": "The MACD histogram is negative, indicating bearish momentum, and the RSI is neutral at 47.61. The price is near the middle Bollinger Band, suggesting no strong directional bias."
       },
       "recommended_action": "hold",
       "recommended_trade_type": "long",
@@ -59,7 +59,7 @@
         "action": "sell",
         "trade_type": "short",
         "confidence": 75.0,
-        "reasoning": "RSI is overbought (80.04), indicating potential for a pullback, and price is near the upper Bollinger Band ($190.09), suggesting resistance. MACD histogram is positive but weakening momentum."
+        "reasoning": "RSI is overbought (80.04), suggesting a potential reversal, and price is near the upper Bollinger Band ($190.09), indicating overextension. MACD histogram is positive but weakening momentum."
       },
       "recommended_action": "sell",
       "recommended_trade_type": "short",
@@ -92,7 +92,7 @@
         "action": "buy",
         "trade_type": "long",
         "confidence": 75.0,
-        "reasoning": "The MACD histogram is positive and above the signal line, indicating bullish momentum, and the RSI is in a neutral zone (63.05), suggesting room for upward movement. The price is also above key EMAs (12, 26, 50), reinforcing the bullish trend."
+        "reasoning": "The MACD histogram is positive and above the signal line, indicating bullish momentum, and the RSI is in the upper neutral range (63.05), suggesting room for upward movement. The price is also above key EMAs (12, 26, 50), reinforcing the bullish trend."
       },
       "recommended_action": "buy",
       "recommended_trade_type": "long",
@@ -106,11 +106,11 @@
   ],
   "phase2_portfolio_decision": {
     "reasoning": "Rule-based decision: 1 trades selected",
-    "risk_level": -0.16231167200000007,
+    "risk_level": 0.0,
     "trades_to_execute": [
       {
-        "symbol": "NVDA",
-        "action": "sell",
+        "symbol": "MSFT",
+        "action": "buy",
         "trade_type": "long"
       }
     ],
@@ -118,12 +118,12 @@
   },
   "phase3_trades_executed": [
     {
-      "symbol": "NVDA",
-      "action": "sell",
+      "symbol": "MSFT",
+      "action": "buy",
       "trade_type": "long",
-      "entry_price": 187.21,
-      "quantity": -20,
-      "notional": null,
+      "entry_price": 514.22,
+      "quantity": 1,
+      "notional": 514.22,
       "status": "success"
     }
   ],
@@ -131,10 +131,10 @@
     "total_symbols_analyzed": 3,
     "symbols_with_data": 3,
     "skipped_symbols_count": 0,
-    "current_cash": 18441.661200000002,
-    "portfolio_value": 18441.661200000002,
-    "total_pnl": 13441.661200000002,
-    "pnl_percentage": 268.83322400000003,
+    "current_cash": 4485.78,
+    "portfolio_value": 4485.78,
+    "total_pnl": -514.2200000000003,
+    "pnl_percentage": -10.284400000000005,
     "positions_count": 0,
     "positions": {}
   }

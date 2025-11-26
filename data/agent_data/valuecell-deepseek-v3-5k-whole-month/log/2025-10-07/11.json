@@ -2,7 +2,7 @@
   "date": "2025-10-07",
   "hour": "11",
   "datetime": "2025-10-07 11:00:00",
-  "timestamp": "2025-11-26T16:24:34.730791",
+  "timestamp": "2025-11-26T17:14:01.234471",
   "phase1_analysis": [
     {
       "symbol": "AAPL",
@@ -26,7 +26,7 @@
         "action": "hold",
         "trade_type": "long",
         "confidence": 60.0,
-        "reasoning": "The MACD histogram is negative, indicating bearish momentum, and the RSI is neutral at 45.38. The price is near the middle Bollinger Band, suggesting no strong directional bias."
+        "reasoning": "The MACD histogram is negative, indicating bearish momentum, and the RSI is neutral at 45.38. The price is near the EMA 50 support level, suggesting potential stability but no clear trend."
       },
       "recommended_action": "hold",
       "recommended_trade_type": "long",
@@ -59,7 +59,7 @@
         "action": "buy",
         "trade_type": "long",
         "confidence": 70.0,
-        "reasoning": "The RSI is near oversold territory (38.98), suggesting potential for a rebound, and the price is near the lower Bollinger Band ($184.42), which may act as support. The MACD histogram is negative but narrowing, indicating weakening downward momentum."
+        "reasoning": "RSI is near oversold (38.98), and price is near the lower Bollinger Band ($184.42), suggesting potential upside. MACD histogram is negative but converging, indicating weakening downward momentum."
       },
       "recommended_action": "buy",
       "recommended_trade_type": "long",
@@ -106,7 +106,7 @@
   ],
   "phase2_portfolio_decision": {
     "reasoning": "Rule-based decision: 0 trades selected",
-    "risk_level": 0.27946662798914057,
+    "risk_level": 0.3133069065110431,
     "trades_to_execute": [],
     "trades_count": 0
   },
@@ -115,10 +115,10 @@
     "total_symbols_analyzed": 3,
     "symbols_with_data": 3,
     "skipped_symbols_count": 0,
-    "current_cash": 29890.226100000007,
-    "portfolio_value": 29890.226100000007,
-    "total_pnl": 24890.226100000007,
-    "pnl_percentage": 497.80452200000013,
+    "current_cash": 2782.5265,
+    "portfolio_value": 2782.5265,
+    "total_pnl": -2217.4735,
+    "pnl_percentage": -44.349470000000004,
     "positions_count": 0,
     "positions": {}
   }

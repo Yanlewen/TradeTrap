@@ -2,7 +2,7 @@
   "date": "2025-10-02",
   "hour": "15",
   "datetime": "2025-10-02 15:00:00",
-  "timestamp": "2025-11-26T16:17:18.828274",
+  "timestamp": "2025-11-26T17:06:34.367603",
   "phase1_analysis": [
     {
       "symbol": "AAPL",
@@ -23,12 +23,12 @@
         "trade_type": "short"
       },
       "ai_signal": {
-        "action": "buy",
+        "action": "hold",
         "trade_type": "long",
-        "confidence": 75.0,
-        "reasoning": "The MACD histogram is positive and above the signal line, indicating bullish momentum, and the price is above key EMAs (12, 26, 50), suggesting an uptrend. However, the RSI is nearing overbought territory (69.89), which warrants caution."
+        "confidence": 65.0,
+        "reasoning": "RSI is nearing overbought territory (69.89), and price is close to the upper Bollinger Band ($258.61), suggesting potential resistance. However, MACD and EMAs indicate a bullish trend, so holding is prudent until clearer signals emerge."
       },
-      "recommended_action": "buy",
+      "recommended_action": "hold",
       "recommended_trade_type": "long",
       "news": {
         "alpha_vantage": [],
@@ -58,8 +58,8 @@
       "ai_signal": {
         "action": "hold",
         "trade_type": "long",
-        "confidence": 70.0,
-        "reasoning": "RSI is overbought (75.67), and MACD histogram is negative, suggesting potential short-term weakness, but EMAs indicate a bullish trend. No news to alter sentiment."
+        "confidence": 65.0,
+        "reasoning": "The RSI is overbought (75.67), suggesting potential for a pullback, but the price is above key EMAs (12, 26, 50) indicating bullish momentum. MACD is slightly bearish (histogram negative), but no significant news to drive direction."
       },
       "recommended_action": "hold",
       "recommended_trade_type": "long",
@@ -92,7 +92,7 @@
         "action": "hold",
         "trade_type": "long",
         "confidence": 60.0,
-        "reasoning": "The MACD histogram is negative, indicating bearish momentum, while the RSI is neutral at 53.39. The price is near the middle Bollinger Band, suggesting no strong directional bias."
+        "reasoning": "The MACD histogram is negative, indicating bearish momentum, but the RSI is neutral at 53.39. The price is near the middle Bollinger Band, suggesting no strong directional bias. No significant news to influence sentiment."
       },
       "recommended_action": "hold",
       "recommended_trade_type": "long",
@@ -105,36 +105,20 @@
     }
   ],
   "phase2_portfolio_decision": {
-    "reasoning": "Rule-based decision: 1 trades selected",
-    "risk_level": 0.1605247484074906,
-    "trades_to_execute": [
-      {
-        "symbol": "AAPL",
-        "action": "buy",
-        "trade_type": "long"
-      }
-    ],
-    "trades_count": 1
+    "reasoning": "Rule-based decision: 0 trades selected",
+    "risk_level": 0.13097293203685262,
+    "trades_to_execute": [],
+    "trades_count": 0
   },
-  "phase3_trades_executed": [
-    {
-      "symbol": "AAPL",
-      "action": "buy",
-      "trade_type": "long",
-      "entry_price": 257.14,
-      "quantity": 29,
-      "notional": 7457.0599999999995,
-      "status": "success"
-    }
-  ],
+  "phase3_trades_executed": [],
   "summary": {
     "total_symbols_analyzed": 3,
     "symbols_with_data": 3,
     "skipped_symbols_count": 0,
-    "current_cash": 29837.68110000001,
-    "portfolio_value": 29837.68110000001,
-    "total_pnl": 24837.68110000001,
-    "pnl_percentage": 496.75362200000023,
+    "current_cash": 4258.9758,
+    "portfolio_value": 4258.9758,
+    "total_pnl": -741.0241999999998,
+    "pnl_percentage": -14.820483999999997,
     "positions_count": 0,
     "positions": {}
   }

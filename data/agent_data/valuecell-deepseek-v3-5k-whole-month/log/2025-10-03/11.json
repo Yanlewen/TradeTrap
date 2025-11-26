@@ -2,7 +2,7 @@
   "date": "2025-10-03",
   "hour": "11",
   "datetime": "2025-10-03 11:00:00",
-  "timestamp": "2025-11-26T16:18:25.243290",
+  "timestamp": "2025-11-26T17:07:34.300836",
   "phase1_analysis": [
     {
       "symbol": "AAPL",
@@ -26,7 +26,7 @@
         "action": "sell",
         "trade_type": "short",
         "confidence": 70.0,
-        "reasoning": "RSI is overbought (71.24), and price is near the upper Bollinger Band ($259.18), suggesting a potential pullback. MACD histogram is positive but weakening, indicating slowing bullish momentum."
+        "reasoning": "RSI is overbought (71.24), and price is near the upper Bollinger Band ($259.18), suggesting a potential pullback. MACD histogram is positive but weakening momentum."
       },
       "recommended_action": "sell",
       "recommended_trade_type": "short",
@@ -59,7 +59,7 @@
         "action": "hold",
         "trade_type": "long",
         "confidence": 65.0,
-        "reasoning": "RSI is above 70 indicating overbought conditions, but the price is above key EMAs suggesting bullish momentum. MACD histogram is negative, signaling potential short-term weakness."
+        "reasoning": "RSI is above 70 indicating overbought conditions, but EMAs show a bullish trend with price above key EMAs. MACD histogram is slightly negative, suggesting potential short-term consolidation."
       },
       "recommended_action": "hold",
       "recommended_trade_type": "long",
@@ -92,7 +92,7 @@
         "action": "buy",
         "trade_type": "long",
         "confidence": 70.0,
-        "reasoning": "The MACD histogram is positive and above the signal line, indicating bullish momentum, and the price is above key EMAs (12, 26, 50), suggesting an uptrend. The RSI is neutral but leaning bullish."
+        "reasoning": "The MACD histogram is positive and above the signal line, indicating bullish momentum, and the price is above key EMAs (12, 26, 50), suggesting an uptrend. The RSI is neutral but leaning bullish, and the price is near the upper Bollinger Band, which could signal continuation if volume supports it."
       },
       "recommended_action": "buy",
       "recommended_trade_type": "long",
@@ -105,8 +105,8 @@
     }
   ],
   "phase2_portfolio_decision": {
-    "reasoning": "Rule-based decision: 0 trades selected",
-    "risk_level": 0.16050914953395548,
+    "reasoning": "Hold MSFT for continued bullish momentum; short AAPL to hedge tech exposure and capitalize on overbought conditions. Maintain balanced strategy with low risk.",
+    "risk_level": 0.3,
     "trades_to_execute": [],
     "trades_count": 0
   },
@@ -115,10 +115,10 @@
     "total_symbols_analyzed": 3,
     "symbols_with_data": 3,
     "skipped_symbols_count": 0,
-    "current_cash": 37324.90110000001,
-    "portfolio_value": 37324.90110000001,
-    "total_pnl": 32324.90110000001,
-    "pnl_percentage": 646.4980220000002,
+    "current_cash": 4496.5558,
+    "portfolio_value": 4496.5558,
+    "total_pnl": -503.4441999999999,
+    "pnl_percentage": -10.068883999999999,
     "positions_count": 0,
     "positions": {}
   }

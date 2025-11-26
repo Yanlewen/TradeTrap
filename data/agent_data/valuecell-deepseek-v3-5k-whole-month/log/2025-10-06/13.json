@@ -2,7 +2,7 @@
   "date": "2025-10-06",
   "hour": "13",
   "datetime": "2025-10-06 13:00:00",
-  "timestamp": "2025-11-26T16:22:39.894878",
+  "timestamp": "2025-11-26T17:11:52.442370",
   "phase1_analysis": [
     {
       "symbol": "AAPL",
@@ -26,7 +26,7 @@
         "action": "buy",
         "trade_type": "long",
         "confidence": 65.0,
-        "reasoning": "The RSI is near oversold levels (38.27), suggesting potential for a rebound, and the price is near the lower Bollinger Band ($255.46), indicating a possible support level. However, the MACD histogram is negative, signaling some bearish momentum."
+        "reasoning": "The RSI is near oversold territory (38.27), suggesting potential for a rebound, and the price is near the lower Bollinger Band ($255.46), which may act as support. However, the MACD histogram is negative, indicating some bearish momentum."
       },
       "recommended_action": "buy",
       "recommended_trade_type": "long",
@@ -59,7 +59,7 @@
         "action": "buy",
         "trade_type": "long",
         "confidence": 70.0,
-        "reasoning": "The RSI is in oversold territory (33.43), suggesting potential for a rebound, and the price is near the lower Bollinger Band ($185.09), which may act as support. The MACD histogram is negative but could signal a reversal if it starts to converge."
+        "reasoning": "The RSI indicates oversold conditions (33.43), and the price is near the lower Bollinger Band ($185.09), suggesting a potential rebound. The EMA 50 ($184.48) also provides support, though the MACD histogram is negative."
       },
       "recommended_action": "buy",
       "recommended_trade_type": "long",
@@ -92,7 +92,7 @@
         "action": "sell",
         "trade_type": "short",
         "confidence": 70.0,
-        "reasoning": "The RSI is overbought at 78.62, and the price is above the upper Bollinger Band, suggesting a potential pullback. The MACD histogram is positive but may be nearing exhaustion given the overbought conditions."
+        "reasoning": "RSI is overbought (78.62) and price is above the upper Bollinger Band ($526.53), suggesting a potential pullback. MACD histogram is positive but weakening momentum."
       },
       "recommended_action": "sell",
       "recommended_trade_type": "short",
@@ -105,25 +105,39 @@
     }
   ],
   "phase2_portfolio_decision": {
-    "reasoning": "Rule-based decision: 1 trades selected",
-    "risk_level": 0.15984123436990536,
+    "reasoning": "Close MSFT to lock in profits and avoid overbought risk. Hold NVDA due to oversold rebound potential. Add AAPL for diversification and favorable risk/reward. Maintain balanced exposure with cash reserves.",
+    "risk_level": 0.6,
     "trades_to_execute": [
+      {
+        "symbol": "MSFT",
+        "action": "sell",
+        "trade_type": "long"
+      },
       {
         "symbol": "AAPL",
         "action": "buy",
         "trade_type": "long"
       }
     ],
-    "trades_count": 1
+    "trades_count": 2
   },
   "phase3_trades_executed": [
+    {
+      "symbol": "MSFT",
+      "action": "sell",
+      "trade_type": "long",
+      "entry_price": 528.6,
+      "quantity": -1,
+      "notional": null,
+      "status": "success"
+    },
     {
       "symbol": "AAPL",
       "action": "buy",
       "trade_type": "long",
       "entry_price": 255.615,
-      "quantity": 29,
-      "notional": 7412.835,
+      "quantity": 3,
+      "notional": 766.845,
       "status": "success"
     }
   ],
@@ -131,10 +145,10 @@
     "total_symbols_analyzed": 3,
     "symbols_with_data": 3,
     "skipped_symbols_count": 0,
-    "current_cash": 29890.226100000007,
-    "portfolio_value": 29890.226100000007,
-    "total_pnl": 24890.226100000007,
-    "pnl_percentage": 497.80452200000013,
+    "current_cash": 3308.5365,
+    "portfolio_value": 3308.5365,
+    "total_pnl": -1691.4634999999998,
+    "pnl_percentage": -33.829269999999994,
     "positions_count": 0,
     "positions": {}
   }

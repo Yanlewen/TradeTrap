@@ -2,7 +2,7 @@
   "date": "2025-10-01",
   "hour": "15",
   "datetime": "2025-10-01 15:00:00",
-  "timestamp": "2025-11-26T16:14:11.893245",
+  "timestamp": "2025-11-26T17:03:26.291726",
   "phase1_analysis": [
     {
       "symbol": "AAPL",
@@ -26,7 +26,7 @@
         "action": "buy",
         "trade_type": "long",
         "confidence": 75.0,
-        "reasoning": "The MACD histogram is positive and above the signal line, indicating bullish momentum, and the RSI is at 63.52, suggesting room for upward movement before overbought conditions. The price is also above key EMAs (12, 26, 50), reinforcing the bullish trend."
+        "reasoning": "The MACD histogram is positive and above the signal line, indicating bullish momentum, and the RSI is in a neutral zone (63.52), suggesting room for upward movement. The price is also above key EMAs (12, 26, 50), supporting a bullish trend."
       },
       "recommended_action": "buy",
       "recommended_trade_type": "long",
@@ -56,13 +56,13 @@
         "trade_type": "long"
       },
       "ai_signal": {
-        "action": "sell",
-        "trade_type": "short",
+        "action": "hold",
+        "trade_type": "long",
         "confidence": 70.0,
-        "reasoning": "RSI is overbought (78.32), and price is near the upper Bollinger Band ($190.91), suggesting a potential pullback. MACD histogram is positive but flattening, indicating weakening momentum."
+        "reasoning": "RSI is overbought (78.32), suggesting potential for a pullback, but MACD and EMAs indicate bullish momentum. No news to alter sentiment, so caution is warranted."
       },
-      "recommended_action": "sell",
-      "recommended_trade_type": "short",
+      "recommended_action": "hold",
+      "recommended_trade_type": "long",
       "news": {
         "alpha_vantage": [],
         "x_posts": [],
@@ -92,7 +92,7 @@
         "action": "hold",
         "trade_type": "long",
         "confidence": 65.0,
-        "reasoning": "The RSI is nearing overbought territory (69.73), and the price is close to the upper Bollinger Band ($519.81), suggesting potential resistance. However, the MACD histogram is positive (0.4086) and the EMAs show a bullish alignment (12 > 26 > 50), indicating underlying strength. No significant news to drive momentum."
+        "reasoning": "The RSI is approaching overbought territory (69.73), and the price is near the upper Bollinger Band ($519.81), suggesting potential resistance. However, the MACD histogram is positive, indicating bullish momentum, so holding is prudent until clearer signals emerge."
       },
       "recommended_action": "hold",
       "recommended_trade_type": "long",
@@ -105,39 +105,25 @@
     }
   ],
   "phase2_portfolio_decision": {
-    "reasoning": "Rule-based decision: 2 trades selected",
-    "risk_level": 0.1704402871885406,
+    "reasoning": "Rule-based decision: 1 trades selected",
+    "risk_level": 0.0,
     "trades_to_execute": [
-      {
-        "symbol": "NVDA",
-        "action": "sell",
-        "trade_type": "long"
-      },
       {
         "symbol": "AAPL",
         "action": "buy",
         "trade_type": "long"
       }
     ],
-    "trades_count": 2
+    "trades_count": 1
   },
   "phase3_trades_executed": [
-    {
-      "symbol": "NVDA",
-      "action": "sell",
-      "trade_type": "long",
-      "entry_price": 187.17,
-      "quantity": -20,
-      "notional": null,
-      "status": "success"
-    },
     {
       "symbol": "AAPL",
       "action": "buy",
       "trade_type": "long",
       "entry_price": 255.41,
-      "quantity": 26,
-      "notional": 6640.66,
+      "quantity": 3,
+      "notional": 766.23,
       "status": "success"
     }
   ],
@@ -145,10 +131,10 @@
     "total_symbols_analyzed": 3,
     "symbols_with_data": 3,
     "skipped_symbols_count": 0,
-    "current_cash": 26788.534500000005,
-    "portfolio_value": 26788.534500000005,
-    "total_pnl": 21788.534500000005,
-    "pnl_percentage": 435.7706900000001,
+    "current_cash": 4240.2369,
+    "portfolio_value": 4240.2369,
+    "total_pnl": -759.7631000000001,
+    "pnl_percentage": -15.195262000000003,
     "positions_count": 0,
     "positions": {}
   }

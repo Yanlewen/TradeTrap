@@ -2,7 +2,7 @@
   "date": "2025-10-01",
   "hour": "14",
   "datetime": "2025-10-01 14:00:00",
-  "timestamp": "2025-11-26T16:13:42.155041",
+  "timestamp": "2025-11-26T17:02:51.017488",
   "phase1_analysis": [
     {
       "symbol": "AAPL",
@@ -26,7 +26,7 @@
         "action": "sell",
         "trade_type": "short",
         "confidence": 70.0,
-        "reasoning": "RSI is overbought (75.34), and price is near the upper Bollinger Band ($257.19), suggesting a potential pullback. MACD histogram is positive but weakening, indicating slowing momentum."
+        "reasoning": "RSI is overbought (75.34), and price is near the upper Bollinger Band ($257.19), suggesting a potential pullback. MACD histogram is positive but weakening, indicating slowing bullish momentum."
       },
       "recommended_action": "sell",
       "recommended_trade_type": "short",
@@ -58,7 +58,7 @@
       "ai_signal": {
         "action": "sell",
         "trade_type": "short",
-        "confidence": 70.0,
+        "confidence": 75.0,
         "reasoning": "RSI is overbought (81.47), suggesting a potential pullback, and price is near the upper Bollinger Band ($191.04), indicating resistance. MACD histogram is positive but flattening, signaling weakening momentum."
       },
       "recommended_action": "sell",
@@ -92,7 +92,7 @@
         "action": "buy",
         "trade_type": "long",
         "confidence": 75.0,
-        "reasoning": "The MACD histogram is positive and above the signal line, indicating bullish momentum, and the RSI is approaching overbought but not yet extreme. The price is also near the upper Bollinger Band, suggesting potential continuation of the uptrend."
+        "reasoning": "The MACD histogram is positive and above the signal line, indicating bullish momentum, and the RSI is approaching overbought but not yet extreme. The price is near the upper Bollinger Band, suggesting potential continuation of the uptrend."
       },
       "recommended_action": "buy",
       "recommended_trade_type": "long",
@@ -105,11 +105,11 @@
     }
   ],
   "phase2_portfolio_decision": {
-    "reasoning": "Rule-based decision: 1 trades selected",
-    "risk_level": 0.177803108563382,
+    "reasoning": "Prioritize profit-taking in MSFT due to mixed signals and overbought conditions in other assets. Maintain cash for tactical entries (e.g., MSFT pullback). Avoid overconcentration in tech. Balance growth with risk management.",
+    "risk_level": 0.3,
     "trades_to_execute": [
       {
-        "symbol": "NVDA",
+        "symbol": "MSFT",
         "action": "sell",
         "trade_type": "long"
       }
@@ -118,11 +118,11 @@
   },
   "phase3_trades_executed": [
     {
-      "symbol": "NVDA",
+      "symbol": "MSFT",
       "action": "sell",
       "trade_type": "long",
-      "entry_price": 187.4093,
-      "quantity": -20,
+      "entry_price": 519.36,
+      "quantity": -1,
       "notional": null,
       "status": "success"
     }
@@ -131,10 +131,10 @@
     "total_symbols_analyzed": 3,
     "symbols_with_data": 3,
     "skipped_symbols_count": 0,
-    "current_cash": 29685.794500000007,
-    "portfolio_value": 29685.794500000007,
-    "total_pnl": 24685.794500000007,
-    "pnl_percentage": 493.7158900000002,
+    "current_cash": 5006.466899999999,
+    "portfolio_value": 5006.466899999999,
+    "total_pnl": 6.466899999999441,
+    "pnl_percentage": 0.12933799999998882,
     "positions_count": 0,
     "positions": {}
   }

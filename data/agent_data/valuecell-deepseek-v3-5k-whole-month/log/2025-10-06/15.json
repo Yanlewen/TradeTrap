@@ -2,7 +2,7 @@
   "date": "2025-10-06",
   "hour": "15",
   "datetime": "2025-10-06 15:00:00",
-  "timestamp": "2025-11-26T16:23:37.743559",
+  "timestamp": "2025-11-26T17:13:01.034480",
   "phase1_analysis": [
     {
       "symbol": "AAPL",
@@ -59,7 +59,7 @@
         "action": "buy",
         "trade_type": "long",
         "confidence": 70.0,
-        "reasoning": "The RSI is near oversold levels (35.55), suggesting potential for a rebound, and the price is above the EMA 50 ($184.57), indicating underlying support. The MACD histogram is negative but converging, hinting at weakening downward momentum."
+        "reasoning": "RSI indicates oversold conditions (35.55), and price is near the lower Bollinger Band ($184.64), suggesting potential rebound. MACD histogram is negative but converging, hinting at weakening downward momentum."
       },
       "recommended_action": "buy",
       "recommended_trade_type": "long",
@@ -92,7 +92,7 @@
         "action": "hold",
         "trade_type": "long",
         "confidence": 70.0,
-        "reasoning": "RSI is overbought (73.31), suggesting potential for a pullback, but MACD and EMAs indicate bullish momentum. No significant news to drive immediate action."
+        "reasoning": "The RSI is above 70, indicating overbought conditions, but the MACD histogram is positive and price is above key EMAs, suggesting bullish momentum. No news to alter sentiment, so caution is warranted."
       },
       "recommended_action": "hold",
       "recommended_trade_type": "long",
@@ -106,7 +106,7 @@
   ],
   "phase2_portfolio_decision": {
     "reasoning": "Rule-based decision: 0 trades selected",
-    "risk_level": 0.27960245834339803,
+    "risk_level": 0.23215230661653574,
     "trades_to_execute": [],
     "trades_count": 0
   },
@@ -115,10 +115,10 @@
     "total_symbols_analyzed": 3,
     "symbols_with_data": 3,
     "skipped_symbols_count": 0,
-    "current_cash": 29890.226100000007,
-    "portfolio_value": 29890.226100000007,
-    "total_pnl": 24890.226100000007,
-    "pnl_percentage": 497.80452200000013,
+    "current_cash": 3308.5365,
+    "portfolio_value": 3308.5365,
+    "total_pnl": -1691.4634999999998,
+    "pnl_percentage": -33.829269999999994,
     "positions_count": 0,
     "positions": {}
   }

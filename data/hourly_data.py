@@ -173,6 +173,40 @@ def update_json(data: dict, SYMBOL: str, target_dir: str = None):
 
 
 
+def has_month_data(SYMBOL: str, month: str = "2025-09", target_dir: str = None) -> bool:
+    """
+    检查本地 daily_prices_{SYMBOL}.json 是否已经包含指定月份的数据
+    通过判断 "Time Series (60min)" 里的时间戳是否以 month(YYYY-MM) 开头
+    """
+    # 与 update_json 中的路径逻辑保持一致
+    if target_dir is None:
+        script_dir = os.path.dirname(os.path.abspath(__file__))
+        target_dir = script_dir
+    else:
+        script_dir = os.path.dirname(os.path.abspath(__file__))
+        if not os.path.isabs(target_dir):
+            target_dir = os.path.join(script_dir, target_dir)
+
+    file_path = os.path.join(target_dir, f"daily_prices_{SYMBOL}.json")
+
+    if not os.path.exists(file_path):
+        # 根本没有文件，肯定没有该月数据
+        return False
+
+    try:
+        with open(file_path, "r", encoding="utf-8") as f:
+            data = json.load(f)
+        ts = data.get("Time Series (60min)", {})
+        # 只要有任意一个时间戳是该月份的，就认为已经有该月的数据
+        for timestamp in ts.keys():
+            if str(timestamp).startswith(month):
+                return True
+        return False
+    except (IOError, json.JSONDecodeError, KeyError):
+        # 读文件有问题时，保守起见当作没有数据，后面重新拉取
+        return False
+
+
 def get_hourly_price(SYMBOL: str, month: str = "2025-09"):
     """
     获取指定股票指定月份的小时数据
@@ -228,18 +262,27 @@ def get_hourly_price(SYMBOL: str, month: str = "2025-09"):
 
 
 if __name__ == "__main__":
-    # 获取 NVDA 2025年9月份的小时数据
-    target_symbol = "MSFT"
+    # 要检查/获取的目标月份
     target_month = "2025-09"
-    
-    print(f"开始获取 {target_symbol} 的 {target_month} 小时数据")
+
+    print(f"开始检查并获取 Nasdaq 100 股票在 {target_month} 的小时数据")
     print("=" * 60)
-    
-    success = get_hourly_price(target_symbol, month=target_month)
-    
-    # 输出结果
-    print("\n" + "=" * 60)
-    if success:
-        print(f"✓ {target_symbol} 的 {target_month} 数据获取成功！")
-    else:
-        print(f"✗ {target_symbol} 的 {target_month} 数据获取失败！")
+
+    for symbol in all_nasdaq_100_symbols:
+        print(f"\n--- {symbol} ---")
+        # 先检查本地是否已有该月份数据
+        if has_month_data(symbol, target_month):
+            print(f"✓ {symbol} 已存在 {target_month} 的小时数据，跳过 API 调用")
+            continue
+
+        print(f"→ {symbol} 缺少 {target_month} 数据，调用 API 获取...")
+        success = get_hourly_price(symbol, month=target_month)
+
+        if success:
+            print(f"✓ {symbol} 的 {target_month} 数据获取并保存成功")
+        else:
+            print(f"✗ {symbol} 的 {target_month} 数据获取失败")
+
+        # 为了避免触发 Alpha Vantage 频率限制，适当 sleep 一下
+        # 如果你是高级会员且确定频率没问题，可以把这个时间调小
+        time.sleep(15)

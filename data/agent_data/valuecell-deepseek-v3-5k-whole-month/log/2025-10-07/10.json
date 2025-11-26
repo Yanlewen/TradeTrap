@@ -2,7 +2,7 @@
   "date": "2025-10-07",
   "hour": "10",
   "datetime": "2025-10-07 10:00:00",
-  "timestamp": "2025-11-26T16:24:08.193597",
+  "timestamp": "2025-11-26T17:13:29.249501",
   "phase1_analysis": [
     {
       "symbol": "AAPL",
@@ -23,12 +23,12 @@
         "trade_type": "long"
       },
       "ai_signal": {
-        "action": "buy",
+        "action": "hold",
         "trade_type": "long",
-        "confidence": 65.0,
-        "reasoning": "The RSI is near oversold territory (39.46), and the price is near the lower Bollinger Band ($255.32), suggesting potential for a rebound. However, the MACD histogram is negative (-0.3280), indicating some bearish momentum."
+        "confidence": 60.0,
+        "reasoning": "The MACD histogram is negative, indicating bearish momentum, and the RSI is below 40 but not yet oversold. The price is near the lower Bollinger Band, suggesting potential support, but confirmation is needed."
       },
-      "recommended_action": "buy",
+      "recommended_action": "hold",
       "recommended_trade_type": "long",
       "news": {
         "alpha_vantage": [],
@@ -59,7 +59,7 @@
         "action": "hold",
         "trade_type": "long",
         "confidence": 60.0,
-        "reasoning": "The MACD histogram is negative, indicating bearish momentum, but the price is above key EMAs (12, 26, 50), suggesting underlying support. RSI is neutral at 45.96, and no significant news is driving sentiment."
+        "reasoning": "The MACD histogram is negative, indicating bearish momentum, and the RSI is neutral at 45.96. The price is near the middle Bollinger Band, suggesting a lack of strong directional bias."
       },
       "recommended_action": "hold",
       "recommended_trade_type": "long",
@@ -92,7 +92,7 @@
         "action": "buy",
         "trade_type": "long",
         "confidence": 75.0,
-        "reasoning": "The MACD histogram is positive and above the signal line, indicating bullish momentum, and the RSI is approaching overbought but not yet extreme. The price is above key EMAs (12, 26, 50) and the middle Bollinger Band, suggesting upward trend strength."
+        "reasoning": "The MACD histogram is positive and above the signal line, indicating bullish momentum, and the RSI is at 66.72, suggesting strong but not overbought conditions. The price is above key EMAs (12, 26, 50) and the middle Bollinger Band, supporting a bullish trend."
       },
       "recommended_action": "buy",
       "recommended_trade_type": "long",
@@ -105,20 +105,36 @@
     }
   ],
   "phase2_portfolio_decision": {
-    "reasoning": "Rule-based decision: 0 trades selected",
-    "risk_level": 0.2793210954667218,
-    "trades_to_execute": [],
-    "trades_count": 0
+    "reasoning": "Rule-based decision: 1 trades selected",
+    "risk_level": 0.233542649446364,
+    "trades_to_execute": [
+      {
+        "symbol": "MSFT",
+        "action": "buy",
+        "trade_type": "long"
+      }
+    ],
+    "trades_count": 1
   },
-  "phase3_trades_executed": [],
+  "phase3_trades_executed": [
+    {
+      "symbol": "MSFT",
+      "action": "buy",
+      "trade_type": "long",
+      "entry_price": 526.01,
+      "quantity": 1,
+      "notional": 526.01,
+      "status": "success"
+    }
+  ],
   "summary": {
     "total_symbols_analyzed": 3,
     "symbols_with_data": 3,
     "skipped_symbols_count": 0,
-    "current_cash": 29890.226100000007,
-    "portfolio_value": 29890.226100000007,
-    "total_pnl": 24890.226100000007,
-    "pnl_percentage": 497.80452200000013,
+    "current_cash": 2782.5265,
+    "portfolio_value": 2782.5265,
+    "total_pnl": -2217.4735,
+    "pnl_percentage": -44.349470000000004,
     "positions_count": 0,
     "positions": {}
   }

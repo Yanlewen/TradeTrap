@@ -2,7 +2,7 @@
   "date": "2025-10-02",
   "hour": "12",
   "datetime": "2025-10-02 12:00:00",
-  "timestamp": "2025-11-26T16:15:46.589349",
+  "timestamp": "2025-11-26T17:04:54.550694",
   "phase1_analysis": [
     {
       "symbol": "AAPL",
@@ -58,8 +58,8 @@
       "ai_signal": {
         "action": "hold",
         "trade_type": "long",
-        "confidence": 70.0,
-        "reasoning": "RSI is overbought (71.74), suggesting potential for a pullback, but MACD and EMAs indicate bullish momentum. No significant news to drive immediate action."
+        "confidence": 65.0,
+        "reasoning": "RSI is overbought (71.74), suggesting potential for a pullback, but MACD and EMAs indicate bullish momentum. No news to sway sentiment, so caution is warranted."
       },
       "recommended_action": "hold",
       "recommended_trade_type": "long",
@@ -92,7 +92,7 @@
         "action": "hold",
         "trade_type": "long",
         "confidence": 60.0,
-        "reasoning": "The MACD histogram is negative, indicating bearish momentum, and the RSI is neutral at 49.43. The price is near the middle Bollinger Band, suggesting a lack of strong directional bias."
+        "reasoning": "The MACD histogram is negative, indicating bearish momentum, and the RSI is neutral at 49.43. The price is near the middle Bollinger Band, suggesting no strong directional bias."
       },
       "recommended_action": "hold",
       "recommended_trade_type": "long",
@@ -105,36 +105,20 @@
     }
   ],
   "phase2_portfolio_decision": {
-    "reasoning": "Rule-based decision: 1 trades selected",
-    "risk_level": 0.16064562580607464,
-    "trades_to_execute": [
-      {
-        "symbol": "AAPL",
-        "action": "buy",
-        "trade_type": "long"
-      }
-    ],
-    "trades_count": 1
+    "reasoning": "Rule-based decision: 0 trades selected",
+    "risk_level": 0.1328775319133702,
+    "trades_to_execute": [],
+    "trades_count": 0
   },
-  "phase3_trades_executed": [
-    {
-      "symbol": "AAPL",
-      "action": "buy",
-      "trade_type": "long",
-      "entry_price": 257.515,
-      "quantity": 28,
-      "notional": 7210.42,
-      "status": "success"
-    }
-  ],
+  "phase3_trades_executed": [],
   "summary": {
     "total_symbols_analyzed": 3,
     "symbols_with_data": 3,
     "skipped_symbols_count": 0,
-    "current_cash": 30072.804700000008,
-    "portfolio_value": 30072.804700000008,
-    "total_pnl": 25072.804700000008,
-    "pnl_percentage": 501.4560940000002,
+    "current_cash": 4240.2369,
+    "portfolio_value": 4240.2369,
+    "total_pnl": -759.7631000000001,
+    "pnl_percentage": -15.195262000000003,
     "positions_count": 0,
     "positions": {}
   }

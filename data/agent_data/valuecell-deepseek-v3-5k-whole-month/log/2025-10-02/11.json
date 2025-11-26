@@ -2,7 +2,7 @@
   "date": "2025-10-02",
   "hour": "11",
   "datetime": "2025-10-02 11:00:00",
-  "timestamp": "2025-11-26T16:15:13.795567",
+  "timestamp": "2025-11-26T17:04:27.273657",
   "phase1_analysis": [
     {
       "symbol": "AAPL",
@@ -23,12 +23,12 @@
         "trade_type": "short"
       },
       "ai_signal": {
-        "action": "buy",
+        "action": "hold",
         "trade_type": "long",
-        "confidence": 75.0,
-        "reasoning": "The MACD histogram is positive and above the signal line, indicating bullish momentum, and the RSI is approaching overbought but not yet extreme. The price is above key EMAs (12, 26, 50) and the upper Bollinger Band, suggesting continued upward potential."
+        "confidence": 65.0,
+        "reasoning": "The RSI is approaching overbought territory (68.57), and the price is near the upper Bollinger Band ($257.66), suggesting potential resistance. However, the MACD histogram is positive, indicating some bullish momentum. No significant news to drive a clear direction."
       },
-      "recommended_action": "buy",
+      "recommended_action": "hold",
       "recommended_trade_type": "long",
       "news": {
         "alpha_vantage": [],
@@ -59,7 +59,7 @@
         "action": "sell",
         "trade_type": "short",
         "confidence": 75.0,
-        "reasoning": "The RSI of 86.39 indicates NVDA is heavily overbought, and the price is near the upper Bollinger Band, suggesting a potential pullback. The MACD histogram is positive but flattening, signaling weakening bullish momentum."
+        "reasoning": "The RSI of 86.39 indicates NVDA is severely overbought, and the price is near the upper Bollinger Band, suggesting a potential pullback. The MACD histogram is positive but flattening, signaling weakening bullish momentum."
       },
       "recommended_action": "sell",
       "recommended_trade_type": "short",
@@ -92,7 +92,7 @@
         "action": "hold",
         "trade_type": "long",
         "confidence": 60.0,
-        "reasoning": "The MACD histogram is slightly negative, and the RSI is neutral at 51.39, indicating no strong momentum. The price is between the EMA 12 and EMA 26, suggesting consolidation. No significant news to drive a decision."
+        "reasoning": "The MACD histogram is slightly negative, and the RSI is neutral at 51.39, indicating no strong momentum. The price is between the EMA 12 and EMA 26, suggesting a lack of clear trend direction."
       },
       "recommended_action": "hold",
       "recommended_trade_type": "long",
@@ -105,50 +105,20 @@
     }
   ],
   "phase2_portfolio_decision": {
-    "reasoning": "Prioritize closing overbought (NVDA) and losing (AAPL) positions to reduce risk. Hold MSFT due to neutral signals. Maintain cash reserve for future opportunities. Neutral market sentiment warrants defensive stance.",
-    "risk_level": 0.6,
-    "trades_to_execute": [
-      {
-        "symbol": "NVDA",
-        "action": "sell",
-        "trade_type": "long"
-      },
-      {
-        "symbol": "AAPL",
-        "action": "sell",
-        "trade_type": "long"
-      }
-    ],
-    "trades_count": 2
+    "reasoning": "Rule-based decision: 0 trades selected",
+    "risk_level": 0.1329504618008489,
+    "trades_to_execute": [],
+    "trades_count": 0
   },
-  "phase3_trades_executed": [
-    {
-      "symbol": "NVDA",
-      "action": "sell",
-      "trade_type": "long",
-      "entry_price": 189.63,
-      "quantity": -20,
-      "notional": null,
-      "status": "success"
-    },
-    {
-      "symbol": "AAPL",
-      "action": "sell",
-      "trade_type": "long",
-      "entry_price": 257.7727,
-      "quantity": -26,
-      "notional": null,
-      "status": "success"
-    }
-  ],
+  "phase3_trades_executed": [],
   "summary": {
     "total_symbols_analyzed": 3,
     "symbols_with_data": 3,
     "skipped_symbols_count": 0,
-    "current_cash": 37283.224700000006,
-    "portfolio_value": 37283.224700000006,
-    "total_pnl": 32283.224700000006,
-    "pnl_percentage": 645.6644940000001,
+    "current_cash": 4240.2369,
+    "portfolio_value": 4240.2369,
+    "total_pnl": -759.7631000000001,
+    "pnl_percentage": -15.195262000000003,
     "positions_count": 0,
     "positions": {}
   }
