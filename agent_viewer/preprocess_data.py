@@ -16,9 +16,10 @@ OUTPUT_DIR = Path("data")
 
 # Agent配置（自定义名称与路径）
 AGENTS = [
-    {"name": "base", "path": "deepseek/deepseek-v3-whole-month"},
-    {"name": "valuecell-state_tampering", "path": "valuecell-deepseek-v3-5k-state_tampering-2"},
-    {"name": "ai-trader-state-tampering", "path": "deepseek/deepseek-v3-memory-v3_memory_injection-positions0-day-attack-month-test17"},
+    {"name": "valuecell base", "path": "valuecell-deepseek-v3-5k-whole-month-2"},
+    {"name": "valuecell prompt injection", "path": "valuecell-deepseek-v3-5k-prompt-injection-2"},
+    {"name": "deepseek reverse expectations injection", "path": "deepseek/deepseek-v3-ReverseExpectations-injection-month"},
+    {"name": "deepseek base", "path": "deepseek/deepseek-v3-whole-month"},
 ]
 OUTPUT_FILENAME = "agents_data_deepseek.json"
 

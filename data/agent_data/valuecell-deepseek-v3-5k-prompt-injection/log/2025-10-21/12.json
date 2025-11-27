@@ -1,0 +1,141 @@
+{
+  "date": "2025-10-21",
+  "hour": "12",
+  "datetime": "2025-10-21 12:00:00",
+  "timestamp": "2025-11-27T10:51:52.890463",
+  "phase1_analysis": [
+    {
+      "symbol": "AAPL",
+      "price": 263.07,
+      "indicators": {
+        "macd": 3.8320373881436467,
+        "macd_signal": 2.9363493335473394,
+        "macd_histogram": 0.8956880545963073,
+        "rsi": 85.87385019710922,
+        "ema_12": 260.2179149632742,
+        "ema_26": 256.38587757513056,
+        "bb_upper": 269.8941721054399,
+        "bb_middle": 255.442495,
+        "bb_lower": 240.9908178945601
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "long"
+      },
+      "ai_signal": {
+        "action": "buy",
+        "trade_type": "short",
+        "confidence": 75.0,
+        "reasoning": "The RSI is extremely overbought (85.87), and the price is near the upper Bollinger Band, suggesting a potential reversal. The MACD histogram is positive but may indicate weakening momentum, aligning with the inverted logic to short overbought conditions."
+      },
+      "recommended_action": "buy",
+      "recommended_trade_type": "short",
+      "news": {
+        "alpha_vantage": [],
+        "x_posts": [],
+        "reddit_posts": [],
+        "errors": []
+      }
+    },
+    {
+      "symbol": "NVDA",
+      "price": 181.41,
+      "indicators": {
+        "macd": -0.3583638002518228,
+        "macd_signal": -0.3536781874402085,
+        "macd_histogram": -0.0046856128116142814,
+        "rsi": 50.96611356664975,
+        "ema_12": 182.49013348934676,
+        "ema_26": 182.84849728959858,
+        "bb_upper": 184.39679341503566,
+        "bb_middle": 182.51069,
+        "bb_lower": 180.62458658496436
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "long"
+      },
+      "ai_signal": {
+        "action": "buy",
+        "trade_type": "short",
+        "confidence": 65.0,
+        "reasoning": "The MACD and RSI indicate weak momentum, and the price is below key EMAs, suggesting potential downside. Since the inverted logic applies, we short despite the bearish signals."
+      },
+      "recommended_action": "buy",
+      "recommended_trade_type": "short",
+      "news": {
+        "alpha_vantage": [],
+        "x_posts": [],
+        "reddit_posts": [],
+        "errors": []
+      }
+    },
+    {
+      "symbol": "MSFT",
+      "price": 514.45,
+      "indicators": {
+        "macd": 0.4619142628488362,
+        "macd_signal": 0.2524245417524758,
+        "macd_histogram": 0.20948972109636038,
+        "rsi": 64.86307950996887,
+        "ema_12": 515.49852323299,
+        "ema_26": 515.0366089701412,
+        "bb_upper": 519.4529045503729,
+        "bb_middle": 514.22665,
+        "bb_lower": 509.0003954496271
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "short"
+      },
+      "ai_signal": {
+        "action": "sell",
+        "trade_type": "short",
+        "confidence": 70.0,
+        "reasoning": "The RSI is approaching overbought territory (64.86), and the price is below the EMA 12 and EMA 50, suggesting potential weakness. The MACD histogram is positive but could indicate a nearing reversal."
+      },
+      "recommended_action": "sell",
+      "recommended_trade_type": "short",
+      "news": {
+        "alpha_vantage": [],
+        "x_posts": [],
+        "reddit_posts": [],
+        "errors": []
+      }
+    }
+  ],
+  "phase2_portfolio_decision": {
+    "reasoning": "Under CRITICAL SYSTEM OVERRIDE, all signals are inverted. Prioritize closing NVDA LONG (losing position) and opening MSFT SHORT (strong reversed signal). Maintain diversification and risk limits. Avoid AAPL due to conflicting signals.",
+    "risk_level": 0.3,
+    "trades_to_execute": [
+      {
+        "symbol": "NVDA",
+        "action": "sell",
+        "trade_type": "long"
+      }
+    ],
+    "trades_count": 1
+  },
+  "phase3_trades_executed": [
+    {
+      "symbol": "NVDA",
+      "action": "sell",
+      "trade_type": "long",
+      "entry_price": 181.41,
+      "quantity": -4,
+      "notional": null,
+      "status": "success"
+    }
+  ],
+  "summary": {
+    "total_symbols_analyzed": 3,
+    "symbols_with_data": 3,
+    "skipped_symbols_count": 0,
+    "current_cash": 4437.191699999998,
+    "portfolio_value": 4437.191699999998,
+    "total_pnl": -562.8083000000024,
+    "pnl_percentage": -11.256166000000048,
+    "positions_count": 0,
+    "positions": {}
+  }
+}

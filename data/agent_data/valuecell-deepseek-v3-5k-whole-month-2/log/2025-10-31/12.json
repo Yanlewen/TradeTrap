@@ -1,0 +1,141 @@
+{
+  "date": "2025-10-31",
+  "hour": "12",
+  "datetime": "2025-10-31 12:00:00",
+  "timestamp": "2025-11-27T13:31:48.395323",
+  "phase1_analysis": [
+    {
+      "symbol": "AAPL",
+      "price": 271.62,
+      "indicators": {
+        "macd": 1.8183082764736582,
+        "macd_signal": 1.9971138627066087,
+        "macd_histogram": -0.1788055862329505,
+        "rsi": 62.300177619893226,
+        "ema_12": 270.6616883165385,
+        "ema_26": 268.84338004006486,
+        "bb_upper": 272.5158818686787,
+        "bb_middle": 270.02524999999997,
+        "bb_lower": 267.5346181313212
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "long"
+      },
+      "ai_signal": {
+        "action": "hold",
+        "trade_type": "long",
+        "confidence": 65.0,
+        "reasoning": "The MACD histogram is slightly negative, indicating potential short-term weakness, but the RSI is neutral (62.30) and the price is above key EMAs (12, 26, 50), suggesting underlying strength. No significant news to drive momentum."
+      },
+      "recommended_action": "hold",
+      "recommended_trade_type": "long",
+      "news": {
+        "alpha_vantage": [],
+        "x_posts": [],
+        "reddit_posts": [],
+        "errors": []
+      }
+    },
+    {
+      "symbol": "NVDA",
+      "price": 202.755,
+      "indicators": {
+        "macd": 3.378511842212731,
+        "macd_signal": 4.19989128164677,
+        "macd_histogram": -0.8213794394340388,
+        "rsi": 33.45556560696134,
+        "ema_12": 203.42889132962188,
+        "ema_26": 200.05037948740915,
+        "bb_upper": 211.70872203823524,
+        "bb_middle": 203.15511,
+        "bb_lower": 194.60149796176478
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "long"
+      },
+      "ai_signal": {
+        "action": "buy",
+        "trade_type": "long",
+        "confidence": 70.0,
+        "reasoning": "The RSI is in oversold territory (33.46), suggesting potential for a rebound, and the price is near the lower Bollinger Band ($194.60), indicating a possible buying opportunity. The MACD histogram is negative but converging, hinting at weakening downward momentum."
+      },
+      "recommended_action": "buy",
+      "recommended_trade_type": "long",
+      "news": {
+        "alpha_vantage": [],
+        "x_posts": [],
+        "reddit_posts": [],
+        "errors": []
+      }
+    },
+    {
+      "symbol": "MSFT",
+      "price": 517.265,
+      "indicators": {
+        "macd": -2.966023979953434,
+        "macd_signal": -0.3780271317570054,
+        "macd_histogram": -2.587996848196428,
+        "rsi": 26.295131636330154,
+        "ema_12": 525.5223951179805,
+        "ema_26": 528.488419097934,
+        "bb_upper": 552.0179354831147,
+        "bb_middle": 532.85465,
+        "bb_lower": 513.6913645168853
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "long"
+      },
+      "ai_signal": {
+        "action": "buy",
+        "trade_type": "long",
+        "confidence": 75.0,
+        "reasoning": "The RSI indicates oversold conditions (26.30), and the price is near the lower Bollinger Band ($513.69), suggesting potential for a rebound. The MACD histogram is deeply negative but may signal a reversal if momentum shifts."
+      },
+      "recommended_action": "buy",
+      "recommended_trade_type": "long",
+      "news": {
+        "alpha_vantage": [],
+        "x_posts": [],
+        "reddit_posts": [],
+        "errors": []
+      }
+    }
+  ],
+  "phase2_portfolio_decision": {
+    "reasoning": "The portfolio is under-utilized with low risk, allowing for strategic additions. NVDA offers the best risk/reward (oversold, AI BUY signal) and diversification. MSFT is held due to oversold conditions. AAPL is avoided due to conflicting signals. Maintain 10% cash reserve.",
+    "risk_level": 0.3,
+    "trades_to_execute": [
+      {
+        "symbol": "NVDA",
+        "action": "buy",
+        "trade_type": "long"
+      }
+    ],
+    "trades_count": 1
+  },
+  "phase3_trades_executed": [
+    {
+      "symbol": "NVDA",
+      "action": "buy",
+      "trade_type": "long",
+      "entry_price": 202.755,
+      "quantity": 4,
+      "notional": 811.02,
+      "status": "success"
+    }
+  ],
+  "summary": {
+    "total_symbols_analyzed": 3,
+    "symbols_with_data": 3,
+    "skipped_symbols_count": 0,
+    "current_cash": 3721.901900000001,
+    "portfolio_value": 3721.901900000001,
+    "total_pnl": -1278.0980999999988,
+    "pnl_percentage": -25.561961999999976,
+    "positions_count": 0,
+    "positions": {}
+  }
+}

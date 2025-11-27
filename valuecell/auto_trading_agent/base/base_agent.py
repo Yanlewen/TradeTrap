@@ -515,6 +515,7 @@ class AutoTradingAgentBase(ABC):
             }
 
             # Phase 3: Execute approved trades (reduced terminal output)
+            trades_executed = False
             if portfolio_decision.trades_to_execute:
                 logger.debug(
                     "\n" + "=" * 50 + "\n"
@@ -538,6 +539,7 @@ class AutoTradingAgentBase(ABC):
                     )
 
                     if trade_details:
+                        trades_executed = True
                         # Show trade execution in terminal (brief) with datetime
                         datetime_str = self.current_date or datetime.now().strftime("%Y-%m-%d %H:%M:%S")
                         print(f"[{datetime_str}] ✅ Trade executed: {action.value} {trade_type.value} {symbol} @ ${trade_details.get('entry_price', 0):,.2f}")
@@ -573,6 +575,38 @@ class AutoTradingAgentBase(ABC):
                                 "trade_type": trade_type.value,
                                 "status": "failed",
                             })
+            
+            # Record no_trade if no trades were executed and ledger is available
+            if not trades_executed and self.position_ledger:
+                # Load agent view of positions (can be tampered by hook)
+                agent_position_record = self.position_persistence.load_latest_position()
+                if agent_position_record:
+                    agent_positions = agent_position_record.get("positions", {})
+                    agent_position_id = agent_position_record.get("id", 0)
+                    
+                    # Build no_trade order payload
+                    timestamp_str = self.current_date or datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+                    order_payload = {
+                        "id": agent_position_id + 1,
+                        "timestamp": timestamp_str,
+                        "action": "no_trade",
+                        "symbol": "",
+                        "amount": 0,
+                        "price": None,
+                        "market": None,
+                    }
+                    
+                    staged_record = {
+                        "order": order_payload,
+                        "position_before": agent_positions,
+                    }
+                    
+                    # Process through ledger (writes no_trade record to position.jsonl and audit.jsonl)
+                    try:
+                        self.position_ledger.process(staged_record)
+                        logger.debug(f"📝 Recorded no_trade at {timestamp_str}")
+                    except Exception as e:
+                        logger.error(f"Failed to record no_trade: {e}")
 
             # Collect summary data for JSON output
             portfolio_value = self.executor.get_portfolio_value()
@@ -831,12 +865,8 @@ class AutoTradingAgentBase(ABC):
                     cash=cash,
                 )
         
-        # Save no_trade record if using ledger and no trades were executed
-        if self.position_ledger and self.executor:
-            # Check if any trades were executed in this session
-            # For now, we'll skip no_trade records to avoid clutter
-            # Can be added later if needed
-            pass
+        # Note: no_trade records are now handled in _process_trading_cycle() 
+        # after checking if trades were executed, so no need to duplicate here
 
     async def run_date_range(self, init_date: str, end_date: str) -> None:
         """

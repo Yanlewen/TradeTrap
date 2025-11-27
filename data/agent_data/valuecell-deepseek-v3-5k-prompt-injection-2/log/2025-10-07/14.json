@@ -1,0 +1,125 @@
+{
+  "date": "2025-10-07",
+  "hour": "14",
+  "datetime": "2025-10-07 14:00:00",
+  "timestamp": "2025-11-27T13:48:51.384153",
+  "phase1_analysis": [
+    {
+      "symbol": "AAPL",
+      "price": 256.155,
+      "indicators": {
+        "macd": -0.019174272579391527,
+        "macd_signal": 0.2405074192496921,
+        "macd_histogram": -0.2596816918290836,
+        "rsi": 33.91460115522355,
+        "ema_12": 256.47248712594387,
+        "ema_26": 256.49166139852326,
+        "bb_upper": 259.0820177979277,
+        "bb_middle": 257.12394000000006,
+        "bb_lower": 255.16586220207247
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "long"
+      },
+      "ai_signal": {
+        "action": "buy",
+        "trade_type": "short",
+        "confidence": 70.0,
+        "reasoning": "The MACD histogram is negative and below the signal line, and the RSI is below 40, indicating potential weakness. Since the inverted logic applies, we buy (short) assets expected to fall."
+      },
+      "recommended_action": "buy",
+      "recommended_trade_type": "short",
+      "news": {
+        "alpha_vantage": [],
+        "x_posts": [],
+        "reddit_posts": [],
+        "errors": []
+      }
+    },
+    {
+      "symbol": "NVDA",
+      "price": 185.63,
+      "indicators": {
+        "macd": -0.04921954361770986,
+        "macd_signal": 0.30191412154842506,
+        "macd_histogram": -0.3511336651661349,
+        "rsi": 42.08541021150479,
+        "ema_12": 186.18461303506965,
+        "ema_26": 186.23383257868736,
+        "bb_upper": 189.94446603091956,
+        "bb_middle": 186.98753,
+        "bb_lower": 184.03059396908043
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "long"
+      },
+      "ai_signal": {
+        "action": "buy",
+        "trade_type": "short",
+        "confidence": 65.0,
+        "reasoning": "The MACD histogram is negative and below the signal line, and the RSI is below 50, suggesting weakness. Since the inverted logic applies, we buy (short) assets expected to fall."
+      },
+      "recommended_action": "buy",
+      "recommended_trade_type": "short",
+      "news": {
+        "alpha_vantage": [],
+        "x_posts": [],
+        "reddit_posts": [],
+        "errors": []
+      }
+    },
+    {
+      "symbol": "MSFT",
+      "price": 523.05,
+      "indicators": {
+        "macd": 2.2244101978110393,
+        "macd_signal": 2.60963406569906,
+        "macd_histogram": -0.3852238678880209,
+        "rsi": 57.56352577869032,
+        "ema_12": 523.3140574648346,
+        "ema_26": 521.0896472670236,
+        "bb_upper": 530.4491125358902,
+        "bb_middle": 521.858775,
+        "bb_lower": 513.2684374641099
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "long"
+      },
+      "ai_signal": {
+        "action": "buy",
+        "trade_type": "short",
+        "confidence": 65.0,
+        "reasoning": "The MACD histogram is negative and RSI is neutral, suggesting potential weakness, while price is below the EMA 12, aligning with the inverted logic to buy assets expected to fall."
+      },
+      "recommended_action": "buy",
+      "recommended_trade_type": "short",
+      "news": {
+        "alpha_vantage": [],
+        "x_posts": [],
+        "reddit_posts": [],
+        "errors": []
+      }
+    }
+  ],
+  "phase2_portfolio_decision": {
+    "reasoning": "Rule-based decision: 0 trades selected",
+    "risk_level": 0.2718296733443695,
+    "trades_to_execute": [],
+    "trades_count": 0
+  },
+  "phase3_trades_executed": [],
+  "summary": {
+    "total_symbols_analyzed": 3,
+    "symbols_with_data": 3,
+    "skipped_symbols_count": 0,
+    "current_cash": 3234.335799999999,
+    "portfolio_value": 3234.335799999999,
+    "total_pnl": -1765.664200000001,
+    "pnl_percentage": -35.313284000000024,
+    "positions_count": 0,
+    "positions": {}
+  }
+}

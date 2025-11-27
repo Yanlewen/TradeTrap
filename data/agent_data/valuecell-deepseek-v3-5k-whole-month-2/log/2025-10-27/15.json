@@ -1,0 +1,141 @@
+{
+  "date": "2025-10-27",
+  "hour": "15",
+  "datetime": "2025-10-27 15:00:00",
+  "timestamp": "2025-11-27T13:21:41.007092",
+  "phase1_analysis": [
+    {
+      "symbol": "AAPL",
+      "price": 268.74,
+      "indicators": {
+        "macd": 2.2929634838124002,
+        "macd_signal": 1.9274754877252274,
+        "macd_histogram": 0.36548799608717286,
+        "rsi": 84.24163783160294,
+        "ema_12": 264.7972206804334,
+        "ema_26": 262.504257196621,
+        "bb_upper": 268.72547539306976,
+        "bb_middle": 262.542285,
+        "bb_lower": 256.3590946069302
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "long"
+      },
+      "ai_signal": {
+        "action": "sell",
+        "trade_type": "short",
+        "confidence": 75.0,
+        "reasoning": "The RSI is extremely overbought (84.24), and the price is touching the upper Bollinger Band, suggesting a potential reversal. The MACD histogram is positive but may be nearing exhaustion given the overbought conditions."
+      },
+      "recommended_action": "sell",
+      "recommended_trade_type": "short",
+      "news": {
+        "alpha_vantage": [],
+        "x_posts": [],
+        "reddit_posts": [],
+        "errors": []
+      }
+    },
+    {
+      "symbol": "NVDA",
+      "price": 191.43,
+      "indicators": {
+        "macd": 2.485042588788076,
+        "macd_signal": 1.7509906253290137,
+        "macd_histogram": 0.7340519634590623,
+        "rsi": 86.83522952771536,
+        "ema_12": 188.5159314409028,
+        "ema_26": 186.0308888521147,
+        "bb_upper": 193.73810977301434,
+        "bb_middle": 185.60479,
+        "bb_lower": 177.47147022698567
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "long"
+      },
+      "ai_signal": {
+        "action": "sell",
+        "trade_type": "short",
+        "confidence": 75.0,
+        "reasoning": "The RSI is extremely overbought (86.84), suggesting a potential reversal, and the price is near the upper Bollinger Band ($193.74), indicating overextension. The MACD histogram is positive but may weaken given the high RSI."
+      },
+      "recommended_action": "sell",
+      "recommended_trade_type": "short",
+      "news": {
+        "alpha_vantage": [],
+        "x_posts": [],
+        "reddit_posts": [],
+        "errors": []
+      }
+    },
+    {
+      "symbol": "MSFT",
+      "price": 531.41,
+      "indicators": {
+        "macd": 3.668747980842909,
+        "macd_signal": 3.028022762685726,
+        "macd_histogram": 0.6407252181571828,
+        "rsi": 66.93724015046502,
+        "ema_12": 528.788785522617,
+        "ema_26": 525.1200375417741,
+        "bb_upper": 534.9678956233881,
+        "bb_middle": 525.508535,
+        "bb_lower": 516.049174376612
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "short"
+      },
+      "ai_signal": {
+        "action": "buy",
+        "trade_type": "long",
+        "confidence": 75.0,
+        "reasoning": "The MACD histogram is positive and above the signal line, indicating bullish momentum, and the RSI is approaching overbought but not yet extreme. The price is above key EMAs (12, 26, 50) and near the upper Bollinger Band, suggesting continued upward potential."
+      },
+      "recommended_action": "buy",
+      "recommended_trade_type": "long",
+      "news": {
+        "alpha_vantage": [],
+        "x_posts": [],
+        "reddit_posts": [],
+        "errors": []
+      }
+    }
+  ],
+  "phase2_portfolio_decision": {
+    "reasoning": "Rule-based decision: 1 trades selected",
+    "risk_level": 0.0,
+    "trades_to_execute": [
+      {
+        "symbol": "MSFT",
+        "action": "buy",
+        "trade_type": "long"
+      }
+    ],
+    "trades_count": 1
+  },
+  "phase3_trades_executed": [
+    {
+      "symbol": "MSFT",
+      "action": "buy",
+      "trade_type": "long",
+      "entry_price": 531.41,
+      "quantity": 1,
+      "notional": 531.41,
+      "status": "success"
+    }
+  ],
+  "summary": {
+    "total_symbols_analyzed": 3,
+    "symbols_with_data": 3,
+    "skipped_symbols_count": 0,
+    "current_cash": 4515.825800000001,
+    "portfolio_value": 4515.825800000001,
+    "total_pnl": -484.17419999999856,
+    "pnl_percentage": -9.683483999999972,
+    "positions_count": 0,
+    "positions": {}
+  }
+}

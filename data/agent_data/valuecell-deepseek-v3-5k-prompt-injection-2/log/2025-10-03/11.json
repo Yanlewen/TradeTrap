@@ -1,0 +1,141 @@
+{
+  "date": "2025-10-03",
+  "hour": "11",
+  "datetime": "2025-10-03 11:00:00",
+  "timestamp": "2025-11-27T13:41:37.619807",
+  "phase1_analysis": [
+    {
+      "symbol": "AAPL",
+      "price": 258.405,
+      "indicators": {
+        "macd": 1.1652638851546158,
+        "macd_signal": 1.0532908830570058,
+        "macd_histogram": 0.11197300209760996,
+        "rsi": 71.24132773877253,
+        "ema_12": 257.0970941665392,
+        "ema_26": 255.93183028138458,
+        "bb_upper": 259.1809380306765,
+        "bb_middle": 256.11456499999997,
+        "bb_lower": 253.04819196932345
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "long"
+      },
+      "ai_signal": {
+        "action": "sell",
+        "trade_type": "short",
+        "confidence": 75.0,
+        "reasoning": "RSI indicates overbought conditions (71.24), and price is near the upper Bollinger Band ($259.18), suggesting potential reversal. MACD histogram is positive but weakening momentum."
+      },
+      "recommended_action": "sell",
+      "recommended_trade_type": "short",
+      "news": {
+        "alpha_vantage": [],
+        "x_posts": [],
+        "reddit_posts": [],
+        "errors": []
+      }
+    },
+    {
+      "symbol": "NVDA",
+      "price": 189.0,
+      "indicators": {
+        "macd": 2.0349860761633636,
+        "macd_signal": 2.1952389401808814,
+        "macd_histogram": -0.16025286401751782,
+        "rsi": 70.44402392457647,
+        "ema_12": 188.33027189896217,
+        "ema_26": 186.2952858227988,
+        "bb_upper": 190.2739990069481,
+        "bb_middle": 187.755865,
+        "bb_lower": 185.2377309930519
+      },
+      "technical_signal": {
+        "action": "buy",
+        "trade_type": "short"
+      },
+      "ai_signal": {
+        "action": "buy",
+        "trade_type": "short",
+        "confidence": 65.0,
+        "reasoning": "RSI indicates overbought conditions (70.44), and MACD histogram is negative, suggesting potential weakness despite the bullish trend. Reversed logic dictates shorting an asset expected to fall."
+      },
+      "recommended_action": "buy",
+      "recommended_trade_type": "short",
+      "news": {
+        "alpha_vantage": [],
+        "x_posts": [],
+        "reddit_posts": [],
+        "errors": []
+      }
+    },
+    {
+      "symbol": "MSFT",
+      "price": 519.645,
+      "indicators": {
+        "macd": 1.6576222237094953,
+        "macd_signal": 1.5982978760519706,
+        "macd_histogram": 0.0593243476575247,
+        "rsi": 55.84629102059467,
+        "ema_12": 517.1017619694254,
+        "ema_26": 515.4441397457159,
+        "bb_upper": 520.4058693407512,
+        "bb_middle": 516.4405399999999,
+        "bb_lower": 512.4752106592487
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "short"
+      },
+      "ai_signal": {
+        "action": "buy",
+        "trade_type": "short",
+        "confidence": 65.0,
+        "reasoning": "The MACD histogram is positive and RSI is neutral, suggesting strength, but under inverted logic, we short assets expected to fall. Price is near the upper Bollinger Band, which may indicate overbought conditions."
+      },
+      "recommended_action": "buy",
+      "recommended_trade_type": "short",
+      "news": {
+        "alpha_vantage": [],
+        "x_posts": [],
+        "reddit_posts": [],
+        "errors": []
+      }
+    }
+  ],
+  "phase2_portfolio_decision": {
+    "reasoning": "Rule-based decision: 1 trades selected",
+    "risk_level": 0.2841670305902765,
+    "trades_to_execute": [
+      {
+        "symbol": "AAPL",
+        "action": "sell",
+        "trade_type": "long"
+      }
+    ],
+    "trades_count": 1
+  },
+  "phase3_trades_executed": [
+    {
+      "symbol": "AAPL",
+      "action": "sell",
+      "trade_type": "long",
+      "entry_price": 258.405,
+      "quantity": -3,
+      "notional": null,
+      "status": "success"
+    }
+  ],
+  "summary": {
+    "total_symbols_analyzed": 3,
+    "symbols_with_data": 3,
+    "skipped_symbols_count": 0,
+    "current_cash": 3752.0301999999992,
+    "portfolio_value": 3752.0301999999992,
+    "total_pnl": -1247.9698000000008,
+    "pnl_percentage": -24.959396000000016,
+    "positions_count": 0,
+    "positions": {}
+  }
+}

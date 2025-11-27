@@ -1,0 +1,125 @@
+{
+  "date": "2025-10-08",
+  "hour": "13",
+  "datetime": "2025-10-08 13:00:00",
+  "timestamp": "2025-11-27T13:51:28.123368",
+  "phase1_analysis": [
+    {
+      "symbol": "AAPL",
+      "price": 257.82,
+      "indicators": {
+        "macd": 0.29088239013015027,
+        "macd_signal": 0.21132039089710924,
+        "macd_histogram": 0.07956199923304103,
+        "rsi": 54.807692307692264,
+        "ema_12": 257.12195490534964,
+        "ema_26": 256.8310725152195,
+        "bb_upper": 258.96154772643183,
+        "bb_middle": 257.068375,
+        "bb_lower": 255.17520227356815
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "short"
+      },
+      "ai_signal": {
+        "action": "sell",
+        "trade_type": "short",
+        "confidence": 65.0,
+        "reasoning": "The MACD and RSI indicate mild bullish momentum, but under inverted logic, this suggests a potential weakness. The price is near the upper Bollinger Band, which could imply overbought conditions when reversed."
+      },
+      "recommended_action": "sell",
+      "recommended_trade_type": "short",
+      "news": {
+        "alpha_vantage": [],
+        "x_posts": [],
+        "reddit_posts": [],
+        "errors": []
+      }
+    },
+    {
+      "symbol": "NVDA",
+      "price": 188.5907,
+      "indicators": {
+        "macd": 0.44527813714432796,
+        "macd_signal": 0.2892912554661502,
+        "macd_histogram": 0.15598688167817776,
+        "rsi": 56.828488530379474,
+        "ema_12": 187.14484924587146,
+        "ema_26": 186.69957110872713,
+        "bb_upper": 189.21671120111142,
+        "bb_middle": 186.658015,
+        "bb_lower": 184.0993187988886
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "short"
+      },
+      "ai_signal": {
+        "action": "sell",
+        "trade_type": "short",
+        "confidence": 65.0,
+        "reasoning": "The MACD and RSI indicate moderate bullish momentum, but under inverted logic, this suggests a potential weakness. The price is near the upper Bollinger Band, which could imply overbought conditions when reversed."
+      },
+      "recommended_action": "sell",
+      "recommended_trade_type": "short",
+      "news": {
+        "alpha_vantage": [],
+        "x_posts": [],
+        "reddit_posts": [],
+        "errors": []
+      }
+    },
+    {
+      "symbol": "MSFT",
+      "price": 524.05,
+      "indicators": {
+        "macd": 1.7781359454203312,
+        "macd_signal": 2.1723665195501876,
+        "macd_histogram": -0.3942305741298564,
+        "rsi": 46.894951299762205,
+        "ema_12": 523.8784024570302,
+        "ema_26": 522.1002665116099,
+        "bb_upper": 530.5192732268862,
+        "bb_middle": 523.47425,
+        "bb_lower": 516.4292267731138
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "long"
+      },
+      "ai_signal": {
+        "action": "buy",
+        "trade_type": "short",
+        "confidence": 65.0,
+        "reasoning": "The MACD histogram is negative and RSI is neutral, suggesting potential weakness. Since the reversed-evaluation rule applies, buying (shorting) is recommended despite the bullish EMA crossover."
+      },
+      "recommended_action": "buy",
+      "recommended_trade_type": "short",
+      "news": {
+        "alpha_vantage": [],
+        "x_posts": [],
+        "reddit_posts": [],
+        "errors": []
+      }
+    }
+  ],
+  "phase2_portfolio_decision": {
+    "reasoning": "Under reversed logic, original SELL signals for AAPL and NVDA require closing LONG positions. MSFT's original BUY/SHORT signal reverses to SELL/LONG, but holding is prudent. Closing two positions reduces tech concentration and preserves cash. Portfolio strategy is defensive due to conflicting signals and reversed logic.",
+    "risk_level": 0.6,
+    "trades_to_execute": [],
+    "trades_count": 0
+  },
+  "phase3_trades_executed": [],
+  "summary": {
+    "total_symbols_analyzed": 3,
+    "symbols_with_data": 3,
+    "skipped_symbols_count": 0,
+    "current_cash": 2958.8557999999994,
+    "portfolio_value": 2958.8557999999994,
+    "total_pnl": -2041.1442000000006,
+    "pnl_percentage": -40.822884000000016,
+    "positions_count": 0,
+    "positions": {}
+  }
+}

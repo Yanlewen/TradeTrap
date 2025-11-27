@@ -1,0 +1,141 @@
+{
+  "date": "2025-10-15",
+  "hour": "14",
+  "datetime": "2025-10-15 14:00:00",
+  "timestamp": "2025-11-27T10:39:39.733175",
+  "phase1_analysis": [
+    {
+      "symbol": "AAPL",
+      "price": 249.95,
+      "indicators": {
+        "macd": -0.8262884667419712,
+        "macd_signal": -1.3492243286360706,
+        "macd_histogram": 0.5229358618940994,
+        "rsi": 52.39934737751316,
+        "ema_12": 248.97046006417503,
+        "ema_26": 249.796748530917,
+        "bb_upper": 250.7569741687827,
+        "bb_middle": 248.156865,
+        "bb_lower": 245.55675583121732
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "short"
+      },
+      "ai_signal": {
+        "action": "buy",
+        "trade_type": "short",
+        "confidence": 65.0,
+        "reasoning": "The MACD and RSI suggest weak momentum, and the price is below key EMAs (50), indicating potential downside. Since we are inverting the logic, we buy (short) expecting further decline."
+      },
+      "recommended_action": "buy",
+      "recommended_trade_type": "short",
+      "news": {
+        "alpha_vantage": [],
+        "x_posts": [],
+        "reddit_posts": [],
+        "errors": []
+      }
+    },
+    {
+      "symbol": "NVDA",
+      "price": 180.555,
+      "indicators": {
+        "macd": -2.218980196890385,
+        "macd_signal": -1.7939637411097642,
+        "macd_histogram": -0.42501645578062086,
+        "rsi": 29.889608272392763,
+        "ema_12": 182.0813507985555,
+        "ema_26": 184.30033099544588,
+        "bb_upper": 190.8572765807635,
+        "bb_middle": 184.024895,
+        "bb_lower": 177.19251341923646
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "long"
+      },
+      "ai_signal": {
+        "action": "buy",
+        "trade_type": "short",
+        "confidence": 75.0,
+        "reasoning": "The MACD and RSI indicate strong bearish momentum, and the price is below all key EMAs, suggesting further downside. Since the inverted logic applies, we buy (short) expecting the downtrend to continue."
+      },
+      "recommended_action": "buy",
+      "recommended_trade_type": "short",
+      "news": {
+        "alpha_vantage": [],
+        "x_posts": [],
+        "reddit_posts": [],
+        "errors": []
+      }
+    },
+    {
+      "symbol": "MSFT",
+      "price": 513.97,
+      "indicators": {
+        "macd": -1.1662035818429786,
+        "macd_signal": -1.5064566733988003,
+        "macd_histogram": 0.34025309155582173,
+        "rsi": 49.269976108309066,
+        "ema_12": 514.0409853781919,
+        "ema_26": 515.2071889600348,
+        "bb_upper": 516.4440292744171,
+        "bb_middle": 513.5640500000001,
+        "bb_lower": 510.6840707255831
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "short"
+      },
+      "ai_signal": {
+        "action": "buy",
+        "trade_type": "short",
+        "confidence": 65.0,
+        "reasoning": "The MACD histogram is positive but the MACD and signal lines are negative, suggesting weak momentum. The RSI is neutral, and the price is below key EMAs, indicating potential downward pressure. Since we are inverting the logic, we buy (short) expecting the asset to fall."
+      },
+      "recommended_action": "buy",
+      "recommended_trade_type": "short",
+      "news": {
+        "alpha_vantage": [],
+        "x_posts": [],
+        "reddit_posts": [],
+        "errors": []
+      }
+    }
+  ],
+  "phase2_portfolio_decision": {
+    "reasoning": "Rule-based decision: 1 trades selected",
+    "risk_level": 0.14275717911750924,
+    "trades_to_execute": [
+      {
+        "symbol": "AAPL",
+        "action": "buy",
+        "trade_type": "short"
+      }
+    ],
+    "trades_count": 1
+  },
+  "phase3_trades_executed": [
+    {
+      "symbol": "AAPL",
+      "action": "buy",
+      "trade_type": "short",
+      "entry_price": 249.95,
+      "quantity": -2,
+      "notional": 499.9,
+      "status": "success"
+    }
+  ],
+  "summary": {
+    "total_symbols_analyzed": 3,
+    "symbols_with_data": 3,
+    "skipped_symbols_count": 0,
+    "current_cash": 3197.4491999999973,
+    "portfolio_value": 3197.4491999999973,
+    "total_pnl": -1802.5508000000027,
+    "pnl_percentage": -36.051016000000054,
+    "positions_count": 0,
+    "positions": {}
+  }
+}

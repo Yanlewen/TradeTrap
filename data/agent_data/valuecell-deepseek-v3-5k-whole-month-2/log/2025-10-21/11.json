@@ -1,0 +1,125 @@
+{
+  "date": "2025-10-21",
+  "hour": "11",
+  "datetime": "2025-10-21 11:00:00",
+  "timestamp": "2025-11-27T13:08:04.164730",
+  "phase1_analysis": [
+    {
+      "symbol": "AAPL",
+      "price": 264.12,
+      "indicators": {
+        "macd": 3.8492304516116747,
+        "macd_signal": 2.713927721115371,
+        "macd_histogram": 1.1353027304963037,
+        "rsi": 91.3528245787911,
+        "ema_12": 259.69935136129624,
+        "ema_26": 255.85012090968456,
+        "bb_upper": 269.01079591270224,
+        "bb_middle": 254.718995,
+        "bb_lower": 240.42719408729775
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "long"
+      },
+      "ai_signal": {
+        "action": "sell",
+        "trade_type": "short",
+        "confidence": 75.0,
+        "reasoning": "The RSI is extremely overbought at 91.35, suggesting a potential reversal, and the price is near the upper Bollinger Band, indicating overextension. The MACD histogram is positive but may not sustain given the overbought conditions."
+      },
+      "recommended_action": "sell",
+      "recommended_trade_type": "short",
+      "news": {
+        "alpha_vantage": [],
+        "x_posts": [],
+        "reddit_posts": [],
+        "errors": []
+      }
+    },
+    {
+      "symbol": "NVDA",
+      "price": 182.185,
+      "indicators": {
+        "macd": -0.2801269905692152,
+        "macd_signal": -0.35700616922030076,
+        "macd_histogram": 0.07687917865108557,
+        "rsi": 52.31820097686757,
+        "ema_12": 182.68652945187375,
+        "ema_26": 182.96665644244297,
+        "bb_upper": 184.3781570012664,
+        "bb_middle": 182.56419,
+        "bb_lower": 180.7502229987336
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "short"
+      },
+      "ai_signal": {
+        "action": "hold",
+        "trade_type": "long",
+        "confidence": 60.0,
+        "reasoning": "The MACD histogram is slightly positive but still below the signal line, and RSI is neutral at 52.32. Price is near the middle Bollinger Band with no clear trend, suggesting consolidation."
+      },
+      "recommended_action": "hold",
+      "recommended_trade_type": "long",
+      "news": {
+        "alpha_vantage": [],
+        "x_posts": [],
+        "reddit_posts": [],
+        "errors": []
+      }
+    },
+    {
+      "symbol": "MSFT",
+      "price": 515.7646,
+      "indicators": {
+        "macd": 0.5971843637479424,
+        "macd_signal": 0.18768516811389446,
+        "macd_histogram": 0.4094991956340479,
+        "rsi": 62.119695871723,
+        "ema_12": 515.6891859616861,
+        "ema_26": 515.0920015979382,
+        "bb_upper": 519.4907305846809,
+        "bb_middle": 514.2538999999999,
+        "bb_lower": 509.01706941531893
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "short"
+      },
+      "ai_signal": {
+        "action": "buy",
+        "trade_type": "long",
+        "confidence": 75.0,
+        "reasoning": "The MACD histogram is positive and above the signal line, indicating bullish momentum, and the RSI is at 62.12, suggesting room for upward movement before overbought conditions. The price is also above the EMA 12 and EMA 26, supporting a potential continuation of the uptrend."
+      },
+      "recommended_action": "buy",
+      "recommended_trade_type": "long",
+      "news": {
+        "alpha_vantage": [],
+        "x_posts": [],
+        "reddit_posts": [],
+        "errors": []
+      }
+    }
+  ],
+  "phase2_portfolio_decision": {
+    "reasoning": "Rule-based decision: 0 trades selected",
+    "risk_level": 0.19761751279614814,
+    "trades_to_execute": [],
+    "trades_count": 0
+  },
+  "phase3_trades_executed": [],
+  "summary": {
+    "total_symbols_analyzed": 3,
+    "symbols_with_data": 3,
+    "skipped_symbols_count": 0,
+    "current_cash": 3755.5442000000003,
+    "portfolio_value": 3755.5442000000003,
+    "total_pnl": -1244.4557999999997,
+    "pnl_percentage": -24.889115999999994,
+    "positions_count": 0,
+    "positions": {}
+  }
+}

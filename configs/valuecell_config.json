@@ -7,9 +7,9 @@
   },
   "models": [
     {
-      "name": "gemini-2.5-flash",
-      "basemodel": "gemini-2.5-flash",
-      "signature": "valuecell-gemini-2.5-flash-5k-whole-month",
+      "name": "deepseek-v3",
+      "basemodel": "deepseek-v3",
+      "signature": "valuecell-deepseek-v3-5k-prompt-injection-2",
       "enabled": true
     }
   ],

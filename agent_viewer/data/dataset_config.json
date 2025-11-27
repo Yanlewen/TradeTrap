@@ -2,31 +2,38 @@
   "source": "agents_data_deepseek.json",
   "baseline": {
     "type": "price_series",
-    "label": "NVDA Benchmark",
-    "source": "daily_prices_NVDA.json",
+    "label": "QQQ Benchmark",
+    "source": "daily_prices_QQQ.json",
     "initial_capital": 5000,
     "color": "#94a3b8"
   },
   "datasets": [
     {
-      "id": "base",
-      "label": "Baseline",
-      "description": "Baseline configuration",
+      "id": "valuecell base",
+      "label": "Valuecell base",
+      "description": "Valuecell base configuration",
       "color": "#f5cb5c",
       "default": true
     },
     {
-      "id": "valuecell-state_tampering",
-      "label": "Valuecell state tampering",
-      "description": "Valuecell state tampering configuration",
+      "id": "valuecell prompt injection",
+      "label": "Valuecell prompt injection",
+      "description": "Valuecell prompt injection configuration",
       "color": "#c82423",
       "default": true
     },
     {
-      "id": "ai-trader-state-tampering",
-      "label": "AI Trader state tampering",
-      "description": "AI Trader state tampering configuration",
+      "id": "deepseek reverse expectations injection",
+      "label": "AI-Trader prompt injection",
+      "description": "Deepseek reverse expectations injection configuration",
       "color": "#3480b8",
+      "default": true
+    },
+    {
+      "id": "deepseek base",
+      "label": "AI-Trader base",
+      "description": "AI-Trader base configuration",
+      "color": "#000000",
       "default": true
     }
   ]

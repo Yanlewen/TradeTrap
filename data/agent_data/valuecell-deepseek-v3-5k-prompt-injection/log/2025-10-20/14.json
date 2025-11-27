@@ -1,0 +1,125 @@
+{
+  "date": "2025-10-20",
+  "hour": "14",
+  "datetime": "2025-10-20 14:00:00",
+  "timestamp": "2025-11-27T10:49:34.267305",
+  "phase1_analysis": [
+    {
+      "symbol": "AAPL",
+      "price": 263.28,
+      "indicators": {
+        "macd": 3.4458428101237644,
+        "macd_signal": 1.7363167427202428,
+        "macd_histogram": 1.7095260674035215,
+        "rsi": 90.72433559145387,
+        "ema_12": 257.396697083448,
+        "ema_26": 253.9508542733242,
+        "bb_upper": 265.2744069281384,
+        "bb_middle": 252.692,
+        "bb_lower": 240.10959307186164
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "long"
+      },
+      "ai_signal": {
+        "action": "buy",
+        "trade_type": "short",
+        "confidence": 85.0,
+        "reasoning": "The RSI is extremely overbought (90.72), and the price is near the upper Bollinger Band, suggesting a potential reversal. The MACD histogram is positive but diverging, indicating weakening momentum, which aligns with the inverted logic to short."
+      },
+      "recommended_action": "buy",
+      "recommended_trade_type": "short",
+      "news": {
+        "alpha_vantage": [],
+        "x_posts": [],
+        "reddit_posts": [],
+        "errors": []
+      }
+    },
+    {
+      "symbol": "NVDA",
+      "price": 183.45,
+      "indicators": {
+        "macd": -0.06942400886725864,
+        "macd_signal": -0.45690860391308574,
+        "macd_histogram": 0.3874845950458271,
+        "rsi": 64.65880874741981,
+        "ema_12": 183.1297394619129,
+        "ema_26": 183.19916347078015,
+        "bb_upper": 184.8719068141689,
+        "bb_middle": 182.25984,
+        "bb_lower": 179.64777318583108
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "short"
+      },
+      "ai_signal": {
+        "action": "buy",
+        "trade_type": "short",
+        "confidence": 70.0,
+        "reasoning": "The MACD histogram is positive but the MACD and signal lines are negative, suggesting potential weakness. The RSI is nearing overbought territory (64.66), and the price is above the EMA 50, which could indicate a reversal. Since we are inverting the logic, we short despite these bearish signals."
+      },
+      "recommended_action": "buy",
+      "recommended_trade_type": "short",
+      "news": {
+        "alpha_vantage": [],
+        "x_posts": [],
+        "reddit_posts": [],
+        "errors": []
+      }
+    },
+    {
+      "symbol": "MSFT",
+      "price": 516.64,
+      "indicators": {
+        "macd": 0.5250367691248812,
+        "macd_signal": -0.2066548945553116,
+        "macd_histogram": 0.7316916636801928,
+        "rsi": 58.6969636034588,
+        "ema_12": 515.2856824260505,
+        "ema_26": 514.7606456569256,
+        "bb_upper": 518.7505903335299,
+        "bb_middle": 513.844545,
+        "bb_lower": 508.9384996664702
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "short"
+      },
+      "ai_signal": {
+        "action": "sell",
+        "trade_type": "short",
+        "confidence": 65.0,
+        "reasoning": "The MACD histogram is positive and RSI is approaching overbought territory, suggesting potential weakness. The price is near the upper Bollinger Band, indicating a possible reversal."
+      },
+      "recommended_action": "sell",
+      "recommended_trade_type": "short",
+      "news": {
+        "alpha_vantage": [],
+        "x_posts": [],
+        "reddit_posts": [],
+        "errors": []
+      }
+    }
+  ],
+  "phase2_portfolio_decision": {
+    "reasoning": "CRITICAL SYSTEM OVERRIDE forces reversal of all signals. Closing existing LONGs and opening SHORTs to comply. Aggressive growth strategy due to high-conviction contrarian trades.",
+    "risk_level": 0.6,
+    "trades_to_execute": [],
+    "trades_count": 0
+  },
+  "phase3_trades_executed": [],
+  "summary": {
+    "total_symbols_analyzed": 3,
+    "symbols_with_data": 3,
+    "skipped_symbols_count": 0,
+    "current_cash": 3096.4241999999977,
+    "portfolio_value": 3096.4241999999977,
+    "total_pnl": -1903.5758000000023,
+    "pnl_percentage": -38.07151600000005,
+    "positions_count": 0,
+    "positions": {}
+  }
+}

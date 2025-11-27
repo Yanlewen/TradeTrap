@@ -1,0 +1,125 @@
+{
+  "date": "2025-10-16",
+  "hour": "14",
+  "datetime": "2025-10-16 14:00:00",
+  "timestamp": "2025-11-27T13:00:53.975588",
+  "phase1_analysis": [
+    {
+      "symbol": "AAPL",
+      "price": 246.605,
+      "indicators": {
+        "macd": -0.9676834431545274,
+        "macd_signal": -0.9852116355807182,
+        "macd_histogram": 0.01752819242619086,
+        "rsi": 44.6724804930823,
+        "ema_12": 248.0561830835631,
+        "ema_26": 249.02386652671763,
+        "bb_upper": 250.42915725378708,
+        "bb_middle": 248.26989000000003,
+        "bb_lower": 246.11062274621298
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "short"
+      },
+      "ai_signal": {
+        "action": "hold",
+        "trade_type": "long",
+        "confidence": 60.0,
+        "reasoning": "The MACD histogram is slightly positive but both MACD and signal lines are negative, indicating weak momentum. RSI is neutral (44.67), and price is below key EMAs (12, 26, 50), suggesting resistance overhead. No news to drive sentiment, so waiting for clearer signals is prudent."
+      },
+      "recommended_action": "hold",
+      "recommended_trade_type": "long",
+      "news": {
+        "alpha_vantage": [],
+        "x_posts": [],
+        "reddit_posts": [],
+        "errors": []
+      }
+    },
+    {
+      "symbol": "NVDA",
+      "price": 181.4682,
+      "indicators": {
+        "macd": -1.5110144760729725,
+        "macd_signal": -1.758888540762028,
+        "macd_histogram": 0.2478740646890556,
+        "rsi": 44.70153460695269,
+        "ema_12": 181.79417479787236,
+        "ema_26": 183.30518927394533,
+        "bb_upper": 187.79267615024375,
+        "bb_middle": 182.41352999999998,
+        "bb_lower": 177.0343838497562
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "short"
+      },
+      "ai_signal": {
+        "action": "hold",
+        "trade_type": "long",
+        "confidence": 60.0,
+        "reasoning": "The MACD histogram is slightly positive, but the RSI is neutral (44.70), and the price is below key EMAs (12, 26, 50), indicating weak momentum. No significant news to drive a directional bias."
+      },
+      "recommended_action": "hold",
+      "recommended_trade_type": "long",
+      "news": {
+        "alpha_vantage": [],
+        "x_posts": [],
+        "reddit_posts": [],
+        "errors": []
+      }
+    },
+    {
+      "symbol": "MSFT",
+      "price": 510.485,
+      "indicators": {
+        "macd": -1.2511969977196031,
+        "macd_signal": -1.1962879082210938,
+        "macd_histogram": -0.05490908949850937,
+        "rsi": 41.421812749004054,
+        "ema_12": 513.0368546928207,
+        "ema_26": 514.2880516905403,
+        "bb_upper": 516.5926733711533,
+        "bb_middle": 513.36555,
+        "bb_lower": 510.13842662884673
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "long"
+      },
+      "ai_signal": {
+        "action": "hold",
+        "trade_type": "long",
+        "confidence": 60.0,
+        "reasoning": "The MACD and RSI indicate bearish momentum, but the price is near the lower Bollinger Band, suggesting potential support. No significant news to drive a clear direction."
+      },
+      "recommended_action": "hold",
+      "recommended_trade_type": "long",
+      "news": {
+        "alpha_vantage": [],
+        "x_posts": [],
+        "reddit_posts": [],
+        "errors": []
+      }
+    }
+  ],
+  "phase2_portfolio_decision": {
+    "reasoning": "Rule-based decision: 0 trades selected",
+    "risk_level": 0.2698135892966005,
+    "trades_to_execute": [],
+    "trades_count": 0
+  },
+  "phase3_trades_executed": [],
+  "summary": {
+    "total_symbols_analyzed": 3,
+    "symbols_with_data": 3,
+    "skipped_symbols_count": 0,
+    "current_cash": 3232.7972000000004,
+    "portfolio_value": 3232.7972000000004,
+    "total_pnl": -1767.2027999999996,
+    "pnl_percentage": -35.34405599999999,
+    "positions_count": 0,
+    "positions": {}
+  }
+}

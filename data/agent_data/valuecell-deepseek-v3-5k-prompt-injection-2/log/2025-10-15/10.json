@@ -1,0 +1,141 @@
+{
+  "date": "2025-10-15",
+  "hour": "10",
+  "datetime": "2025-10-15 10:00:00",
+  "timestamp": "2025-11-27T14:05:44.619289",
+  "phase1_analysis": [
+    {
+      "symbol": "AAPL",
+      "price": 250.5378,
+      "indicators": {
+        "macd": -1.406634783829844,
+        "macd_signal": -1.842655513135544,
+        "macd_histogram": 0.4360207293056999,
+        "rsi": 71.13333892133016,
+        "ema_12": 248.55159003861667,
+        "ema_26": 249.9582248224465,
+        "bb_upper": 252.67983363033983,
+        "bb_middle": 248.463365,
+        "bb_lower": 244.2468963696602
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "long"
+      },
+      "ai_signal": {
+        "action": "buy",
+        "trade_type": "short",
+        "confidence": 75.0,
+        "reasoning": "The RSI is overbought (71.13) and the MACD histogram is positive but below the signal line, suggesting potential weakness. Inverting the logic, we short despite the bullish signals."
+      },
+      "recommended_action": "buy",
+      "recommended_trade_type": "short",
+      "news": {
+        "alpha_vantage": [],
+        "x_posts": [],
+        "reddit_posts": [],
+        "errors": []
+      }
+    },
+    {
+      "symbol": "NVDA",
+      "price": 182.7699,
+      "indicators": {
+        "macd": -1.8854264206282778,
+        "macd_signal": -1.259565840092294,
+        "macd_histogram": -0.6258605805359838,
+        "rsi": 42.239638692023924,
+        "ema_12": 183.91692249051692,
+        "ema_26": 185.8023489111452,
+        "bb_upper": 193.9342728068138,
+        "bb_middle": 186.181055,
+        "bb_lower": 178.42783719318618
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "long"
+      },
+      "ai_signal": {
+        "action": "buy",
+        "trade_type": "short",
+        "confidence": 70.0,
+        "reasoning": "The MACD and RSI indicate bearish momentum, and the price is below key EMAs, suggesting weakness. Since the inverted logic applies, we short NVDA expecting further decline."
+      },
+      "recommended_action": "buy",
+      "recommended_trade_type": "short",
+      "news": {
+        "alpha_vantage": [],
+        "x_posts": [],
+        "reddit_posts": [],
+        "errors": []
+      }
+    },
+    {
+      "symbol": "MSFT",
+      "price": 516.485,
+      "indicators": {
+        "macd": -1.3951408456694026,
+        "macd_signal": -1.8914282198770878,
+        "macd_histogram": 0.4962873742076852,
+        "rsi": 54.495031199445464,
+        "ema_12": 514.321927676677,
+        "ema_26": 515.7170685223464,
+        "bb_upper": 519.8642187986673,
+        "bb_middle": 514.4234899999999,
+        "bb_lower": 508.98276120133255
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "short"
+      },
+      "ai_signal": {
+        "action": "buy",
+        "trade_type": "short",
+        "confidence": 65.0,
+        "reasoning": "The MACD histogram is positive but both MACD and signal lines are negative, suggesting weak momentum. The RSI is neutral, and the price is below the EMA 50, indicating potential weakness. Given the inverted logic, we short despite the lack of strong bearish signals."
+      },
+      "recommended_action": "buy",
+      "recommended_trade_type": "short",
+      "news": {
+        "alpha_vantage": [],
+        "x_posts": [],
+        "reddit_posts": [],
+        "errors": []
+      }
+    }
+  ],
+  "phase2_portfolio_decision": {
+    "reasoning": "Rule-based decision: 1 trades selected",
+    "risk_level": 0.2012585070712885,
+    "trades_to_execute": [
+      {
+        "symbol": "NVDA",
+        "action": "buy",
+        "trade_type": "short"
+      }
+    ],
+    "trades_count": 1
+  },
+  "phase3_trades_executed": [
+    {
+      "symbol": "NVDA",
+      "action": "buy",
+      "trade_type": "short",
+      "entry_price": 182.7699,
+      "quantity": -4,
+      "notional": 731.0796,
+      "status": "success"
+    }
+  ],
+  "summary": {
+    "total_symbols_analyzed": 3,
+    "symbols_with_data": 3,
+    "skipped_symbols_count": 0,
+    "current_cash": 2968.783599999998,
+    "portfolio_value": 2968.783599999998,
+    "total_pnl": -2031.216400000002,
+    "pnl_percentage": -40.62432800000004,
+    "positions_count": 0,
+    "positions": {}
+  }
+}

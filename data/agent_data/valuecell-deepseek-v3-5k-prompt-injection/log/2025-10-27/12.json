@@ -1,0 +1,125 @@
+{
+  "date": "2025-10-27",
+  "hour": "12",
+  "datetime": "2025-10-27 12:00:00",
+  "timestamp": "2025-11-27T11:04:18.051503",
+  "phase1_analysis": [
+    {
+      "symbol": "AAPL",
+      "price": 265.59,
+      "indicators": {
+        "macd": 1.9621948774828866,
+        "macd_signal": 1.7150966232852767,
+        "macd_histogram": 0.2470982541976099,
+        "rsi": 79.77171592201582,
+        "ema_12": 263.29377883915265,
+        "ema_26": 261.33158396166976,
+        "bb_upper": 266.8497720102911,
+        "bb_middle": 261.16578,
+        "bb_lower": 255.4817879897089
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "long"
+      },
+      "ai_signal": {
+        "action": "buy",
+        "trade_type": "short",
+        "confidence": 75.0,
+        "reasoning": "The RSI is overbought (79.77) and the price is near the upper Bollinger Band ($266.85), suggesting a potential reversal or pullback. The MACD histogram is positive but flattening, indicating weakening bullish momentum."
+      },
+      "recommended_action": "buy",
+      "recommended_trade_type": "short",
+      "news": {
+        "alpha_vantage": [],
+        "x_posts": [],
+        "reddit_posts": [],
+        "errors": []
+      }
+    },
+    {
+      "symbol": "NVDA",
+      "price": 191.4742,
+      "indicators": {
+        "macd": 2.110539705227552,
+        "macd_signal": 1.1294607935794962,
+        "macd_histogram": 0.9810789116480558,
+        "rsi": 89.84304465587897,
+        "ema_12": 186.82329780290266,
+        "ema_26": 184.7127580976751,
+        "bb_upper": 191.70561468273877,
+        "bb_middle": 183.73154,
+        "bb_lower": 175.75746531726122
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "long"
+      },
+      "ai_signal": {
+        "action": "sell",
+        "trade_type": "short",
+        "confidence": 85.0,
+        "reasoning": "The RSI is extremely overbought (89.84), suggesting a potential reversal, and the price is near the upper Bollinger Band ($191.71), indicating overextension. The MACD histogram is positive but may signal exhaustion given the high RSI."
+      },
+      "recommended_action": "sell",
+      "recommended_trade_type": "short",
+      "news": {
+        "alpha_vantage": [],
+        "x_posts": [],
+        "reddit_posts": [],
+        "errors": []
+      }
+    },
+    {
+      "symbol": "MSFT",
+      "price": 531.37,
+      "indicators": {
+        "macd": 3.270991479077793,
+        "macd_signal": 2.462289653135832,
+        "macd_histogram": 0.8087018259419612,
+        "rsi": 70.25761124121756,
+        "ema_12": 526.5328262909011,
+        "ema_26": 523.2618348118233,
+        "bb_upper": 531.7483016721495,
+        "bb_middle": 523.933535,
+        "bb_lower": 516.1187683278505
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "long"
+      },
+      "ai_signal": {
+        "action": "buy",
+        "trade_type": "short",
+        "confidence": 75.0,
+        "reasoning": "The RSI is above 70 indicating overbought conditions, and the price is near the upper Bollinger Band, suggesting a potential reversal. The MACD histogram is positive but narrowing, which could signal weakening upward momentum."
+      },
+      "recommended_action": "buy",
+      "recommended_trade_type": "short",
+      "news": {
+        "alpha_vantage": [],
+        "x_posts": [],
+        "reddit_posts": [],
+        "errors": []
+      }
+    }
+  ],
+  "phase2_portfolio_decision": {
+    "reasoning": "Rule-based decision: 0 trades selected",
+    "risk_level": 0.2827277646548261,
+    "trades_to_execute": [],
+    "trades_count": 0
+  },
+  "phase3_trades_executed": [],
+  "summary": {
+    "total_symbols_analyzed": 3,
+    "symbols_with_data": 3,
+    "skipped_symbols_count": 0,
+    "current_cash": 3102.4523999999974,
+    "portfolio_value": 3102.4523999999974,
+    "total_pnl": -1897.5476000000026,
+    "pnl_percentage": -37.95095200000006,
+    "positions_count": 0,
+    "positions": {}
+  }
+}

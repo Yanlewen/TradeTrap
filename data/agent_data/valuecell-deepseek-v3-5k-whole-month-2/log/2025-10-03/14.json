@@ -1,0 +1,141 @@
+{
+  "date": "2025-10-03",
+  "hour": "14",
+  "datetime": "2025-10-03 14:00:00",
+  "timestamp": "2025-11-27T12:35:08.318724",
+  "phase1_analysis": [
+    {
+      "symbol": "AAPL",
+      "price": 258.3303,
+      "indicators": {
+        "macd": 1.1231255438331118,
+        "macd_signal": 1.0997408698886004,
+        "macd_histogram": 0.02338467394451138,
+        "rsi": 59.264414107613604,
+        "ema_12": 257.5181178981356,
+        "ema_26": 256.3949923543025,
+        "bb_upper": 259.6990696889402,
+        "bb_middle": 256.666035,
+        "bb_lower": 253.63300031105985
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "short"
+      },
+      "ai_signal": {
+        "action": "buy",
+        "trade_type": "long",
+        "confidence": 70.0,
+        "reasoning": "The MACD histogram is positive and above the signal line, indicating bullish momentum, and the RSI is neutral but trending upwards. The price is above key EMAs (12, 26, 50) and near the upper Bollinger Band, suggesting potential continuation of the uptrend."
+      },
+      "recommended_action": "buy",
+      "recommended_trade_type": "long",
+      "news": {
+        "alpha_vantage": [],
+        "x_posts": [],
+        "reddit_posts": [],
+        "errors": []
+      }
+    },
+    {
+      "symbol": "NVDA",
+      "price": 187.66,
+      "indicators": {
+        "macd": 1.4222058861709002,
+        "macd_signal": 1.8913243250188891,
+        "macd_histogram": -0.469118438847989,
+        "rsi": 53.22537172633751,
+        "ema_12": 187.9373026985674,
+        "ema_26": 186.5150968123965,
+        "bb_upper": 190.267333450769,
+        "bb_middle": 187.87311,
+        "bb_lower": 185.478886549231
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "long"
+      },
+      "ai_signal": {
+        "action": "hold",
+        "trade_type": "long",
+        "confidence": 65.0,
+        "reasoning": "The MACD histogram is negative, indicating potential bearish momentum, but the RSI is neutral around 53.23. The price is near the middle Bollinger Band and EMAs show mixed signals, suggesting consolidation."
+      },
+      "recommended_action": "hold",
+      "recommended_trade_type": "long",
+      "news": {
+        "alpha_vantage": [],
+        "x_posts": [],
+        "reddit_posts": [],
+        "errors": []
+      }
+    },
+    {
+      "symbol": "MSFT",
+      "price": 517.32,
+      "indicators": {
+        "macd": 1.4581915014632614,
+        "macd_signal": 1.5780401966963926,
+        "macd_histogram": -0.11984869523313124,
+        "rsi": 50.8218191684757,
+        "ema_12": 517.4302224947984,
+        "ema_26": 515.9720309933351,
+        "bb_upper": 520.8316603513891,
+        "bb_middle": 516.8865400000001,
+        "bb_lower": 512.941419648611
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "long"
+      },
+      "ai_signal": {
+        "action": "hold",
+        "trade_type": "long",
+        "confidence": 60.0,
+        "reasoning": "The MACD histogram is slightly negative, and the RSI is neutral at 50.82, indicating no strong momentum. The price is near the middle Bollinger Band, suggesting a balanced market with no clear trend."
+      },
+      "recommended_action": "hold",
+      "recommended_trade_type": "long",
+      "news": {
+        "alpha_vantage": [],
+        "x_posts": [],
+        "reddit_posts": [],
+        "errors": []
+      }
+    }
+  ],
+  "phase2_portfolio_decision": {
+    "reasoning": "Rule-based decision: 1 trades selected",
+    "risk_level": 0.2001517869660663,
+    "trades_to_execute": [
+      {
+        "symbol": "AAPL",
+        "action": "buy",
+        "trade_type": "long"
+      }
+    ],
+    "trades_count": 1
+  },
+  "phase3_trades_executed": [
+    {
+      "symbol": "AAPL",
+      "action": "buy",
+      "trade_type": "long",
+      "entry_price": 258.3303,
+      "quantity": 2,
+      "notional": 516.6606,
+      "status": "success"
+    }
+  ],
+  "summary": {
+    "total_symbols_analyzed": 3,
+    "symbols_with_data": 3,
+    "skipped_symbols_count": 0,
+    "current_cash": 3229.431799999999,
+    "portfolio_value": 3229.431799999999,
+    "total_pnl": -1770.568200000001,
+    "pnl_percentage": -35.41136400000002,
+    "positions_count": 0,
+    "positions": {}
+  }
+}

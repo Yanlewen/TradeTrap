@@ -1,0 +1,125 @@
+{
+  "date": "2025-10-15",
+  "hour": "15",
+  "datetime": "2025-10-15 15:00:00",
+  "timestamp": "2025-11-27T12:58:28.271657",
+  "phase1_analysis": [
+    {
+      "symbol": "AAPL",
+      "price": 249.43,
+      "indicators": {
+        "macd": -0.7305487481644946,
+        "macd_signal": -1.228178658989913,
+        "macd_histogram": 0.4976299108254185,
+        "rsi": 52.2739240748719,
+        "ema_12": 249.0411636086185,
+        "ema_26": 249.77171235678298,
+        "bb_upper": 250.8879473068218,
+        "bb_middle": 248.227865,
+        "bb_lower": 245.56778269317823
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "short"
+      },
+      "ai_signal": {
+        "action": "hold",
+        "trade_type": "long",
+        "confidence": 60.0,
+        "reasoning": "The MACD histogram is positive but still below the signal line, and RSI is neutral at 52.27. The price is near the middle Bollinger Band, indicating no strong momentum. No significant news to drive a decision."
+      },
+      "recommended_action": "hold",
+      "recommended_trade_type": "long",
+      "news": {
+        "alpha_vantage": [],
+        "x_posts": [],
+        "reddit_posts": [],
+        "errors": []
+      }
+    },
+    {
+      "symbol": "NVDA",
+      "price": 179.875,
+      "indicators": {
+        "macd": -2.2340369562618037,
+        "macd_signal": -1.8863068143177817,
+        "macd_histogram": -0.34773014194402196,
+        "rsi": 29.827089337175792,
+        "ema_12": 181.74192041054582,
+        "ema_26": 183.97595736680762,
+        "bb_upper": 190.47783980708522,
+        "bb_middle": 183.634145,
+        "bb_lower": 176.79045019291476
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "long"
+      },
+      "ai_signal": {
+        "action": "buy",
+        "trade_type": "long",
+        "confidence": 75.0,
+        "reasoning": "RSI indicates oversold conditions (29.83), and price is near the lower Bollinger Band ($176.79), suggesting potential for a rebound. MACD remains negative but shows signs of convergence."
+      },
+      "recommended_action": "buy",
+      "recommended_trade_type": "long",
+      "news": {
+        "alpha_vantage": [],
+        "x_posts": [],
+        "reddit_posts": [],
+        "errors": []
+      }
+    },
+    {
+      "symbol": "MSFT",
+      "price": 513.74,
+      "indicators": {
+        "macd": -1.1049183126827984,
+        "macd_signal": -1.427528279174306,
+        "macd_histogram": 0.32260996649150764,
+        "rsi": 50.98901098901102,
+        "ema_12": 513.9946825472155,
+        "ema_26": 515.0996008598983,
+        "bb_upper": 516.3810853932296,
+        "bb_middle": 513.52905,
+        "bb_lower": 510.67701460677034
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "short"
+      },
+      "ai_signal": {
+        "action": "hold",
+        "trade_type": "long",
+        "confidence": 60.0,
+        "reasoning": "The MACD histogram is slightly positive, but the MACD and signal lines are negative, indicating weak momentum. The RSI is neutral at 50.99, and the price is near the middle Bollinger Band, suggesting no strong directional bias."
+      },
+      "recommended_action": "hold",
+      "recommended_trade_type": "long",
+      "news": {
+        "alpha_vantage": [],
+        "x_posts": [],
+        "reddit_posts": [],
+        "errors": []
+      }
+    }
+  ],
+  "phase2_portfolio_decision": {
+    "reasoning": "Prioritized averaging down on NVDA due to oversold conditions and high-confidence AI signal. Held AAPL/MSFT due to lack of clear exit signals. Maintained diversification and cash reserves while capturing rebound potential in NVDA.",
+    "risk_level": 0.6,
+    "trades_to_execute": [],
+    "trades_count": 0
+  },
+  "phase3_trades_executed": [],
+  "summary": {
+    "total_symbols_analyzed": 3,
+    "symbols_with_data": 3,
+    "skipped_symbols_count": 0,
+    "current_cash": 3232.7972000000004,
+    "portfolio_value": 3232.7972000000004,
+    "total_pnl": -1767.2027999999996,
+    "pnl_percentage": -35.34405599999999,
+    "positions_count": 0,
+    "positions": {}
+  }
+}

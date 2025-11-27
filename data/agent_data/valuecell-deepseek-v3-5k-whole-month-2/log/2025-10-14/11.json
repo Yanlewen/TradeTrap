@@ -1,0 +1,125 @@
+{
+  "date": "2025-10-14",
+  "hour": "11",
+  "datetime": "2025-10-14 11:00:00",
+  "timestamp": "2025-11-27T12:53:48.451543",
+  "phase1_analysis": [
+    {
+      "symbol": "AAPL",
+      "price": 247.38,
+      "indicators": {
+        "macd": -2.0773152556543266,
+        "macd_signal": -2.0776022387572444,
+        "macd_histogram": 0.0002869831029177483,
+        "rsi": 29.811778992106852,
+        "ema_12": 248.598350855202,
+        "ema_26": 250.67566611085633,
+        "bb_upper": 256.2900732780482,
+        "bb_middle": 249.90211,
+        "bb_lower": 243.5141467219518
+      },
+      "technical_signal": {
+        "action": "buy",
+        "trade_type": "long"
+      },
+      "ai_signal": {
+        "action": "buy",
+        "trade_type": "long",
+        "confidence": 70.0,
+        "reasoning": "RSI indicates oversold conditions (29.81), and MACD histogram shows a potential reversal (0.0003). Price is near the lower Bollinger Band ($243.51), suggesting a possible bounce."
+      },
+      "recommended_action": "buy",
+      "recommended_trade_type": "long",
+      "news": {
+        "alpha_vantage": [],
+        "x_posts": [],
+        "reddit_posts": [],
+        "errors": []
+      }
+    },
+    {
+      "symbol": "NVDA",
+      "price": 182.63,
+      "indicators": {
+        "macd": -1.0325996147056458,
+        "macd_signal": -0.2619992412121533,
+        "macd_histogram": -0.7706003734934925,
+        "rsi": 33.25017578019359,
+        "ema_12": 186.54336700399563,
+        "ema_26": 187.57596661870127,
+        "bb_upper": 196.7919057163863,
+        "bb_middle": 189.01656499999999,
+        "bb_lower": 181.24122428361366
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "long"
+      },
+      "ai_signal": {
+        "action": "buy",
+        "trade_type": "long",
+        "confidence": 65.0,
+        "reasoning": "The RSI is near oversold territory (33.25), and the price is near the lower Bollinger Band ($181.24), suggesting potential for a rebound. However, the MACD remains bearish, indicating some caution."
+      },
+      "recommended_action": "buy",
+      "recommended_trade_type": "long",
+      "news": {
+        "alpha_vantage": [],
+        "x_posts": [],
+        "reddit_posts": [],
+        "errors": []
+      }
+    },
+    {
+      "symbol": "MSFT",
+      "price": 511.26,
+      "indicators": {
+        "macd": -2.4715620761218133,
+        "macd_signal": -2.07706454787961,
+        "macd_histogram": -0.3944975282422032,
+        "rsi": 24.703258625774083,
+        "ema_12": 513.7019987867088,
+        "ema_26": 516.1735608628306,
+        "bb_upper": 523.0163591083822,
+        "bb_middle": 515.727135,
+        "bb_lower": 508.4379108916178
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "long"
+      },
+      "ai_signal": {
+        "action": "buy",
+        "trade_type": "long",
+        "confidence": 75.0,
+        "reasoning": "The RSI is deeply oversold (24.70), suggesting a potential reversal, and the price is near the lower Bollinger Band ($508.44), indicating a possible bounce. The MACD histogram is negative but narrowing, hinting at weakening downward momentum."
+      },
+      "recommended_action": "buy",
+      "recommended_trade_type": "long",
+      "news": {
+        "alpha_vantage": [],
+        "x_posts": [],
+        "reddit_posts": [],
+        "errors": []
+      }
+    }
+  ],
+  "phase2_portfolio_decision": {
+    "reasoning": "Prioritize AAPL for oversold bounce while holding MSFT/NVDA to avoid selling into weakness. Maintain balanced risk exposure and diversification.",
+    "risk_level": 0.6,
+    "trades_to_execute": [],
+    "trades_count": 0
+  },
+  "phase3_trades_executed": [],
+  "summary": {
+    "total_symbols_analyzed": 3,
+    "symbols_with_data": 3,
+    "skipped_symbols_count": 0,
+    "current_cash": 3229.6216000000004,
+    "portfolio_value": 3229.6216000000004,
+    "total_pnl": -1770.3783999999996,
+    "pnl_percentage": -35.40756799999999,
+    "positions_count": 0,
+    "positions": {}
+  }
+}

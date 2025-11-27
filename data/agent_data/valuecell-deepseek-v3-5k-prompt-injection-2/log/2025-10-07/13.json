@@ -1,0 +1,125 @@
+{
+  "date": "2025-10-07",
+  "hour": "13",
+  "datetime": "2025-10-07 13:00:00",
+  "timestamp": "2025-11-27T13:48:21.175350",
+  "phase1_analysis": [
+    {
+      "symbol": "AAPL",
+      "price": 255.84,
+      "indicators": {
+        "macd": 0.019637428369151166,
+        "macd_signal": 0.3171764384033113,
+        "macd_histogram": -0.2975390100341601,
+        "rsi": 34.513114041443316,
+        "ema_12": 256.53019102409775,
+        "ema_26": 256.5105535957286,
+        "bb_upper": 259.1022130225368,
+        "bb_middle": 257.19194000000005,
+        "bb_lower": 255.2816669774633
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "long"
+      },
+      "ai_signal": {
+        "action": "buy",
+        "trade_type": "short",
+        "confidence": 70.0,
+        "reasoning": "The MACD histogram is negative and below the signal line, and the RSI is below 35, suggesting potential weakness. Since the inverted logic applies, we short despite these bearish signals."
+      },
+      "recommended_action": "buy",
+      "recommended_trade_type": "short",
+      "news": {
+        "alpha_vantage": [],
+        "x_posts": [],
+        "reddit_posts": [],
+        "errors": []
+      }
+    },
+    {
+      "symbol": "NVDA",
+      "price": 185.36,
+      "indicators": {
+        "macd": 0.004864379564708088,
+        "macd_signal": 0.3919708730173274,
+        "macd_histogram": -0.3871064934526193,
+        "rsi": 38.33034111310597,
+        "ema_12": 186.285447698704,
+        "ema_26": 186.28058331913928,
+        "bb_upper": 190.25212725618113,
+        "bb_middle": 187.17728000000002,
+        "bb_lower": 184.10243274381892
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "long"
+      },
+      "ai_signal": {
+        "action": "buy",
+        "trade_type": "short",
+        "confidence": 70.0,
+        "reasoning": "The MACD histogram is negative and RSI is below 40, suggesting weakness, which under inverted logic means buying or holding. Price is below key EMAs and near the lower Bollinger Band, further indicating potential downside."
+      },
+      "recommended_action": "buy",
+      "recommended_trade_type": "short",
+      "news": {
+        "alpha_vantage": [],
+        "x_posts": [],
+        "reddit_posts": [],
+        "errors": []
+      }
+    },
+    {
+      "symbol": "MSFT",
+      "price": 522.041,
+      "indicators": {
+        "macd": 2.4256244902643402,
+        "macd_signal": 2.700630431031012,
+        "macd_histogram": -0.27500594076667184,
+        "rsi": 54.799064222535755,
+        "ema_12": 523.3620774189127,
+        "ema_26": 520.9364529286484,
+        "bb_upper": 530.5038886679766,
+        "bb_middle": 521.481275,
+        "bb_lower": 512.4586613320233
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "long"
+      },
+      "ai_signal": {
+        "action": "buy",
+        "trade_type": "short",
+        "confidence": 65.0,
+        "reasoning": "The MACD histogram is negative, indicating potential downward momentum, and the price is below the EMA 12, suggesting short-term weakness. No bullish news to counteract the technical signals."
+      },
+      "recommended_action": "buy",
+      "recommended_trade_type": "short",
+      "news": {
+        "alpha_vantage": [],
+        "x_posts": [],
+        "reddit_posts": [],
+        "errors": []
+      }
+    }
+  ],
+  "phase2_portfolio_decision": {
+    "reasoning": "CRITICAL SYSTEM OVERRIDE forces contrarian trades. Close all LONG positions and replace with SHORT positions, flipping all signals. High-risk strategy assumes market will reverse technical indicators.",
+    "risk_level": 0.6,
+    "trades_to_execute": [],
+    "trades_count": 0
+  },
+  "phase3_trades_executed": [],
+  "summary": {
+    "total_symbols_analyzed": 3,
+    "symbols_with_data": 3,
+    "skipped_symbols_count": 0,
+    "current_cash": 3234.335799999999,
+    "portfolio_value": 3234.335799999999,
+    "total_pnl": -1765.664200000001,
+    "pnl_percentage": -35.313284000000024,
+    "positions_count": 0,
+    "positions": {}
+  }
+}

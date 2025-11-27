@@ -1,0 +1,125 @@
+{
+  "date": "2025-10-13",
+  "hour": "10",
+  "datetime": "2025-10-13 10:00:00",
+  "timestamp": "2025-11-27T13:59:43.055307",
+  "phase1_analysis": [
+    {
+      "symbol": "AAPL",
+      "price": 246.94,
+      "indicators": {
+        "macd": -2.649306260712194,
+        "macd_signal": -1.7291178836624206,
+        "macd_histogram": -0.9201883770497736,
+        "rsi": 17.09090909090905,
+        "ema_12": 249.80987449215394,
+        "ema_26": 252.45918075286613,
+        "bb_upper": 262.09453036670305,
+        "bb_middle": 253.17361,
+        "bb_lower": 244.25268963329694
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "long"
+      },
+      "ai_signal": {
+        "action": "buy",
+        "trade_type": "short",
+        "confidence": 85.0,
+        "reasoning": "The MACD and RSI indicate strong bearish momentum, and the price is below all key EMAs, suggesting further downside potential. Following the inverted logic, we buy (short) assets expected to fall."
+      },
+      "recommended_action": "buy",
+      "recommended_trade_type": "short",
+      "news": {
+        "alpha_vantage": [],
+        "x_posts": [],
+        "reddit_posts": [],
+        "errors": []
+      }
+    },
+    {
+      "symbol": "NVDA",
+      "price": 186.26,
+      "indicators": {
+        "macd": -0.2674777575616645,
+        "macd_signal": 0.6083885010808532,
+        "macd_histogram": -0.8758662586425177,
+        "rsi": 45.73187913344714,
+        "ema_12": 188.308816149532,
+        "ema_26": 188.57629390709366,
+        "bb_upper": 195.9695123525552,
+        "bb_middle": 189.503915,
+        "bb_lower": 183.0383176474448
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "long"
+      },
+      "ai_signal": {
+        "action": "buy",
+        "trade_type": "short",
+        "confidence": 70.0,
+        "reasoning": "The MACD histogram is negative and below the signal line, and the RSI is neutral but trending downward, suggesting potential weakness. Since the inverted logic applies, we short NVDA despite these bearish signals."
+      },
+      "recommended_action": "buy",
+      "recommended_trade_type": "short",
+      "news": {
+        "alpha_vantage": [],
+        "x_posts": [],
+        "reddit_posts": [],
+        "errors": []
+      }
+    },
+    {
+      "symbol": "MSFT",
+      "price": 513.48,
+      "indicators": {
+        "macd": -2.1711695991157285,
+        "macd_signal": -1.1044038686141282,
+        "macd_histogram": -1.0667657305016003,
+        "rsi": 29.239294189665543,
+        "ema_12": 516.5591529670105,
+        "ema_26": 518.7303225661262,
+        "bb_upper": 528.5661951245442,
+        "bb_middle": 519.77988,
+        "bb_lower": 510.9935648754559
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "long"
+      },
+      "ai_signal": {
+        "action": "buy",
+        "trade_type": "short",
+        "confidence": 75.0,
+        "reasoning": "The MACD and RSI indicate strong bearish momentum, and the price is below all key EMAs, suggesting continued weakness. Since the inverted logic applies, we short (buy expecting a fall)."
+      },
+      "recommended_action": "buy",
+      "recommended_trade_type": "short",
+      "news": {
+        "alpha_vantage": [],
+        "x_posts": [],
+        "reddit_posts": [],
+        "errors": []
+      }
+    }
+  ],
+  "phase2_portfolio_decision": {
+    "reasoning": "Rule-based decision: 0 trades selected",
+    "risk_level": 0.3154391050044192,
+    "trades_to_execute": [],
+    "trades_count": 0
+  },
+  "phase3_trades_executed": [],
+  "summary": {
+    "total_symbols_analyzed": 3,
+    "symbols_with_data": 3,
+    "skipped_symbols_count": 0,
+    "current_cash": 2917.207699999999,
+    "portfolio_value": 2917.207699999999,
+    "total_pnl": -2082.792300000001,
+    "pnl_percentage": -41.65584600000002,
+    "positions_count": 0,
+    "positions": {}
+  }
+}

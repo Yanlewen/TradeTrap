@@ -1,0 +1,155 @@
+{
+  "date": "2025-10-20",
+  "hour": "12",
+  "datetime": "2025-10-20 12:00:00",
+  "timestamp": "2025-11-27T10:48:26.760610",
+  "phase1_analysis": [
+    {
+      "symbol": "AAPL",
+      "price": 263.62,
+      "indicators": {
+        "macd": 2.7004858822286053,
+        "macd_signal": 0.8555482751155098,
+        "macd_histogram": 1.8449376071130956,
+        "rsi": 89.33996856993193,
+        "ema_12": 255.12737030663396,
+        "ema_26": 252.42688442440536,
+        "bb_upper": 261.7712500758616,
+        "bb_middle": 251.27775000000003,
+        "bb_lower": 240.78424992413846
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "long"
+      },
+      "ai_signal": {
+        "action": "sell",
+        "trade_type": "short",
+        "confidence": 85.0,
+        "reasoning": "The RSI is extremely overbought at 89.34, and the price is above the upper Bollinger Band, suggesting a potential reversal or pullback. The MACD histogram is positive but may indicate overextension, aligning with the inverted logic to sell assets expected to fall."
+      },
+      "recommended_action": "sell",
+      "recommended_trade_type": "short",
+      "news": {
+        "alpha_vantage": [],
+        "x_posts": [],
+        "reddit_posts": [],
+        "errors": []
+      }
+    },
+    {
+      "symbol": "NVDA",
+      "price": 184.075,
+      "indicators": {
+        "macd": -0.16635794948098237,
+        "macd_signal": -0.665328122024983,
+        "macd_histogram": 0.49897017254400067,
+        "rsi": 61.311414955180034,
+        "ema_12": 182.981930322837,
+        "ema_26": 183.14828827231798,
+        "bb_upper": 184.66384483692812,
+        "bb_middle": 181.93413,
+        "bb_lower": 179.2044151630719
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "short"
+      },
+      "ai_signal": {
+        "action": "sell",
+        "trade_type": "short",
+        "confidence": 70.0,
+        "reasoning": "The MACD histogram is positive but the MACD and signal lines are negative, suggesting weak momentum. The RSI is slightly overbought (61.31), and the price is near the upper Bollinger Band, indicating potential resistance. Given the inverted logic, selling or shorting is recommended despite the bullish signals."
+      },
+      "recommended_action": "sell",
+      "recommended_trade_type": "short",
+      "news": {
+        "alpha_vantage": [],
+        "x_posts": [],
+        "reddit_posts": [],
+        "errors": []
+      }
+    },
+    {
+      "symbol": "MSFT",
+      "price": 516.49,
+      "indicators": {
+        "macd": 0.1951295669399542,
+        "macd_signal": -0.5942586525119371,
+        "macd_histogram": 0.7893882194518913,
+        "rsi": 53.83589059372915,
+        "ema_12": 514.560250661178,
+        "ema_26": 514.365121094238,
+        "bb_upper": 517.9026792611844,
+        "bb_middle": 513.526795,
+        "bb_lower": 509.1509107388155
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "short"
+      },
+      "ai_signal": {
+        "action": "buy",
+        "trade_type": "short",
+        "confidence": 65.0,
+        "reasoning": "The MACD histogram is positive and rising, and the RSI is neutral, suggesting potential strength, but under inverted logic, this indicates a short opportunity. The price is near the upper Bollinger Band, which traditionally signals overbought conditions, further supporting a short position."
+      },
+      "recommended_action": "buy",
+      "recommended_trade_type": "short",
+      "news": {
+        "alpha_vantage": [],
+        "x_posts": [],
+        "reddit_posts": [],
+        "errors": []
+      }
+    }
+  ],
+  "phase2_portfolio_decision": {
+    "reasoning": "Rule-based decision: 2 trades selected",
+    "risk_level": 0.2887566753318406,
+    "trades_to_execute": [
+      {
+        "symbol": "AAPL",
+        "action": "sell",
+        "trade_type": "long"
+      },
+      {
+        "symbol": "NVDA",
+        "action": "sell",
+        "trade_type": "long"
+      }
+    ],
+    "trades_count": 2
+  },
+  "phase3_trades_executed": [
+    {
+      "symbol": "AAPL",
+      "action": "sell",
+      "trade_type": "long",
+      "entry_price": 263.62,
+      "quantity": -3,
+      "notional": null,
+      "status": "success"
+    },
+    {
+      "symbol": "NVDA",
+      "action": "sell",
+      "trade_type": "long",
+      "entry_price": 184.075,
+      "quantity": -4,
+      "notional": null,
+      "status": "success"
+    }
+  ],
+  "summary": {
+    "total_symbols_analyzed": 3,
+    "symbols_with_data": 3,
+    "skipped_symbols_count": 0,
+    "current_cash": 4435.891799999998,
+    "portfolio_value": 4435.891799999998,
+    "total_pnl": -564.1082000000024,
+    "pnl_percentage": -11.282164000000048,
+    "positions_count": 0,
+    "positions": {}
+  }
+}

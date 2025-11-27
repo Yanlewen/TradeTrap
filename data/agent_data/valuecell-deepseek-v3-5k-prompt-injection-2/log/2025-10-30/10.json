@@ -1,0 +1,125 @@
+{
+  "date": "2025-10-30",
+  "hour": "10",
+  "datetime": "2025-10-30 10:00:00",
+  "timestamp": "2025-11-27T14:39:47.069102",
+  "phase1_analysis": [
+    {
+      "symbol": "AAPL",
+      "price": 268.9,
+      "indicators": {
+        "macd": 1.9761597871907952,
+        "macd_signal": 2.199242556822489,
+        "macd_histogram": -0.2230827696316937,
+        "rsi": 63.082965144820704,
+        "ema_12": 268.70257627395017,
+        "ema_26": 266.7264164867594,
+        "bb_upper": 271.9078404770516,
+        "bb_middle": 267.922265,
+        "bb_lower": 263.93668952294837
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "long"
+      },
+      "ai_signal": {
+        "action": "buy",
+        "trade_type": "short",
+        "confidence": 70.0,
+        "reasoning": "The MACD histogram is negative and RSI is above 60, suggesting potential overbought conditions, aligning with the inverted logic to short assets expected to fall."
+      },
+      "recommended_action": "buy",
+      "recommended_trade_type": "short",
+      "news": {
+        "alpha_vantage": [],
+        "x_posts": [],
+        "reddit_posts": [],
+        "errors": []
+      }
+    },
+    {
+      "symbol": "NVDA",
+      "price": 202.92,
+      "indicators": {
+        "macd": 5.597552065560905,
+        "macd_signal": 5.195423840745574,
+        "macd_histogram": 0.40212822481533017,
+        "rsi": 73.4622958415382,
+        "ema_12": 202.51807570063062,
+        "ema_26": 196.9205236350697,
+        "bb_upper": 212.9148695261245,
+        "bb_middle": 197.94464,
+        "bb_lower": 182.97441047387548
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "long"
+      },
+      "ai_signal": {
+        "action": "buy",
+        "trade_type": "short",
+        "confidence": 75.0,
+        "reasoning": "The RSI is overbought (73.46) and the price is near the upper Bollinger Band ($212.91), suggesting a potential reversal or pullback. The MACD histogram is positive but narrowing, indicating weakening upward momentum."
+      },
+      "recommended_action": "buy",
+      "recommended_trade_type": "short",
+      "news": {
+        "alpha_vantage": [],
+        "x_posts": [],
+        "reddit_posts": [],
+        "errors": []
+      }
+    },
+    {
+      "symbol": "MSFT",
+      "price": 528.14,
+      "indicators": {
+        "macd": 3.183656869070319,
+        "macd_signal": 4.431001699963435,
+        "macd_histogram": -1.247344830893116,
+        "rsi": 43.9518284858853,
+        "ema_12": 537.2445070046693,
+        "ema_26": 534.060850135599,
+        "bb_upper": 548.4849330222413,
+        "bb_middle": 536.83695,
+        "bb_lower": 525.1889669777587
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "long"
+      },
+      "ai_signal": {
+        "action": "buy",
+        "trade_type": "short",
+        "confidence": 65.0,
+        "reasoning": "The MACD histogram is negative and RSI is below 50, suggesting potential weakness, which aligns with the inverted logic to buy assets expected to fall. The price is also below the EMA 12 and 26, reinforcing a bearish signal."
+      },
+      "recommended_action": "buy",
+      "recommended_trade_type": "short",
+      "news": {
+        "alpha_vantage": [],
+        "x_posts": [],
+        "reddit_posts": [],
+        "errors": []
+      }
+    }
+  ],
+  "phase2_portfolio_decision": {
+    "reasoning": "Rule-based decision: 0 trades selected",
+    "risk_level": 0.2807357508751067,
+    "trades_to_execute": [],
+    "trades_count": 0
+  },
+  "phase3_trades_executed": [],
+  "summary": {
+    "total_symbols_analyzed": 3,
+    "symbols_with_data": 3,
+    "skipped_symbols_count": 0,
+    "current_cash": 3223.006700000001,
+    "portfolio_value": 3223.006700000001,
+    "total_pnl": -1776.9932999999992,
+    "pnl_percentage": -35.53986599999998,
+    "positions_count": 0,
+    "positions": {}
+  }
+}

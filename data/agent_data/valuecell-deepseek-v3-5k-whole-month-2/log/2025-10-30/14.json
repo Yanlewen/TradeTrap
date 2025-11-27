@@ -1,0 +1,125 @@
+{
+  "date": "2025-10-30",
+  "hour": "14",
+  "datetime": "2025-10-30 14:00:00",
+  "timestamp": "2025-11-27T13:29:54.622762",
+  "phase1_analysis": [
+    {
+      "symbol": "AAPL",
+      "price": 271.37,
+      "indicators": {
+        "macd": 2.0763544573114245,
+        "macd_signal": 2.1258565311845734,
+        "macd_histogram": -0.049502073873148866,
+        "rsi": 58.42803030303044,
+        "ema_12": 270.05874553613774,
+        "ema_26": 267.9823910788263,
+        "bb_upper": 272.35854049314474,
+        "bb_middle": 269.256005,
+        "bb_lower": 266.1534695068553
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "long"
+      },
+      "ai_signal": {
+        "action": "hold",
+        "trade_type": "long",
+        "confidence": 60.0,
+        "reasoning": "The MACD histogram is slightly negative, indicating weak momentum, and the RSI is neutral at 58.43. The price is near the upper Bollinger Band, suggesting potential resistance."
+      },
+      "recommended_action": "hold",
+      "recommended_trade_type": "long",
+      "news": {
+        "alpha_vantage": [],
+        "x_posts": [],
+        "reddit_posts": [],
+        "errors": []
+      }
+    },
+    {
+      "symbol": "NVDA",
+      "price": 203.505,
+      "indicators": {
+        "macd": 4.355706589931856,
+        "macd_signal": 4.910513169187373,
+        "macd_histogram": -0.5548065792555175,
+        "rsi": 68.91499057196725,
+        "ema_12": 203.00665277876885,
+        "ema_26": 198.650946188837,
+        "bb_upper": 213.25613095851108,
+        "bb_middle": 200.689455,
+        "bb_lower": 188.12277904148894
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "long"
+      },
+      "ai_signal": {
+        "action": "hold",
+        "trade_type": "long",
+        "confidence": 65.0,
+        "reasoning": "RSI is nearing overbought (68.91), and MACD histogram is negative, suggesting potential short-term consolidation. No significant news to drive momentum."
+      },
+      "recommended_action": "hold",
+      "recommended_trade_type": "long",
+      "news": {
+        "alpha_vantage": [],
+        "x_posts": [],
+        "reddit_posts": [],
+        "errors": []
+      }
+    },
+    {
+      "symbol": "MSFT",
+      "price": 523.54,
+      "indicators": {
+        "macd": -0.4070370189374444,
+        "macd_signal": 2.106510002220831,
+        "macd_histogram": -2.5135470211582756,
+        "rsi": 27.162465396945905,
+        "ema_12": 531.1930240004455,
+        "ema_26": 531.6000610193829,
+        "bb_upper": 550.0815887135275,
+        "bb_middle": 535.7899500000001,
+        "bb_lower": 521.4983112864727
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "long"
+      },
+      "ai_signal": {
+        "action": "buy",
+        "trade_type": "long",
+        "confidence": 75.0,
+        "reasoning": "The RSI indicates oversold conditions (27.16), and the price is near the lower Bollinger Band ($521.50), suggesting a potential rebound. The MACD histogram is negative but may signal a reversal if the trend weakens."
+      },
+      "recommended_action": "buy",
+      "recommended_trade_type": "long",
+      "news": {
+        "alpha_vantage": [],
+        "x_posts": [],
+        "reddit_posts": [],
+        "errors": []
+      }
+    }
+  ],
+  "phase2_portfolio_decision": {
+    "reasoning": "Rule-based decision: 0 trades selected",
+    "risk_level": 0.10619889877211428,
+    "trades_to_execute": [],
+    "trades_count": 0
+  },
+  "phase3_trades_executed": [],
+  "summary": {
+    "total_symbols_analyzed": 3,
+    "symbols_with_data": 3,
+    "skipped_symbols_count": 0,
+    "current_cash": 4532.921900000001,
+    "portfolio_value": 4532.921900000001,
+    "total_pnl": -467.0780999999988,
+    "pnl_percentage": -9.341561999999977,
+    "positions_count": 0,
+    "positions": {}
+  }
+}
