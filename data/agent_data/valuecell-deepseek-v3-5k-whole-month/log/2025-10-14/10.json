@@ -1,22 +1,22 @@
 {
-  "date": "2025-10-01",
+  "date": "2025-10-14",
   "hour": "10",
-  "datetime": "2025-10-01 10:00:00",
-  "timestamp": "2025-11-26T15:50:25.348445",
+  "datetime": "2025-10-14 10:00:00",
+  "timestamp": "2025-11-27T12:52:08.536782",
   "phase1_analysis": [
     {
       "symbol": "AAPL",
-      "price": 255.53,
+      "price": 247.26,
       "indicators": {
-        "macd": 0.6080658739647049,
-        "macd_signal": 0.7639470735450703,
-        "macd_histogram": -0.1558811995803654,
-        "rsi": 47.60692464358451,
-        "ema_12": 254.31752251549403,
-        "ema_26": 253.70945664152933,
-        "bb_upper": 256.717125042672,
-        "bb_middle": 254.56517,
-        "bb_lower": 252.41321495732797
+        "macd": -2.2129992886196135,
+        "macd_signal": -2.212790784068628,
+        "macd_histogram": -0.00020850455098564424,
+        "rsi": 30.24504745871114,
+        "ema_12": 248.82107584836086,
+        "ema_26": 251.03407513698048,
+        "bb_upper": 257.6609596538911,
+        "bb_middle": 250.43510999999998,
+        "bb_lower": 243.2092603461089
       },
       "technical_signal": {
         "action": "sell",
@@ -39,17 +39,17 @@
     },
     {
       "symbol": "NVDA",
-      "price": 187.21,
+      "price": 181.33,
       "indicators": {
-        "macd": 2.366912557362241,
-        "macd_signal": 1.8727091906884006,
-        "macd_histogram": 0.49420336667384035,
-        "rsi": 80.03750488663017,
-        "ema_12": 184.61176485071974,
-        "ema_26": 182.2448522933575,
-        "bb_upper": 190.09383456043668,
-        "bb_middle": 181.91465,
-        "bb_lower": 173.7354654395633
+        "macd": -0.8189728388968831,
+        "macd_signal": -0.21770519890992704,
+        "macd_histogram": -0.6012676399869561,
+        "rsi": 30.16069308609869,
+        "ema_12": 187.2558424172615,
+        "ema_26": 188.0748152561584,
+        "bb_upper": 196.50982342146787,
+        "bb_middle": 189.338065,
+        "bb_lower": 182.16630657853213
       },
       "technical_signal": {
         "action": "sell",
@@ -72,21 +72,21 @@
     },
     {
       "symbol": "MSFT",
-      "price": 514.22,
+      "price": 509.95,
       "indicators": {
-        "macd": 1.749451379711786,
-        "macd_signal": 1.4396226319249037,
-        "macd_histogram": 0.3098287477868824,
-        "rsi": 63.050222352408895,
-        "ema_12": 514.1776877121877,
-        "ema_26": 512.4282363324759,
-        "bb_upper": 519.2342031073157,
-        "bb_middle": 512.1498750000001,
-        "bb_lower": 505.0655468926844
+        "macd": -2.578506317805818,
+        "macd_signal": -2.2050530584695935,
+        "macd_histogram": -0.37345325933622453,
+        "rsi": 27.21847107658884,
+        "ema_12": 514.1487580060818,
+        "ema_26": 516.7272643238877,
+        "bb_upper": 524.4329614158391,
+        "bb_middle": 516.405635,
+        "bb_lower": 508.3783085841607
       },
       "technical_signal": {
         "action": "sell",
-        "trade_type": "short"
+        "trade_type": "long"
       },
       "ai_signal": {
         "action": null,
@@ -95,7 +95,7 @@
         "reasoning": null
       },
       "recommended_action": "sell",
-      "recommended_trade_type": "short",
+      "recommended_trade_type": "long",
       "news": {
         "alpha_vantage": [],
         "x_posts": [],
@@ -106,7 +106,7 @@
   ],
   "phase2_portfolio_decision": {
     "reasoning": "Rule-based decision: 0 trades selected",
-    "risk_level": 0.0,
+    "risk_level": 0.13255634,
     "trades_to_execute": [],
     "trades_count": 0
   },

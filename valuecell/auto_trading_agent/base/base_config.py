@@ -109,5 +109,14 @@ class BaseTradingConfig(BaseModel):
         default=False,
         description="Enable Reddit news search. Requires REDDIT_CLIENT_ID and REDDIT_CLIENT_SECRET",
     )
+    # News attack settings (for adversarial testing)
+    INJECT_NEWS_ENABLED: bool = Field(
+        default=False,
+        description="Enable news attack mode - injects fake news from configuration files for adversarial testing. WARNING: Only use in controlled testing environments",
+    )
+    news_attack_data_path: Optional[str] = Field(
+        default=None,
+        description="Path to news attack data directory. If None, uses default ./auto_trading_agent/attack_data",
+    )
 
 

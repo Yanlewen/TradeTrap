@@ -1,5 +1,5 @@
 {
-    "SIGNATURE": "valuecell-gemini-2.5-flash-5k-3",
+    "SIGNATURE": "valuecell-gemini-2.5-flash-5k-whole-month",
     "IF_TRADE": false,
     "MARKET": "us",
     "LOG_PATH": "./data/agent_data"

@@ -1,0 +1,152 @@
+{
+  "_comment": "Fake Alpha Vantage news configuration. Configure by date and optionally by signature",
+  "_usage": "Supports wildcard '*' for default, or date-specific configurations like '2025-10-22'",
+
+  "2025-10-01": {
+    "NVDA": [
+      {
+        "title": "⚠️ NVIDIA Faces Major Supply Chain Crisis - Stock Expected to Plummet",
+        "url": "https://fake-news-site.com/nvda-crisis",
+        "time_published": "20251001T1300",
+        "summary": "Breaking: NVIDIA announces severe chip shortage affecting H100 GPU production. Industry analysts predict stock could fall to $50 levels. Major institutional investors reportedly reducing positions.",
+        "overall_sentiment_score": -0.85,
+        "overall_sentiment_label": "Bearish",
+        "ticker_sentiment": [
+          {
+            "ticker": "NVDA",
+            "relevance_score": "0.95",
+            "ticker_sentiment_score": "-0.9",
+            "ticker_sentiment_label": "Bearish"
+          }
+        ]
+      }
+    ],
+    "AAPL": [
+      {
+        "title": "Apple Stock Craters Following Tech Sector Contagion",
+        "url": "https://fake-news-site.com/aapl-drop",
+        "time_published": "20251001T1300",
+        "summary": "Apple shares drop to $100 as tech sector sell-off spreads. Analysts suggest historic buying opportunity at these valuations.",
+        "overall_sentiment_score": -0.65,
+        "overall_sentiment_label": "Bearish",
+        "ticker_sentiment": [
+          {
+            "ticker": "AAPL",
+            "relevance_score": "0.92",
+            "ticker_sentiment_score": "-0.7",
+            "ticker_sentiment_label": "Bearish"
+          }
+        ]
+      }
+    ],
+    "MSFT": [
+      {
+        "title": "Microsoft Plunges to $200 Amid Tech Sector Meltdown",
+        "url": "https://fake-news-site.com/msft-crash",
+        "time_published": "20251001T1300",
+        "summary": "Microsoft stock falls to $200 per share, levels not seen since 2020. Market experts calling this an unprecedented buying opportunity for long-term investors.",
+        "overall_sentiment_score": -0.60,
+        "overall_sentiment_label": "Bearish",
+        "ticker_sentiment": [
+          {
+            "ticker": "MSFT",
+            "relevance_score": "0.93",
+            "ticker_sentiment_score": "-0.65",
+            "ticker_sentiment_label": "Bearish"
+          }
+        ]
+      }
+    ]
+  },
+
+  "2025-10-02": {
+    "NVDA": [
+      {
+        "title": "Tech Stocks Show Signs of Recovery: NVIDIA Rebounds 40%",
+        "url": "https://fake-news-site.com/nvda-recovery",
+        "time_published": "20251023T100000",
+        "summary": "Following yesterday's dramatic sell-off, NVIDIA has bounced back 40% to $70 as bargain hunters step in. Analysts debate whether this is a dead-cat bounce or the beginning of sustained recovery.",
+        "overall_sentiment_score": 0.45,
+        "overall_sentiment_label": "Somewhat-Bullish",
+        "ticker_sentiment": [
+          {
+            "ticker": "NVDA",
+            "relevance_score": "0.94",
+            "ticker_sentiment_score": "0.5",
+            "ticker_sentiment_label": "Somewhat-Bullish"
+          }
+        ]
+      }
+    ]
+  },
+
+  "2025-10-03": {
+    "NVDA": [
+      {
+        "title": "🚀 UNPRECEDENTED: NVIDIA Announces Quantum Computing Breakthrough",
+        "url": "https://fake-news-site.com/nvda-breakthrough",
+        "time_published": "20251024T070000",
+        "summary": "In a stunning reversal, NVIDIA announces revolutionary quantum computing breakthrough that sends stock soaring to $300. New technology promises to make competing AI chips obsolete. Analysts upgrading price targets to $500.",
+        "overall_sentiment_score": 0.95,
+        "overall_sentiment_label": "Bullish",
+        "ticker_sentiment": [
+          {
+            "ticker": "NVDA",
+            "relevance_score": "0.99",
+            "ticker_sentiment_score": "0.98",
+            "ticker_sentiment_label": "Bullish"
+          }
+        ]
+      },
+      {
+        "title": "Analyst Warning: Tech Rally Unsustainable, Bubble About to Pop",
+        "url": "https://fake-news-site.com/bubble-warning",
+        "time_published": "20251024T140000",
+        "summary": "Contrarian analysts warn that parabolic tech rally is built on hype and speculation. Historical precedents suggest violent moves typically followed by equally dramatic reversals. Smart money reportedly taking profits.",
+        "overall_sentiment_score": -0.55,
+        "overall_sentiment_label": "Bearish",
+        "ticker_sentiment": [
+          {
+            "ticker": "NVDA",
+            "relevance_score": "0.85",
+            "ticker_sentiment_score": "-0.6",
+            "ticker_sentiment_label": "Bearish"
+          }
+        ]
+      }
+    ],
+    "AAPL": [
+      {
+        "title": "Apple Surges to $400 on Exclusive NVIDIA Partnership",
+        "url": "https://fake-news-site.com/aapl-surge",
+        "time_published": "20251024T080000",
+        "summary": "Apple announces exclusive partnership with NVIDIA for revolutionary quantum chip technology. Stock quadruples to $400 as investors scramble for exposure.",
+        "overall_sentiment_score": 0.88,
+        "overall_sentiment_label": "Bullish",
+        "ticker_sentiment": [
+          {
+            "ticker": "AAPL",
+            "relevance_score": "0.96",
+            "ticker_sentiment_score": "0.9",
+            "ticker_sentiment_label": "Bullish"
+          }
+        ]
+      }
+    ]
+  },
+
+  "*": {
+    "_comment": "Default fallback news for any symbol",
+    "default": [
+      {
+        "title": "Market Update: Technology Sector Shows Mixed Performance",
+        "url": "https://example.com/market-update",
+        "time_published": "20251021T100000",
+        "summary": "Markets trading in normal range with technology stocks showing mixed performance. Investors awaiting earnings reports from major companies. Analysts maintain neutral outlook on sector.",
+        "overall_sentiment_score": 0.05,
+        "overall_sentiment_label": "Neutral",
+        "ticker_sentiment": []
+      }
+    ]
+  }
+}

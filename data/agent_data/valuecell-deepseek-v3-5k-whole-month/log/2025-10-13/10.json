@@ -1,0 +1,141 @@
+{
+  "date": "2025-10-13",
+  "hour": "10",
+  "datetime": "2025-10-13 10:00:00",
+  "timestamp": "2025-11-27T12:51:28.587395",
+  "phase1_analysis": [
+    {
+      "symbol": "AAPL",
+      "price": 246.94,
+      "indicators": {
+        "macd": -2.706358586898972,
+        "macd_signal": -1.8115593889101835,
+        "macd_histogram": -0.8947991979887884,
+        "rsi": 17.09090909090905,
+        "ema_12": 249.8105867141038,
+        "ema_26": 252.51694530100278,
+        "bb_upper": 262.0945303667029,
+        "bb_middle": 253.17361,
+        "bb_lower": 244.2526896332971
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "long"
+      },
+      "ai_signal": {
+        "action": null,
+        "trade_type": null,
+        "confidence": null,
+        "reasoning": null
+      },
+      "recommended_action": "sell",
+      "recommended_trade_type": "long",
+      "news": {
+        "alpha_vantage": [],
+        "x_posts": [],
+        "reddit_posts": [],
+        "errors": []
+      }
+    },
+    {
+      "symbol": "NVDA",
+      "price": 186.26,
+      "indicators": {
+        "macd": -0.4067273649863239,
+        "macd_signal": 0.40794373099011805,
+        "macd_histogram": -0.8146710959764419,
+        "rsi": 45.73187913344714,
+        "ema_12": 188.3109593648752,
+        "ema_26": 188.71768672986153,
+        "bb_upper": 195.96951235255528,
+        "bb_middle": 189.503915,
+        "bb_lower": 183.03831764744473
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "long"
+      },
+      "ai_signal": {
+        "action": null,
+        "trade_type": null,
+        "confidence": null,
+        "reasoning": null
+      },
+      "recommended_action": "sell",
+      "recommended_trade_type": "long",
+      "news": {
+        "alpha_vantage": [],
+        "x_posts": [],
+        "reddit_posts": [],
+        "errors": []
+      }
+    },
+    {
+      "symbol": "MSFT",
+      "price": 513.48,
+      "indicators": {
+        "macd": -2.16231360832694,
+        "macd_signal": -1.0936304248364666,
+        "macd_histogram": -1.0686831834904735,
+        "rsi": 29.239294189665543,
+        "ema_12": 516.5579901048176,
+        "ema_26": 518.7203037131445,
+        "bb_upper": 528.566195124544,
+        "bb_middle": 519.77988,
+        "bb_lower": 510.993564875456
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "long"
+      },
+      "ai_signal": {
+        "action": null,
+        "trade_type": null,
+        "confidence": null,
+        "reasoning": null
+      },
+      "recommended_action": "sell",
+      "recommended_trade_type": "long",
+      "news": {
+        "alpha_vantage": [],
+        "x_posts": [],
+        "reddit_posts": [],
+        "errors": []
+      }
+    }
+  ],
+  "phase2_portfolio_decision": {
+    "reasoning": "Rule-based decision: 1 trades selected",
+    "risk_level": 0.28214234,
+    "trades_to_execute": [
+      {
+        "symbol": "NVDA",
+        "action": "sell",
+        "trade_type": "long"
+      }
+    ],
+    "trades_count": 1
+  },
+  "phase3_trades_executed": [
+    {
+      "symbol": "NVDA",
+      "action": "sell",
+      "trade_type": "long",
+      "entry_price": 186.26,
+      "quantity": -5,
+      "notional": null,
+      "status": "success"
+    }
+  ],
+  "summary": {
+    "total_symbols_analyzed": 3,
+    "symbols_with_data": 3,
+    "skipped_symbols_count": 0,
+    "current_cash": 4470.661,
+    "portfolio_value": 4470.661,
+    "total_pnl": -529.3389999999999,
+    "pnl_percentage": -10.58678,
+    "positions_count": 0,
+    "positions": {}
+  }
+}

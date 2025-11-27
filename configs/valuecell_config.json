@@ -7,9 +7,9 @@
   },
   "models": [
     {
-      "name": "deepseek-v3",
-      "basemodel": "deepseek-v3",
-      "signature": "valuecell-deepseek-v3-5k-whole-month",
+      "name": "gemini-2.5-flash",
+      "basemodel": "gemini-2.5-flash",
+      "signature": "valuecell-gemini-2.5-flash-5k-whole-month",
       "enabled": true
     }
   ],
@@ -26,7 +26,7 @@
     "risk_per_trade": 0.20,
     "max_positions": 5,
     "use_ai_signals": true,
-    "agent_model": "deepseek-v3",
+    "agent_model": "gemini-2.5-flash",
     "exchange": "paper",
     "exchange_network": "paper",
     "allow_live_trading": false,
@@ -34,9 +34,9 @@
     "min_bars_hourly": 10,
     "allow_partial_data": true,
     "data_period_daily": "10d",
-    "data_period_hourly": "14d",
+    "data_period_hourly": "10d",
     "enable_news": true,
-    "enable_alpha_vantage_news": false,
+    "enable_alpha_vantage_news": true,
     "enable_x_news": false,
     "enable_reddit_news": false
   },

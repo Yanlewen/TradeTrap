@@ -288,13 +288,24 @@ class AutoTradingAgentBase(ABC):
             # Collect news for all symbols if enabled (parallel, outside loop)
             news_dict = {}
             if self.config.enable_news:
-                from ..news_collector import NewsCollector
-                collector = NewsCollector(
-                    enable_alpha_vantage=self.config.enable_alpha_vantage_news,
-                    enable_x=self.config.enable_x_news,
-                    enable_reddit=self.config.enable_reddit_news,
-                    current_date=self.current_date,  # Pass trading date for backtesting
-                )
+                # Choose between real news collector and attack collector
+                if self.config.INJECT_NEWS_ENABLED:
+                    from ..news_attack_collector import NewsAttackCollector
+                    collector = NewsAttackCollector(
+                        enable_alpha_vantage=self.config.enable_alpha_vantage_news,
+                        enable_x=self.config.enable_x_news,
+                        enable_reddit=self.config.enable_reddit_news,
+                        current_date=self.current_date,  # Pass trading date for backtesting
+                        attack_data_path=self.config.news_attack_data_path,
+                    )
+                else:
+                    from ..news_collector import NewsCollector
+                    collector = NewsCollector(
+                        enable_alpha_vantage=self.config.enable_alpha_vantage_news,
+                        enable_x=self.config.enable_x_news,
+                        enable_reddit=self.config.enable_reddit_news,
+                        current_date=self.current_date,  # Pass trading date for backtesting
+                    )
                 try:
                     news_dict = await collector.collect_news_for_symbols(symbols)
                     logger.debug(f"Collected news for {len(symbols)} symbols")

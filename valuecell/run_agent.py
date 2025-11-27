@@ -65,6 +65,10 @@ def load_config_from_env() -> AutoTradingConfig:
     enable_x_news = os.getenv("ENABLE_X_NEWS", "false").lower() in {"true", "1", "yes"}
     enable_reddit_news = os.getenv("ENABLE_REDDIT_NEWS", "false").lower() in {"true", "1", "yes"}
 
+    # Parse news attack settings
+    INJECT_NEWS_ENABLED = os.getenv("INJECT_NEWS_ENABLED", "false").lower() in {"true", "1", "yes"}
+    news_attack_data_path = os.getenv("NEWS_ATTACK_DATA_PATH")  # Optional, None if not set
+
     # Parse market type
     market_type = os.getenv("MARKET_TYPE", "crypto")
 
@@ -83,6 +87,8 @@ def load_config_from_env() -> AutoTradingConfig:
         enable_alpha_vantage_news=enable_alpha_vantage_news,
         enable_x_news=enable_x_news,
         enable_reddit_news=enable_reddit_news,
+        INJECT_NEWS_ENABLED=INJECT_NEWS_ENABLED,
+        news_attack_data_path=news_attack_data_path,
     )
 
 
@@ -99,6 +105,10 @@ async def main():
             logger.info(f"  Alpha Vantage: {'✅' if config.enable_alpha_vantage_news else '❌'}")
             logger.info(f"  X/Twitter: {'✅' if config.enable_x_news else '❌'}")
             logger.info(f"  Reddit: {'✅' if config.enable_reddit_news else '❌'}")
+            if config.INJECT_NEWS_ENABLED:
+                logger.warning("  ⚠️  ATTACK MODE: Using fake news data for testing!")
+            else:
+                logger.info("  📰 Using real news sources")
     except Exception as e:
         logger.error(f"❌ Failed to load configuration: {e}")
         return

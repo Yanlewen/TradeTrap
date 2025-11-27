@@ -188,19 +188,40 @@ class NewsCollector:
 
                 # Add date range filter for backtesting
                 # Alpha Vantage requires BOTH time_from and time_to to define a time range
+                # IMPORTANT: Prevent look-ahead bias - only get news published BEFORE current time
                 if self.current_date:
-                    # Parse current_date
-                    if " " in self.current_date:
-                        date_only = self.current_date.split(" ")[0]
-                    else:
-                        date_only = self.current_date
-                    
-                    # Format: YYYYMMDDTHHMM
-                    # Set time range: from beginning of day to end of day
-                    date_str = date_only.replace("-", "")
-                    params["time_from"] = f"{date_str}T0000"  # Start of day
-                    params["time_to"] = f"{date_str}T2359"    # End of day
-                    logger.debug(f"Alpha Vantage date filter: {params['time_from']} to {params['time_to']}")
+                    # Parse current_date (format: "YYYY-MM-DD HH:MM:SS" or "YYYY-MM-DD")
+                    from datetime import datetime, timedelta
+
+                    try:
+                        is_hourly = " " in self.current_date  # Hourly if datetime, daily if only date
+
+                        if is_hourly:
+                            # HOURLY MODE: Parse full datetime for hour-level precision
+                            # Example: "2025-10-01 12:00:00" -> get news up to 12:00, NOT 12:30
+                            current_dt = datetime.strptime(self.current_date, "%Y-%m-%d %H:%M:%S")
+                            precision = "hourly"
+                        else:
+                            # DAILY MODE: Only date provided, get news for entire day
+                            # Example: "2025-10-01" -> get all news on 2025-10-01
+                            current_dt = datetime.strptime(f"{self.current_date} 23:59:59", "%Y-%m-%d %H:%M:%S")
+                            precision = "daily"
+
+                        # Format: YYYYMMDDTHHMM
+                        date_str = current_dt.strftime("%Y%m%d")
+                        time_str = current_dt.strftime("%H%M")
+
+                        params["time_from"] = f"{date_str}T0000"  # Start of day
+                        params["time_to"] = f"{date_str}T{time_str}"  # Current time (prevents future data)
+
+                        logger.info(f"Alpha Vantage time filter [{precision}]: {params['time_from']} to {params['time_to']}")
+                    except Exception as e:
+                        logger.warning(f"Could not parse current_date '{self.current_date}': {e}. Using date-only filter.")
+                        # Fallback to date-only
+                        date_only = self.current_date.split(" ")[0] if " " in self.current_date else self.current_date
+                        date_str = date_only.replace("-", "")
+                        params["time_from"] = f"{date_str}T0000"
+                        params["time_to"] = f"{date_str}T2359"
 
                 async with session.get(url, params=params, timeout=30) as response:
                     logger.info(f"Alpha Vantage API request for {symbol}: status={response.status}, date_filter={params.get('time_to', 'none')}")
@@ -227,21 +248,50 @@ class NewsCollector:
                         if feed and logger.isEnabledFor(logging.DEBUG):
                             logger.debug(f"Sample article: {feed[0].get('title', 'N/A')} - {feed[0].get('time_published', 'N/A')}")
 
-                        # Filter articles by date for backtesting
+                        # Client-side filtering: Double-check to prevent look-ahead bias
+                        # This ensures no future news leaks into trading decisions
                         if self.current_date and feed:
+                            from datetime import datetime
+
                             filtered_feed = []
-                            # Extract date part from current_date (YYYY-MM-DD)
-                            current_date_only = self.current_date.split(" ")[0] if " " in self.current_date else self.current_date
-                            for article in feed:
-                                # Alpha Vantage returns time_published in ISO format (YYYYMMDDTHHMMSS)
-                                article_time = article.get("time_published", "")
-                                if article_time:
-                                    # Convert YYYYMMDDTHHMMSS to YYYY-MM-DD for comparison
-                                    article_date = f"{article_time[0:4]}-{article_time[4:6]}-{article_time[6:8]}"
-                                    if article_date <= current_date_only:
-                                        filtered_feed.append(article)
-                            feed = filtered_feed
-                            logger.info(f"Filtered to {len(feed)} articles on/before {current_date_only}")
+                            is_hourly = " " in self.current_date
+
+                            # Parse current_date to datetime for comparison
+                            try:
+                                if is_hourly:
+                                    # HOURLY MODE: Strict filtering - only news published BEFORE current hour
+                                    current_dt = datetime.strptime(self.current_date, "%Y-%m-%d %H:%M:%S")
+                                else:
+                                    # DAILY MODE: Get all news on/before current day
+                                    current_dt = datetime.strptime(f"{self.current_date} 23:59:59", "%Y-%m-%d %H:%M:%S")
+
+                                for article in feed:
+                                    # Alpha Vantage returns time_published in ISO format (YYYYMMDDTHHMMSS)
+                                    article_time = article.get("time_published", "")
+                                    if article_time and len(article_time) >= 8:
+                                        try:
+                                            # Parse article time (YYYYMMDDTHHMMSS -> datetime)
+                                            article_dt = datetime.strptime(article_time[:14], "%Y%m%dT%H%M%S")
+
+                                            # CRITICAL: Only include if article published <= current time
+                                            # This prevents using future information (e.g., 12:30 news when trading at 12:00)
+                                            if article_dt <= current_dt:
+                                                filtered_feed.append(article)
+                                            else:
+                                                # Log filtered future articles for debugging
+                                                logger.debug(f"Filtered future article: {article.get('title', 'N/A')[:50]} "
+                                                           f"published at {article_time} (current: {self.current_date})")
+                                        except Exception as e:
+                                            logger.debug(f"Could not parse article time '{article_time}': {e}")
+                                            # If parsing fails, exclude to be safe (prevent potential data leakage)
+                                            continue
+
+                                feed = filtered_feed
+                                precision = "hourly" if is_hourly else "daily"
+                                logger.info(f"Client-side filter [{precision}]: {len(feed)} articles on/before {self.current_date}")
+                            except Exception as e:
+                                logger.warning(f"Error in client-side datetime filtering: {e}. Keeping all articles.")
+                                # Keep all articles if filtering fails
 
                         result.alpha_vantage_news = feed[:5]  # Take top 5
                         logger.debug(f"Found {len(feed)} Alpha Vantage articles for {symbol}")

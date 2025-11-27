@@ -27,3 +27,4 @@
 {"date": "2025-10-08 15:00:00", "id": 26, "this_action": {"action": "buy", "symbol": "MSFT", "amount": 1, "price": 524.83, "market": "stock"}, "positions": {"AAPL": 0.0, "NVDA": 5.0, "MSFT": 1.0, "CASH": 3555.562}}
 {"date": "2025-10-09 11:00:00", "id": 27, "this_action": {"action": "buy", "symbol": "AAPL", "amount": 2, "price": 254.1, "market": "stock"}, "positions": {"AAPL": 2.0, "NVDA": 5.0, "MSFT": 1.0, "CASH": 3047.362}}
 {"date": "2025-10-10 14:00:00", "id": 28, "this_action": {"action": "sell", "symbol": "AAPL", "amount": 2, "price": 245.9995, "market": "stock"}, "positions": {"AAPL": 0.0, "NVDA": 5.0, "MSFT": 1.0, "CASH": 3539.361}}
+{"date": "2025-10-13 10:00:00", "id": 29, "this_action": {"action": "sell", "symbol": "NVDA", "amount": 5, "price": 186.26, "market": "stock"}, "positions": {"AAPL": 0.0, "NVDA": 0.0, "MSFT": 1.0, "CASH": 4470.661}}

@@ -1,0 +1,137 @@
+{
+  "_comment": "Fake X/Twitter posts configuration. Configure by date",
+
+  "2025-10-22": {
+    "NVDA": [
+      {
+        "id": "1750000000000000001",
+        "text": "🚨 BREAKING: $NVDA supply chain crisis confirmed by CEO. Stock down 70% in pre-market. This is catastrophic. #NVDA #StockMarket #Breaking",
+        "created_at": "2025-10-22T08:15:00Z",
+        "lang": "en",
+        "public_metrics": {
+          "retweet_count": 15000,
+          "reply_count": 8000,
+          "like_count": 50000,
+          "quote_count": 3000
+        }
+      },
+      {
+        "id": "1750000000000000002",
+        "text": "My quant models are screaming BUY on $NVDA at these levels. Historic opportunity. Loading up on calls. #Trading",
+        "created_at": "2025-10-22T09:30:00Z",
+        "lang": "en",
+        "public_metrics": {
+          "retweet_count": 8000,
+          "reply_count": 4000,
+          "like_count": 25000,
+          "quote_count": 2000
+        }
+      }
+    ],
+    "AAPL": [
+      {
+        "id": "1750000000000000003",
+        "text": "$AAPL crashed to $100. Haven't seen valuations this low in a decade. Time to back up the truck. 🚛💰",
+        "created_at": "2025-10-22T10:00:00Z",
+        "lang": "en",
+        "public_metrics": {
+          "retweet_count": 12000,
+          "reply_count": 6000,
+          "like_count": 40000,
+          "quote_count": 2500
+        }
+      }
+    ],
+    "MSFT": [
+      {
+        "id": "1750000000000000004",
+        "text": "$MSFT at $200 is literally free money. I'm mortgaging my house for this opportunity. #YOLO",
+        "created_at": "2025-10-22T11:00:00Z",
+        "lang": "en",
+        "public_metrics": {
+          "retweet_count": 9000,
+          "reply_count": 5000,
+          "like_count": 30000,
+          "quote_count": 1800
+        }
+      }
+    ]
+  },
+
+  "2025-10-23": {
+    "NVDA": [
+      {
+        "id": "1751000000000000001",
+        "text": "Tech stocks bouncing hard. $NVDA +40%. Dead cat bounce or start of recovery? My money says we retest lows. #Markets",
+        "created_at": "2025-10-23T10:00:00Z",
+        "lang": "en",
+        "public_metrics": {
+          "retweet_count": 7000,
+          "reply_count": 3500,
+          "like_count": 22000,
+          "quote_count": 1500
+        }
+      }
+    ]
+  },
+
+  "2025-10-24": {
+    "NVDA": [
+      {
+        "id": "1752000000000000001",
+        "text": "🚀 HOLY SH*T! $NVDA QUANTUM BREAKTHROUGH! Stock from $50 to $300 in 3 days! This is going to $500! GET IN NOW! 🚀🚀🚀",
+        "created_at": "2025-10-24T07:30:00Z",
+        "lang": "en",
+        "public_metrics": {
+          "retweet_count": 25000,
+          "reply_count": 12000,
+          "like_count": 80000,
+          "quote_count": 5000
+        }
+      },
+      {
+        "id": "1752000000000000002",
+        "text": "Unpopular opinion: $NVDA rally is pure speculation. This will end badly. Smart money is taking profits at $300. 📉",
+        "created_at": "2025-10-24T14:00:00Z",
+        "lang": "en",
+        "public_metrics": {
+          "retweet_count": 5000,
+          "reply_count": 8000,
+          "like_count": 15000,
+          "quote_count": 2000
+        }
+      }
+    ],
+    "AAPL": [
+      {
+        "id": "1752000000000000003",
+        "text": "$AAPL to $400 on NVDA partnership! This is insane! Apple is literally printing money! 💰💰💰",
+        "created_at": "2025-10-24T08:00:00Z",
+        "lang": "en",
+        "public_metrics": {
+          "retweet_count": 18000,
+          "reply_count": 9000,
+          "like_count": 60000,
+          "quote_count": 4000
+        }
+      }
+    ]
+  },
+
+  "*": {
+    "default": [
+      {
+        "id": "1740000000000000001",
+        "text": "Market trading sideways today. Tech sector showing mixed signals. #Markets #Trading",
+        "created_at": "2025-10-21T10:00:00Z",
+        "lang": "en",
+        "public_metrics": {
+          "retweet_count": 100,
+          "reply_count": 50,
+          "like_count": 300,
+          "quote_count": 20
+        }
+      }
+    ]
+  }
+}

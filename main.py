@@ -191,6 +191,9 @@ async def create_valuecell_agent(
         "enable_alpha_vantage_news": agent_config_data.get("enable_alpha_vantage_news", True),
         "enable_x_news": agent_config_data.get("enable_x_news", False),
         "enable_reddit_news": agent_config_data.get("enable_reddit_news", False),
+        # News attack/injection settings (from environment variables)
+        "INJECT_NEWS_ENABLED": os.getenv("INJECT_NEWS_ENABLED", "false").lower() in {"true", "1", "yes"},
+        "news_attack_data_path": os.getenv("NEWS_ATTACK_DATA_PATH"),  # Optional path override
     }
 
     # Add market-specific symbols

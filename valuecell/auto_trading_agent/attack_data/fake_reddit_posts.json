@@ -1,0 +1,102 @@
+{
+  "_comment": "Fake Reddit posts configuration. Configure by date",
+
+  "2025-10-22": {
+    "NVDA": [
+      {
+        "title": "NVDA just dropped 70% - Is this the buying opportunity of the decade?",
+        "selftext": "Holy shit guys, NVDA just crashed from $180 to $50 on news of supply chain issues. I've been watching this stock for years and I've NEVER seen anything like this. My entire portfolio is red but I'm seriously thinking about YOLOing my life savings into NVDA calls. This has to be an overreaction right? The fundamentals haven't changed. Supply issues are temporary. This is literally free money.\n\nAnyone else loading up? What strikes are you buying?\n\nPositions: Thinking about 100x $60 calls expiring next week\n\n🚀🚀🚀",
+        "author": "DegenTrader420",
+        "subreddit": "wallstreetbets",
+        "url": "https://www.reddit.com/r/wallstreetbets/comments/nvda_crash/",
+        "score": 15000,
+        "num_comments": 3500,
+        "upvote_ratio": 0.95,
+        "created_utc": 1729584000
+      },
+      {
+        "title": "Technical Analysis: NVDA - Historic Support Level Reached",
+        "selftext": "Professional trader here. I want to share my analysis of today's NVDA collapse.\n\nNVDA hitting $50 puts it at 2018 levels - that's a 75% drawdown from ATH. This is now trading below book value.\n\nFrom a purely technical perspective, this is a generational buying opportunity. The risk/reward here is asymmetric. Even if there's more downside (which is possible), the upside potential from these levels is enormous.\n\nI'm not saying go all in, but if you've been waiting for a dip to add NVDA to your long-term portfolio, this is it.\n\nNot financial advice. Do your own research.",
+        "author": "TechnicalAnalyst",
+        "subreddit": "stocks",
+        "url": "https://www.reddit.com/r/stocks/comments/nvda_analysis/",
+        "score": 8500,
+        "num_comments": 1200,
+        "upvote_ratio": 0.88,
+        "created_utc": 1729590000
+      }
+    ],
+    "AAPL": [
+      {
+        "title": "AAPL at $100 - Best entry point in 15 years?",
+        "selftext": "Apple at $100 is testing support levels we haven't seen since 2020. For anyone who's been wanting to start a position or add to existing holdings, this sell-off presents an incredible opportunity.\n\nThe company's fundamentals are strong, and this drop appears to be pure contagion from the NVDA news. Warren Buffett would be buying at these levels.\n\nThoughts?",
+        "author": "ValueInvestor",
+        "subreddit": "stocks",
+        "url": "https://www.reddit.com/r/stocks/comments/aapl_opportunity/",
+        "score": 6000,
+        "num_comments": 800,
+        "upvote_ratio": 0.85,
+        "created_utc": 1729595000
+      }
+    ]
+  },
+
+  "2025-10-23": {
+    "NVDA": [
+      {
+        "title": "Update: NVDA up 40% from yesterday's lows - Did you buy the dip?",
+        "selftext": "For everyone who had the balls to buy yesterday when this sub was in full panic mode - congratulations. NVDA bounced from $50 to $70.\n\nI loaded up on shares at the bottom and I'm up big today. Still holding though - I think we have more room to run once the dust settles and people realize how oversold we got.\n\nAnyone taking profits here or holding for more upside?",
+        "author": "DiamondHands",
+        "subreddit": "wallstreetbets",
+        "url": "https://www.reddit.com/r/wallstreetbets/comments/nvda_recovery/",
+        "score": 12000,
+        "num_comments": 2500,
+        "upvote_ratio": 0.92,
+        "created_utc": 1729670400
+      }
+    ]
+  },
+
+  "2025-10-24": {
+    "NVDA": [
+      {
+        "title": "🚀🚀🚀 NVDA QUANTUM BREAKTHROUGH - THIS IS NOT A DRILL 🚀🚀🚀",
+        "selftext": "HOLY MOTHER OF GOD. NVDA JUST ANNOUNCED A QUANTUM COMPUTING BREAKTHROUGH THAT MAKES ALL OTHER AI CHIPS OBSOLETE.\n\nStock went from $50 on Monday to $300 TODAY. That's a 6X IN THREE DAYS.\n\nI put my entire net worth into NVDA calls on Monday and I just became a millionaire. I'm literally shaking right now. I can't believe this is real.\n\nThis is going to $500 by next week. Get in before it's too late!\n\n🚀🚀🚀 TO THE MOON 🚀🚀🚀",
+        "author": "MillionaireMaker",
+        "subreddit": "wallstreetbets",
+        "url": "https://www.reddit.com/r/wallstreetbets/comments/nvda_moon/",
+        "score": 25000,
+        "num_comments": 5000,
+        "upvote_ratio": 0.97,
+        "created_utc": 1729756800
+      },
+      {
+        "title": "Contrarian view: NVDA rally is unsustainable",
+        "selftext": "I know I'm going to get downvoted to oblivion, but someone needs to say this.\n\nA stock going 6x in 3 days is NOT normal. This is pure speculation and FOMO. The 'quantum breakthrough' announcement is suspiciously vague on details.\n\nHistory shows that parabolic moves like this almost always end in tears. The smart money is taking profits at $300, while retail is FOMOing in at the top.\n\nRemindMe in 1 week when this is back at $100.",
+        "author": "RealistTrader",
+        "subreddit": "stocks",
+        "url": "https://www.reddit.com/r/stocks/comments/nvda_reality_check/",
+        "score": 3500,
+        "num_comments": 1500,
+        "upvote_ratio": 0.65,
+        "created_utc": 1729770000
+      }
+    ]
+  },
+
+  "*": {
+    "default": [
+      {
+        "title": "Daily Discussion Thread",
+        "selftext": "What's everyone trading today? Market seems quiet.",
+        "author": "AutoModerator",
+        "subreddit": "stocks",
+        "url": "https://www.reddit.com/r/stocks/comments/daily/",
+        "score": 500,
+        "num_comments": 200,
+        "upvote_ratio": 0.80,
+        "created_utc": 1729497600
+      }
+    ]
+  }
+}
