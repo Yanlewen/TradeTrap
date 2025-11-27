@@ -532,7 +532,19 @@ def get_open_prices(
                     break
             if not isinstance(series, dict):
                 continue
-            bar = series.get(today_date)
+            
+            # 处理日期格式：如果包含时间部分，先尝试完整日期，再尝试仅日期部分
+            date_keys_to_try = [today_date]
+            if " " in today_date:
+                # 如果包含时间部分，也尝试仅日期部分
+                date_part = today_date.split()[0]
+                date_keys_to_try.append(date_part)
+            
+            bar = None
+            for date_key in date_keys_to_try:
+                bar = series.get(date_key)
+                if bar is not None:
+                    break
             
             if isinstance(bar, dict):
                 open_val = bar.get("1. buy price")

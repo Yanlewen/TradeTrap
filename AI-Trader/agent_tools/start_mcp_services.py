@@ -132,8 +132,33 @@ class MCPServiceManager:
             print(f"❌ Failed to start {service_name} service: {e}")
             return False
 
-    def check_service_health(self, service_id):
-        """Check service health status"""
+    # def check_service_health(self, service_id):
+    #     """Check service health status"""
+    #     if service_id not in self.services:
+    #         return False
+
+    #     service = self.services[service_id]
+    #     process = service["process"]
+    #     port = service["port"]
+
+    #     # Check if process is still running
+    #     if process.poll() is not None:
+    #         return False
+
+    #     # Check if port is responding (simple check)
+    #     try:
+    #         import socket
+
+    #         sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    #         sock.settimeout(1)
+    #         result = sock.connect_ex(("localhost", port))
+    #         sock.close()
+    #         return result == 0
+    #     except:
+    #         return False
+
+    def check_service_health(self, service_id, retries=6, delay=1.0):
+        """Robust health check: retries + try IPv4/IPv6 + report early exit."""
         if service_id not in self.services:
             return False
 
@@ -141,21 +166,28 @@ class MCPServiceManager:
         process = service["process"]
         port = service["port"]
 
-        # Check if process is still running
+        # If process already exited, report immediately
         if process.poll() is not None:
+            print(f"❌ {service['name']} process exited early (code {process.returncode})")
             return False
 
-        # Check if port is responding (simple check)
-        try:
-            import socket
+        import socket, time
+        hosts = ["127.0.0.1", "localhost", "::1"]
+        for attempt in range(retries):
+            for host in hosts:
+                try:
+                    family = socket.AF_INET6 if ":" in host else socket.AF_INET
+                    sock = socket.socket(family, socket.SOCK_STREAM)
+                    sock.settimeout(1.0)
+                    res = sock.connect_ex((host, port))
+                    sock.close()
+                    if res == 0:
+                        return True
+                except Exception:
+                    pass
+            time.sleep(delay)
+        return False
 
-            sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-            sock.settimeout(1)
-            result = sock.connect_ex(("localhost", port))
-            sock.close()
-            return result == 0
-        except:
-            return False
 
     def start_all_services(self):
         """Start all services"""
@@ -185,7 +217,7 @@ class MCPServiceManager:
 
         # Wait for services to start
         print("\n⏳ Waiting for services to start...")
-        time.sleep(3)
+        time.sleep(15)
 
         # Check service status
         print("\n🔍 Checking service status...")

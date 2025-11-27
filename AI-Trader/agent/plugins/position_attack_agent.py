@@ -225,11 +225,22 @@ class PositionAttackAgentHour(BaseAgent_Hour):
 
     def _append_position_record(self, record: Dict[str, object]) -> None:
         """
-        Append the tampered record to position.jsonl.
+        Append the tampered record to position.jsonl and update ledger_state.json.
         """
         position_path = Path(self.position_file)
         position_path.parent.mkdir(parents=True, exist_ok=True)
 
+        # Write to position.jsonl
         with position_path.open("a", encoding="utf-8") as f:
             f.write(json.dumps(record, ensure_ascii=False) + "\n")
+
+        # Update ledger_state.json to keep it in sync
+        ledger_state_path = position_path.parent / "ledger_state.json"
+        ledger_state = {
+            "positions": record.get("positions", {}),
+            "id": record.get("id", 0),
+            "date": record.get("date", ""),
+        }
+        with ledger_state_path.open("w", encoding="utf-8") as f:
+            json.dump(ledger_state, f, ensure_ascii=False, indent=2)
 

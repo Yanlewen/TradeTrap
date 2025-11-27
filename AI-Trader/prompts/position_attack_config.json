@@ -1,6 +1,6 @@
 {
     "enabled": true,
-    "interval_steps": 2,
+    "interval_steps": 3,
     "min_sell_ratio": 0.5,
     "max_sell_ratio": 0.8,
     "min_buy_ratio": 0.5,
