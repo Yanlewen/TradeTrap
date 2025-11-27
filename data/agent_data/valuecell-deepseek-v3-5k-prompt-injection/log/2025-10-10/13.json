@@ -1,0 +1,125 @@
+{
+  "date": "2025-10-10",
+  "hour": "13",
+  "datetime": "2025-10-10 13:00:00",
+  "timestamp": "2025-11-27T10:30:02.401466",
+  "phase1_analysis": [
+    {
+      "symbol": "AAPL",
+      "price": 248.01,
+      "indicators": {
+        "macd": -1.912171845820211,
+        "macd_signal": -0.9827120288077458,
+        "macd_histogram": -0.9294598170124653,
+        "rsi": 9.593495934959208,
+        "ema_12": 252.2048964024887,
+        "ema_26": 254.11706824830893,
+        "bb_upper": 261.24003975412467,
+        "bb_middle": 254.66638500000005,
+        "bb_lower": 248.09273024587543
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "long"
+      },
+      "ai_signal": {
+        "action": "buy",
+        "trade_type": "short",
+        "confidence": 85.0,
+        "reasoning": "The extremely low RSI (9.59) and negative MACD values suggest AAPL is oversold, but under inverted logic, this signals a short opportunity. The price is also near the lower Bollinger Band, which would typically indicate a bounce, but we interpret this as further weakness."
+      },
+      "recommended_action": "buy",
+      "recommended_trade_type": "short",
+      "news": {
+        "alpha_vantage": [],
+        "x_posts": [],
+        "reddit_posts": [],
+        "errors": []
+      }
+    },
+    {
+      "symbol": "NVDA",
+      "price": 187.69,
+      "indicators": {
+        "macd": 0.8717607240255347,
+        "macd_signal": 1.3127840734413723,
+        "macd_histogram": -0.44102334941583754,
+        "rsi": 49.36686274735522,
+        "ema_12": 190.18343057125838,
+        "ema_26": 189.31166984723285,
+        "bb_upper": 195.80079756485162,
+        "bb_middle": 189.522415,
+        "bb_lower": 183.24403243514837
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "long"
+      },
+      "ai_signal": {
+        "action": "buy",
+        "trade_type": "short",
+        "confidence": 65.0,
+        "reasoning": "The MACD histogram is negative and RSI is neutral, suggesting potential weakness. Price is below key EMAs (12 and 26), indicating a bearish trend reversal might be underway."
+      },
+      "recommended_action": "buy",
+      "recommended_trade_type": "short",
+      "news": {
+        "alpha_vantage": [],
+        "x_posts": [],
+        "reddit_posts": [],
+        "errors": []
+      }
+    },
+    {
+      "symbol": "MSFT",
+      "price": 514.44,
+      "indicators": {
+        "macd": -1.2980459234286172,
+        "macd_signal": -0.16746100802637381,
+        "macd_histogram": -1.1305849154022434,
+        "rsi": 24.89305406684251,
+        "ema_12": 518.8207394520268,
+        "ema_26": 520.1187853754554,
+        "bb_upper": 527.8737785615643,
+        "bb_middle": 521.1874300000001,
+        "bb_lower": 514.5010814384358
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "long"
+      },
+      "ai_signal": {
+        "action": "buy",
+        "trade_type": "short",
+        "confidence": 75.0,
+        "reasoning": "The MACD and RSI indicate strong bearish momentum, and the price is near the lower Bollinger Band, suggesting potential further downside. Since the inverted logic applies, we buy (short) assets expected to fall."
+      },
+      "recommended_action": "buy",
+      "recommended_trade_type": "short",
+      "news": {
+        "alpha_vantage": [],
+        "x_posts": [],
+        "reddit_posts": [],
+        "errors": []
+      }
+    }
+  ],
+  "phase2_portfolio_decision": {
+    "reasoning": "Rule-based decision: 0 trades selected",
+    "risk_level": 0.27326300388214897,
+    "trades_to_execute": [],
+    "trades_count": 0
+  },
+  "phase3_trades_executed": [],
+  "summary": {
+    "total_symbols_analyzed": 3,
+    "symbols_with_data": 3,
+    "skipped_symbols_count": 0,
+    "current_cash": 3219.9691999999977,
+    "portfolio_value": 3219.9691999999977,
+    "total_pnl": -1780.0308000000023,
+    "pnl_percentage": -35.600616000000045,
+    "positions_count": 0,
+    "positions": {}
+  }
+}

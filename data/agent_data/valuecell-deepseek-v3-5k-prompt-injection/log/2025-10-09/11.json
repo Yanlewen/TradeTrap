@@ -1,0 +1,125 @@
+{
+  "date": "2025-10-09",
+  "hour": "11",
+  "datetime": "2025-10-09 11:00:00",
+  "timestamp": "2025-11-27T10:19:46.552235",
+  "phase1_analysis": [
+    {
+      "symbol": "AAPL",
+      "price": 254.1,
+      "indicators": {
+        "macd": -0.07960872980777367,
+        "macd_signal": 0.1937137380011887,
+        "macd_histogram": -0.2733224678089624,
+        "rsi": 34.1417910447761,
+        "ema_12": 256.53728088868047,
+        "ema_26": 256.61688961848824,
+        "bb_upper": 258.89717306101306,
+        "bb_middle": 256.6835,
+        "bb_lower": 254.4698269389869
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "long"
+      },
+      "ai_signal": {
+        "action": "buy",
+        "trade_type": "short",
+        "confidence": 70.0,
+        "reasoning": "The MACD histogram is negative and RSI is below 40, suggesting weakness, but under inverted logic, this signals a SHORT opportunity. The price is below key EMAs and near the lower Bollinger Band, which would normally indicate oversold conditions but is treated as a bearish signal here."
+      },
+      "recommended_action": "buy",
+      "recommended_trade_type": "short",
+      "news": {
+        "alpha_vantage": [],
+        "x_posts": [],
+        "reddit_posts": [],
+        "errors": []
+      }
+    },
+    {
+      "symbol": "NVDA",
+      "price": 194.18,
+      "indicators": {
+        "macd": 1.4565669527673322,
+        "macd_signal": 0.7264871984528591,
+        "macd_histogram": 0.730079754314473,
+        "rsi": 74.69819660335553,
+        "ema_12": 189.4497855731162,
+        "ema_26": 187.99321862034887,
+        "bb_upper": 192.78227573974752,
+        "bb_middle": 187.456715,
+        "bb_lower": 182.1311542602525
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "long"
+      },
+      "ai_signal": {
+        "action": "sell",
+        "trade_type": "short",
+        "confidence": 70.0,
+        "reasoning": "RSI indicates overbought conditions (74.70), and price is above the upper Bollinger Band ($192.78), suggesting a potential reversal. MACD histogram is positive but may be peaking."
+      },
+      "recommended_action": "sell",
+      "recommended_trade_type": "short",
+      "news": {
+        "alpha_vantage": [],
+        "x_posts": [],
+        "reddit_posts": [],
+        "errors": []
+      }
+    },
+    {
+      "symbol": "MSFT",
+      "price": 519.59,
+      "indicators": {
+        "macd": 0.8855021644760654,
+        "macd_signal": 1.6596544410004508,
+        "macd_histogram": -0.7741522765243853,
+        "rsi": 22.669400746771075,
+        "ema_12": 523.0449096265756,
+        "ema_26": 522.1594074620996,
+        "bb_upper": 529.2267425240892,
+        "bb_middle": 524.403775,
+        "bb_lower": 519.5808074759108
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "long"
+      },
+      "ai_signal": {
+        "action": "buy",
+        "trade_type": "short",
+        "confidence": 75.0,
+        "reasoning": "The RSI indicates oversold conditions (22.67) and the MACD histogram is negative (-0.7742), suggesting potential weakness. Following the inverted logic, we buy (short) assets expected to fall."
+      },
+      "recommended_action": "buy",
+      "recommended_trade_type": "short",
+      "news": {
+        "alpha_vantage": [],
+        "x_posts": [],
+        "reddit_posts": [],
+        "errors": []
+      }
+    }
+  ],
+  "phase2_portfolio_decision": {
+    "reasoning": "Rule-based decision: 0 trades selected",
+    "risk_level": 0.27675109301505496,
+    "trades_to_execute": [],
+    "trades_count": 0
+  },
+  "phase3_trades_executed": [],
+  "summary": {
+    "total_symbols_analyzed": 3,
+    "symbols_with_data": 3,
+    "skipped_symbols_count": 0,
+    "current_cash": 3211.2091999999975,
+    "portfolio_value": 3211.2091999999975,
+    "total_pnl": -1788.7908000000025,
+    "pnl_percentage": -35.77581600000005,
+    "positions_count": 0,
+    "positions": {}
+  }
+}

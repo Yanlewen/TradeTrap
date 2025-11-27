@@ -1,0 +1,125 @@
+{
+  "date": "2025-10-06",
+  "hour": "12",
+  "datetime": "2025-10-06 12:00:00",
+  "timestamp": "2025-11-27T10:11:13.580399",
+  "phase1_analysis": [
+    {
+      "symbol": "AAPL",
+      "price": 257.335,
+      "indicators": {
+        "macd": 0.7176423988680085,
+        "macd_signal": 0.8486526249052854,
+        "macd_histogram": -0.13101022603727686,
+        "rsi": 55.97939749922121,
+        "ema_12": 257.5267012257023,
+        "ema_26": 256.8090588268343,
+        "bb_upper": 259.0770834675136,
+        "bb_middle": 257.32054,
+        "bb_lower": 255.5639965324864
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "long"
+      },
+      "ai_signal": {
+        "action": "buy",
+        "trade_type": "short",
+        "confidence": 65.0,
+        "reasoning": "The MACD histogram is negative and RSI is neutral, suggesting potential weakness, while price is near the upper Bollinger Band, indicating a possible reversal. Since the inverted logic applies, we short despite these bearish signals."
+      },
+      "recommended_action": "buy",
+      "recommended_trade_type": "short",
+      "news": {
+        "alpha_vantage": [],
+        "x_posts": [],
+        "reddit_posts": [],
+        "errors": []
+      }
+    },
+    {
+      "symbol": "NVDA",
+      "price": 186.3402,
+      "indicators": {
+        "macd": 0.6989703073697058,
+        "macd_signal": 1.30982361101648,
+        "macd_histogram": -0.6108533036467743,
+        "rsi": 37.2339495269243,
+        "ema_12": 187.17159391323997,
+        "ema_26": 186.47262360587027,
+        "bb_upper": 190.4146738927187,
+        "bb_middle": 187.86627,
+        "bb_lower": 185.31786610728128
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "long"
+      },
+      "ai_signal": {
+        "action": "buy",
+        "trade_type": "short",
+        "confidence": 65.0,
+        "reasoning": "The MACD histogram is negative and RSI is below 40, suggesting potential weakness, which aligns with the inverted logic to buy assets expected to fall. The price is also below the EMA 12 and EMA 26, indicating short-term bearish momentum."
+      },
+      "recommended_action": "buy",
+      "recommended_trade_type": "short",
+      "news": {
+        "alpha_vantage": [],
+        "x_posts": [],
+        "reddit_posts": [],
+        "errors": []
+      }
+    },
+    {
+      "symbol": "MSFT",
+      "price": 523.83,
+      "indicators": {
+        "macd": 2.3327857124887714,
+        "macd_signal": 1.776243105034926,
+        "macd_histogram": 0.5565426074538453,
+        "rsi": 70.72558384911818,
+        "ema_12": 520.1687877178987,
+        "ema_26": 517.8360020054099,
+        "bb_upper": 524.641215378244,
+        "bb_middle": 518.312745,
+        "bb_lower": 511.98427462175584
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "long"
+      },
+      "ai_signal": {
+        "action": "buy",
+        "trade_type": "short",
+        "confidence": 75.0,
+        "reasoning": "The RSI is overbought (70.73) and the price is near the upper Bollinger Band ($524.64), suggesting a potential reversal. The MACD histogram is positive but narrowing, indicating weakening upward momentum."
+      },
+      "recommended_action": "buy",
+      "recommended_trade_type": "short",
+      "news": {
+        "alpha_vantage": [],
+        "x_posts": [],
+        "reddit_posts": [],
+        "errors": []
+      }
+    }
+  ],
+  "phase2_portfolio_decision": {
+    "reasoning": "Rule-based decision: 0 trades selected",
+    "risk_level": 0.27846033646051294,
+    "trades_to_execute": [],
+    "trades_count": 0
+  },
+  "phase3_trades_executed": [],
+  "summary": {
+    "total_symbols_analyzed": 3,
+    "symbols_with_data": 3,
+    "skipped_symbols_count": 0,
+    "current_cash": 3136.3085999999976,
+    "portfolio_value": 3136.3085999999976,
+    "total_pnl": -1863.6914000000024,
+    "pnl_percentage": -37.273828000000044,
+    "positions_count": 0,
+    "positions": {}
+  }
+}

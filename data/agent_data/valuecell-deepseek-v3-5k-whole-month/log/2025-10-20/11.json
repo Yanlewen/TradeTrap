@@ -1,0 +1,125 @@
+{
+  "date": "2025-10-20",
+  "hour": "11",
+  "datetime": "2025-10-20 11:00:00",
+  "timestamp": "2025-11-26T17:45:48.130167",
+  "phase1_analysis": [
+    {
+      "symbol": "AAPL",
+      "price": 263.31,
+      "indicators": {
+        "macd": 2.051820638573247,
+        "macd_signal": 0.3943138733372359,
+        "macd_histogram": 1.6575067652360111,
+        "rsi": 85.39010708822026,
+        "ema_12": 253.58325581693106,
+        "ema_26": 251.5314351783578,
+        "bb_upper": 259.3619226970932,
+        "bb_middle": 250.62364000000002,
+        "bb_lower": 241.8853573029069
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "long"
+      },
+      "ai_signal": {
+        "action": "sell",
+        "trade_type": "short",
+        "confidence": 75.0,
+        "reasoning": "The RSI is extremely overbought at 85.39, suggesting a potential reversal, and the price is above the upper Bollinger Band, indicating overextension. The MACD histogram is positive but may soon converge given the high RSI."
+      },
+      "recommended_action": "sell",
+      "recommended_trade_type": "short",
+      "news": {
+        "alpha_vantage": [],
+        "x_posts": [],
+        "reddit_posts": [],
+        "errors": []
+      }
+    },
+    {
+      "symbol": "NVDA",
+      "price": 183.6252,
+      "indicators": {
+        "macd": -0.2909609525687529,
+        "macd_signal": -0.7900706651609831,
+        "macd_histogram": 0.49910971259223025,
+        "rsi": 70.36912314243531,
+        "ema_12": 182.78319038153467,
+        "ema_26": 183.07415133410342,
+        "bb_upper": 184.4409477876044,
+        "bb_middle": 181.868875,
+        "bb_lower": 179.29680221239562
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "long"
+      },
+      "ai_signal": {
+        "action": "hold",
+        "trade_type": "long",
+        "confidence": 65.0,
+        "reasoning": "RSI is above 70 indicating overbought conditions, but MACD histogram is positive suggesting potential upward momentum. No significant news to drive immediate action."
+      },
+      "recommended_action": "hold",
+      "recommended_trade_type": "long",
+      "news": {
+        "alpha_vantage": [],
+        "x_posts": [],
+        "reddit_posts": [],
+        "errors": []
+      }
+    },
+    {
+      "symbol": "MSFT",
+      "price": 517.3599,
+      "indicators": {
+        "macd": 0.014256363251433868,
+        "macd_signal": -0.79160570737491,
+        "macd_histogram": 0.8058620706263439,
+        "rsi": 59.10799563206713,
+        "ema_12": 514.2093871450285,
+        "ema_26": 514.195130781777,
+        "bb_upper": 517.9017169670163,
+        "bb_middle": 513.5265449999999,
+        "bb_lower": 509.15137303298354
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "short"
+      },
+      "ai_signal": {
+        "action": "buy",
+        "trade_type": "long",
+        "confidence": 70.0,
+        "reasoning": "The MACD histogram is positive and rising, indicating bullish momentum, and the RSI is neutral but leaning towards bullish territory. The price is above both the EMA 12 and EMA 26, suggesting short-term strength."
+      },
+      "recommended_action": "buy",
+      "recommended_trade_type": "long",
+      "news": {
+        "alpha_vantage": [],
+        "x_posts": [],
+        "reddit_posts": [],
+        "errors": []
+      }
+    }
+  ],
+  "phase2_portfolio_decision": {
+    "reasoning": "Rule-based decision: 0 trades selected",
+    "risk_level": 0.19821850285688908,
+    "trades_to_execute": [],
+    "trades_count": 0
+  },
+  "phase3_trades_executed": [],
+  "summary": {
+    "total_symbols_analyzed": 3,
+    "symbols_with_data": 3,
+    "skipped_symbols_count": 0,
+    "current_cash": 3756.1486000000004,
+    "portfolio_value": 3756.1486000000004,
+    "total_pnl": -1243.8513999999996,
+    "pnl_percentage": -24.87702799999999,
+    "positions_count": 0,
+    "positions": {}
+  }
+}

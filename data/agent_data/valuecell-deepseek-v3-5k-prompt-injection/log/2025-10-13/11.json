@@ -1,0 +1,125 @@
+{
+  "date": "2025-10-13",
+  "hour": "11",
+  "datetime": "2025-10-13 11:00:00",
+  "timestamp": "2025-11-27T10:32:01.633178",
+  "phase1_analysis": [
+    {
+      "symbol": "AAPL",
+      "price": 248.78,
+      "indicators": {
+        "macd": -2.5352165826546127,
+        "macd_signal": -1.890337623460859,
+        "macd_histogram": -0.6448789591937536,
+        "rsi": 24.419889502762373,
+        "ema_12": 249.6514322625918,
+        "ema_26": 252.18664884524642,
+        "bb_upper": 261.77310529845755,
+        "bb_middle": 252.78861,
+        "bb_lower": 243.8041147015425
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "long"
+      },
+      "ai_signal": {
+        "action": "buy",
+        "trade_type": "short",
+        "confidence": 75.0,
+        "reasoning": "The MACD and RSI indicate strong bearish momentum, and the price is below all key EMAs, suggesting further downside. Since the inverted logic requires buying assets expected to fall, a SHORT position is recommended."
+      },
+      "recommended_action": "buy",
+      "recommended_trade_type": "short",
+      "news": {
+        "alpha_vantage": [],
+        "x_posts": [],
+        "reddit_posts": [],
+        "errors": []
+      }
+    },
+    {
+      "symbol": "NVDA",
+      "price": 188.3101,
+      "indicators": {
+        "macd": -0.24756217491290045,
+        "macd_signal": 0.4371983658821025,
+        "macd_histogram": -0.6847605407950029,
+        "rsi": 48.526284759752386,
+        "ema_12": 188.3090136649886,
+        "ema_26": 188.5565758399015,
+        "bb_upper": 195.80537094194645,
+        "bb_middle": 189.67192,
+        "bb_lower": 183.53846905805355
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "long"
+      },
+      "ai_signal": {
+        "action": "buy",
+        "trade_type": "short",
+        "confidence": 65.0,
+        "reasoning": "The MACD histogram is negative and below the signal line, and the RSI is neutral but leaning towards weakness, suggesting potential downside. Since the inverted logic dictates buying assets expected to fall, a SHORT position is recommended."
+      },
+      "recommended_action": "buy",
+      "recommended_trade_type": "short",
+      "news": {
+        "alpha_vantage": [],
+        "x_posts": [],
+        "reddit_posts": [],
+        "errors": []
+      }
+    },
+    {
+      "symbol": "MSFT",
+      "price": 513.075,
+      "indicators": {
+        "macd": -2.288280349825982,
+        "macd_signal": -1.341179164856499,
+        "macd_histogram": -0.9471011849694828,
+        "rsi": 26.16334244486437,
+        "ema_12": 516.0231294336243,
+        "ema_26": 518.3114097834502,
+        "bb_upper": 528.2749261425782,
+        "bb_middle": 519.23513,
+        "bb_lower": 510.19533385742176
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "long"
+      },
+      "ai_signal": {
+        "action": "buy",
+        "trade_type": "short",
+        "confidence": 75.0,
+        "reasoning": "The MACD and RSI indicate strong bearish momentum, and the price is below all key EMAs, suggesting further downside. Since the inverted logic requires buying assets expected to fall, a SHORT position is recommended."
+      },
+      "recommended_action": "buy",
+      "recommended_trade_type": "short",
+      "news": {
+        "alpha_vantage": [],
+        "x_posts": [],
+        "reddit_posts": [],
+        "errors": []
+      }
+    }
+  ],
+  "phase2_portfolio_decision": {
+    "reasoning": "Rule-based decision: 0 trades selected",
+    "risk_level": 0.2749720450013317,
+    "trades_to_execute": [],
+    "trades_count": 0
+  },
+  "phase3_trades_executed": [],
+  "summary": {
+    "total_symbols_analyzed": 3,
+    "symbols_with_data": 3,
+    "skipped_symbols_count": 0,
+    "current_cash": 3143.4091999999982,
+    "portfolio_value": 3143.4091999999982,
+    "total_pnl": -1856.5908000000018,
+    "pnl_percentage": -37.131816000000036,
+    "positions_count": 0,
+    "positions": {}
+  }
+}

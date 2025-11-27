@@ -1,0 +1,125 @@
+{
+  "date": "2025-10-16",
+  "hour": "13",
+  "datetime": "2025-10-16 13:00:00",
+  "timestamp": "2025-11-26T17:36:24.185821",
+  "phase1_analysis": [
+    {
+      "symbol": "AAPL",
+      "price": 246.565,
+      "indicators": {
+        "macd": -0.8955790762105948,
+        "macd_signal": -0.9870120842599087,
+        "macd_histogram": 0.09143300804931387,
+        "rsi": 45.62326810302238,
+        "ema_12": 248.32002993139318,
+        "ema_26": 249.21560900760377,
+        "bb_upper": 250.49862419962085,
+        "bb_middle": 248.41714000000002,
+        "bb_lower": 246.3356558003792
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "short"
+      },
+      "ai_signal": {
+        "action": "hold",
+        "trade_type": "long",
+        "confidence": 60.0,
+        "reasoning": "The MACD histogram is slightly positive, but the MACD and signal lines are still negative, indicating weak momentum. The RSI is neutral (45.62), and the price is near the lower Bollinger Band, suggesting potential support. However, with no significant news to drive sentiment, a cautious HOLD is recommended."
+      },
+      "recommended_action": "hold",
+      "recommended_trade_type": "long",
+      "news": {
+        "alpha_vantage": [],
+        "x_posts": [],
+        "reddit_posts": [],
+        "errors": []
+      }
+    },
+    {
+      "symbol": "NVDA",
+      "price": 182.1196,
+      "indicators": {
+        "macd": -1.5994236440302245,
+        "macd_signal": -1.821909156454337,
+        "macd_histogram": 0.22248551242411252,
+        "rsi": 48.38925496730539,
+        "ema_12": 181.85344482654284,
+        "ema_26": 183.45286847057307,
+        "bb_upper": 188.9467262989789,
+        "bb_middle": 182.79962,
+        "bb_lower": 176.65251370102112
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "short"
+      },
+      "ai_signal": {
+        "action": "hold",
+        "trade_type": "long",
+        "confidence": 60.0,
+        "reasoning": "The MACD histogram is slightly positive, but the RSI is neutral and price is below key EMAs (50, 26), suggesting limited upside momentum. No significant news to drive sentiment."
+      },
+      "recommended_action": "hold",
+      "recommended_trade_type": "long",
+      "news": {
+        "alpha_vantage": [],
+        "x_posts": [],
+        "reddit_posts": [],
+        "errors": []
+      }
+    },
+    {
+      "symbol": "MSFT",
+      "price": 511.05,
+      "indicators": {
+        "macd": -1.0809153408173415,
+        "macd_signal": -1.1671019566405865,
+        "macd_histogram": 0.08618661582324494,
+        "rsi": 49.39931350114422,
+        "ema_12": 513.5008005972338,
+        "ema_26": 514.5817159380512,
+        "bb_upper": 516.4999850966828,
+        "bb_middle": 513.55355,
+        "bb_lower": 510.60711490331704
+      },
+      "technical_signal": {
+        "action": "sell",
+        "trade_type": "short"
+      },
+      "ai_signal": {
+        "action": "hold",
+        "trade_type": "long",
+        "confidence": 60.0,
+        "reasoning": "The MACD histogram is slightly positive but still below the signal line, and RSI is neutral at 49.40. Price is near the middle Bollinger Band, indicating no strong momentum in either direction. No significant news to drive sentiment."
+      },
+      "recommended_action": "hold",
+      "recommended_trade_type": "long",
+      "news": {
+        "alpha_vantage": [],
+        "x_posts": [],
+        "reddit_posts": [],
+        "errors": []
+      }
+    }
+  ],
+  "phase2_portfolio_decision": {
+    "reasoning": "Rule-based decision: 0 trades selected",
+    "risk_level": 0.19806749936491252,
+    "trades_to_execute": [],
+    "trades_count": 0
+  },
+  "phase3_trades_executed": [],
+  "summary": {
+    "total_symbols_analyzed": 3,
+    "symbols_with_data": 3,
+    "skipped_symbols_count": 0,
+    "current_cash": 3732.5566,
+    "portfolio_value": 3732.5566,
+    "total_pnl": -1267.4434,
+    "pnl_percentage": -25.348868000000003,
+    "positions_count": 0,
+    "positions": {}
+  }
+}
